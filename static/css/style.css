@@ -1,0 +1,665 @@
+@charset "utf-8";
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat' !important;
+    font-size: 13px;
+    color: #3a3a3a;
+    font-weight: 400;
+}
+:root {
+	/* Colors */
+--colorpurple:#800080;
+--colorBlue:#008B8B;
+--colorGray:#AEAEAE;
+--colorWhite:#ffffff;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clr,
+.clear {
+    clear: both;
+}
+
+header,
+footer,
+aside,
+article,
+section,
+detail,
+nav,
+figure {
+    position: relative; 
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li,
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none !important;
+    outline: none;
+}
+
+img {
+    border: 0;
+    outline: none;
+    max-width: 100%; 
+}
+
+input[type="text"],
+input[type="password"],
+select,
+textarea,
+input[type="button"] {
+    max-width: 100%;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/* heading code :start */
+h2.mainHead{
+    font-size: 22px;
+    color: #000;
+    font-weight: 500;
+    line-height: 25px;
+}
+/* heading code :end */
+label{
+    font-size: 16px;
+    /* color: var(--colorpurple); */
+    font-weight: 500;
+}
+.formControl{
+    /* border: 1px solid var(--colorpurple); */
+    font-size: 16px;
+    background: var(--colorWhite);
+    padding:15px;
+    height: auto;
+}
+.formControl:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--colorBlue);
+}
+.loginDetail{
+    width: 500px;
+    padding: 35px 25px;
+    /* box-shadow: 0px 3px 9px #ddd; */
+    background: #fff;
+    /* border: 5px solid var(--colorpurple); */
+    border-radius: 10px;
+}
+.labell{
+    position: absolute;
+    left: 6px;
+    top: -10px;
+    background:var(--colorWhite);
+    padding: 0px 10px;
+}
+.formgroup{
+    position: relative;
+    margin-bottom:30px;
+}
+.loginAll{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #008b8b;
+    width: 100%;
+}
+.forgot a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #008b8b;
+    display: block;
+}
+.forgot {
+    text-align: right;
+    position: relative;
+}
+.submitBtn button{
+    width: 100%;
+    padding: 10px;
+    background: #008b8b;
+    color: var(--colorWhite);
+    font-weight: 500;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+}
+.submitBtn button:focus{
+    border: none;
+    outline: none;
+}
+.submitBtn{
+    padding-top: 50px;
+}
+ .CheckBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+}
+.CheckBox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+.CheckBox .Check {
+    width: 25px;
+    height: 25px;
+    display: block;
+    border: 2px solid darkcyan;
+    position: relative;
+}
+.CheckBox .Check:before {
+    content: "";
+    left: 9px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(50deg);
+    position: absolute;
+    display: none;
+}
+.CheckBox input:checked ~ .Check:before {
+    display: block;
+}
+.CheckBox input:checked ~ .Check {
+    border-color: #008b8b;
+    background: #008b8b;
+}
+.rem{
+    white-space: nowrap;
+    position: relative;
+    left: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    /* color: var(--colorpurple); */
+}
+.logo{
+    width: 150px;
+    margin: 0 auto 20px;
+    height: 135px;
+    /* overflow: hidden;
+    border-radius: 50%;
+    padding: 15px; */
+    /* border: 3px solid var(--colorpurple);
+    box-shadow: 0px 0px 7px #ddd; */
+}
+.loginDett h2{
+    font-size: 20px;
+    /* color: var(--colorpurple); */
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+.loginDett p{
+    font-size: 16px;
+    /* color: var(--colorpurple); */
+    font-weight: 300;
+}
+.loginDett{
+    text-align: center;
+    padding:15px 0px 25px;
+}
+.eye{
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    font-size: 20px;
+    background: #fff;
+    color: var(--colorBlue);
+    cursor: pointer;
+}
+/* header code :start */
+.header{
+    padding: 10px 35px;
+    background: var(--colorWhite);
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+    -webkit-box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+}
+.headerLeft a img{
+    width: 125px;
+    height: 75px;
+    object-fit: fill;
+}
+.headerLeft a{
+/* padding: 0px 85px 0px 0px; */
+display: inline-block;
+}
+.headerLeft span{
+    padding-left: 115px;
+}
+.hum{
+    cursor: pointer;
+}
+.headerRight a{
+    display: flex;
+    align-items: center;
+}
+.headerRight a img{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border: 1px solid var(--colorBlue);
+    border-radius: 100%;
+}
+.headerRight a span{
+    font-weight: 500;
+    color: var(--colorBlue);
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.profileDetail ul{
+    box-shadow: 0px 3px 9px #ddd;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    right: 35px;
+    background: #fff;
+
+}
+.headerRight:hover ul{
+    opacity: 1;
+    visibility: visible;
+    top: 72%;
+    background: #fff;
+    transition: 0.5s all ease-in-out;
+}
+.profileDetail ul li{
+    padding: 10px 15px;
+}
+    .profileDetail ul li img{
+        width: 35px;
+      height: 35px;
+      overflow: hidden;
+      border-radius: 100%;
+    
+}
+.profileDetail ul li span{
+    color: var(--colorWhite);
+}
+.profileDetail ul li a img{
+    height: auto;
+    overflow: auto;
+    width: 25px;
+    border: none;
+    border-radius: inherit;
+}
+.profileDetail ul li a span{
+    color: var(--colorpurple);
+}
+.sidenav{
+    position: fixed;
+    left: 0;
+    top: 95px;
+    height: 100%;
+    width: 300px;
+    background: var(--colorWhite);
+    border-right: 1px solid #ddd;
+    box-shadow: 0 0 15px rgb(0 0 0 / 10%);
+}
+/* header code :end */
+
+/* .sidenav code :start */
+.sidenav ul li a{
+font-size: 16px;
+color:#676060;
+font-weight: 400;
+display: flex;
+align-items: center;
+padding: 15px 15px 15px 0px;
+border-bottom: 1px solid #67606045;
+overflow: hidden;
+white-space: nowrap;
+}
+.sidenav ul li a:hover,.sidenav ul li a.active{
+    color: var(--colorWhite);
+    background: var(--colorBlue);
+}
+.sidenav ul li a.active img{
+    filter: brightness(0) invert(1); 
+}
+.sidenav ul li a:hover img{
+    filter: brightness(0) invert(1);
+}
+.sidimg img{
+    width: 30px;
+    min-width: 30px;
+}
+.sidimg{
+    padding: 0px 20px;
+}
+/* seidenav code :end */
+
+/* dash code :start */
+.comonBody{
+    background: #ebeff3;
+    width: 100%;
+    height: 100%;
+
+}
+.commonInner{
+    padding: 30px;
+    padding-left: 330px;
+    padding-top: 120px;
+}
+.toptable{
+    box-shadow: 0px 3px 10px #2125291f;
+    border-radius: 10px;
+    background: var(--colorWhite);
+    margin-top: 30px;
+    padding: 25px;
+}
+.customtabs li a{
+    color: #008b8b;
+    background-color: var(--colorWhite);
+    border: 1px solid #008b8b !important;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 32px;
+    border-radius: 8px !important;
+}
+.customtabs li{
+    margin-right: 15px;
+}
+.customtabs li a.active{
+    color: var(--colorWhite) !important;
+    background: var(--colorBlue) !important;
+}
+.nav.nav-tabs.customtabs{
+    border: none;
+}
+/* .customtabs {
+    display: flex;
+    justify-content: center;
+} */
+.Allrecords li{
+    border: 2px solid var(--colorBlue);
+    border-radius: 5px;
+    padding: 25px;
+    width: 30%;
+    text-align: center;
+    margin-right: 25px;
+    margin-top: 25px;
+    display: inline-block;
+}
+.Allrecords li h3{
+    font-weight: 500;
+    color: var(--colorBlue);
+    font-size: 18px;
+}
+.Allrecords li p{
+    font-weight: 600;
+    color: var(--colorBlue);
+    font-size: 32px;
+    padding-top: 10px;
+}
+
+/* dash code :end */
+.renewDate h3{
+    font-size: 20px;
+font-weight: 600;
+}
+.newBtn a{
+    display: inline-block;
+    font-size: 14px;
+    color: var(--colorBlue);
+    font-weight: 400;
+    min-width: 120px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid var(--colorBlue);
+    margin-right: 15px;
+}
+.newBtn a:last-child{
+    margin: 0;
+}
+.renewDate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tablemargin{
+    margin-top: 45px;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #dee2e6;
+    background: #F5F5F5;
+    font-weight: 500;
+    color: #000;
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+}
+.table td{
+    font-weight: 400;
+    color: #000;
+    font-size: 13px;
+    text-align: center;
+}
+.table td, .table th {
+    padding: 10px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    text-align: center;
+}
+.renewDate.bottomStrip{
+    margin-top: 40px;
+    padding: 20px 20px;
+    background: #008b8b3b;
+}
+.status{
+    color: var(--colorBlue);
+    cursor: pointer;
+}
+ .renewDate.bottomStrip.bottomStrip22 h3.dem{
+    font-size: 14px;
+    font-weight: 400;
+} 
+.renewDate.bottomStrip.bottomStrip22 ul li a{
+    font-size: 14px;
+    color: var(--colorWhite);
+    font-weight: 500;
+    /* padding: 10px; */
+    border-radius: 100%;
+    background: darkcyan;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.renewDate.bottomStrip.bottomStrip22 ul li {
+    display: inline-block;
+    margin-right:5px;
+}
+.renewDate.bottomStrip.bottomStrip22 ul{
+    display: flex;
+    align-items: center;
+}
+.showCol h2{
+    font-size: 14px;
+    font-weight: 400;
+}
+.modalStatus h2{
+    font-size: 22px;
+    color: #000;
+    font-weight: 500;
+    line-height: 25px;
+}
+.modal-footer{
+    border: none;
+}
+select:focus-visible{
+    outline: none;
+}
+.footerbtn ul li a{
+    font-size: 14px;
+    color: var(--colorWhite);
+    font-weight: 400;
+    min-width: 120px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid var(--colorBlue);
+    margin-right: 15px;
+    display: block;
+    background: var(--colorBlue);
+}
+.footerbtn ul li{
+    display: inline-block;
+    margin-right: 10px;
+}
+.following h2{
+    font-size: 16px;
+    font-weight: 400;
+}
+.eraseDetail{
+    font-size: 14px;
+    color: #000;
+    font-weight: 500;
+}
+.eraseDetail span{
+    margin-right: 10px;
+}
+.eraseDetail span img{
+    width: 30px;
+}
+.cardIcon{
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid #c7c0c0;
+    width: 45%;
+    margin: 30px 0px;
+}
+.cardInfo ul li{
+    font-size: 15px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+.dynamic{
+    font-weight: 500;
+}
+.cardInfo{
+width: 35%;
+padding: 25px;
+background: #ebeff3;
+display: inline-block;
+border-radius: 25px;
+}
+
+
+/* hum css :start */
+span.sidecontent.active{
+    display: none;
+    transition: 0.5s ease-in-out;
+}
+.sidenav.active{
+    width: 75px;
+    transition: 0.5s ease-in-out;
+}
+.commonInner.active{
+    padding-left: 107px;
+    transition: 0.5s ease-in-out;
+}
+span.sidecontent,.sidenav,.commonInner{
+    transition: 0.5s ease-in-out;    
+}
+/* hum css :end */
+
+.profileDetail ul li:hover{
+    background: var(--colorBlue);
+}
+.profileDetail ul li:hover span{
+    color: var(--colorWhite);
+}
+.profileDetail ul li:hover img{
+    filter: brightness(0) invert(1);
+}
+
+
+.fade:not(.show) {
+    opacity: 1;
+}
+
+.sidenav ul li.active a{
+    background-color: #008b8b;
+    color: #fff;
+}
+
+.sidenav ul li.active  a img {
+    filter: brightness(0) invert(1);
+}

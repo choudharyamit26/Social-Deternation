@@ -1,0 +1,297 @@
+{% extends 'superadmin/base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+        <div class="Small-Wrapper">
+            <h4 class="Title">
+                <span>Service Providers</span>
+                <a href="provider-add.html"> Add Service Providers </a>
+            </h4>
+
+            <div class="FilterArea">
+                <div class="form-group">
+                    <label>Category Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Category Name"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Created From</label>
+                    <input type="date" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Created To</label>
+                    <input type="date" class="form-control"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Organization Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Organization Name"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Membership Code</label>
+                    <input type="text" class="form-control" placeholder="Enter Membership Code"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" placeholder="Enter Name"/>
+                </div>
+
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button class="Button Reset"><i class="fa fa-refresh"></i></button>
+                    <button class="Button">Apply</button>
+                </div>
+            </div>
+
+            <div class="TableList">
+                <div class="CountExportArea">
+                    <a href="javascript:void(0);" class="Export"><i class="fa fa-file-excel-o"></i> Export </a>
+                    <label>
+                        Show per page
+                        <select>
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="CustomerTable">
+                    <table style="width: 135%;">
+                        <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Organization Name</th>
+                            <th>Contact Person Info</th>
+                            <th>Membership Code</th>
+                            <th>Created On</th>
+                            <th>Email ID</th>
+                            <th>Mobile Number</th>
+                            <th>Qualfications</th>
+                            <th>Experience</th>
+                            <th>Available Slots</th>
+                            <th>Hourly Rate</th>
+                            <th>Verification Status</th>
+                            <th>action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>ABC limited</td>
+                            <td>Asif Khan</td>
+                            <td>QA121EW</td>
+                            <td>4/15/2021</td>
+                            <td>asif12@gmail.com</td>
+                            <td>012100331</td>
+                            <td>B Tech</td>
+                            <td>12 Years</td>
+                            <td>May 04,2021 at 06 PM PST</td>
+                            <td>$40</td>
+                            <td><span class="green">Verified</span></td>
+                            <td>
+                                <div class="Actions">
+                                    <label class="Switch">
+                                        <input type="checkbox" checked/>
+                                        <span class="slider"></span>
+                                    </label>
+
+                                    <a class="Green" title="Edit" href="provider-edit.html">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" title="Delete" href="javascript:void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+
+                                    <a class="Blue" title="Details" href="javascript:void(0);" data-toggle="modal"
+                                       data-target="#DetailsModal">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                    <!-- <a class="Blue" title="Details" href="javascript:void(0);" ata-toggle="modal" data-target="#DModal">
+
+                                    </a> -->
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>General Assistance Ltd</td>
+                            <td>Jeff Brown</td>
+                            <td>OOl1b1</td>
+                            <td>3/21/2021</td>
+                            <td>jeff.brown@gmail.com</td>
+                            <td>98789911</td>
+                            <td>B Tech</td>
+                            <td>12 Years</td>
+                            <td>May 04,2021 at 06 PM PST</td>
+                            <td>$40</td>
+                            <td><span class="red">Rejected</span></td>
+                            <td>
+                                <div class="Actions">
+                                    <label class="Switch">
+                                        <input type="checkbox"/>
+                                        <span class="slider"></span>
+                                    </label>
+
+                                    <a class="Green" title="Edit" href="provider-edit.html">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" title="Delete" href="javascript:void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+
+                                    <a class="Blue" title="Details" href="javascript:void(0);" data-toggle="modal"
+                                       data-target="#DetailsModal">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="Pagination">
+                <ul>
+                    <li><a href="#">Previous</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ModalBox">
+    <div class="modal" id="DeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="javascript:void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Delete</h3>
+                        <p>Are you sure you want to delete this Provider ?</p>
+                        <h4>
+                            <a href="javascript:void(0);" data-dismiss="modal">No</a>
+                            <a href="javascript:void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ActiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="javascript:void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Active</h3>
+                        <p>Are you sure you want to active this Clients ?</p>
+                        <h4>
+                            <a href="javascript:void(0);" data-dismiss="modal">No</a>
+                            <a href="javascript:void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="InactiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="javascript:void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Inactive</h3>
+                        <p>Are you sure you want to in-active this Clients ?</p>
+                        <h4>
+                            <a href="javascript:void(0);" data-dismiss="modal">No</a>
+                            <a href="javascript:void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="DetailsModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Infomation">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                        <h3>Provider Details</h3>
+
+                        <ul>
+                            <li>
+                                <label>Organization Name</label>
+                                <span>ABC limited</span>
+                            </li>
+                            <li>
+                                <label>Contact Person Info</label>
+                                <span>Asif Khan</span>
+                            </li>
+                            <li>
+                                <label>Membership Code</label>
+                                <span>QA121EW</span>
+                            </li>
+                            <li>
+                                <label>Email ID</label>
+                                <span>asif12@gmail.com</span>
+                            </li>
+                            <li>
+                                <label>Mobile Number</label>
+                                <span>012100331</span>
+                            </li>
+                            <li>
+                                <label>Category</label>
+                                <span>Counsellor</span>
+                            </li>
+                            <li>
+                                <label>Qualfications</label>
+                                <span>B Tech	</span>
+                            </li>
+                            <li>
+                                <label>Experience</label>
+                                <span>12 Years	</span>
+                            </li>
+                            <li>
+                                <label>Available Slots </label>
+                                <span>May 04,2021 at 06 PM PST	</span>
+                            </li>
+                            <li>
+                                <label>Hourly Rate </label>
+                                <span>$40	</span>
+                            </li>
+                            <li>
+                                <label>Description </label>
+                                <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.	</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

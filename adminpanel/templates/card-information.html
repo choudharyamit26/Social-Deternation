@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="commonInner">
+    <h2 class="mainHead">Card Information</h2>
+    <div class="toptable">
+        <div class="following">
+            <h2>The following information will be taken for transaction checkout</h2>
+        </div>
+        <div class="cardIcon">
+            <a href="#0" class="eraseDetail">
+                <span><img src="{% static 'images/erase.svg' %}" alt=""></span> ERASE</a>
+
+            <a href="#0" class="eraseDetail">
+                <span><img src="{% static 'images/edit.svg' %}" alt=""></span> EDIT</a>
+        </div>
+        <div class="cardInfo">
+            <ul>
+                <li><span class="static">Credit Card Number :</span><span class="dynamic"> XXXXXXXXX2131</span></li>
+                <li><span class="static">CVV :</span> <span class="dynamic">131</span></li>
+                <li><span class="static">Expiry Date :</span> <span class="dynamic">11/23</span></li>
+                <li><span class="static">Name on Card :</span> <span class="dynamic">Deepak</span></li>
+                <li><span class="static">Postal Code :</span> <span class="dynamic">250004</span></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

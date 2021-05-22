@@ -1,0 +1,586 @@
+{% extends 'superadmin/base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+        <div class="Small-Wrapper">
+            <h4 class="Title">
+                <span>Subscription</span>
+                <a href="JavaScript:Void(0);" data-toggle="modal" data-target="#AddModal"> Add Subscription </a>
+            </h4>
+
+            <div class="CommonTabs">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#Brasi">BRASI Platform</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#General">General Subscription</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Brasi">
+                        <div class="FilterArea">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <input type="text" class="form-control" placeholder="Enter Category"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Name"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <select class="form-control">
+                                    <option> --- Select Duration ---</option>
+                                    <option>15 Days</option>
+                                    <option>1 Months</option>
+                                    <option>2 Months</option>
+                                    <option>3 Months</option>
+                                    <option>6 Months</option>
+                                    <option>1 Year</option>
+                                    <option>2 Year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" class="form-control" placeholder="Enter Price"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control">
+                                    <option> --- Select Status ---</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Created From</label>
+                                <input type="date" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Created To</label>
+                                <input type="date" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button class="Button Reset"><i class="fa fa-refresh"></i></button>
+                                <button class="Button">Apply</button>
+                            </div>
+                        </div>
+
+                        <div class="TableList">
+                            <div class="CountExportArea">
+                                <a href="javascript:void(0);" class="Export"><i class="fa fa-file-excel-o"></i> Export
+                                </a>
+                                <label>
+                                    Show per page
+                                    <select>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="CustomerTable">
+                                <table style="width: 125%;">
+                                    <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Category</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>No of users allowed</th>
+                                        <th>Created On</th>
+                                        <th>Price (£)</th>
+                                        <th>Subscription Satus</th>
+                                        <th>action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Elite</td>
+                                        <td>Basic 6 Months</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</td>
+                                        <td>20</td>
+                                        <td>04/12/2021</td>
+                                        <td>40</td>
+                                        <td><span class="green">Active</span></td>
+
+                                        <td>
+                                            <div class="Actions">
+                                                <label class="Switch">
+                                                    <input type="checkbox" checked/>
+                                                    <span class="slider"></span>
+                                                </label>
+
+                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#EditModal">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </a>
+
+                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#DeleteModal">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+
+                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#ShowModal">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Premium</td>
+                                        <td>12 Months Cross Plan</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</td>
+                                        <td>20</td>
+                                        <td>03/20/2021</td>
+                                        <td>32</td>
+                                        <td><span class="red">Inactive</span></td>
+
+                                        <td>
+                                            <div class="Actions">
+                                                <label class="Switch">
+                                                    <input type="checkbox"/>
+                                                    <span class="slider"></span>
+                                                </label>
+
+                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#EditModal">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </a>
+
+                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#DeleteModal">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+
+                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#ShowModal">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="Pagination">
+                            <ul>
+                                <li><a href="#">Previous</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="General">
+                        <div class="FilterArea">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <input type="text" class="form-control" placeholder="Enter Category"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Name"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <select class="form-control">
+                                    <option> --- Select Duration ---</option>
+                                    <option>15 Days</option>
+                                    <option>1 Months</option>
+                                    <option>2 Months</option>
+                                    <option>3 Months</option>
+                                    <option>6 Months</option>
+                                    <option>1 Year</option>
+                                    <option>2 Year</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" class="form-control" placeholder="Enter Price"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control">
+                                    <option> --- Select Status ---</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Created From</label>
+                                <input type="date" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Created To</label>
+                                <input type="date" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button class="Button Reset"><i class="fa fa-refresh"></i></button>
+                                <button class="Button">Apply</button>
+                            </div>
+                        </div>
+
+                        <div class="TableList">
+                            <div class="CountExportArea">
+                                <a href="javascript:void(0);" class="Export"><i class="fa fa-file-excel-o"></i> Export
+                                </a>
+                                <label>
+                                    Show per page
+                                    <select>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="CustomerTable">
+                                <table style="width: 125%;">
+                                    <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Category</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>No of users allowed</th>
+                                        <th>Created On</th>
+                                        <th>Price (£)</th>
+                                        <th>Subscription Satus</th>
+                                        <th>action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Elite</td>
+                                        <td>Basic 6 Months</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</td>
+                                        <td>40</td>
+                                        <td>04/12/2021</td>
+                                        <td>40</td>
+                                        <td><span class="green">Active</span></td>
+
+                                        <td>
+                                            <div class="Actions">
+                                                <label class="Switch">
+                                                    <input type="checkbox"/>
+                                                    <span class="slider"></span>
+                                                </label>
+
+                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#EditModal">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </a>
+
+                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#DeleteModal">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+
+                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#ShowModal">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Premium</td>
+                                        <td>12 Months Cross Plan</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</td>
+                                        <td>40</td>
+                                        <td>03/20/2021</td>
+                                        <td>32</td>
+                                        <td><span class="red">Inactive</span></td>
+
+                                        <td>
+                                            <div class="Actions">
+                                                <label class="Switch">
+                                                    <input type="checkbox" checked=""/>
+                                                    <span class="slider"></span>
+                                                </label>
+
+                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#EditModal">
+                                                    <i class="fa fa-pencil-square-o"></i>
+                                                </a>
+
+                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#DeleteModal">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+
+                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#ShowModal">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="Pagination">
+                            <ul>
+                                <li><a href="#">Previous</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ModalBox">
+    <div class="modal" id="DeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Delete</h3>
+                        <p>Are you sure you want to delete this Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ActiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Active</h3>
+                        <p>Are you sure you want to active this Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="InactiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Inactive</h3>
+                        <p>Are you sure you want to inactive this Subscription Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="EditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Edit Subscription Plan</h3>
+
+                        <div class="form-group">
+                            <label>Subscription Plan Types</label>
+                            <select class="form-control">
+                                <option> Select Plan Type</option>
+                                <option>Brasi Platform</option>
+                                <option>General Plans</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Category"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Name <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Name"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" placeholder="Description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Price <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Price"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Duration (In Months) <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Duration (In Months)"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Number of persons (Optional) </label>
+                            <input type="text" class="form-control" placeholder="Enter Number of persons"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="CheckBox">
+                                Make Inactive
+                                <input type="checkbox"/>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <button class="Button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="AddModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Add New Subscription Plan</h3>
+
+                        <div class="form-group">
+                            <label>Plan Types</label>
+                            <select class="form-control">
+                                <option> Select Subscription Plan Type</option>
+                                <option>Brasi Platform</option>
+                                <option>General Subscription Plans</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Category<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Category"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Name <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Name"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" placeholder="Description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Price <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Price"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Duration (In Months) <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Duration (In Months)"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Number of persons (Optional) </label>
+                            <input type="text" class="form-control" placeholder="Enter Number of persons"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="CheckBox">
+                                Make Inactive
+                                <input type="checkbox"/>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <button class="Button Cancel">Cancel</button>
+
+                        <button class="Button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ShowModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Infomation">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Subscription Plan Preview</h3>
+
+                        <ul>
+                            <li>
+                                <label>Category</label>
+                                <span>Elite</span>
+                            </li>
+                            <li>
+                                <label>Name</label>
+                                <span>Basic 6 Months</span>
+                            </li>
+                            <li>
+                                <label>Price (£)</label>
+                                <span>40</span>
+                            </li>
+                            <li>
+                                <label>Description</label>
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

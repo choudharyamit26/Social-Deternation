@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="commonInner">
+    <h2 class="mainHead">Subscriptions
+    </h2>
+    <div class="toptable">
+        <div class="renew">
+            <div class="renewDate">
+                <h3>Next Billing Date : <span><b>04/12/2022</b></span></h3>
+                <div class="newBtn">
+                    <a href="#0">RENEW</a>
+                    <a href="#0" style=" background-color: var(--colorBlue);color: #fff;">Export Excel</a>
+                </div>
+
+            </div>
+            <div class="table-responsive tablemargin">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Plan Category</th>
+                        <th>Tariff Type</th>
+                        <th>Name</th>
+                        <th>Recurring</th>
+                        <th>Start Date</th>
+                        <th>Expire Date</th>
+                        <th>Price (£)</th>
+                        <th>Subscription Satus</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Elite</td>
+                        <td>BRASI Platform</td>
+                        <td>6 Months Basic Plan</td>
+                        <td>Yes</td>
+                        <td>04/12/2021</td>
+                        <td>04/12/2022</td>
+                        <td>87</td>
+                        <td>Active</td>
+                        <td>Update Recurring</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Elite</td>
+                        <td>BRASI Platform</td>
+                        <td>6 Months Basic Plan</td>
+                        <td>Yes</td>
+                        <td>04/12/2021</td>
+                        <td>04/12/2022</td>
+                        <td>87</td>
+                        <td>Active</td>
+                        <td>Update Recurring</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="renewDate bottomStrip bottomStrip22">
+                <h3>Upgrade your subscription plan </h3>
+                <ul>
+                    <li><a href="#0"><i class="fa fa-angle-left"></i></a></li>
+                    <li><a href="#0">1</a></li>
+                    <li><a href="#0">2</a></li>
+                    <li><a href="#0">3</a></li>
+                    <li><a href="#0"><i class="fa fa-angle-right"></i></a></li>
+                </ul>
+                <div class="newBtn">
+
+                    <a href="#0" style=" background-color: var(--colorBlue);color: #fff;">SUBSCRIBE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

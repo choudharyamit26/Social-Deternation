@@ -1,0 +1,359 @@
+{% extends 'superadmin/base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+
+        <div class="Small-Wrapper">
+            <h4 class="Title">customer management
+                <a href="JavaScript:Void(0);" data-toggle="modal" data-target="#AddModal"> New Customer </a>
+            </h4>
+
+            <div class="FilterArea">
+
+                <div class="form-group">
+                    <label>Organizaton Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Organizaton Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Person Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Person Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="text" class="form-control" placeholder="Enter Email ID">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number">
+                </div>
+
+                <div class="form-group">
+                    <label>Client Code</label>
+                    <input type="text" class="form-control" placeholder="Enter Client  Code">
+                </div>
+
+                <div class="form-group">
+                    <label>Registered From</label>
+                    <input type="date" class="form-control" placeholder="Enter Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Registered To</label>
+                    <input type="date" class="form-control" placeholder="Enter Name">
+                </div>
+
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button class="Button Reset"><i class="fa fa-refresh"></i></button>
+                    <button class="Button">Apply</button>
+                </div>
+            </div>
+
+            <div class="TableList">
+
+                <div class="CountExportArea">
+                    <a href="" class="Export"><i class="fa fa-file-excel-o"></i> Export </a>
+                    <label>
+                        Show per page
+                        <select>
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="CustomerTable">
+                    <table style="width: 125%">
+                        <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Organization Name</th>
+                            <th>User Name</th>
+                            <th>Email ID</th>
+                            <th>Mobile Number</th>
+                            <th>Client Code</th>
+                            <th>Registered On</th>
+                            <th>Recurring</th>
+                            <th>Subscription Status</th>
+                            <th>action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>IBS Institute</td>
+                            <td>Vikas</td>
+                            <td>vikas12@gmail.com</td>
+                            <td>012103321</td>
+                            <td>A2Q2122</td>
+                            <td>04/12/2021</td>
+                            <td>Yes</td>
+                            <td><span class="green">Active</span></td>
+                            <td>
+                                <div class="Actions">
+                                    <label class="Switch">
+                                        <input type="checkbox" checked/>
+                                        <span class="slider"></span>
+                                    </label>
+
+                                    <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#EditModal">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+
+                                    <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#PasswordModal">
+                                        <i class="fa fa-unlock-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td></td>
+                            <td>Vikas</td>
+                            <td>vikas12@gmail.com</td>
+                            <td>012103321</td>
+                            <td>A2Q2122</td>
+                            <td>04/12/2021</td>
+                            <td>Yes</td>
+                            <td><span class="red">Inactive</span></td>
+                            <td>
+                                <div class="Actions">
+                                    <label class="Switch">
+                                        <input type="checkbox"/>
+                                        <span class="slider"></span>
+                                    </label>
+
+                                    <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#EditModal">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+
+                                    <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#PasswordModal">
+                                        <i class="fa fa-unlock-alt"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="Pagination">
+                <ul>
+                    <li><a href="#">Previous</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="ModalBox">
+
+    <div class="modal" id="DeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Delete</h3>
+                        <p>Are you sure you want to delete this Customer ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ActiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Active</h3>
+                        <p>Are you sure you want to active this Customer ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="InactiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Inactive</h3>
+                        <p>Are you sure you want to inactive this Customer ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="EditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Edit Customer </h3>
+
+                        <div class="form-group">
+                            <label>Organizaton Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Organizaton Name"
+                                   value="IBS Institute">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Person First Name <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter First Name" value="Vikas">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Person Last Name <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Last Name" value="Smith">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email ID <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Email Address"
+                                   value="vikas12@gmail.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mobile Number <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Mobile Number" value="012103321">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="CheckBox">Make Inactive
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <button class="Button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="PasswordModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Customer Change Password </h3>
+
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" class="form-control" placeholder="Enter Password">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Confirm Password </label>
+                            <input type="password" class="form-control" placeholder="Enter Confirm Password">
+                        </div>
+
+                        <button class="Button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="AddModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Add New Customer </h3>
+
+                        <div class="form-group">
+                            <label>Organizaton Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Organizaton Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Person First Name <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter First Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Person Last Name <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Last Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email ID <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Email ID">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mobile Number <sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Mobile Number">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="CheckBox">Make Inactive
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <button class="Button Cancel">Cancel</button>
+
+                        <button class="Button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock body %}

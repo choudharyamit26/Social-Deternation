@@ -1,0 +1,110 @@
+{% extends 'superadmin/base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+
+        <div class="DashboardCount">
+
+            <ol>
+                <li><a href="javascript:void(0);">Today</a></li>
+                <li><a href="javascript:void(0);">Weekly</a></li>
+                <li><a href="javascript:void(0);">Monthly</a></li>
+                <li><a href="javascript:void(0);">Yearly</a></li>
+            </ol>
+
+            <ul>
+                <li>
+                    <div class="Count">
+                        <p>New Subscriptions</p>
+                        <h4>500</h4>
+                    </div>
+                </li>
+                <li>
+                    <div class="Count">
+                        <p>New Service Provider</p>
+                        <h4>100</h4>
+                    </div>
+                </li>
+                <li>
+                    <div class="Count">
+                        <p>Assault Recorded</p>
+                        <h4>45</h4>
+                    </div>
+                </li>
+                <li>
+                    <div class="Count">
+                        <p>Match Recorded</p>
+                        <h4>15</h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="Small-Wrapper">
+            <h4 class="Title">Active/Inactive Users</h4>
+
+            <div class="Filter">
+                <div class="form-group">
+                    <label>User</label>
+                    <select class="form-control">
+                        <option>Select User</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Month</label>
+                    <select class="form-control">
+                        <option>Select Month</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Year</label>
+                    <select class="form-control">
+                        <option>Select Year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button class="Button">Apply</button>
+                </div>
+            </div>
+
+            <canvas id="myChart"></canvas>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, { 
+            type: 'doughnut', 
+            data: {
+                labels: ['Users', 'Month', 'Year'],
+                datasets: [{
+                    label: 'My First dataset',
+                    backgroundColor: ["#008b8b","#800080","#ed8a19"],
+                    borderColor: ["#008b8b","#800080","#ed8a19",],
+                    data: [2500, 1150, 1500,]
+                }]
+            }, 
+            options: {}
+        }); 
+
+</script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.DashboardCount ol li').bind('click', function() { 
+                $('.navactive').removeClass('navactive') 
+                $(this).addClass('navactive');
+            });
+        });
+
+</script>
+{% endblock body %}

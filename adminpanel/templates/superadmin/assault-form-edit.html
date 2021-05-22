@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Provider Category Edit</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+    <div class="Header">
+        <div class="Logo">
+            <img src="images/Logo.png">
+        </div>
+        <div class="Navigation">
+            <div class="Avater">
+                <a href="javascript:void(0);">
+                    <figure><img src="images/profile.jpg"></figure> Bob Hyden </a>
+                <ul>
+                    <!-- <li>
+                        <figure><img src="images/profile.jpg"></figure>
+                        <h4> Bob Hyden <span>Administrator</span></h4>
+                    </li>  --> 
+                    <li><a href="password.html"><span><i class="fa fa-unlock-alt"></i></span> Change Password</a></li>
+                    <li><a href="login.html"><span><i class="fa fa-sign-out"></i></span> Sign Out</a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <div class="SidenavBar">
+        <ul>
+            
+            <li>
+                <a href="dashboard.html">
+                    <span><i class="fa fa-tachometer"></i></span> Dashboard
+                </a>
+            </li>
+            
+            <li>
+                <a href="customer-management.html">
+                    <span><i class="fa fa-user"></i></span> Customer Management
+                </a>
+            </li>
+            
+            <li>
+                <a href="plan.html">
+                    <span><i class="fa fa-money"></i></span> Subscription
+                </a>
+            </li>
+            
+            <li>
+                <a href="clients.html">
+                    <span><i class="fa fa-money"></i></span> Clients
+                </a>
+            </li>
+            
+            <li>
+                <a href="provider.html">
+                    <span><i class="fa fa-product-hunt"></i></span> Service Providers
+                </a>
+            </li>
+            
+            <li>
+                <a href="provider-category.html">
+                    <span><i class="fa fa-cubes"></i></span> Provider Category
+                </a>
+            </li>
+            
+            <li class="active">
+                <a href="record_filed.html">
+                    <span><i class="fa fa-database"></i></span> Assault Form 
+                </a>
+            </li> 
+            
+            <li>
+                <a href="assault-records.html">
+                    <span><i class="fa fa-database"></i></span> Assault Records 
+                </a>
+            </li> 
+            
+            <li>
+                <a href="password.html">
+                    <span><i class="fa fa-unlock-alt" aria-hidden="true"></i></span> Change Password 
+                </a>
+            </li> 
+            
+            <!-- <li class="nav-item dropdown">
+                <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                    <span><i class="fa fa-font"></i></span> content Management 
+                </a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li> <a href="hero.html"> Hero </a> </li> 
+                        <li> <a href="features.html"> Features </a> </li> 
+                        <li> <a href="faq.html"> FAQ's </a> </li>  
+                    </ul>
+                </div>
+            </li>  -->
+            
+            <li>
+                <a href="login.html">
+                    <span><i class="fa fa-sign-out"></i></span> Sign Out
+                </a>
+            </li> 
+        </ul>
+    </div>
+
+    <div class="WrapperArea">
+        <div class="WrapperBox">
+ 
+            <div class="Small-Wrapper">
+                <h4 class="Title"> 
+                    <span>Edit Assault Form</span>  
+                </h4>          
+
+                <div class="RecordForm">
+                    
+                    <div class="RecordBox">
+                        <h5>When</h5>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.1 What year did this happen? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.1 What year did this happen?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.2 What time of day was it?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.2 What time of day was it?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.3 Do you know the exact date?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.3 Do you know the exact date?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.4 Is there anything else you remember about the date?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.4 Is there anything else you remember about the date?">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="RecordBox">
+                        <h5>Where</h5>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.1 Where did it happen? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.1 Where did it happen?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.2 Are there any other details you remember about the location?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.2 Are there any other details you remember about the location?">
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="RecordBox">
+                        <h5>People Who Know or Might Know</h5>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.1 Did anyone else see or hear either all or any part of what happened? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.1 Did anyone else see or hear either all or any part of what happened?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.2 Did you tell anyone about the incident? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.2 Did you tell anyone about the incident?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.3 Did you interact with anyone right before or after the incident?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.3 Did you interact with anyone right before or after the incident?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.4 What information do you know about the people you told? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.4 What information do you know about the people you told?">
+                            </div>
+                            
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.5 What information do you know about any of the people described above?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.5 What information do you know about any of the people described above?"> 
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.6 Do you know if the offender told anyone about the incident? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.6 Do you know if the offender told anyone about the incident? ">
+                            </div>
+
+                        </div>
+                    </div> 
+
+                    <div class="RecordBox">
+                        <h5>Consent</h5>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.1 What are details of consent? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.1 What are details of consent?">
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="RecordBox">
+                        <h5>Incident (s)</h5>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.1 What happened? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.1 What happened?">
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="RecordBox">
+                        <h5>Offender(s)</h5>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.1 How many offenders were there?  </label><br> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.1 How many offenders were there? ">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.2 Was the offender with anyone else either at the time of the incident, or directly before or after?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.2 Was the offender with anyone else either at the time of the incident, or directly before or after?">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.3 What is their name?/What are their names? (if known)</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.3 What is their name?/What are their names? (if known)">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.4 What information do you know about these people? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.4 What information do you know about these people? ">
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.5 Do you know any other information about the offender(s)?</label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.5 Do you know any other information about the offender(s)?">
+                            </div>
+
+
+                        </div>
+                    </div> 
+
+                    <div class="RecordBox">
+                        <h5>Evidence</h5>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <!-- <label for="">Q.1 What types of evidence do you have now (or think might exist)? </label> -->
+                                <input type="text" class="form-control" placeholder="" value="Q.1 What types of evidence do you have now (or think might exist)?">
+                            </div>
+                        </div> 
+                    </div>  
+                    <h4 class="Title pb-5 text-center pt-3 "> 
+                        <a href="JavaScript:Void(0);"> Save</a>
+                    </h4> 
+                </div> 
+            </div> 
+        </div>
+    </div>    
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> 
+    <script src="js/index.js"></script> 
+                
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="commonInner">
+    <h2 class="mainHead">Dashboard</h2>
+    <div class="toptable">
+
+        <ul class="nav nav-tabs customtabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#home">TODAY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu1">WEEKLY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu2">MONTHLY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#menu3">YEARLY</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="home" class=" tab-pane active"><br>
+                <div class="Allrecords">
+                    <ul>
+                        <li>
+                            <h3>NEW RECORDS</h3>
+                            <p>32</p>
+                        </li>
+                        <li>
+                            <h3>MATCHED DATABASE
+                            </h3>
+                            <p>12</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="menu1" class=" tab-pane fade"><br>
+                <div class="Allrecords">
+                    <ul>
+                        <li>
+                            <h3>NEW RECORDS</h3>
+                            <p>32</p>
+                        </li>
+                        <li>
+                            <h3>MATCHED DATABASE
+                            </h3>
+                            <p>12</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="menu2" class=" tab-pane fade"><br>
+                <div class="Allrecords">
+                    <ul>
+                        <li>
+                            <h3>NEW RECORDS</h3>
+                            <p>32</p>
+                        </li>
+                        <li>
+                            <h3>MATCHED DATABASE
+                            </h3>
+                            <p>12</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="menu3" class=" tab-pane fade"><br>
+                <div class="Allrecords">
+                    <ul>
+                        <li>
+                            <h3>NEW RECORDS</h3>
+                            <p>32</p>
+                        </li>
+                        <li>
+                            <h3>MATCHED DATABASE
+                            </h3>
+                            <p>12</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body  %}

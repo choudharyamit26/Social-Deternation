@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="commonInner">
+    <h2 class="mainHead">My Profile</h2>
+    <div class="toptable">
+        <div class="loginDetail" style="margin:0 auto;">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group formgroup" style="position: relative;">
+                    <label for="" class="labell">First Name</label>
+                    <input type="text" class="form-control formControl" placeholder="" style="padding-right: 40px;"
+                           name="first_name" value="{{user.first_name}}">
+                    <span class="eye"><i class="fa fa-user"></i></span>
+                </div>
+                <div class="form-group formgroup" style="position: relative;">
+                    <label for="" class="labell">Last Name</label>
+                    <input type="text" class="form-control formControl" placeholder="" style="padding-right: 40px;"
+                           name="last_name" value="{{user.last_name}}">
+                    <span class="eye"><i class="fa fa-user"></i></span>
+                </div>
+                <div class="form-group formgroup" style="position: relative;">
+                    <label for="" class="labell">Email ID</label>
+                    <input type="text" class="form-control formControl" placeholder="" style="padding-right: 40px;"
+                           name="email" value="{{user.email}}">
+                </div>
+                <div class="form-group formgroup" style="position: relative;">
+                    <label for="" class="labell">Password</label>
+                    <input type="password" class="form-control formControl passShow" placeholder=""
+                           style="padding-right: 40px;" name="password">
+                    <span class="eye"><i class="fa fa-eye"></i></span>
+                </div>
+                <div class="form-group formgroup" style="position: relative;">
+                    <label for="" class="labell">Phone Number</label>
+                    <input type="text" class="form-control formControl" placeholder="" style="padding-right: 40px;"
+                           name="phone_number" value="{{user.phone_number}}">
+                    <span class="eye"><i class="fa fa-phone"></i></span>
+                </div>
+                <div class="submitBtn">
+                    <button type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,108 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brasi</title>
+    <link rel="icon" href="{% static 'images/logo.svg' %}" type="image/icon" sizes="16x16">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="header">
+    <div class="headerLeft">
+        <a href="index.html">
+            <img src="{% static 'images/logo.svg' %}" alt="logo">
+        </a>
+        <span class="hum"><img src="{% static 'images/humburger.svg' %}" alt="hum"></span>
+    </div>
+    <div class="headerRight">
+        {% if user.is_authenticated %}
+        <a href="javascript:void(0)" style="position: relative;">
+            <img src="{% static 'images/profile.jpg' %}" alt="profile">
+            <span>{{user}}</span>
+        </a>
+        {% else %}
+        {% endif %}
+        <div class="profileDetail">
+            <ul>
+                <li><a href="{% url 'adminpanel:my-profile' %}">
+                    <img src="{% static 'images/user.svg' %}" alt="logout">
+                    <span>My profile</span>
+                </a></li>
+                <li><a href="{% url 'adminpanel:logout' %}">
+                    <img src="{% static 'images/logout.svg' %}" alt="logout">
+                    <span>Sign out</span>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<section class="comonBody">
+    <div class="sidenav">
+        <ul>
+            <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:dashboard' %}active{% endif %}">
+                <a href="{% url 'adminpanel:dashboard' %}"><span class="sidimg"><img
+                        src="{% static 'images/dash.svg' %}"
+                        alt="dash"></span><span
+                        class="sidecontent">Dashboard</span>
+
+                </a></li>
+            <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:subscription' %}active{% endif %}">
+                <a href="{% url 'adminpanel:subscription' %}"><span class="sidimg"><img
+                        src="{% static 'images/sub.svg' %}"
+                        alt="dash"></span><span
+                        class="sidecontent">Subscriptions
+                    </span>
+                </a></li>
+            <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:survivors' %}active{% endif %}">
+                <a href="{% url 'adminpanel:survivors' %}"><span class="sidimg"><img src="{% static 'images/ser.svg' %}"
+                                                                                     alt="dash"></span><span
+                        class="sidecontent">Survivors
+                </span>
+                </a></li>
+
+            <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:card-information' %}active{% endif %}">
+                <a href="{% url 'adminpanel:card-information' %}"><span class="sidimg"><img
+                        src="{% static 'images/card.svg' %}"
+                        alt="dash"></span><span
+                        class="sidecontent">Card Information
+            </span>
+                </a></li>
+            <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:my-profile' %}active{% endif %}">
+                <a href="{% url 'adminpanel:my-profile' %}"><span class="sidimg"><img
+                        src="{% static 'images/user.svg' %}" alt="dash"></span><span
+                        class="sidecontent">My Profile
+            </span>
+                </a></li>
+
+            <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:logout' %}active{% endif %}">
+                <a href="{% url 'adminpanel:logout' %}"><span class="sidimg"><img src="{% static 'images/logout.svg' %}"
+                                                                                  alt="dash"></span><span
+                        class="sidecontent">Sign Out
+        </span>
+                </a></li>
+        </ul>
+    </div>
+    <div class="content-wrapper">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    {% block body %}
+    {% endblock body %}
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
