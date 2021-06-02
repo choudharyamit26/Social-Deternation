@@ -1,0 +1,329 @@
+{% extends 'userapp/base.html' %}
+{% block body %}
+<section class="recordFills" style="background-image: url('userapp/imgs/bg2.png');">
+    <div class="container">
+        <div class="recordWidth">
+            <div class="recordsfil">
+                <h2>Please fill the following details.</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control formControl" name="first_name"
+                                       placeholder="First Name" id="first_name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control formControl" name="last_name"
+                                       placeholder="Last Name" id="last_name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="lab">Gender:</label>
+                        <div class="signUpby signUpby2">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first">
+
+                                    <div class="radio">
+                                        <input id="radio-6" name="gender" type="radio" value="Male">
+                                        <label for="radio-6" class="radio-label">Male</label>
+                                    </div>
+
+                                </li>
+                                <li class="second active">
+                                    <div class="radio">
+                                        <input id="radio-7" name="gender" type="radio" value="Female">
+                                        <label for="radio-7" class="radio-label">Female</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-8" name="gender" type="radio" value="Other">
+                                        <label for="radio-8" class="radio-label">Other</label>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="lab">Build:</label>
+                        <div class="signUpby signUpby2">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first">
+
+                                    <div class="radio">
+                                        <input id="radio-9" name="build" type="radio" value="Small">
+                                        <label for="radio-9" class="radio-label">Small</label>
+                                    </div>
+
+                                </li>
+                                <li class="second active">
+                                    <div class="radio">
+                                        <input id="radio-10" name="build" type="radio" value="Medium">
+                                        <label for="radio-10" class="radio-label">Medium</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-11" name="build" type="radio" value="Large">
+                                        <label for="radio-11" class="radio-label">Large</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-12" name="build" type="radio" value="Not Sure">
+                                        <label for="radio-12" class="radio-label">Not Sure</label>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="lab">Height:</label>
+                        <div class="signUpby signUpby2">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first">
+
+                                    <div class="radio">
+                                        <input id="radio-13" name="height" type="radio" value="Small">
+                                        <label for="radio-13" class="radio-label" >Small</label>
+                                    </div>
+
+                                </li>
+                                <li class="second active">
+                                    <div class="radio">
+                                        <input id="radio-14" name="height" type="radio" value="Medium">
+                                        <label for="radio-14" class="radio-label">Medium</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-15" name="height" type="radio" value="Large">
+                                        <label for="radio-15" class="radio-label">Large</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-16" name="height" type="radio" value="Not Sure">
+                                        <label for="radio-16" class="radio-label">Not Sure</label>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="lab">Eye Colour:</label>
+                        <div class="signUpby signUpby2">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first">
+
+                                    <div class="radio">
+                                        <input id="radio-17" name="eye_color" type="radio" value="Brown">
+                                        <label for="radio-17" class="radio-label">Brown</label>
+                                    </div>
+
+                                </li>
+                                <li class="second active">
+                                    <div class="radio">
+                                        <input id="radio-18" name="eye_color" type="radio" value="Green">
+                                        <label for="radio-18" class="radio-label">Green</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-19" name="eye_color" type="radio" value="Blue">
+                                        <label for="radio-19" class="radio-label">Blue</label>
+                                    </div>
+                                </li>
+
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-20" name="eye_color" type="radio" value="Not Sure">
+                                        <label for="radio-20" class="radio-label">Not Sure</label>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control formControl" name="special_body_mark"
+                                       placeholder="Special Body Mark" id="special_body_mark">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control formControl" name="mobile_number"
+                                       placeholder="Mobile Number" id="mobile_number">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control formControl" name="hair_color"
+                                       placeholder="Hair Colour" id="hair_color">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="lab">Skin Colour:</label>
+                        <div class="signUpby signUpby2">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first">
+
+                                    <div class="radio">
+                                        <input id="radio-21" name="skin_color" type="radio" value="Light">
+                                        <label for="radio-21" class="radio-label">Light</label>
+                                    </div>
+
+                                </li>
+                                <li class="second active">
+                                    <div class="radio">
+                                        <input id="radio-22" name="skin_color" type="radio" value="Dark">
+                                        <label for="radio-22" class="radio-label">Dark</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-23" name="skin_color" type="radio" value="Not Sure">
+                                        <label for="radio-23" class="radio-label">Not Sure</label>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="lab">Race:</label>
+                        <div class="signUpby signUpby2">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first">
+
+                                    <div class="radio">
+                                        <input id="radio-24" name="race" type="radio" value="Caucasian">
+                                        <label for="radio-24" class="radio-label">Caucasian</label>
+                                    </div>
+
+                                </li>
+                                <li class="second active">
+                                    <div class="radio">
+                                        <input id="radio-25" name="race" type="radio" value="Asian">
+                                        <label for="radio-25" class="radio-label">Asian</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-26" name="race" type="radio" value="Africa">
+                                        <label for="radio-26" class="radio-label">Africa</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-27" name="race" type="radio" value="Not sure">
+                                        <label for="radio-27" class="radio-label">Not sure</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="btnsBottom">
+            <a href="{% url 'userapp:record-assault-2' %}" onclick="getFormValues()" class="btns modalbtns">Next</a>
+        </div>
+    </div>
+</section>
+<script>
+function getFormValues(){
+var filledValues = []
+var first_name = $('#first_name').val();
+filledValues.push({'first_name':first_name})
+var last_name = $('#last_name').val();
+filledValues.push({'last_name':last_name})
+var ele = document.getElementsByName('gender');
+for(i = 0; i < ele.length; i++) {
+     if(ele[i].checked)
+     filledValues.push({'gender':ele[i].value})
+     console.log(ele[i].value)
+     }
+var ele = document.getElementsByName('build');
+for(i = 0; i < ele.length; i++) {
+     if(ele[i].checked)
+     filledValues.push({'build':ele[i].value})
+     console.log(ele[i].value)
+     }
+var ele = document.getElementsByName('height');
+for(i = 0; i < ele.length; i++) {
+     if(ele[i].checked)
+     filledValues.push({'height':ele[i].value})
+     console.log(ele[i].value)
+     }
+var ele = document.getElementsByName('eye_color');
+for(i = 0; i < ele.length; i++) {
+     if(ele[i].checked)
+     filledValues.push({'eye_color':ele[i].value})
+     console.log(ele[i].value)
+     }
+
+var special_body_mark = $('#special_body_mark').val();
+filledValues.push({'special_body_mark':special_body_mark})
+
+
+var mobile_number = $('#mobile_number').val();
+filledValues.push({'mobile_number':mobile_number})
+var hair_color = $('#hair_color').val();
+filledValues.push({'hair_color':hair_color})
+
+var ele = document.getElementsByName('skin_color');
+for(i = 0; i < ele.length; i++) {
+     if(ele[i].checked)
+     filledValues.push({'skin_color':ele[i].value})
+     console.log(ele[i].value)
+     }
+var ele = document.getElementsByName('race');
+for(i = 0; i < ele.length; i++) {
+     if(ele[i].checked)
+     filledValues.push({'race':ele[i].value})
+     console.log(ele[i].value)
+     }
+     var type_of_violence = sessionStorage.getItem("type_of_violence");
+     filledValues.push({'type_of_violence':type_of_violence})
+     sessionStorage.setItem("storedFormFieldValues",JSON.stringify(filledValues))
+    var url = "{% url 'userapp:record-assault-2' %}"
+    $.ajax({
+        url :url,
+        method : 'POST',
+        data:{
+        data: JSON.stringify(filledValues),
+        csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+           console.log('inside success',data)
+
+        },
+        error: function(data) {
+            console.log('inside error case')
+        }
+    });
+     }
+
+</script>
+{% endblock body %}

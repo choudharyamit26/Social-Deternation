@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <g id="Send_Button" transform="translate(.287 .362)">
+        <rect id="Rectangle_18" width="44" height="44" fill="purple" rx="22" transform="translate(-.287 -.362)"/>
+        <g id="icon.send" transform="rotate(45 -3.52 28.024)">
+            <path id="Line_2" d="M8.364 0L0 8.364" class="cls-2" transform="translate(8.661)"/>
+            <path id="Path_76" d="M17.025 0l-3.506 17.025-4.858-8.661L0 3.506z" class="cls-2"/>
+        </g>
+    </g>
+</svg>

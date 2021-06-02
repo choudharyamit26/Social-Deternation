@@ -1,0 +1,426 @@
+@media(max-width:2200px){
+	.footerAll{
+		margin-top: 50px;
+	}
+	.touchImg img{
+		width: 100%;
+	}
+}
+@media(max-width:1199px){
+	.imgDog {
+		width: 100%;
+		height: 100%;
+	}
+	.dogss li {
+		width: 23%;
+	}
+	.dogss{
+		text-align: center;
+	}
+	.dogss li a h2{
+		font-size: 16px;
+	}
+	.dogsLover {
+		padding-top: 55px;
+	}
+	.footerUl ul li {
+		margin-right: 20px;
+	}
+	.Allfood.boxs.marginTop2 .row .col-sm-3{
+		flex: 0 0 50%;
+    max-width: 50%;
+	}
+	.fodImg.fodImgnew img {
+		width: 100%;
+		height: 250px;
+		object-fit: cover;
+	}
+	.dogImg{
+		display: none;
+	}
+	.aboutFood {
+		position: inherit;
+		left: 0;
+		top: 0px;
+		margin-top: 110px;
+	background: var(--colorGrey);
+	padding: 15px 0px;
+	}
+	.productImgss ul li {
+		width: 18%;
+		height: 75px;
+	}
+	.productRight h4 {
+		font-size: 34px;
+		line-height: 60px;
+	}
+	.rightShape,.leftShape{
+		display: none;
+	}
+	.footerAll{
+		margin: 0;
+	}
+	h2.head {
+		font-size: 22px;
+		line-height: 30px;
+
+	}
+}
+@media(max-width:991px){
+	.container{
+		max-width:100%;
+		padding: 0px 25px;
+	}
+	.hamburger{
+		display: block;
+		position: absolute;
+		right: 25px;
+		top: 0;
+		/* top: 36px; */
+		display: flex;
+		height: 86px;
+		align-items: center;
+	}
+	.navIcon {
+		position: absolute;
+		height: 3px;
+		width: 30px;
+		right: 0px;
+		top: 50%;
+		background: var(--colorYellow);
+		transition-duration: 0.075s;
+		transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
+	.navIcon::before {
+		position: absolute;
+		content: '';
+		top: -8px;
+		left: 0;
+		height: 3px;
+		width: 30px;
+		background: var(--colorYellow);
+		transition: all 0.3s ease;
+	}
+	.navIcon::after {
+		position: absolute;
+		content: '';
+		top: 8px;
+		left: 0;
+		height: 3px;
+		width: 30px;
+		background: var(--colorYellow);
+		opacity: 1;
+		transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+	}
+	.hamburger.active .navIcon {
+		transform: rotate(45deg);
+		transition-delay: 0.12s;
+		transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	.hamburger.active .navIcon:before {
+		top: 0;
+		opacity: 0;
+		transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+	}
+	.hamburger.active .navIcon::after {
+		top: 0px;
+		transform: rotate(-90deg);
+		transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+.headerInner{
+	display: block;
+}
+.headerRight{
+	background: #fff;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 87px;
+    width: 250px;
+	padding: 25px;
+	left: -250px;
+}
+.headerRight ul li {
+    margin-right: 0;
+    display: block;
+    margin-bottom: 25px;
+}
+.headerFirst{
+	padding: 15px 0px;
+	background: var(--colorWhite);
+    box-shadow: 0 3px 6px 0 rgb(0 0 0 / 16%);
+}
+h2.main {
+    font-size: 40px;
+    line-height: 45px;
+}
+p.main {
+    font-size: 16px;
+
+}
+.dogss li {
+    width: 22%;
+}
+.dogss li a h2 {
+    font-size: 12px;
+}
+.legsImg.legsImg2{
+	display: none;
+}
+.pupShop {
+    padding: 50px 0px 0px ;
+}
+.getInTouch {
+    margin-top: 50px;
+}
+.touchRight {
+    padding: 35px 0px;
+}
+.copyRightAll .col-sm-5,.copyRightAll .col-sm-7,.cartAll.boxs.marginTop2 .row .col-sm-8,.cartAll.boxs.marginTop2 .row .col-sm-4{
+	flex: 0 0 100%;
+    max-width: 100%;
+}
+.footerUl ul {
+    padding: 15px 0px 0px;
+	text-align: left;
+}
+.breadCum ul li{
+	font-size: 16px;
+}
+.socialIcons ul li {
+    margin-right: 15px;
+}
+.footerCopyRight {
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
+}
+.socialIcons, .footerCopyRight {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+.aboutFood .col-sm-6:first-child {
+    padding-left: 15px;
+}
+.aboutFood .col-sm-6:last-child {
+    padding-right:15px;
+}
+.productDet.boxs.marginTop3 .row .col-sm-5,.productDet.boxs.marginTop3 .row .col-sm-7{
+	flex: 0 0 100%;
+    max-width: 100%;
+}
+.productRight{
+	padding-top: 35px;
+}
+.belowInner .row .col-sm-3,.petInner .row .col-sm-4{
+	flex: 0 0 50%;
+    max-width: 50%;
+}
+.petInner .row .col-sm-4:nth-child(3){
+margin-top: 20px;
+}
+}
+
+@media(max-width:767px){
+.getPuppy .col-sm-6,.dogsLover .col-sm-6{
+	flex: 0 0 100%;
+    max-width: 100%;
+}
+.dogsLover .row{
+	display: flex;
+	flex-direction: column-reverse;
+}
+.dogsLover .item .row{
+	display: flex;
+flex-direction: unset;
+}
+.legsImg{
+	display: none;
+}
+.getPuppy {
+    padding-top: 120px;
+}
+h2.main {
+    font-size: 34px;
+    line-height: 42px;
+}
+.dogss li {
+    width: 46%;
+	margin-bottom: 15px;
+}
+.dogss li:nth-child(2n + 2) {
+ margin-right: 0;
+}
+h2.main2 {
+    font-size: 26px;
+    line-height: 36px;
+}
+.doggRight{
+	float: unset;
+	margin: 0 auto;
+}
+.dogss li a h2 {
+    font-size: 15px;
+}
+.formGP{
+	width: 100%;
+}
+.footerCode .col-sm-3,.footerCode .col-sm-6{
+	flex: 0 0 100%;
+    max-width: 100%;
+}
+.WantDog {
+    padding: 25px 0px;
+}
+.cartContent h2 {
+	font-size: 16px;
+}
+.cartContent p {
+    font-size: 15px;
+    line-height: 20px;
+}
+.fodImg.fodImgnew img {
+    width: 100%;
+    height: 215px;
+    object-fit: cover;
+}
+.aboutFood .col-sm-6{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.petInner .row .col-sm-4{
+	flex: 0 0 100%;
+    max-width: 100%;
+	margin-top: 15px;
+}
+.petFirst .row{
+	padding-top: 10px;
+}
+}
+@media(max-width:560px){
+	.getPupLeft{
+		padding-bottom: 10px;
+	}
+	.getPuppy .row,.aboutIn .row{
+		flex-direction: column-reverse;
+	}
+	.getPuppy {
+		padding-top: 100px;
+	}
+	.getRight {
+		position: relative;
+		bottom: 0px;
+		padding-bottom: 15px;
+	}
+	.dogss li {
+		width: 100%;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+	.formGP button{
+		padding: 8px 15px;
+	}
+	.footerUl ul li a{
+		font-size: 14px;
+	}
+	.footerUl ul li {
+		margin-right: 15px;
+	}
+	.aboutRight {
+	
+		margin-bottom: 25px;
+	}
+	.form-control{
+		font-size: 15px;
+	}
+	.addressBtn ul li a {
+		font-size: 15px;
+		line-height: 18px;
+		padding: 10px 25px;
+	}
+	.cartDetail{
+		display: block;
+	}
+	.cartImg img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+	.cartImg {	
+		width: 100%;
+		height: 200px;
+	}
+	.cartContent {
+		padding-left: 0;
+	}
+	.Allfood.boxs.marginTop2 .row .col-sm-3 {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	.breadCum ul li {
+		font-size: 14px;
+		padding: 0px 5px;
+	}
+	.breadAll{
+		display: block;
+	}
+	.fillterAll {
+		position: relative;
+		margin-top: 15px;
+	}
+	.firstFiltter select{
+		width: 175px;
+	}
+	.foodImg img {
+		width: 445px;
+		height: 250px;
+	}
+	.foodContent h2 {
+		font-size: 22px;
+
+	}
+	.foodContent ul li .firstSide, .foodContent ul li .secondSide {
+		font-size: 16px;
+		line-height: 16px;
+	}
+	.foodContent h2 a {
+		font-size: 14px;
+		line-height: 18px;
+		padding: 6px 12px;
+	}
+	.filterDetails{
+		width: 100%;
+	}
+	.belowInner .row .col-sm-3 {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	h2.head {
+		font-size: 20px;
+		line-height: 30px;
+	}
+	p.head {
+		font-size: 16px;
+	}
+	.productRight h4 {
+		font-size: 30px;
+		line-height: 55px;
+	}
+	.btnes .btnAll a {
+		font-size: 14px;
+		line-height: 16px;
+		padding: 10px 15px;
+		min-width: 140px;
+	}
+	.petFirst .row {
+		padding-top: 10px;
+		padding: 0;
+		border: none;
+		background: #fff;
+		box-shadow: none;
+	}
+	.newShape{
+		display: none;
+	}
+}

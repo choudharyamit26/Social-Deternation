@@ -1,0 +1,557 @@
+{% extends 'userapp/base.html' %}
+{% load static %}
+{% block body %}
+<section class="recordFills recordFills22" style="background-image: url('./imgs/bg2.png');">
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="">
+                <div class="recordsfil">
+                    <h2>Please fill the following details to seek help.</h2>
+
+                    <div class="recordAccordian">
+
+                        <div class="patientAccordian">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                         data-parent="#accordion" data-target="#collapseOne">
+                                        <h4 class="panel-title">When</h4>
+
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse  in show">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q1. </span>
+                                                            What year
+                                                            did this happen?</label>
+                                                        <div class="before">
+                                                            <select name="year" id="year"
+                                                                    class="form-control transparent formControl">
+                                                                <option value="o"></option>
+                                                                <option value="2018">2018 - 2019</option>
+                                                                <option value="2019">2019 - 2020</option>
+                                                                <option value="2020">2020 - 2021</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q2.
+                                                            </span>What time of day was it?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="time" name="time"
+                                                                   class="form-control formControl"
+                                                                   placeholder="" id="time">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q3.
+                                                            </span>Do you know the exact date?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input placeholder="Date"
+                                                                   class="form-control formControl textbox-n"
+                                                                   type="text"
+                                                                   onfocus="(this.type = 'date')" id="date" name="date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q4.
+                                                            </span>Is there anything else you remember about the
+                                                            date?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl"
+                                                                   placeholder="" name="anything_else_about_date" id="anything_else_about_date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                         data-parent="#accordion" data-target="#collapseTwo">
+                                        <h4 class="panel-title">Where</h4>
+
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse in show">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q5.
+                                                            </span>Where did it happen?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <textarea rows="4"
+                                                                      class="form-control formControl"
+                                                                      name="where_it_happened" id="where_it_happened"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q6.
+                                                            </span>Are there any other details you remember about the
+                                                            location?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <textarea rows="4"
+                                                                      class="form-control formControl"
+                                                                      name="other_info_about_location" id="other_info_about_location"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                             data-parent="#accordion" data-target="#collapseThree">
+                                            <h4 class="panel-title">People Who Know or Might Know</h4>
+
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse in show">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="label"><span class="colorBlack">Q7.
+                                                                </span>Did anyone else see or hear either all or
+                                                                any part of what happened?</label>
+                                                            <div class="beforee" style="background:#fff">
+                                                                <input type="text" class="form-control formControl"
+                                                                       name="anyone_see_hear" id="anyone_see_hear">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="label"><span class="colorBlack">Q8.
+                                                                </span>Did you tell anyone about the incident?</label>
+                                                            <div class="beforee" style="background:#fff">
+                                                                <input type="text" class="form-control formControl"
+                                                                       name="tell_anyone" id="tell_anyone">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="label"><span class="colorBlack">Q9.
+                                                                </span>Did you interact with anyone right before
+                                                                or after the incident?</label>
+                                                            <div class="beforee" style="background:#fff">
+                                                                <input type="text" class="form-control formControl"
+                                                                       name="after_before_incident" id="after_before_incident">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="label"><span class="colorBlack">Q10.
+                                                                </span>What information do you know about the
+                                                                people you told?</label>
+                                                            <div class="beforee" style="background:#fff">
+                                                                <input type="text" class="form-control formControl"
+                                                                       name="information_about_people_told" id="information_about_people_told">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="label"><span class="colorBlack">Q11.
+                                                                </span>What information do you know about the people
+                                                                described above?</label>
+                                                            <div class="beforee" style="background:#fff">
+                                                                <input type="text" class="form-control formControl"
+                                                                       name="info_about_people_described_above" id="info_about_people_described_above">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="label"><span class="colorBlack">Q12.
+                                                                </span>Do you know if the offender told anyone
+                                                                about the incident?</label>
+                                                            <div class="beforee" style="background:#fff">
+                                                                <input type="text" class="form-control formControl"
+                                                                       name="offender_told_anyone" id="offender_told_anyone">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                             data-parent="#accordion" data-target="#collapseFour4">
+                                            <h4 class="panel-title">Consent</h4>
+                                        </div>
+                                        <div id="collapseFour4" class="panel-collapse collapse in show">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="" class="label"><span class="colorBlack">Q13.
+                                                                </span>What are details of consent?</label>
+                                                            <div class="beforee" style="background:#fff">
+                                                                <textarea rows="4"
+                                                                          class="form-control formControl"
+                                                                          name="consent_details" id="consent_details"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                         data-parent="#accordion" data-target="#collapseFour">
+                                        <h4 class="panel-title">Incident (s)</h4>
+
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse in show">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q14.
+                                                            </span>What happened?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <textarea rows="4"
+                                                                      class="form-control formControl"
+                                                                      name="what_happened" id="what_happened"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                         data-parent="#accordion" data-target="#collapsefive">
+                                        <h4 class="panel-title">Offender(s)</h4>
+
+                                    </div>
+                                    <div id="collapsefive" class="panel-collapse collapse in show">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label" style="padding-bottom: 30px;"><span
+                                                                class="colorBlack">Q15.
+                                                            </span>How many offenders were there?</label>
+                                                        <br>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="number" class="form-control formControl"
+                                                                   name="number_of_offenders" id="number_of_offenders">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q16.
+                                                            </span>Was the offender with anyone else either at the
+                                                            time of the incident or directly before or after?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl"
+                                                                   name="anyone_else_with_offender" id="anyone_else_with_offender">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q17.
+                                                            </span>What is their name?/What are their names?
+                                                            (if known)</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl"
+                                                                   name="name_of_person_with_offender" id="name_of_person_with_offender">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q18.
+                                                            </span>What information do you know about these
+                                                            people?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl"
+                                                                   name="info_about_person_with_offender" id="info_about_person_with_offender">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q19.
+                                                            </span>Do you know any other information about
+                                                            the offender(s)?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl"
+                                                                   name="other_info_about_person_with_offender" id="other_info_about_person_with_offender">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                         data-parent="#accordion" data-target="#collapsesix">
+                                        <h4 class="panel-title">Evidence</h4>
+
+                                    </div>
+                                    <div id="collapsesix" class="panel-collapse collapse in show">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q20.
+                                                            </span>What types of evidence do you have now (or think
+                                                            might exist)?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl"
+                                                                   name="evidence" id="evidence">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recordbtns" style="text-align: center;">
+                            <div class="remember form-group" style="margin-bottom: 0;">
+                                <div class="checkMiddle">
+                                    <div class="CheckBox homo2"><input type="checkbox" id="check"
+                                                                       name="allow_info_match"><span
+                                            class="Check"><span
+                                            class="rem"> Allow your information to match BRASI existing data.
+                                </span>
+                            </span></div>
+                                </div>
+                            </div>
+                            <div class="modBt">
+                                <a href="javascript:void(0)" class="info"><img
+                                        src="{% static 'userapp/imgs/info.svg' %}"
+                                        alt="info"></a>
+                                <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Save</a>
+                                <button type="button" class="btns modalbtns submitt" data-toggle="modal"
+                                        data-target="#submitRecord" onclick="getFormValues()">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div class="modalBox">
+
+    <div class="modal" id="submitRecord">
+        <div class="modal-dialog" style="max-width: 560px;">
+            <div class="modal-content">
+
+                <div class="modal-body" style="padding: 100px 25px;">
+
+                    <div class="submitrecord">
+                        <div class="dotsAll">
+                            <img src="{% static 'userapp/imgs/dots.svg' %}" alt="dits">
+                        </div>
+                        <div class="dotsContent">
+                            <h2 class="head">Please Wait</h2>
+                            <p class="head">Possible detection of repeat offenders in progress.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="submitRecord2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body" style="padding: 50px 25px;">
+
+                    <div class="recordSub">
+                        <div class="serhImg">
+                            <img src="{% static 'userapp/imgs/seach.svg' %}" alt="search">
+                        </div>
+                        <h2 class="head">3 records from our database match
+                            the offender information you provided</h2>
+                        <div class="table-responsive">
+                            <table class="table">
+
+                                <tbody>
+                                <tr>
+                                    <td><span class="bold">Name:</span></td>
+                                    <td>Varida</td>
+                                    <td><span class="bold">Incident description:</span></td>
+                                    <td>Blackmail his sister</td>
+                                </tr>
+
+                                <tr>
+                                    <td><span class="bold">Incident happened on:</span></td>
+                                    <td>2018</td>
+                                    <td><span class="bold">Skin Color</span></td>
+                                    <td>Dark</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="recordQuestion">
+                            <h2 class="head">Do you require further support?</h2>
+                        </div>
+                        <div class="signUpby signUpbylegal">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first">
+
+                                    <div class="radio">
+                                        <input id="legal1" name="legal" type="radio">
+                                        <label for="legal1" class="radio-label">Legal Assistance</label>
+                                    </div>
+
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="legal2" name="legal" type="radio">
+                                        <label for="legal2" class="radio-label">Therapeutical Help</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="legal3" name="legal" type="radio">
+                                        <label for="legal3" class="radio-label">Counselling</label>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="modBt">
+
+                            <a href="{% url 'userapp:service-provider'%}" class="btns modalbtns">OK</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function getFormValues(){
+var filledValues = []
+var year = $('#year').val();
+filledValues.push({'year':year})
+
+var time = $('#time').val();
+filledValues.push({'time':time})
+
+var date = $('#date').val();
+filledValues.push({'date':date})
+
+var anything_else_about_date = $('#anything_else_about_date').val();
+filledValues.push({'anything_else_about_date':anything_else_about_date})
+
+var where_it_happened = $('#where_it_happened').val();
+filledValues.push({'where_it_happened':where_it_happened})
+
+var other_info_about_location = $('#other_info_about_location').val();
+filledValues.push({'other_info_about_location':other_info_about_location})
+
+var anyone_see_hear = $('#anyone_see_hear').val();
+filledValues.push({'anyone_see_hear':anyone_see_hear})
+
+var tell_anyone = $('#tell_anyone').val();
+filledValues.push({'tell_anyone':tell_anyone})
+
+var after_before_incident = $('#after_before_incident').val();
+filledValues.push({'after_before_incident':after_before_incident})
+
+var information_about_people_told = $('#information_about_people_told').val();
+filledValues.push({'information_about_people_told':information_about_people_told})
+
+var info_about_people_described_above = $('#info_about_people_described_above').val();
+filledValues.push({'info_about_people_described_above':info_about_people_described_above})
+
+var offender_told_anyone = $('#offender_told_anyone').val();
+filledValues.push({'offender_told_anyone':offender_told_anyone})
+
+var consent_details = $('#consent_details').val();
+filledValues.push({'consent_details':consent_details})
+
+var what_happened = $('#what_happened').val();
+filledValues.push({'what_happened':what_happened})
+
+var number_of_offenders = $('#number_of_offenders').val();
+filledValues.push({'number_of_offenders':number_of_offenders})
+
+var anyone_else_with_offender = $('#anyone_else_with_offender').val();
+filledValues.push({'anyone_else_with_offender':anyone_else_with_offender})
+
+var name_of_person_with_offender = $('#name_of_person_with_offender').val();
+filledValues.push({'name_of_person_with_offender':name_of_person_with_offender})
+
+var info_about_person_with_offender = $('#info_about_person_with_offender').val();
+filledValues.push({'info_about_person_with_offender':info_about_person_with_offender})
+
+var other_info_about_person_with_offender = $('#other_info_about_person_with_offender').val();
+filledValues.push({'other_info_about_person_with_offender':other_info_about_person_with_offender})
+
+var evidence = $('#evidence').val();
+filledValues.push({'evidence':evidence})
+
+<!--var allow_info_match = $('#check').val();-->
+var allow_info_match = document.getElementById("check").checked;
+filledValues.push({'allow_info_match':allow_info_match})
+
+    var url = "{% url 'userapp:record-assault-qa' %}"
+    $.ajax({
+        url :url,
+        method : 'POST',
+        data:{
+        data: JSON.stringify(sessionStorage.getItem('storedFormFieldValues')),
+        data2: JSON.stringify(filledValues),
+        csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+           console.log('inside success',data)
+
+        },
+        error: function(data) {
+            console.log('inside error case')
+        }
+    });
+
+
+}
+
+</script>
+{% endblock body %}

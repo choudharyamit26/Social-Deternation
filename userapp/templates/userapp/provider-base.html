@@ -1,0 +1,188 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'userapp/imgs/logo.svg' %}" type="image/ico" sizes="16x16">
+    <title>Brasi | Request</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'userapp/provider/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link href="{% static 'userapp/provider/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/provider/css/hamburgers.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/provider/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/provider/css/media.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/provider/css/FullCalendarCore.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/provider/css/FullCalendarDayGrid.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/provider/css/FullCalendarTimeGrid.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/provider/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<section class="headerSocial">
+    <div class="container">
+        <div class="sidebarIcon">
+            <div class="welcome">
+                <div class="welcomeText survivors" style="position: relative;">
+                    <a href="javaScript:void(0)" class="">
+                        <h4 class="darkSky">Welcome, <span class="titleName">{{user}}</span></h4>
+                        <div class="signModal">
+                            <ul>
+                                <li>
+                                    <a href="my-profile.html">
+                                        <span><img src="{% static 'userapp/imgs/usernew.svg' %}" alt="user"></span>My
+                                        Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'userapp:survivor-logout' %}">
+                                        <span><img src="{% static 'userapp/imgs/logout.svg' %}" alt="user"></span>Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<header class="header boxs  ">
+    <div class="container">
+        <nav class="navbar myNavBar navbar-expand-sm">
+            <div class="navbar-header">
+                <a href="{% url 'userapp:home' %}"><img src="{% static 'userapp/imgs/logo.png' %}"
+                                                        class="img-responsive first_logo" alt="logo"></a>
+            </div>
+            <div class="collapse navbar_right navbar-collapse" id="collapsibleNavbar">
+                <div class="navbar navbar-right socialRight">
+                    <ul class="navbar-nav menu">
+                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:provider-requests' %}active{% endif %}">
+                            <a class="nav-link" href="{% url 'userapp:provider-requests' %}">Requests</a>
+                        </li>
+                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-availability' %}active{% endif %}">
+                            <a class="nav-link " href="{% url 'userapp:survivor-availability' %}">Availability</a>
+                        </li>
+                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-subscription' %}active{% endif %}">
+                            <a class="nav-link " href="{% url 'userapp:survivor-subscription' %}">subscription</a>
+                        </li>
+                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-faq' %}active{% endif %}">
+                            <a class="nav-link " href="{% url 'userapp:survivor-faq' %}">FAQs </a>
+                        </li>
+                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-contact' %}active{% endif %}">
+                            <a class="nav-link " href="{% url 'userapp:survivor-contact' %}">Contact </a>
+                        </li>
+                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-notification-detail' %}active{% endif %}">
+                            <a class="nav-link notification" href="javaScript:void(0)">Notifications </a>
+                            <div class="notificationDet">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'userapp:survivor-notification-detail' %}">
+                                            <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod</p>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'userapp:survivor-notification-detail' %}">
+                                            <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod</p>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'userapp:survivor-notification-detail' %}">
+                                            <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod</p>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'userapp:survivor-notification-detail' %}">
+                                            <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="notificationBTN">
+                                    <a href="javascript:void(0)" class="Button bg-violet">View all</a>
+                                    <a href="javascript:void(0)" class="Button Button-violet-alt ">Remove all</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <button class="hamburger hamburger--squeeze" type="button" aria-label="Menu" aria-controls="navigation">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+    </div>
+</header>
+<div class="sidenav" id="mySidenav">
+    <a href="{% url 'userapp:home' %}" class="logo"><img src="{% static 'userapp/img/logo.png' %}" class="img-fluid"
+                                                         alt="logo"></a>
+    <ul>
+        <li class="active"><a href="{% url 'userapp:provider-requests' %}" class="active ">Requests</a></li>
+        <li><a href="{% url 'userapp:survivor-availability' %}" class="">Availability</a></li>
+        <li><a href="{% url 'userapp:survivor-subscription' %}" class="">Subscription </a></li>
+        <li><a href="{% url 'userapp:faq' %}" class="">FAQs</a></li>
+        <li><a href="{% url 'userapp:survivor-contact' %}" class="">Contact</a></li>
+        <li><a href="{% url 'userapp:survivor-notification-detail' %}" class="">Notifications</a></li>
+    </ul>
+</div>
+{% block body %}
+{% endblock body %}
+<footer class="footer boxs">
+    <div class="container">
+        <div class="footerall DisFlex">
+            <div class="footleft">
+                <div class="footLogoImg">
+                    <ul>
+                        <li><img src="{% static 'userapp/imgs/logo.png' %}" class="img-fluid" alt="logo"></li>
+                        <li style="margin-top: 90px;" class="copyright">Copyright © 2021 <span
+                                class="darkSky"> BRASI</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footmiddle">
+                <div class="footpart">
+                    <h3>FAQs</h3>
+                    <ul>
+                        <li><a href="javaScript:void(0)">For Survivors</a></li>
+                        <li><a href="javaScript:void(0)"> For Service Providers</a></li>
+                        <li><a href="javaScript:void(0)"> For License Holders</a></li>
+                        <li style="margin-top: 70px;"><a href="javaScript:void(0)">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footmiddle">
+                <div class="footpart">
+                    <h3>Follow/Contact Us</h3>
+                    <ul>
+                        <li><a href="javaScript:void(0)">Twitter</a></li>
+                        <li><a href="javaScript:void(0)">Facebook</a></li>
+                        <li><a href="javaScript:void(0)">Instagram</a></li>
+                        <li><a href="javaScript:void(0)">Email</a></li>
+                        <li style="margin-top: 30px;"><a href="javaScript:void(0)">Term of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'userapp/provider/js/jquery.min.js' %}"></script>
+<script src="{% static 'userapp/provider/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'userapp/provider/js/custom.js' %}"></script>
+</body>
+
+</html>

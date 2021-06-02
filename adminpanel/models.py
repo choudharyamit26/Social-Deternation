@@ -30,7 +30,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """ User model """
     first_name = models.CharField(default='', max_length=100)
-    last_name = models.CharField(default='', max_length=100, null=True, blank=True)
+    last_name = models.CharField(default='', max_length=100)
+    nick_name = models.CharField(default='', max_length=100)
     email = models.CharField(default='', max_length=255, unique=True)
     country_code = models.CharField(default='+91', max_length=10)
     phone_number = models.CharField(default='', max_length=18)
@@ -40,6 +41,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_survivor = models.BooleanField(default=False)
+    is_service_provider = models.BooleanField(default=False)
 
     objects = UserManager()
     USERNAME_FIELD = 'email'

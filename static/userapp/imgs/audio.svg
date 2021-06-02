@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33">
+    <defs>
+        <filter id="qouzp2ahna" width="33" height="33" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="1"/>
+            <feGaussianBlur result="blur" stdDeviation="1.5"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+    </defs>
+    <g>
+        <g filter="url(#qouzp2ahna)" transform="translate(-321.5 -333.5) translate(321.5 333.5)">
+            <circle cx="12" cy="12" r="12" fill="#fff" transform="translate(4.5 3.5)"/>
+        </g>
+        <path fill="#333" d="M9.937 5.678h-.473a.473.473 0 0 0-.473.473v1.42a3.79 3.79 0 0 1-4.164 3.767A3.9 3.9 0 0 1 1.42 7.4V6.152a.473.473 0 0 0-.473-.473H.473A.473.473 0 0 0 0 6.152v1.187a5.368 5.368 0 0 0 4.5 5.374v1.01H2.839a.473.473 0 0 0-.473.473v.473a.473.473 0 0 0 .473.473h4.732a.473.473 0 0 0 .473-.473V14.2a.473.473 0 0 0-.473-.473H5.915v-1a5.21 5.21 0 0 0 4.5-5.153V6.152a.473.473 0 0 0-.478-.474zM5.205 10.41a2.839 2.839 0 0 0 2.839-2.839H5.521c-.174 0-.316-.106-.316-.237v-.473c0-.131.141-.237.316-.237h2.523v-.946H5.521c-.174 0-.316-.106-.316-.237v-.472c0-.131.141-.237.316-.237h2.523v-.946H5.521c-.174 0-.316-.106-.316-.237v-.473c0-.131.141-.237.316-.237h2.523a2.839 2.839 0 1 0-5.678 0v4.732a2.839 2.839 0 0 0 2.839 2.839z" transform="translate(-321.5 -333.5) translate(332.795 341.321)"/>
+    </g>
+</svg>

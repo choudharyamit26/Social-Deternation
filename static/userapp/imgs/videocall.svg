@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="51" viewBox="0 0 52 51">
+    <g>
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-1187 -950) translate(1187.141 963.64) translate(-.195 -13.508)">
+                        <rect width="52" height="51" fill="#006d6d" rx="25.5" transform="translate(.055 -.132)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <path fill="#fff" d="M14.354 4.5H2.041A2.041 2.041 0 0 0 0 6.541v12.313a2.041 2.041 0 0 0 2.041 2.041h12.313a2.041 2.041 0 0 0 2.041-2.041V6.541A2.041 2.041 0 0 0 14.354 4.5zm8.086 1.61l-4.679 3.227v6.72l4.679 3.223a1.369 1.369 0 0 0 2.152-1.1V7.211A1.37 1.37 0 0 0 22.44 6.11z" transform="translate(-1187 -950) translate(1200.703 962.803)"/>
+    </g>
+</svg>

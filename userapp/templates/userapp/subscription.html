@@ -1,0 +1,67 @@
+{% extends 'userapp/provider-base.html' %}
+{% load static %}
+{% block body %}
+<section class="subscription filterAll">
+    <div class="container">
+        <div class="tableDet">
+            <div class="DisFlex">
+                <div>
+                    <h2 class="mediumFont">Subscriptions Records</h2>
+                </div>
+                <div>
+                    <h4 class="">Next Billing Date: --</h4>
+                </div>
+                <div class="">
+                    <a href="javascript:void(0)" class="Button">Cancel Recurring</a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>subscription</th>
+                        <th>Start Date</th>
+                        <th>Expire Date</th>
+                        <th>Purchase Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Recurring Payment Status</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>CTM Member Subscription - 12 Month</td>
+                        <td>March 27,2021</td>
+                        <td>March 27,2022</td>
+                        <td>March 27,2021</td>
+                        <td>$80/12 month(s)</td>
+                        <td><span class="colorred"><b>Expired</b></span></td>
+                        <td><span class="colorlight"><b>Active</b></span></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="noSub DisFlex">
+                <div>
+                    <p class="regulary"><i class="fa fa-info-circle" aria-hidden="true"></i> You have no active
+                        subscriptions</p>
+                </div>
+                <div>
+                    <a href="javaScript:void(0)" class="Button">Go Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="{% static 'userapp/provider/js/jquery.min.js' %}"></script>
+<script src="{% static 'userapp/provider/js/bootstrap.min.js"></script>
+<script src="{% static 'userapp/provider/js/FullCalendarCorePackage.4.1.0.min.js' %}"></script>
+<script src="{% static 'userapp/provider/js/FullCalendarDayGrid.4.1.0.min.js' %}"></script>
+<script src="{% static 'userapp/provider/js/FullCalendarInteraction.4.1.0.min.js' %}"></script>
+<script src="[% static 'userapp/provider/js/FullCalendarTimeGrid.4.1.0.min.js' %}"></script>
+{% endblock body %}

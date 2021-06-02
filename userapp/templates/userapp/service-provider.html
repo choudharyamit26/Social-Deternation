@@ -1,0 +1,732 @@
+{% extends 'userapp/base.html' %}
+{% load static %}
+{% block body %}
+<section class="filterSe">
+    <div class="container">
+        <div class="row" style="padding-top: 40px;">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control formControl" placeholder="Name">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="before">
+                        <select name="year" id="year" class="form-control transparent formControl">
+                            <option value="o">Category</option>
+                            <option value="1">Category1</option>
+                            <option value="2">Category2</option>
+                            <option value="3">Category3</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="before">
+                        <select name="year" id="year" class="form-control transparent formControl">
+                            <option value="o">Ratings</option>
+                            <option value="1">5</option>
+                            <option value="2">4</option>
+                            <option value="3">3</option>
+                            <option value="4">2</option>
+                            <option value="5">1</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btnsBottom btnsBoking">
+            <div class="modBt">
+                <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Reset</a>
+                <a href="javascript:void(0)" class="btns modalbtns">Search</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="serviceProide">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="clietservice">
+                    <div class="serviceDet">
+                        <div class="service">
+                            <div class="serviceLeft">
+                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
+                            </div>
+                            <div class="serviceRight">
+                                <h2>Mity Khan</h2>
+                                <p>Category: <span>Counsellor</span></p>
+                            </div>
+                        </div>
+                        <div class="serviceStar">
+                            <ul>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                      alt="star"></a></li>
+                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                                      alt="star"></a></li>
+                            </ul>
+                            <div class="serviceImg">
+                                <img src="{% static 'userapp/imgs/img.png' %}" alt="img">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table tablefont">
+
+                            <tbody>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tableBtn">
+                        <div class="btnLeft">
+                            <h2>£40 /Hour</h2>
+                        </div>
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
+                           data-target="#selectslot">Select Slot</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modalBox">
+
+    <div class="modal" id="selectslot">
+        <div class="modal-dialog" style="max-width: 900px;">
+            <div class="modal-content">
+
+                <div class="modal-body" style="padding: 25px;">
+                    <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
+                                                                                  alt="close"></button>
+                    <div class="slotBooking">
+                        <h2 class="head">Mity Khan <span class="newStar">
+                                    <ul>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}" alt="star"></a>
+                                        </li>
+
+                                    </ul>
+                                </span> <span class="" style="float: right;
+                                padding-right: 8%;"><a href="javascript:void(0)" data-dismiss="modal" class="btns"
+                                                       style="padding: 4px 20px;">Change</a></span></h2>
+                        <div class="decription">
+                            <h2>Description:</h2>
+                            <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out
+                                print, graphic or web designs. The passage is attributed to an unknown
+                                typesetter in the 15th century who is thought to have scrambled parts of
+                                Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
+                        </div>
+                        <div class="decription">
+                            <h2>Available Slots:</h2>
+                            <div class="row">
+                                <div class="col-sm-7">
+
+                                    <div id="prev"></div>
+                                    <div id="next"></div>
+                                    <article id="calendar"></article>
+
+
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="solotTome">
+                                        <ul>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time1" name="time1" type="radio">
+                                                    <label for="time1" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time2" name="time1" type="radio">
+                                                    <label for="time2" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time3" name="time1" type="radio">
+                                                    <label for="time3" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time4" name="time1" type="radio">
+                                                    <label for="time4" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time5" name="time1" type="radio">
+                                                    <label for="time5" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time6" name="time1" type="radio">
+                                                    <label for="time6" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time7" name="time1" type="radio">
+                                                    <label for="time7" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time8" name="time1" type="radio">
+                                                    <label for="time8" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time9" name="time1" type="radio">
+                                                    <label for="time9" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="radio">
+                                                    <input id="time10" name="time1" type="radio">
+                                                    <label for="time10" class="radio-label">12:15 - 1:15 PM</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btnsBottom" style="text-align: left;
+                           padding-top: 25px;">
+                                <div class="modBt">
+
+                                    <a href="payment.html" class="btns modalbtns">Book</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

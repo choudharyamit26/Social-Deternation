@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px}
+        </style>
+    </defs>
+    <g id="Video_Call" transform="translate(.195 -.083)">
+        <rect id="Rectangle_25" width="38" height="38" fill="#008b8b" rx="19" transform="translate(-.195 .083)"/>
+        <g id="video" transform="translate(9.039 12.898)">
+            <path id="Path_74" d="M23.97 7L16 11.244l7.97 4.244z" class="cls-2" transform="translate(-3.476 -4.723)"/>
+            <rect id="Rectangle_14" width="12.524" height="13.041" class="cls-2" rx="2"/>
+        </g>
+    </g>
+</svg>

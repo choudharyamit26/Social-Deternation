@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="294" height="50" viewBox="0 0 294 50">
+    <defs>
+        <filter id="qeu0v48dza" width="50" height="50" x="0" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="l8328ck3cb" width="50" height="50" x="49" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur-2" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur-2" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="6n2bukm65c" width="51" height="50" x="97" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur-3" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur-3" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="3h4srclr1e" width="51" height="50" x="146" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur-4" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur-4" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="0qmbbrbgaf" width="50" height="50" x="195" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur-5" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur-5" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="kegop2aqmg" width="50" height="50" x="244" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dy="3"/>
+            <feGaussianBlur result="blur-6" stdDeviation="3"/>
+            <feFlood flood-opacity=".161"/>
+            <feComposite in2="blur-6" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="1ebf35nind" x2="1.13" y1=".5" y2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="purple"/>
+            <stop offset="1" stop-color="#008b8b"/>
+        </linearGradient>
+    </defs>
+    <g>
+        <g filter="url(#qeu0v48dza)" transform="translate(-776.083 -411.245) translate(776.08 411.25)">
+            <circle cx="16" cy="16" r="16" fill="purple" transform="translate(9 6)"/>
+        </g>
+        <g filter="url(#l8328ck3cb)" transform="translate(-776.083 -411.245) translate(776.08 411.25)">
+            <circle cx="16" cy="16" r="16" fill="#a700a7" transform="translate(58 6)"/>
+        </g>
+        <g filter="url(#6n2bukm65c)" transform="translate(-776.083 -411.245) translate(776.08 411.25)">
+            <ellipse cx="16.5" cy="16" fill="url(#1ebf35nind)" rx="16.5" ry="16" transform="translate(106 6)"/>
+        </g>
+        <g filter="url(#3h4srclr1e)" transform="translate(-776.083 -411.245) translate(776.08 411.25)">
+            <ellipse cx="16.5" cy="16" fill="#008b8b" rx="16.5" ry="16" transform="translate(155 6)"/>
+        </g>
+        <g filter="url(#0qmbbrbgaf)" transform="translate(-776.083 -411.245) translate(776.08 411.25)">
+            <circle cx="16" cy="16" r="16" fill="#007c7c" transform="translate(204 6)"/>
+        </g>
+        <g filter="url(#kegop2aqmg)" transform="translate(-776.083 -411.245) translate(776.08 411.25)">
+            <circle cx="16" cy="16" r="16" fill="#026161" transform="translate(253 6)"/>
+        </g>
+    </g>
+</svg>

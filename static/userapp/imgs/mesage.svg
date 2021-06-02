@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="51" viewBox="0 0 52 51">
+    <defs>
+        <style>
+            .cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="Group_37806" transform="translate(-1187 -950)">
+        <g id="Right_Bar" transform="translate(1187.141 963.64)">
+            <g id="Chat_Details" transform="translate(-.195 -13.508)">
+                <g id="Chat_buttons">
+                    <g id="Voice_Chat">
+                        <rect id="Rectangle_25" width="52" height="51" fill="#006d6d" rx="25.5" transform="translate(.055 -.132)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Icon_ionic-md-chatbubbles" transform="translate(1199.514 962.016)">
+            <path id="Path_5086" d="M7.5 21.359a2.537 2.537 0 0 1-2.177-2.177V11.25h-.47a1.483 1.483 0 0 0-1.478 1.478v13.3l2.843-2.819h10.455a1.5 1.5 0 0 0 1.478-1.5v-.345z" class="cls-2" transform="translate(0 -2.431)"/>
+            <path id="Path_5087" d="M23.352 3.375H9.782a1.7 1.7 0 0 0-1.7 1.7V16.06a1.705 1.705 0 0 0 1.7 1.7h11.577l3.689 2.576V5.071a1.7 1.7 0 0 0-1.696-1.696z" class="cls-2" transform="translate(-1.455)"/>
+        </g>
+    </g>
+</svg>

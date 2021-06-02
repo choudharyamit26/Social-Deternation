@@ -1,0 +1,824 @@
+{% extends 'userapp/provider-base.html' %}
+{% load static %}
+{% block body %}
+
+<section class="filterAll ">
+
+    <div class="container">
+
+        <div class="booking-tabs">
+            <ul class="nav nav-tabs" style="justify-content: space-between;">
+                <li class="active"><a data-toggle="tab" href="#new" class="active">New</a></li>
+                <li><a data-toggle="tab" href="#accepted">Accepted</a></li>
+                <li><a data-toggle="tab" href="#ongoing">Ongoing</a></li>
+                <li><a data-toggle="tab" href="#rejected">Rejected</a></li>
+                <li><a data-toggle="tab" href="#completed">Completed</a></li>
+            </ul>
+            <div class="row" style="padding-top: 40px;">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control formControl" placeholder="Survivor's Name">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="date" class="form-control uppercase  formControl" placeholder="Request From">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="date" class="form-control uppercase formControl" placeholder="Request To">
+                    </div>
+                </div>
+            </div>
+            <div class="btnsBottom btnsBoking">
+                <div class="modBt">
+                    <a href="javascript:void(0)" class="Button Button-violet-alt">Reset</a>
+                    <a href="javascript:void(0)" class="Button bg-violet">Search</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="tab-content">
+
+            <div id="new" class="tab-pane fade in active show">
+                <section class="tableList">
+                    <div class="container">
+                        <div class="tableDet">
+                            <div class="explortBtns">
+                                <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}"
+                                                                  alt="export"></a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Survivor's Name</th>
+                                        <th>Requested On</th>
+                                        <th>Slot</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorYellow">Pending</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Accept
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorYellow">Pending</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Accept
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorYellow">Pending</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Accept
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorYellow">Pending</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Accept
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination">
+                                <div class="record">
+                                    <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                </div>
+                                <div class="pagin">
+                                    <ul>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)" class="active">1</a></li>
+                                        <li><a href="javascript:void(0)">2</a></li>
+                                        <li><a href="javascript:void(0)">3</a></li>
+                                        <li><a href="javascript:void(0)">4</a></li>
+                                        <li><a href="javascript:void(0)">5</a></li>
+                                        <li><a href="javascript:void(0)">6</a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                alt="arrow"></a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="shown">
+                                    <h2>Show per page <span><select name="shown" id="shown">
+                                                <option value="shown1">10</option>
+                                                <option value="shown2">20</option>
+                                                <option value="shown3">50</option>
+                                                <option value="shown4">100</option>
+                                            </select></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="accepted" class="tab-pane fade">
+                <section class="tableList">
+                    <div class="container">
+                        <div class="tableDet">
+                            <div class="explortBtns">
+                                <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}"
+                                                                  alt="export"></a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Survivor's Name</th>
+                                        <th>Amount Paid</th>
+                                        <th>Requested On</th>
+                                        <th>Accepted On</th>
+                                        <th>Slot</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorlight">Accepted</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorlight">Accepted</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>03</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorlight">Accepted</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>04</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>10:00AM to 11:00AM</td>
+                                        <td><span class="colorlight">Accepted</span></td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination">
+                                <div class="record">
+                                    <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                </div>
+                                <div class="pagin">
+                                    <ul>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)" class="active">1</a></li>
+                                        <li><a href="javascript:void(0)">2</a></li>
+                                        <li><a href="javascript:void(0)">3</a></li>
+                                        <li><a href="javascript:void(0)">4</a></li>
+                                        <li><a href="javascript:void(0)">5</a></li>
+                                        <li><a href="javascript:void(0)">6</a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                alt="arrow"></a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="shown">
+                                    <h2>Show per page <span><select name="shown" id="shown">
+                                                <option value="shown1">10</option>
+                                                <option value="shown2">20</option>
+                                                <option value="shown3">50</option>
+                                                <option value="shown4">100</option>
+                                            </select></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="ongoing" class="tab-pane fade">
+                <section class="tableList">
+                    <div class="container">
+                        <div class="tableDet">
+                            <div class="explortBtns">
+                                <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}"
+                                                                  alt="export"></a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Survivor's Name</th>
+                                        <th>Amount Paid</th>
+                                        <th>Last Contacted On</th>
+                                        <th>Accepted On</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Complete
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Complete
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Complete
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act colorlight">
+                                                    <span><img src="{% static 'userapp/imgs/awesome-check.webp' %}"
+                                                               alt="eye"></span>
+                                                    Complete
+                                                </a>
+                                                <a href="javascript:void(0)" class="act colorred">
+                                                    <span><img src="{% static 'userapp/imgs/metro-cross.webp' %}"
+                                                               alt="eye"></span>
+                                                    Reject
+                                                </a>
+                                                </span>
+                                        </td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/ionic-ios-call.webp' %}"
+                                                               alt="eye"></span>
+                                                    Contact
+                                                </a>
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination">
+                                <div class="record">
+                                    <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                </div>
+                                <div class="pagin">
+                                    <ul>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)" class="active">1</a></li>
+                                        <li><a href="javascript:void(0)">2</a></li>
+                                        <li><a href="javascript:void(0)">3</a></li>
+                                        <li><a href="javascript:void(0)">4</a></li>
+                                        <li><a href="javascript:void(0)">5</a></li>
+                                        <li><a href="javascript:void(0)">6</a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                alt="arrow"></a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="shown">
+                                    <h2>Show per page <span><select name="shown" id="shown">
+                                                <option value="shown1">10</option>
+                                                <option value="shown2">20</option>
+                                                <option value="shown3">50</option>
+                                                <option value="shown4">100</option>
+                                            </select></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="rejected" class="tab-pane fade">
+                <section class="tableList">
+                    <div class="container">
+                        <div class="tableDet">
+                            <div class="explortBtns">
+                                <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}"
+                                                                  alt="export"></a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Survivor's Name</th>
+                                        <th>Requested On</th>
+                                        <th>Rejected On</th>
+                                        <th>Reason for rejection</th>
+                                        <th>Status</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>Lorem ipsum dolor sit</td>
+                                        <td><span class="action">
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                       data-target="#reject" class="act colorred">
+                                                        Rejected
+                                                    </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>02</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>Lorem ipsum dolor sit</td>
+                                        <td><span class="action">
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                       data-target="#reject" class="act colorred">
+                                                        Rejected
+                                                    </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>03</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>Lorem ipsum dolor sit</td>
+                                        <td><span class="action">
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                       data-target="#reject" class="act colorred">
+                                                        Rejected
+                                                    </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>04</td>
+                                        <td>Ankita</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>Lorem ipsum dolor sit</td>
+                                        <td><span class="action">
+                                                    <a href="javascript:void(0)" data-toggle="modal"
+                                                       data-target="#reject" class="act colorred">
+                                                        Rejected
+                                                    </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination">
+                                <div class="record">
+                                    <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                </div>
+                                <div class="pagin">
+                                    <ul>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)" class="active">1</a></li>
+                                        <li><a href="javascript:void(0)">2</a></li>
+                                        <li><a href="javascript:void(0)">3</a></li>
+                                        <li><a href="javascript:void(0)">4</a></li>
+                                        <li><a href="javascript:void(0)">5</a></li>
+                                        <li><a href="javascript:void(0)">6</a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                alt="arrow"></a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="shown">
+                                    <h2>Show per page <span><select name="shown" id="shown">
+                                                <option value="shown1">10</option>
+                                                <option value="shown2">20</option>
+                                                <option value="shown3">50</option>
+                                                <option value="shown4">100</option>
+                                            </select></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="completed" class="tab-pane fade ">
+                <section class="tableList">
+                    <div class="container">
+                        <div class="tableDet">
+                            <div class="explortBtns">
+                                <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}"
+                                                                  alt="export"></a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Survivor's Name</th>
+                                        <th>Amount Paid</th>
+                                        <th>Requested On</th>
+                                        <th>Accepted On</th>
+                                        <th>Completed On</th>
+                                        <th>Actions</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    View Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    View Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    View Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Ankita</td>
+                                        <td>122</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td>March 27,2018</td>
+                                        <td><span class="action">
+                                                <a href="javascript:void(0)" class="act darkSky">
+                                                    <span><img src="{% static 'userapp/imgs/eye.svg' %}"
+                                                               alt="eye"></span>
+                                                    View Details
+                                                </a>
+                                                </span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination">
+                                <div class="record">
+                                    <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                </div>
+                                <div class="pagin">
+                                    <ul>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)" class="active">1</a></li>
+                                        <li><a href="javascript:void(0)">2</a></li>
+                                        <li><a href="javascript:void(0)">3</a></li>
+                                        <li><a href="javascript:void(0)">4</a></li>
+                                        <li><a href="javascript:void(0)">5</a></li>
+                                        <li><a href="javascript:void(0)">6</a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                alt="arrow"></a></li>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="shown">
+                                    <h2>Show per page <span><select name="shown" id="shown">
+                                                <option value="shown1">10</option>
+                                                <option value="shown2">20</option>
+                                                <option value="shown3">50</option>
+                                                <option value="shown4">100</option>
+                                            </select></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    </div>
+</section>
+<div class="modalBox">
+    <div class="modal" id="reject">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><img src="imgs/close.svg"
+                                                                                  alt="close"></button>
+                    <div class="CommonContent pt-4 pb-4">
+
+                        <h2 class="normalFont darkSky text-left" style="font-size: 20px;">Please specify the reason for
+                            rejection.</h2>
+                        <form>
+                            <div class="form-group">
+                                <textarea name="" class="form-control formControl" id="" cols="30" rows="10"></textarea>
+                            </div>
+                        </form>
+                        <div class="btnsBottom">
+                            <div class="modBt">
+                                <a href="javascript:void(0)" data-dismiss="modal" class="Button Button-violet-alt">Cancel</a>
+                                <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Save</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

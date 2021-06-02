@@ -1,0 +1,159 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brasi | Record an Assault</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'userapp/imgs/logo.svg' %}" rel="icon" type="icon/image">
+    <link href="{% static 'userapp/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel='stylesheet' href='css/owl.carousel.min.css'> -->
+    <link href="{% static 'userapp/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/media.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<section class="socialicons">
+    <div class="container">
+        <div class="socialInner profileUser">
+            <a href="javascript:void(0)">Welcome,{{user.first_name}} <span class="profile"><img
+                    src="{% static 'userapp/imgs/profile.svg' %}"
+                    alt="profile"></span></a>
+            <div class="profileDettt">
+                <ul>
+                    <li><a href="{% url 'userapp:survivor-profile'  %}"><span><img src="{% static 'userapp/imgs/usernew.svg' %}"
+                                                            alt="user"></span>My Profile</a>
+                    </li>
+                    <li><a href="{% url 'userapp:survivor-logout' %}"><span><img src="{% static 'userapp/imgs/logout.svg' %}"
+                                                                      alt="user"></span>Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="header">
+    <div class="container">
+        <div class="headerInner">
+            <div class="headerLogo">
+                <a href="{% url 'userapp:home' %}"><img src="{% static 'userapp/imgs/logo.svg' %}" alt="logo"></a>
+            </div>
+            <div class="socialRight">
+                <ul>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-dashboard' %}active{% endif %}">
+                        <a href="{% url 'userapp:survivor-dashboard' %}">Record An Assault</a></li>
+                    <li><a href="https://www.google.com/" target="_blank" class="Quickexit">Quick Exit</a></li>
+                    <li class="survivors nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:service-provider' %}active{% endif %} ">
+                        <a href="{% url 'userapp:service-provider' %}">Service Providers</a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:ongoing-booking' %}active{% endif %}">
+                        <a href="{% url 'userapp:ongoing-booking' %}">My Bookings</a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:faq' %}active{% endif %}">
+                        <a href="{% url 'userapp:faq' %}">FAQs</a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:contact-us' %}active{% endif %}">
+                        <a href="{% url 'userapp:contact-us' %}">Contact</a></li>
+                    <li class="notification"><a href="javascript:void(0)">Notifications</a>
+                        <div class="notificationDet">
+                            <ul>
+                                <li>
+                                    <a href="{% url 'userapp:notification-detail' %}">
+                                        <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'userapp:notification-detail' %}">
+                                        <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'userapp:notification-detail' %}">
+                                        <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'userapp:notification-detail' %}">
+                                        <h2 class="active">Deepanshu Tyagi <span>2 hours</span></h2>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="viewAllbtnss">
+                                <ul>
+                                    <li><a href="javascript:void(0)" class="btns">View all</a></li>
+                                    <li><a href="javascript:void(0)" class="btns activee">Remove all</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% block body %}
+{% endblock body %}
+<footer class="footerAll padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="footerLeft">
+                    <div class="footerlogo">
+                        <img src="{% static 'userapp/imgs/logo.svg' %}" alt="logo">
+                    </div>
+                    <p class="copyRight">
+                        Copyright © 2021 <span class="colorGreen">BRASI</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footerMiddle">
+                    <ul>
+                        <li>FAQs</li>
+                        <li><a href="javascript:void(0)"> For Survivors</a></li>
+                        <li><a href="javascript:void(0)"> For Service Providers</a></li>
+                        <li><a href="javascript:void(0)">For License Holders</a></li>
+                        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footerMiddle right">
+                    <ul>
+                        <li>Follow/Contact Us
+                        </li>
+                        <li><a href="javascript:void(0)">Twitter</a></li>
+                        <li><a href="javascript:void(0)">Facebook</a></li>
+                        <li><a href="javascript:void(0)">Instagram</a></li>
+                        <li><a href="javascript:void(0)">Email</a></li>
+                        <li><a href="javascript:void(0)">Term of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<script src="{% static 'userapp/js/jquery.js' %}"></script>
+<script src="{% static 'userapp/js/bootstrap.min.js' %}"></script>
+<!-- <script src="js/owl.carousel.min.js"></script> -->
+<script src="{% static 'userapp/js/custom.js' %}"></script>
+
+</body>
+
+</html>

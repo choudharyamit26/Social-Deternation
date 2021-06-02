@@ -1,0 +1,1024 @@
+{% extends 'userapp/base.html' %}
+{% load static %}
+{% block body %}
+<section class="chatAll">
+    <div class="container">
+        <div class="chatInner">
+            <div class="chatName">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#name" class="active">Active Chats</a></li>
+                    <li><a data-toggle="tab" href="#call">Calls</a></li>
+<!--                    <li><a data-toggle="tab" href="#record">Recordings</a></li>-->
+                </ul>
+
+                <div class="tab-content">
+
+                    <div id="name" class="tab-pane fade in active show">
+                        <div class="form-group search">
+                            <input type="text" placeholder="Search" class="form-control formControl">
+                            <span><img src="{% static 'userapp/imgs/search.svg' %}" alt="search"></span>
+                        </div>
+                        <div class="scrollbar" id="style-1">
+                            <ul class="chatdetail force-overflow">
+                                <li class="active">
+                                    <a href="javascript:void(0)" data-toggle="tab" href="#chat1" class="active hover">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time message">1</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="tab" href="#chat2" class="unactive">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="tab" href="#chat1" class="unactive">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="tab" href="#chat1" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="active">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p>Hello Sir/ma'am ...
+                                                    I am still searching for my job its been almost 4 months.
+                                                    Without
+                                                    any income surviving with the family is too horrible. I am
+                                                    passing
+                                                    hard days now. That is the reason I am approaching my connection
+                                                    for
+                                                    my job need. I am having 4.11 years experience in Telecom
+                                                    Industry
+                                                    (RF Profile).</p>
+                                            </div>
+                                            <h5 class="time">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="call" class="tab-pane fade">
+                        <div class="form-group search">
+                            <input type="text" placeholder="Search Call" class="form-control formControl">
+                            <span><img src="{% static 'userapp/imgs/search.svg' %}" alt="search"></span>
+                        </div>
+                        <div class="scrollbar" id="style-1">
+                            <ul class="chatdetail force-overflow">
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="">
+                                        <div class="photo">
+                                            <img src="{% static 'userapp/imgs/chat.png' %}" alt="chat">
+                                        </div>
+                                        <div class="chattimmer">
+                                            <div class="chatcon">
+                                                <h2>Deepanshu Tyagi</h2>
+                                                <p><span><img src="{% static 'userapp/imgs/phone.svg' %}" alt="phone"></span>
+                                                    Today at 2:05 PM</p>
+                                            </div>
+                                            <h5 class="time ">01.02.21</h5>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+<!--                    <div id="record" class="tab-pane fade">-->
+<!--                        <div class="form-group search">-->
+<!--                            <input type="text" placeholder="Search Recordings" class="form-control formControl">-->
+<!--                            <span><img src="imgs/search.svg" alt="search"></span>-->
+<!--                        </div>-->
+<!--                        <div class="scrollbar" id="style-1">-->
+<!--                            <ul class="chatdetail force-overflow record">-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/play.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p><span class="play"><span class="muchplay"></span></span></p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/play.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p><span class="play"><span class="muchplay"></span></span></p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/play.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p><span class="play"><span class="muchplay"></span></span></p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="">-->
+<!--                                        <div class="photo">-->
+<!--                                            <img src="imgs/play.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p><span class="play"><span class="muchplay"></span></span></p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <a href="javascript:void(0)" class="" data-toggle="modal" data-target="#video">-->
+<!--                                        <div class="photo photo2">-->
+<!--                                            <img src="imgs/pause.svg" alt="chat">-->
+<!--                                        </div>-->
+<!--                                        <div class="chattimmer">-->
+<!--                                            <div class="chatcon">-->
+<!--                                                <h2>Deepanshu Tyagi <span class="regular">2:05 </span></h2>-->
+<!--                                                <p>12 Min 40 Sec</p>-->
+<!--                                            </div>-->
+<!--                                            <h5 class="time download"><img src="imgs/download.svg" alt="download">-->
+<!--                                            </h5>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="chatdetails" style="position: relative;">
+                <div class="AudioCall call1">
+                    <div class="audioHeader">
+                        <h2>Deepu Tyagi</h2>
+                        <p>Call in Progress</p>
+                        <h5>6:59</h5>
+                    </div>
+                    <div class="audioMiddle">
+                        <a href="javascript:void(0)" class="cutcall">
+                            <img src="{% static 'userapp/imgs/call.svg' %}" alt="call">
+                        </a>
+                    </div>
+                    <div class="audioBottom">
+                        <ul>
+                            <li><a href="javascript:void(0)">
+                                <img src="{% static 'userapp/imgs/mute.svg' %}" alt="icon">
+                            </a></li>
+                            <li><a href="javascript:void(0)" class="vidio">
+                                <img src="{% static 'userapp/imgs/videocall.svg' %}" alt="icon">
+                            </a></li>
+                            <li><a href="javascript:void(0)" class="message">
+                                <img src="{% static 'userapp/imgs/mesage.svg' %}" alt="icon">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="AudioCall videoCall call2">
+                    <div class="audioHeader">
+                        <h2>Deepu Tyagi</h2>
+                        <p>Call in Progress</p>
+                        <h5>6:59</h5>
+                    </div>
+                    <div class="audioMiddle audioMiddle2" style="background-image: url('./imgs/girl2.png');">
+                        <a href="javascript:void(0)" class="cutcall">
+                            <img src="{% static 'userapp/imgs/call.svg' %}" alt="call">
+                        </a>
+                    </div>
+                    <div class="audioBottom" style="position: relative;">
+                        <div class="girlImg">
+                            <img src="{% static 'userapp/imgs/girl3.png' %}" alt="girl">
+                        </div>
+                        <ul>
+                            <li><a href="javascript:void(0)">
+                                <img src="{% static 'userapp/imgs/mute.svg' %}" alt="icon">
+                            </a></li>
+                            <li><a href="javascript:void(0)">
+                                <img src="{% static 'userapp/imgs/videocall.svg' %}" alt="icon">
+                            </a></li>
+                            <li><a href="javascript:void(0)">
+                                <img src="{% static 'userapp/imgs/mesage.svg' %}" alt="icon" class="message2">
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chatterName">
+                    <h2 class="head">Deepanshu Tyagi</h2>
+                </div>
+                <div class="returnCallAudio">
+                    <h3>Click to return to call</h3>
+                </div>
+                <div class="returnCallVideo">
+                    <h3>Click to return to call</h3>
+                </div>
+                <div class="chatScroll scrollbar" id="style-1" style="margin-right: 2px;">
+                    <div class="alldetailschat force-overflow">
+                        <div class="sender">
+                            <p>Hello Franky!</p>
+                            <span><img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile"></span>
+                        </div>
+                        <div class="sender">
+                            <p>How are you doing today?</p>
+                            <span></span>
+                        </div>
+                        <div class="timemessage">
+                            <p>12.00 PM</p>
+                        </div>
+                        <div class="reciver">
+                            <span><img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile"></span>
+                            <p>Hi George! Nice to hear you again!</p>
+
+                        </div>
+                        <div class="reciver">
+                            <span></span>
+                            <p>I’m fine, thank you! And what about you? Is everything ok?</p>
+
+                        </div>
+                        <div class="timemessage left">
+                            <p>12.00 PM</p>
+                        </div>
+                        <div class="sender">
+                            <p>Yep, thanks!</p>
+                            <span><img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile"></span>
+                        </div>
+                        <div class="sender">
+                            <p>May I ask you a favour?</p>
+                            <span></span>
+                        </div>
+                        <div class="sender">
+                            <p>What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry Lorem Ipsum has been the industry’s standard dummy text ever since the
+                                1500s
+                                when an unknown printer took a galley of type and scrambled it to make a type
+                                specimen
+                                book it has?</p>
+                            <span></span>
+                        </div>
+                        <div class="sender">
+                            <p>What does this dummy text mean?</p>
+                            <span></span>
+                        </div>
+                        <div class="reciver">
+                            <span><img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile"></span>
+                            <p>What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry Lorem Ipsum has been the industry’s standard dummy text ever since the
+                                1500s
+                                when an unknown printer took a galley of type and scrambled it to make a type
+                                specimen
+                                book it has?</p>
+
+                        </div>
+                        <div class="reciver">
+                            <span></span>
+                            <p>What does this dummy text mean?</p>
+
+                        </div>
+                        <div class="sender">
+                            <p>What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting
+                                industry Lorem Ipsum has been the industry’s standard dummy text ever since the
+                                1500s
+                                when an unknown printer took a galley of type and scrambled it to make a type
+                                specimen
+                                book it has?</p>
+                            <span><img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile"></span>
+                        </div>
+                        <div class="sender">
+                            <p>What does this dummy text mean?</p>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group Messegesend">
+                    <input type="text" class="form-control formControl" placeholder="Enter your message here">
+                    <a href="#0" class="sendBtn"><img src="{% static 'userapp/imgs/sendbtn.svg' %}" alt="send"></a>
+                </div>
+            </div>
+            <div class="chaticon">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0)" class="video"><img src="{% static 'userapp/imgs/voice.svg' %}" alt="voice"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="vidio"><img src="{% static 'userapp/imgs/video.svg' %}" alt="voice"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modalBox">
+
+    <div class="modal" id="video">
+        <div class="modal-dialog" style="max-width: 1012px;">
+            <div class="modal-content" style="background:transparent;">
+
+                <div class="modal-body" style="background:transparent;padding: 0;">
+                    <button type="button" class="close" data-dismiss="modal" style="right: 75px;"><img
+                            src="{% static 'userapp/imgs/closewhite.svg' %}"
+                            alt="close"></button>
+                    <div class="videoPlayer">
+                        <video id='video' controls
+                               src='https://player.vimeo.com/external/271851475.sd.mp4?s=1a5c9b2541b420c133ded968b7c042fda26a8c0e&profile_id=165'
+                        ></video>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="21" viewBox="0 0 16 21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: purple;
+        font-size: 20px;
+        font-family: GothamCondensed-Medium, Gotham;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+    </style>
+  </defs>
+  <g id="Group_38005" data-name="Group 38005" transform="translate(-1118 -817)">
+    <text id="_" data-name="&lt;" class="cls-1" transform="translate(1130 835)"><tspan x="-3.57" y="0">&lt;</tspan></text>
+    <text id="_2" data-name="&lt;" class="cls-1" transform="translate(1122 835)"><tspan x="-3.57" y="0">&lt;</tspan></text>
+  </g>
+</svg>

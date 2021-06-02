@@ -1,0 +1,733 @@
+{% extends 'userapp/base.html' %}
+{% load static %}
+{% block body %}
+    <section class="filterAll ">
+
+        <div class="container">
+
+            <div class="booking-tabs">
+                <ul class="nav nav-tabs" style="display: flex;justify-content: flex-end;">
+                    <li><a data-toggle="tab" href="#booking6">Requested</a></li>
+                    <li><a data-toggle="tab" href="#booking2">Accepted</a></li>
+                    <li class="active"><a data-toggle="tab" href="#booking3" class="active">Ongoing</a></li>
+                    <li><a data-toggle="tab" href="#booking4">Rejected</a></li>
+                    <li><a data-toggle="tab" href="#booking5">Completed</a></li>
+                </ul>
+                <div class="row" style="padding-top: 40px;">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control formControl" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="before">
+                                <select name="year" id="year" class="form-control transparent formControl">
+                                    <option value="o">Category</option>
+                                    <option value="1">Category1</option>
+                                    <option value="2">Category2</option>
+                                    <option value="3">Category3</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div class="before">
+                                <select name="year" id="year" class="form-control transparent formControl">
+                                    <option value="o">Ratings</option>
+                                    <option value="1">5</option>
+                                    <option value="2">4</option>
+                                    <option value="3">3</option>
+                                    <option value="4">2</option>
+                                    <option value="5">1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btnsBottom btnsBoking">
+                    <div class="modBt">
+                        <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Reset</a>
+                        <a href="javascript:void(0)" class="btns modalbtns">Search</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-content">
+
+                <div id="booking2" class="tab-pane fade">
+                    <section class="tableList">
+                        <div class="container">
+                            <div class="tableDet">
+                                <div class="explortBtns">
+                                    <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}" alt="export"></a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name of Service Provider</th>
+                                                <th>Category</th>
+                                                <th>Amount Paid</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Accepted</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>02</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Accepted</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>03</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Accepted</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>04</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Accepted</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="pagination">
+                                    <div class="record">
+                                        <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                    </div>
+                                    <div class="pagin">
+                                        <ul>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="active">1</a></li>
+                                            <li><a href="javascript:void(0)">2</a></li>
+                                            <li><a href="javascript:void(0)">3</a></li>
+                                            <li><a href="javascript:void(0)">4</a></li>
+                                            <li><a href="javascript:void(0)">5</a></li>
+                                            <li><a href="javascript:void(0)">6</a></li>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                        alt="arrow"></a></li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="shown">
+                                        <h2>Show per page <span><select name="shown" id="shown">
+                                                    <option value="shown1">10</option>
+                                                    <option value="shown2">20</option>
+                                                    <option value="shown3">50</option>
+                                                    <option value="shown4">100</option>
+                                                </select></span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="booking3" class="tab-pane fade in active show">
+                    <section class="tableList">
+                        <div class="container">
+                            <div class="tableDet">
+                                <div class="explortBtns">
+                                    <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}" alt="export"></a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name of Service Provider</th>
+                                                <th>Category</th>
+                                                <th>Amount Paid</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorYellow">Contacted</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>02</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorYellow">Ongoing</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>03</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorYellow">Ongoing</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>04</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorYellow">Ongoing</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="pagination">
+                                    <div class="record">
+                                        <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                    </div>
+                                    <div class="pagin">
+                                        <ul>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="active">1</a></li>
+                                            <li><a href="javascript:void(0)">2</a></li>
+                                            <li><a href="javascript:void(0)">3</a></li>
+                                            <li><a href="javascript:void(0)">4</a></li>
+                                            <li><a href="javascript:void(0)">5</a></li>
+                                            <li><a href="javascript:void(0)">6</a></li>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                        alt="arrow"></a></li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="shown">
+                                        <h2>Show per page <span><select name="shown" id="shown">
+                                                    <option value="shown1">10</option>
+                                                    <option value="shown2">20</option>
+                                                    <option value="shown3">50</option>
+                                                    <option value="shown4">100</option>
+                                                </select></span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="booking4" class="tab-pane fade">
+                    <section class="tableList">
+                        <div class="container">
+                            <div class="tableDet">
+                                <div class="explortBtns">
+                                    <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}" alt="export"></a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name of Service Provider</th>
+                                                <th>Category</th>
+                                                <th>Amount Paid</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorred">Rejected-Not
+                                                        Interested</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>02</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorred">Rejected-Not
+                                                        Interested</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>03</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorred">Rejected-Not
+                                                        Interested</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>04</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorred">Rejected-Availability
+                                                        Changed</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="pagination">
+                                    <div class="record">
+                                        <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                    </div>
+                                    <div class="pagin">
+                                        <ul>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="active">1</a></li>
+                                            <li><a href="javascript:void(0)">2</a></li>
+                                            <li><a href="javascript:void(0)">3</a></li>
+                                            <li><a href="javascript:void(0)">4</a></li>
+                                            <li><a href="javascript:void(0)">5</a></li>
+                                            <li><a href="javascript:void(0)">6</a></li>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                        alt="arrow"></a></li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="shown">
+                                        <h2>Show per page <span><select name="shown" id="shown">
+                                                    <option value="shown1">10</option>
+                                                    <option value="shown2">20</option>
+                                                    <option value="shown3">50</option>
+                                                    <option value="shown4">100</option>
+                                                </select></span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="booking5" class="tab-pane fade">
+                    <section class="tableList">
+                        <div class="container">
+                            <div class="tableDet">
+                                <div class="explortBtns">
+                                    <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}" alt="export"></a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name of Service Provider</th>
+                                                <th>Category</th>
+                                                <th>Amount Paid</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Completed</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>02</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Completed</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>03</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Completed</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>04</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorlight">Completed</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="pagination">
+                                    <div class="record">
+                                        <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                    </div>
+                                    <div class="pagin">
+                                        <ul>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="active">1</a></li>
+                                            <li><a href="javascript:void(0)">2</a></li>
+                                            <li><a href="javascript:void(0)">3</a></li>
+                                            <li><a href="javascript:void(0)">4</a></li>
+                                            <li><a href="javascript:void(0)">5</a></li>
+                                            <li><a href="javascript:void(0)">6</a></li>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                        alt="arrow"></a></li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="shown">
+                                        <h2>Show per page <span><select name="shown" id="shown">
+                                                    <option value="shown1">10</option>
+                                                    <option value="shown2">20</option>
+                                                    <option value="shown3">50</option>
+                                                    <option value="shown4">100</option>
+                                                </select></span></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="booking6" class="tab-pane fade ">
+                    <section class="tableList">
+                        <div class="container">
+                            <div class="tableDet">
+                                <div class="explortBtns">
+                                    <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/export.svg' %}" alt="export"></a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name of Service Provider</th>
+                                                <th>Category</th>
+                                                <th>Amount Paid</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorr">Pending</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>02</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorYellow">Pending</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>03</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorYellow">Pending</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>04</td>
+                                                <td>Ankita</td>
+                                                <td>Counsellor</td>
+                                                <td>£40 - Paypal</td>
+                                                <td><span class="colorYellow">Pending</span></td>
+                                                <td><span class="action">
+
+                                                        <a href="javascript:void(0)" data-toggle="modal"
+                                                            data-target="#ongoingDetail" class="act">
+                                                            <span><img src="{% static 'userapp/imgs/eye.svg' %}" alt="eye"></span>
+                                                            View Details
+                                                        </a>
+                                                    </span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="pagination">
+                                    <div class="record">
+                                        <h2>Total Records: <span class="colorGreen">4</span></h2>
+                                    </div>
+                                    <div class="pagin">
+                                        <ul>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow1.svg' %}" alt="arrow"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="active">1</a></li>
+                                            <li><a href="javascript:void(0)">2</a></li>
+                                            <li><a href="javascript:void(0)">3</a></li>
+                                            <li><a href="javascript:void(0)">4</a></li>
+                                            <li><a href="javascript:void(0)">5</a></li>
+                                            <li><a href="javascript:void(0)">6</a></li>
+                                            <li> <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow2.svg' %}"
+                                                        alt="arrow"></a></li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/arrow3.svg' %}" alt="arrow"></a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="shown">
+                                        <h2>Show per page <span><select name="shown" id="shown">
+                                                    <option value="shown1">10</option>
+                                                    <option value="shown2">20</option>
+                                                    <option value="shown3">50</option>
+                                                    <option value="shown4">100</option>
+                                                </select></span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modalBox">
+        <div class="modal" id="ongoingDetail">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body" style="padding: 0;">
+                        <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
+                                alt="close"></button>
+                        <div class="ongoingDetails" style="padding: 25px;padding-bottom: 0;">
+                            <div class="ongoinProfile">
+                                <div class="onprofileLeft">
+                                    <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profie">
+                                    <div class="onprofCon">
+                                        <h2>Mity Khan <span style="margin-left: 10px;"><img src="{% static 'userapp/imgs/img.png' %}"
+                                                    alt="img"></span></h2>
+                                        <p>Category: <span>Counsellor</span> <span class="colorGreen fonto">£40 /Hour</span></p>
+                                        <ul>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                            </li>
+                                            <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}" alt="star"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="decription">
+                                    <h2>Description:</h2>
+                                    <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out
+                                        print, graphic or web designs. The passage is attributed to an unknown
+                                        typesetter in the 15th century who is thought to have scrambled parts of
+                                        Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                             
+                                <tbody>
+                                    <tr>
+                                        <td><span class="bold">Qualifications:</span></td>
+                                        <td>Bachelor of Psychology M.Sc
+                                            in Counselling </td>
+                                   
+                                    </tr>
+                                    <tr>
+                                        <td><span class="bold">Experience:</span></td>
+                                        <td>12 Years</td>
+                            
+                                    </tr>
+                                    <tr>
+                                        <td><span class="bold">Selected Slots:</span></td>
+                                        <td>May 04,2021 at 06 PM BST</td>
+                            
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
