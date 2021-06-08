@@ -1,0 +1,17 @@
+ 
+@media screen and (max-width: 990px) and (min-width: 768px) {
+    .SliderArea .sliderform{ right: 0 }
+}   
+ 
+@media screen and (max-width: 767px){ 
+
+    .Header .Logo{ margin: 8px 0 -20px 0px;width: 250px;}
+    .SliderArea .carousel-item img{ bottom: auto; width: 250px; height: 250px; top: 115px; left: 0; right: 0;}
+    .SliderArea .sliderform{ bottom: 0; height: auto; top: auto; width: 100%; min-width: inherit; right: 0;}
+    .SliderArea .sliderform ul li{ display: inline-block; margin: 0 5px 10px }
+    .SliderArea .sliderform ul li a{ width: 85px !important;}
+    .SliderArea .sliderform ul li:nth-child(4){ display: block; }
+    .SliderArea .sliderform ul li a.socaillogin span.icon{ position: relative; height: 100%; width: 100%; border: none;}
+    .SliderArea .sliderform ul li a span.text{ display: none; }
+    
+} 

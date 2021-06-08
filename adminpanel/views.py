@@ -7,7 +7,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import PasswordContextMixin
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect, HttpResponse
+from django.core.paginator import Paginator
+from django.db.models import Q
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
@@ -19,8 +21,9 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.generic import ListView, View, TemplateView, FormView
 
+# from .filters import OrganizationFilter
 from .forms import AdminLoginForm
-from .models import User
+from .models import User, Organization, SubscriptionPlan, SubscriptionStatus
 
 user = get_user_model()
 
@@ -288,7 +291,7 @@ class PasswordResetView(View):
 
 class SuperAdminLogin(View):
     model = User
-    template_name = 'superadmin/login.html'
+    template_name = 'superadmin/new/login.html'
     form_class = AdminLoginForm
 
     def get(self, request, *args, **kwargs):
@@ -296,14 +299,14 @@ class SuperAdminLogin(View):
         try:
             if self.request.COOKIES.get('cid1') and self.request.COOKIES.get('cid2') and self.request.COOKIES.get(
                     'cid3'):
-                return render(self.request, 'superadmin/login.html',
+                return render(self.request, 'superadmin/new/login.html',
                               {'form': form, 'email': self.request.COOKIES.get('cid1'),
                                'password': self.request.COOKIES.get('cid2'),
                                'remember_me': self.request.COOKIES.get('cid3')})
             else:
-                return render(self.request, 'superadmin/login.html', {'form': form})
+                return render(self.request, 'superadmin/new/login.html', {'form': form})
         except:
-            return render(self.request, 'superadmin/login.html', {'form': form})
+            return render(self.request, 'superadmin/new/login.html', {'form': form})
         # return render(self.request, "superadmin/login.html")
 
     def post(self, request, *args, **kwargs):
@@ -355,14 +358,42 @@ class SuperAdminLogin(View):
 
 class SuperAdminDashboard(LoginRequiredMixin, ListView):
     model = User
-    template_name = "superadmin/dashboard.html"
+    template_name = "superadmin/new/dashboard.html"
     login_url = "adminpanel:superadmin"
 
 
 class CustomerManagementView(LoginRequiredMixin, ListView):
-    model = User
-    template_name = "superadmin/customer-management.html"
+    model = SubscriptionPlan
+    template_name = "superadmin/new/customer-management.html"
     login_url = "adminpanel:superadmin"
+    paginate_by = 10
+
+    def get(self, request, *args, **kwargs):
+        if self.request.GET.get('organization_name'):
+            subscription_plan_objects = SubscriptionStatus.objects.filter(
+                Q(organization_name__organization_name__iexact=self.request.GET['organization_name']) |
+                Q(organization_name__first_name__iexact=self.request.GET['first_name']) |
+                Q(organization_name__email__iexact=self.request.GET['email']) |
+                Q(organization_name__client_code__iexact=self.request.GET['client_code']) |
+                Q(organization_name__created_at__range=(self.request.GET['from_date'], self.request.GET['to_date'])))
+            if len(subscription_plan_objects) > 0:
+                return render(self.request, 'superadmin/new/customer-management.html',
+                              {'object_list': SubscriptionStatus.objects.all(), 'filter': subscription_plan_objects})
+            else:
+
+                return render(self.request, 'superadmin/new/customer-management.html',
+                              {'object_list': SubscriptionStatus.objects.all(), 'no_data': 'subscription_plan_objects'})
+        else:
+            organizations = SubscriptionStatus.objects.all().order_by('-id')
+            paginator = Paginator(organizations, self.paginate_by)
+            page_number = self.request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
+            context = {
+                'object_list': SubscriptionStatus.objects.all(),
+                'pages': page_obj
+                # 'page_obj': page_obj
+            }
+            return render(self.request, 'superadmin/new/customer-management.html', context)
 
 
 class SuperAdminLogout(LoginRequiredMixin, View):
@@ -409,35 +440,158 @@ class PasswordChangeDoneView(PasswordContextMixin, TemplateView):
 
 
 class SuperAdminSupscriptionView(LoginRequiredMixin, ListView):
-    model = User
-    template_name = 'superadmin/plan.html'
+    model = SubscriptionPlan
+    template_name = 'superadmin/new/plan.html'
     login_url = "adminpanel:superadmin"
+    paginate_by = 1
+
+    def get(self, request, *args, **kwargs):
+        print(self.request.GET)
+        if self.request.GET.get('category'):
+            subs_obj = SubscriptionPlan.objects.filter(
+                Q(category__iexact=self.request.GET.get('category' or None)) |
+                Q(name__iexact=self.request.GET.get('name' or None)) |
+                Q(duration__iexact=self.request.GET.get('duration' or None)) |
+                Q(price__iexact=self.request.GET.get('price' or None)) |
+                Q(active__iexact=self.request.GET.get('active')) |
+                Q(created_at__range=(self.request.GET.get('from' or None), self.request.GET.get('to' or None))))
+            print(subs_obj)
+            return render(self.request, "superadmin/new/plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans'),
+                           'object_list2': SubscriptionPlan.objects.filter(plan_type='General Subscription Plans')})
+        elif self.request.GET.get('category2'):
+            subs_obj2 = SubscriptionPlan.objects.filter(
+                Q(category__iexact=self.request.GET.get('category2' or None)) |
+                Q(name__iexact=self.request.GET.get('name2' or None)) |
+                Q(duration__iexact=self.request.GET.get('duration2' or None)) |
+                Q(price__iexact=self.request.GET.get('price2' or None)) |
+                Q(active__iexact=self.request.GET.get('active2' or None)) |
+                Q(created_at__range=(self.request.GET.get('from2'), self.request.GET.get('to2'))))
+            print('---->>>', subs_obj2)
+            return render(self.request, "superadmin/new/plan.html",
+                          {'subs_obj2': subs_obj2.exclude(plan_type='Brasi Platform'),
+                           'object_list2': SubscriptionPlan.objects.filter(plan_type='General Subscription Plans')})
+        else:
+            organizations = SubscriptionPlan.objects.filter(plan_type='Brasi Platform').order_by('-id')
+            paginator = Paginator(organizations, self.paginate_by)
+            page_number = self.request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
+            organizations = SubscriptionPlan.objects.filter(plan_type='General Subscription Plans').order_by('-id')
+            paginator = Paginator(organizations, self.paginate_by)
+            page_number = self.request.GET.get('page')
+            page_obj_2 = paginator.get_page(page_number)
+            context = {
+                'object_list': SubscriptionPlan.objects.filter(plan_type='Brasi Platform'),
+                'object_list2': SubscriptionPlan.objects.filter(plan_type='General Subscription Plans'),
+                'pages': page_obj,
+                'pages_2': page_obj_2
+                # 'page_obj': page_obj
+            }
+            return render(self.request, "superadmin/new/plan.html", context)
+
+
+class CreateSubscriptionPlan(View):
+    model = SubscriptionPlan
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        plan_type = ' '.join(self.request.POST['plan_type'].split('_'))
+        SubscriptionPlan.objects.create(
+            plan_type=plan_type,
+            category=self.request.POST['category'],
+            name=self.request.POST['name'],
+            description=self.request.POST['description'],
+            duration=self.request.POST['duration'],
+            price=self.request.POST['price'],
+            number_of_persons=self.request.POST['number_of_persons'],
+            active=self.request.POST['check'].title(),
+        )
+        messages.success(self.request, 'Subscription plan added successfully')
+        return redirect("adminpanel:superadmin-subscription-plan")
 
 
 class SuperAdminClientsView(LoginRequiredMixin, ListView):
     model = User
-    template_name = 'superadmin/clients.html'
+    template_name = 'superadmin/new/clients.html'
     login_url = "adminpanel:superadmin"
 
 
 class SuperAdminServiceProviders(LoginRequiredMixin, ListView):
     model = User
-    template_name = 'superadmin/provider.html'
+    template_name = 'superadmin/new/provider.html'
     login_url = "adminpanel:superadmin"
 
 
 class SuperAdminProvidersCategory(LoginRequiredMixin, ListView):
     model = User
-    template_name = 'superadmin/provider-category.html'
+    template_name = 'superadmin/new/provider-category.html'
 
 
 class SuperAdminAssaultFormView(LoginRequiredMixin, ListView):
     model = User
-    template_name = 'superadmin/record_filed.html'
+    template_name = 'superadmin/new/record_filed.html'
     login_url = "adminpanel:superadmin"
 
 
 class SuperAdminAssaultRecords(LoginRequiredMixin, ListView):
     model = User
-    template_name = 'superadmin/assault-records.html'
+    template_name = 'superadmin/new/assault-records.html'
     login_url = "adminpanel:superadmin"
+
+
+class CreateOrganization(View):
+    model = Organization
+    template_name = 'superadmin/new/customer-management.html'
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        # return redirect("adminpanel:customer-management")
+        organization_name = self.request.POST['organization_name']
+        first_name = self.request.POST['first_name']
+        last_name = self.request.POST['last_name']
+        mobile_number = self.request.POST['mobile_number']
+        email = self.request.POST['email']
+        check = self.request.POST['check']
+        try:
+            try:
+                organization_by_name = Organization.objects.get(Q(organization_name=organization_name) | Q(email=email))
+                print(organization_by_name)
+                # organization_by_email = Organization.objects.get(email=email)
+                # if organization_by_name or organization_by_email:
+                return JsonResponse({'message': 'Organization with this name/email already exists'}, status=400)
+            except Exception as e:
+                print(e)
+                org = Organization.objects.create(organization_name=organization_name, first_name=first_name,
+                                                  last_name=last_name,
+                                                  mobile_number=mobile_number, email=email, active=check.title())
+                SubscriptionStatus.objects.create(organization_name=org)
+                messages.success(self.request, "Organization created successfully")
+                return redirect("adminpanel:customer-management")
+        except Exception as e:
+            return JsonResponse({'message': str(e)}, status=400)
+
+
+class EditOrganization(View):
+    model = Organization
+
+    def post(self, request, *args, **kwargs):
+        print('From Edit organization--', self.request.POST)
+        print(args)
+        print(kwargs)
+        try:
+            organization_by_name = Organization.objects.get(Q(email=self.request.POST['edit_email']) | Q(
+                organization_name=self.request.POST['edit_organization_name']))
+            print(organization_by_name)
+            return JsonResponse(
+                {'message': 'Organization with email/name already exists. Please supply different values'},
+                status=400)
+        except Exception as e:
+            print('Exception', e)
+            organization_obj = Organization.objects.get(id=self.request.POST['obj_id'])
+            organization_obj.organization_name = self.request.POST['edit_organization_name']
+            organization_obj.first_name = self.request.POST['edit_first_name']
+            organization_obj.last_name = self.request.POST['edit_last_name']
+            organization_obj.email = self.request.POST['edit_email']
+            organization_obj.mobile_number = self.request.POST['edit_email']
+            organization_obj.save()
+            return redirect("adminpanel:customer-management")

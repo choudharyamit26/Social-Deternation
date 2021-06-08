@@ -1,0 +1,104 @@
+{% extends 'superadmin/new/new-base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+
+        <div class="Small-Wrapper">
+            <h4 class="Title"><span>Assault Records Management </span></h4>
+
+            <div class="Filter">
+
+                <div class="form-group">
+                    <label>Survivor Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Survivor Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="text" class="form-control" placeholder="Enter Email ID">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control" placeholder="Enter Mobile Number">
+                </div>
+
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button class="Button Reset"><i class="fa fa-refresh"></i></button>
+                    <button class="Button">Apply</button>
+                </div>
+            </div>
+
+            <div class="TableList">
+
+                <div class="CountExportArea">
+                    <a href="javascript:void(0);" class="Export"><i class="fa fa-file-excel-o"></i> Export </a>
+                    <label>
+                        Show per page
+                        <select>
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="CustomerTable">
+                    <table style="width: 120%">
+                        <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th width="150px">Survivor Name</th>
+                            <th>Email ID</th>
+                            <th>Mobile Number</th>
+                            <th>Paid Amount (£)</th>
+                            <th>Recorded On</th>
+                            <th>Database Match</th>
+                            <th>action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Jason</td>
+                            <td>Jasonjack121@gmail.com</td>
+                            <td>98001122</td>
+                            <td>87</td>
+                            <td>3/21/2021</td>
+                            <td>76%</td>
+                            <td><a href="javascript:void(0);" class="Contact">Contact</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Andy</td>
+                            <td>Helps develop cases by maintaining contact with people involved in the case</td>
+                            <td>321113342</td>
+                            <td>121</td>
+                            <td>3/21/2021</td>
+                            <td>82%</td>
+                            <td><a href="javascript:void(0);" class="Contact">Contact</a></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="Pagination">
+                <ul>
+                    <li><a href="#">Previous</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock body %}

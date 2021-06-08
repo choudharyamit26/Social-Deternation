@@ -1,33 +1,31 @@
 {% load static %}
 <html lang="en">
 <head>
-    <title>Brasi</title>
+    <title>Provider Category</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="{% static 'superadmin/css/style.css' %}"/>
-    <link rel="stylesheet" href="{% static 'superadmin/css/responsive.css' %}"/>
+    <link rel="stylesheet" href="{% static 'superadmin/new/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'superadmin/new/css/responsive.css' %}"/>
 </head>
 <body>
 
 <div class="Header">
     <div class="Logo">
-        <img src="{% static 'superadmin/images/Logo.png' %}">
+        <img src="{% static 'superadmin/new/images/Logo.png' %}">
     </div>
     <div class="Navigation">
         <div class="Avater">
             <a href="javascript:void(0);">
-                <figure><img src="{% static 'superadmin/images/profile.jpg' %}"></figure>
+                <figure><img src="{% static 'superadmin/new/images/profile.jpg' %}"></figure>
                 {{user}} </a>
             <ul>
                 <!-- <li>
                     <figure><img src="images/profile.jpg"></figure>
                     <h4> Bob Hyden <span>Administrator</span></h4>
                 </li>  -->
-                <li><a href="{% url 'adminpanel:change_password' %}"><span><i class="fa fa-unlock-alt"></i></span>
-                    Change Password</a></li>
-                <li><a href="{% url 'adminpanel:super-admin-logout' %}"><span><i class="fa fa-sign-out"></i></span> Sign
-                    Out</a></li>
+                <li><a href="{% url 'adminpanel:change_password' %}"><span><i class="fa fa-unlock-alt"></i></span> Change Password</a></li>
+                <li><a href="{% url 'adminpanel:super-admin-logout' %}"><span><i class="fa fa-sign-out"></i></span> Sign Out</a></li>
             </ul>
         </div>
         <div class="clear"></div>
@@ -60,46 +58,51 @@
                 <span><i class="fa fa-money"></i></span> Clients
             </a>
         </li>
+
         <li class="nav-item dropdown">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                 <span><i class="fa fa-product-hunt"></i></span> Service Providers
             </a>
             <div class="dropdown-menu">
                 <ul>
-                    <li><a href="provider.html"> List </a></li>
-                    <li><a href="provider-category.html"> Category </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-service-providers' %}active{% endif %}"><a href="{% url 'adminpanel:superadmin-service-providers' %}"> List </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-service-providers-category' %}active{% endif %}"><a href="{% url 'adminpanel:superadmin-service-providers-category' %}"> Category </a></li>
                 </ul>
             </div>
         </li>
 
-        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-service-providers' %}active{% endif %}">
-            <a href="{% url 'adminpanel:superadmin-service-providers' %}">
-                <span><i class="fa fa-product-hunt"></i></span> Service Providers
+        <li class="nav-item dropdown">
+            <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                <span><i class="fa fa-database"></i></span> Assault
             </a>
-        </li>
-        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-service-providers-category' %}active{% endif %}">
-            <a href="{% url 'adminpanel:superadmin-service-providers-category' %}">
-                <span><i class="fa fa-cubes"></i></span> Provider Category
-            </a>
-        </li>
-
-        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-assault-form' %}active{% endif %}">
-            <a href="{% url 'adminpanel:superadmin-assault-form' %}">
-                <span><i class="fa fa-database"></i></span> Assault Form
-            </a>
+            <div class="dropdown-menu">
+                <ul>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-assault-form' %}active{% endif %}"><a href="{% url 'adminpanel:superadmin-assault-form' %}"> Questions </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-assault-records' %}active{% endif %}"><a href="{% url 'adminpanel:superadmin-assault-records'  %}"> Records </a></li>
+                </ul>
+            </div>
         </li>
 
-        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-assault-records' %}active{% endif %}">
-            <a href="{% url 'adminpanel:superadmin-assault-records' %}">
-                <span><i class="fa fa-database"></i></span> Assault Records
-            </a>
-        </li>
 
         <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:change_password' %}active{% endif %}">
             <a href="{% url 'adminpanel:change_password' %}">
                 <span><i class="fa fa-unlock-alt" aria-hidden="true"></i></span> Change Password
             </a>
         </li>
+
+        <!-- <li class="nav-item dropdown">
+            <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                <span><i class="fa fa-font"></i></span> content Management
+            </a>
+            <div class="dropdown-menu">
+                <ul>
+                    <li> <a href="hero.html"> Hero </a> </li>
+                    <li> <a href="features.html"> Features </a> </li>
+                    <li> <a href="faq.html"> FAQ's </a> </li>
+                </ul>
+            </div>
+        </li>  -->
+
         <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:super-admin-logout' %}active{% endif %}">
             <a href="{% url 'adminpanel:super-admin-logout' %}">
                 <span><i class="fa fa-sign-out"></i></span> Sign Out
@@ -107,18 +110,13 @@
         </li>
     </ul>
 </div>
-<div class="content-wrapper">
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-warning alert-dismissible fade in" role="alert">
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {% endfor %}
-    {% endif %}
-</div>
 {% block body %}
 {% endblock body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="{% static 'superadmin/new/js/index.js' %}"></script>
+
 </body>
+</html>

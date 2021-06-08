@@ -3,7 +3,8 @@ from django.contrib.auth.views import LogoutView, PasswordResetDoneView, Passwor
 from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardInformationView, MyProfileView, \
     PasswordResetView, PasswordResetConfirmView, SuperAdminLogin, SuperAdminDashboard, CustomerManagementView, \
     SuperAdminLogout, PasswordChangeView, PasswordChangeDoneView, SuperAdminSupscriptionView, SuperAdminClientsView, \
-    SuperAdminServiceProviders, SuperAdminProvidersCategory, SuperAdminAssaultFormView, SuperAdminAssaultRecords
+    SuperAdminServiceProviders, SuperAdminProvidersCategory, SuperAdminAssaultFormView, SuperAdminAssaultRecords, \
+    CreateOrganization, CreateSubscriptionPlan,EditOrganization
 
 app_name = 'adminpanel'
 
@@ -24,6 +25,7 @@ urlpatterns = [
     path("superadmin-service-providers/", SuperAdminServiceProviders.as_view(), name="superadmin-service-providers"),
     path("superadmin-assault-form/", SuperAdminAssaultFormView.as_view(), name="superadmin-assault-form"),
     path("superadmin-assault-records/", SuperAdminAssaultRecords.as_view(), name="superadmin-assault-records"),
+    path("create-organization/", CreateOrganization.as_view(), name="create-organization"),
     path("superadmin-service-providers-category/", SuperAdminProvidersCategory.as_view(),
          name="superadmin-service-providers-category"),
     path("password-reset/", PasswordResetView.as_view(), name="password-reset"),
@@ -38,4 +40,6 @@ urlpatterns = [
     path('password-change-done/',
          PasswordChangeDoneView.as_view(template_name='superadmin/change_password_done.html'),
          name='password_change_done'),
+    path('create-subscription-plan/', CreateSubscriptionPlan.as_view(), name='create-subscription-plan'),
+    path('edit-organization/', EditOrganization.as_view(), name='edit-organization'),
 ]

@@ -1,61 +1,43 @@
-{% extends 'superadmin/base.html' %}
+{% extends 'superadmin/new/new-base.html' %}
 {% block body %}
 <div class="WrapperArea">
     <div class="WrapperBox">
-
         <div class="Small-Wrapper">
-            <h4 class="Title">Organization management
-                <a href="JavaScript:Void(0);" data-toggle="modal" data-target="#AddModal"> New Customer </a>
-            </h4>
-
+            <h4 class="Title">Clients </h4>
             <div class="FilterArea">
-
                 <div class="form-group">
-                    <label>Organizaton Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Organizaton Name">
+                    <label>Organization Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Organization  Name">
                 </div>
-
                 <div class="form-group">
-                    <label>Person Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Person Name">
+                    <label>Subscription Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Subscription Name">
                 </div>
-
                 <div class="form-group">
                     <label>Email ID</label>
                     <input type="text" class="form-control" placeholder="Enter Email ID">
                 </div>
-
                 <div class="form-group">
                     <label>Mobile Number</label>
                     <input type="text" class="form-control" placeholder="Enter Mobile Number">
                 </div>
-
                 <div class="form-group">
-                    <label>Client Code</label>
-                    <input type="text" class="form-control" placeholder="Enter Client  Code">
-                </div>
-
-                <div class="form-group">
-                    <label>Registered From</label>
+                    <label>Subscription From</label>
                     <input type="date" class="form-control" placeholder="Enter Name">
                 </div>
-
                 <div class="form-group">
-                    <label>Registered To</label>
+                    <label>Subscription To</label>
                     <input type="date" class="form-control" placeholder="Enter Name">
                 </div>
-
                 <div class="form-group">
                     <label>&nbsp;</label>
                     <button class="Button Reset"><i class="fa fa-refresh"></i></button>
                     <button class="Button">Apply</button>
                 </div>
             </div>
-
             <div class="TableList">
-
                 <div class="CountExportArea">
-                    <a href="" class="Export"><i class="fa fa-file-excel-o"></i> Export </a>
+                    <a href="javascript:void(0);" class="Export"><i class="fa fa-file-excel-o"></i> Export </a>
                     <label>
                         Show per page
                         <select>
@@ -67,34 +49,45 @@
                         </select>
                     </label>
                 </div>
-
                 <div class="CustomerTable">
-                    <table style="width: 125%">
+                    <table style="width: 135%">
                         <thead>
                         <tr>
                             <th>S.No</th>
-                            <th>Organization Name</th>
-                            <th>User Name</th>
-                            <th>Email ID</th>
-                            <th>Mobile Number</th>
-                            <th>Client Code</th>
-                            <th>Registered On</th>
+                            <th>Organization Info</th>
+                            <th>Contact Person Info</th>
+                            <th>Subscription Info</th>
+                            <th>Subscription Validity</th>
+                            <th>Subscription Satus</th>
                             <th>Recurring</th>
-                            <th>Subscription Status</th>
                             <th>action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td>1</td>
-                            <td>IBS Institute</td>
-                            <td>Vikas</td>
-                            <td>vikas12@gmail.com</td>
-                            <td>012103321</td>
-                            <td>A2Q2122</td>
-                            <td>04/12/2021</td>
-                            <td>Yes</td>
+                            <td>
+                                IBS Institute <br>
+                                121 Isdy Street, London Uk
+                            </td>
+                            <td>
+                                <strong>Name - </strong> Vikas <br>
+                                <strong>Email ID - </strong> vikas12@gmail.com <br>
+                                <strong>Contact - </strong> 012103321 <br>
+                                <strong>Membership - </strong> 32122
+                            </td>
+                            <td>
+                                <strong>Subsciption Category - </strong> Elite <br>
+                                <strong>Name - </strong> Basic 6 Months <br>
+                                <strong>Purchased Price - </strong> £ 40
+                            </td>
+                            <td>
+                                <strong>Start Date - </strong> 03/20/2021 <br>
+                                <strong>End Date - </strong> 03/20/2021
+                            </td>
+
                             <td><span class="green">Active</span></td>
+                            <td>Yes</td>
                             <td>
                                 <div class="Actions">
                                     <label class="Switch">
@@ -102,19 +95,24 @@
                                         <span class="slider"></span>
                                     </label>
 
-                                    <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
                                        data-target="#EditModal">
                                         <i class="fa fa-pencil-square-o"></i>
                                     </a>
 
-                                    <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
                                        data-target="#DeleteModal">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
-                                    <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#PasswordModal">
+                                    <a class="Blue" title="Change Password" href="JavaScript:Void(0);"
+                                       data-toggle="modal" data-target="#PasswordModal">
                                         <i class="fa fa-unlock-alt"></i>
+                                    </a>
+
+                                    <a class="Orange" title="Update Recurring" href="JavaScript:Void(0);"
+                                       data-toggle="modal" data-target="#RecurringModal">
+                                        <i class="fa fa-retweet"></i>
                                     </a>
                                 </div>
                             </td>
@@ -123,13 +121,19 @@
                         <tr>
                             <td>2</td>
                             <td></td>
-                            <td>Vikas</td>
-                            <td>vikas12@gmail.com</td>
-                            <td>012103321</td>
-                            <td>A2Q2122</td>
-                            <td>04/12/2021</td>
-                            <td>Yes</td>
+                            <td>Abby</td>
+                            <td>
+                                <strong>Subsciption Category - </strong> Elite <br>
+                                <strong>Name - </strong> 12 Months <br>
+                                <strong>Purchased Price - </strong> £ 32
+                            </td>
+                            <td>
+                                <strong>Start Date - </strong> 03/20/2021 <br>
+                                <strong>End Date - </strong> 03/20/2021
+                            </td>
+
                             <td><span class="red">Inactive</span></td>
+                            <td>No</td>
                             <td>
                                 <div class="Actions">
                                     <label class="Switch">
@@ -137,23 +141,29 @@
                                         <span class="slider"></span>
                                     </label>
 
-                                    <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
                                        data-target="#EditModal">
                                         <i class="fa fa-pencil-square-o"></i>
                                     </a>
 
-                                    <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
                                        data-target="#DeleteModal">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
-                                    <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#PasswordModal">
+                                    <a class="Blue" title="Change Password" href="JavaScript:Void(0);"
+                                       data-toggle="modal" data-target="#PasswordModal">
                                         <i class="fa fa-unlock-alt"></i>
+                                    </a>
+
+                                    <a class="Orange" title="Update Recurring" href="JavaScript:Void(0);"
+                                       data-toggle="modal" data-target="#RecurringModal">
+                                        <i class="fa fa-retweet"></i>
                                     </a>
                                 </div>
                             </td>
                         </tr>
+
 
                         </tbody>
                     </table>
@@ -184,7 +194,7 @@
                     <div class="Decline">
                         <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
                         <h3>Delete</h3>
-                        <p>Are you sure you want to delete this Customer ?</p>
+                        <p>Are you sure you want to delete this Clients ?</p>
                         <h4>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
@@ -202,7 +212,7 @@
                     <div class="Decline">
                         <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
                         <h3>Active</h3>
-                        <p>Are you sure you want to active this Customer ?</p>
+                        <p>Are you sure you want to active this Clients ?</p>
                         <h4>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
@@ -220,7 +230,7 @@
                     <div class="Decline">
                         <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
                         <h3>Inactive</h3>
-                        <p>Are you sure you want to inactive this Customer ?</p>
+                        <p>Are you sure you want to in-active this Clients ?</p>
                         <h4>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
@@ -231,47 +241,59 @@
         </div>
     </div>
 
-
     <div class="modal" id="EditModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="Category">
                         <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
-                        <h3>Edit Customer </h3>
+                        <h3>Edit Clients </h3>
 
                         <div class="form-group">
-                            <label>Organizaton Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Organizaton Name"
+                            <label>Organization Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Organization  Name"
                                    value="IBS Institute">
                         </div>
 
-                        <div class="form-group">
-                            <label>Person First Name <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter First Name" value="Vikas">
+                        <div class="CategoryBox">
+                            <h4>Contact Person Info</h4>
+                            <div class="form-group">
+                                <label>Name <sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Name" value="Vikas">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email ID <sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Email Address"
+                                       value="vikas12@gmail.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mobile Number <sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Mobile Number"
+                                       value="012103321">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Person Last Name <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Last Name" value="Smith">
-                        </div>
+                        <div class="CategoryBox">
+                            <h4>Subscription Info</h4>
+                            <div class="form-group">
+                                <label>Subsciption Category <sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Subsciption Category"
+                                       value="Elite">
+                            </div>
 
-                        <div class="form-group">
-                            <label>Email ID <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Email Address"
-                                   value="vikas12@gmail.com">
-                        </div>
+                            <div class="form-group">
+                                <label>Subsciption Name <sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Subsciption Name"
+                                       value="Basic 6 Months">
+                            </div>
 
-                        <div class="form-group">
-                            <label>Mobile Number <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Mobile Number" value="012103321">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="CheckBox">Make Inactive
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
+                            <div class="form-group">
+                                <label>Purchased Price<sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Purchased Price"
+                                       value="£ 40">
+                            </div>
                         </div>
 
                         <button class="Button">Submit</button>
@@ -287,7 +309,7 @@
                 <div class="modal-body">
                     <div class="Category">
                         <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
-                        <h3>Customer Change Password </h3>
+                        <h3>Clients Change Password </h3>
 
                         <div class="form-group">
                             <label>New Password</label>
@@ -298,62 +320,39 @@
                             <label>Confirm Password </label>
                             <input type="password" class="form-control" placeholder="Enter Confirm Password">
                         </div>
-
                         <button class="Button">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="modal" id="AddModal">
+    <div class="modal" id="RecurringModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="Category">
                         <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
-                        <h3>Add New Customer </h3>
+                        <h3>Update Recurring </h3>
 
                         <div class="form-group">
-                            <label>Organizaton Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Organizaton Name">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Person First Name <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter First Name">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Person Last Name <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Last Name">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email ID <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Email ID">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Mobile Number <sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Mobile Number">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="CheckBox">Make Inactive
-                                <input type="checkbox">
+                            <label class="CheckBox">Yes
+                                <input type="radio" name="recurring">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <button class="Button Cancel">Cancel</button>
 
-                        <button class="Button">Save</button>
+                        <div class="form-group">
+                            <label class="CheckBox">No
+                                <input type="radio" name="recurring">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <button class="Button">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 {% endblock body %}

@@ -1,0 +1,233 @@
+{% extends 'superadmin/new/new-base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+
+        <div class="Small-Wrapper">
+            <h4 class="Title">
+                <span>Assault Form Management </span>
+                <a href="JavaScript:Void(0);" data-toggle="modal" data-target="#AddFormModal"> Add Assault Form </a>
+                <a href="assault-form-edit.html" class="mr-3"> Edit </a>
+            </h4>
+
+            <div class="RecordForm">
+
+                <div class="RecordBox">
+                    <h5>When</h5>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.1 What year did this happen? </label>
+                            <select class="form-control">
+                                <option></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.2 What time of day was it?</label>
+                            <input type="time" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.3 Do you know the exact date?</label>
+                            <input type="date" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.4 Is there anything else you remember about the date?</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="RecordBox">
+                    <h5>Where</h5>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.1 Where did it happen? </label>
+                            <textarea rows="4" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.2 Are there any other details you remember about the location?</label>
+                            <textarea rows="4" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="RecordBox">
+                    <h5>People Who Know or Might Know</h5>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.1 Did anyone else see or hear either all or any part of what
+                                happened? </label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.2 Did you tell anyone about the incident? </label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.3 Did you interact with anyone right before or after the incident?</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.4 What information do you know about the people you told? </label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.5 What information do you know about any of the people described
+                                above?</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.6 Do you know if the offender told anyone about the incident? </label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="RecordBox">
+                    <h5>Consent</h5>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.1 What are details of consent? </label>
+                            <textarea rows="4" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="RecordBox">
+                    <h5>Incident (s)</h5>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.1 What happened? </label>
+                            <textarea rows="4" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="RecordBox">
+                    <h5>Offender(s)</h5>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.1 How many offenders were there? </label><br>
+                            <select class="form-control">
+                                <option></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.2 Was the offender with anyone else either at the time of the incident, or
+                                directly before or after?</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.3 What is their name?/What are their names? (if known)</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.4 What information do you know about these people? </label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.5 Do you know any other information about the offender(s)?</label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="RecordBox">
+                    <h5>Evidence</h5>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="">Q.1 What types of evidence do you have now (or think might exist)? </label>
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <h4 class="Title pb-5 text-center pt-3 ">
+                    <a href="JavaScript:Void(0);"> Submit</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ModalBox">
+
+    <div class="modal show" id="AddFormModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                        <h3>Add New Question </h3>
+                        <div class="form-group">
+                            <label>Category<sup>*</sup> </label>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="SelectCategory">
+                                        <option>Select Category</option>
+                                        <option>When</option>
+                                        <option>Where</option>
+                                        <option>People Who Know or Might Know</option>
+                                        <option>Consent</option>
+                                        <option>Incident (s)</option>
+                                        <option>Offender(s)</option>
+                                        <option>Evidence</option>
+                                    </select>
+                                    <input type="text" class="form-control" id="CustomCategory">
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="Addcategory">Add New Category</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type your question</label>
+                            <textarea rows="4" class="form-control"></textarea>
+                        </div>
+
+                        <div class="CategoryBox">
+                            <h4>Answer option</h4>
+
+                            <div class="form-group">
+                                <label class="CheckBox" id="Dropdown">Dropdown
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+
+
+                                <label class="CheckBox" id="Input">Input textbox
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+                            <div class="form-group" id="Options">
+                                <label>Dropdown Option </label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <button class="Button Cancel">Cancel</button>
+                        <button class="Button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
