@@ -1,3 +1,5 @@
+import csv
+
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
 from django.contrib import messages
 from django.contrib.auth import login, logout, get_user_model, update_session_auth_hash
@@ -510,6 +512,27 @@ class CreateSubscriptionPlan(View):
         return redirect("adminpanel:superadmin-subscription-plan")
 
 
+class EditSubscriptionPlan(View):
+    model = SubscriptionPlan
+
+    def post(self, request, *args, **kwargs):
+        print('From edit subscription plan', self.request.POST)
+        plan_type = ' '.join(self.request.POST['plan_type'].split('_'))
+        subs_obj = SubscriptionPlan.objects.get(id=self.request.POST['obj_id'])
+        subs_obj.plan_type = plan_type
+        subs_obj.category = self.request.POST['category']
+        subs_obj.name = self.request.POST['name']
+        subs_obj.description = self.request.POST['description']
+        subs_obj.duration = self.request.POST['duration']
+        subs_obj.price = self.request.POST['price']
+        subs_obj.number_of_persons = self.request.POST['number_of_persons']
+        subs_obj.active = self.request.POST['check'].title()
+        subs_obj.save()
+        print(subs_obj)
+        messages.success(self.request, 'Subscription plan updated successfully')
+        return redirect("adminpanel:superadmin-subscription-plan")
+
+
 class SuperAdminClientsView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'superadmin/new/clients.html'
@@ -579,12 +602,22 @@ class EditOrganization(View):
         print(args)
         print(kwargs)
         try:
-            organization_by_name = Organization.objects.get(Q(email=self.request.POST['edit_email']) | Q(
+            organization_by_name = Organization.objects.filter(Q(email=self.request.POST['edit_email']) | Q(
                 organization_name=self.request.POST['edit_organization_name']))
             print(organization_by_name)
-            return JsonResponse(
-                {'message': 'Organization with email/name already exists. Please supply different values'},
-                status=400)
+            if len(organization_by_name) > 0:
+                return JsonResponse(
+                    {'message': 'Organization with email/name already exists. Please supply different values'},
+                    status=400)
+            else:
+                organization_obj = Organization.objects.get(id=self.request.POST['obj_id'])
+                organization_obj.organization_name = self.request.POST['edit_organization_name']
+                organization_obj.first_name = self.request.POST['edit_first_name']
+                organization_obj.last_name = self.request.POST['edit_last_name']
+                organization_obj.email = self.request.POST['edit_email']
+                organization_obj.mobile_number = self.request.POST['edit_email']
+                organization_obj.save()
+                return redirect("adminpanel:customer-management")
         except Exception as e:
             print('Exception', e)
             organization_obj = Organization.objects.get(id=self.request.POST['obj_id'])
@@ -595,3 +628,99 @@ class EditOrganization(View):
             organization_obj.mobile_number = self.request.POST['edit_email']
             organization_obj.save()
             return redirect("adminpanel:customer-management")
+
+
+class DeleteOrganization(View):
+    model = Organization
+
+    def get(self, request, *args, **kwargs):
+        organization_obj = Organization.objects.get(id=kwargs['pk'])
+        organization_obj.delete()
+        messages.success(self.request, "Organization deleted successfully")
+        return redirect("adminpanel:customer-management")
+
+
+class DeleteSubscriptionPlan(View):
+    model = SubscriptionPlan
+
+    def get(self, request, *args, **kwargs):
+        organization_obj = SubscriptionPlan.objects.get(id=kwargs['pk'])
+        organization_obj.delete()
+        messages.success(self.request, "Subscription plan deleted successfully")
+        return redirect("adminpanel:superadmin-subscription-plan")
+
+
+class ExportOrganizationDataView(LoginRequiredMixin, View):
+    model = Organization
+    login_url = 'adminpanel:superadmin'
+
+    def get(self, request, *args, **kwargs):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="organization.csv"'
+        writer = csv.writer(response)
+        writer.writerow(
+            ['Organization Id', 'Organization Name', 'First Name', 'Last Name', 'Email', 'Mobile Number', 'Client Code',
+             'active', 'created_at'])
+        organizations = Organization.objects.all().values_list('id', 'organization_name', 'first_name',
+                                                               'last_name', 'email', 'mobile_number', 'client_code',
+                                                               'active', 'created_at')
+        for organization in organizations:
+            writer.writerow(organization)
+        return response
+
+
+class ExportSubscriptionPlanDataView(LoginRequiredMixin, View):
+    model = SubscriptionPlan
+    login_url = 'adminpanel:superadmin'
+
+    def get(self, request, *args, **kwargs):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="subscriptionplans.csv"'
+        writer = csv.writer(response)
+        writer.writerow(
+            ['Subscription Id', 'Plan Type', 'Category', 'Name', 'Description', 'Price', 'Duration',
+             'No Of Users Allowed', 'Platform', 'Subscription Status', 'created_at'])
+        subscriptions = SubscriptionPlan.objects.all().values_list('id', 'plan_type', 'category',
+                                                                   'name', 'description', 'price', 'duration',
+                                                                   'number_of_persons', 'platform', 'active',
+                                                                   'created_at')
+        for subscription in subscriptions:
+            writer.writerow(subscription)
+        return response
+
+
+class InactiveOrganization(LoginRequiredMixin, View):
+    model = Organization
+
+    def get(self, request, *args, **kwargs):
+        obj = Organization.objects.get(id=kwargs['pk'])
+        if obj.active:
+            obj.active = False
+            obj.save()
+        else:
+            obj.active = True
+            obj.save()
+        return redirect("adminpanel:customer-management")
+
+
+class InactiveSubscriptionPlan(LoginRequiredMixin, View):
+    model = SubscriptionPlan
+
+    def get(self, request, *args, **kwargs):
+        print(kwargs)
+        obj = SubscriptionPlan.objects.get(id=kwargs['pk'])
+        if obj.active:
+            obj.active = False
+            obj.save()
+        else:
+            obj.active = True
+            obj.save()
+        return redirect("adminpanel:superadmin-subscription-plan")
+
+
+class SubscriptionDetailView(View):
+    model = SubscriptionPlan
+
+    def get(self, request, *args, **kwargs):
+        print(kwargs)
+        return JsonResponse({'data': SubscriptionPlan.objects.get(id=kwargs['id'])}, status=200)

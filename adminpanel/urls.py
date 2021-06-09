@@ -4,7 +4,9 @@ from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardIn
     PasswordResetView, PasswordResetConfirmView, SuperAdminLogin, SuperAdminDashboard, CustomerManagementView, \
     SuperAdminLogout, PasswordChangeView, PasswordChangeDoneView, SuperAdminSupscriptionView, SuperAdminClientsView, \
     SuperAdminServiceProviders, SuperAdminProvidersCategory, SuperAdminAssaultFormView, SuperAdminAssaultRecords, \
-    CreateOrganization, CreateSubscriptionPlan,EditOrganization
+    CreateOrganization, CreateSubscriptionPlan, EditOrganization, DeleteOrganization, ExportOrganizationDataView, \
+    ExportSubscriptionPlanDataView, InactiveOrganization, InactiveSubscriptionPlan, EditSubscriptionPlan, \
+    DeleteSubscriptionPlan, SubscriptionDetailView
 
 app_name = 'adminpanel'
 
@@ -41,5 +43,13 @@ urlpatterns = [
          PasswordChangeDoneView.as_view(template_name='superadmin/change_password_done.html'),
          name='password_change_done'),
     path('create-subscription-plan/', CreateSubscriptionPlan.as_view(), name='create-subscription-plan'),
+    path('edit-subscription-plan/', EditSubscriptionPlan.as_view(), name='edit-subscription-plan'),
     path('edit-organization/', EditOrganization.as_view(), name='edit-organization'),
+    path('delete-organization/<int:pk>/', DeleteOrganization.as_view(), name='delete-organization'),
+    path('delete-subscription-plan/<int:pk>/', DeleteSubscriptionPlan.as_view(), name='delete-subscription-plan'),
+    path('inactive-organization/<int:pk>/', InactiveOrganization.as_view(), name='inactive-organization'),
+    path('inactive-subscription-plan/<int:pk>/', InactiveSubscriptionPlan.as_view(), name='inactive-subscription-plan'),
+    path('subscription-detail/<int:pk>/', SubscriptionDetailView.as_view(), name='subscription-detail'),
+    path('export-organization-data/', ExportOrganizationDataView.as_view(), name='export-organization-data'),
+    path('export-subscription-data/', ExportSubscriptionPlanDataView.as_view(), name='export-subscription-data')
 ]
