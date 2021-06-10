@@ -144,11 +144,9 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
     <div class="modal" id="MultipleEdit">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -269,11 +267,9 @@
             </div>
         </div>
     </div>
-
     <div class="modal" id="SingleSelect">
         <div class="modal-dialog">
             <div class="modal-content">
-
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal"><img src="imgs/close.svg"
                                                                                   alt="close"></button>
@@ -310,4 +306,13 @@
 <script src="{% static 'userapp/provider/js/FullCalendarDayGrid.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarInteraction.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarTimeGrid.4.1.0.min.js' %}"></script>
+<script>
+    $(document).on('click','span.fc-day-number',function(){
+<!--    $('span.fc-day-number').parents('.fc-day-top').removeClass('fc-today');-->
+    $(this).parents('.fc-day-top').addClass('fc-today');
+    var y = $(this).parents('#calendar1').find('h2').text();
+    var x = $(this).text();
+    alert( x + ' ' + y);
+});
+</script>
 {% endblock body %}

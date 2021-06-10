@@ -168,9 +168,9 @@
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
 
-                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#ShowModal">
-                                                    <i class="fa fa-eye" onclick="subscriptionDetail({{object.id}})"></i>
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})">
+                                                    <i class="fa fa-eye"
+                                                    ></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -258,9 +258,10 @@
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
 
-                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#ShowModal">
-                                                    <i class="fa fa-eye" onclick="subscriptionDetail({{object.id}})"></i>
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})"
+                                                >
+                                                    <i class="fa fa-eye"
+                                                    ></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -343,14 +344,13 @@
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
 
-                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                <a class="Red"
                                                    data-target="#DeleteModal">
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
-
-                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#ShowModal">
-                                                    <i class="fa fa-eye" onclick="subscriptionDetail({{object.id}})"></i>
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})">
+                                                    <i class="fa fa-eye"
+                                                    ></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -532,9 +532,9 @@
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
 
-                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#ShowModal">
-                                                    <i class="fa fa-eye" onclick="subscriptionDetail({{object.id}})"></i>
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})">
+                                                    <i class="fa fa-eye"
+                                                    ></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -622,9 +622,10 @@
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
 
-                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#ShowModal">
-                                                    <i class="fa fa-eye" onclick="subscriptionDetail({{object.id}})"></i>
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})"
+                                                >
+                                                    <i class="fa fa-eye"
+                                                    ></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -712,9 +713,9 @@
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
 
-                                                <a class="Blue" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#ShowModal">
-                                                    <i class="fa fa-eye" onclick="subscriptionDetail({{object.id}})"></i>
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})">
+                                                    <i class="fa fa-eye"
+                                                    ></i>
                                                 </a>
                                             </div>
                                         </td>
@@ -980,19 +981,19 @@
                         <ul>
                             <li>
                                 <label>Category</label>
-                                <span id="detail_category"></span>
+                                <span id="show_category"></span>
                             </li>
                             <li>
                                 <label>Name</label>
-                                <span>Basic 6 Months</span>
+                                <span id="show_name"></span>
                             </li>
                             <li>
                                 <label>Price (£)</label>
-                                <span>40</span>
+                                <span id="show_price"></span>
                             </li>
                             <li>
                                 <label>Description</label>
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean</span>
+                                <span id="show_description"></span>
                             </li>
                         </ul>
                     </div>
@@ -1042,6 +1043,10 @@
         }
     });
     }
+
+
+
+
 
 
 
@@ -1099,6 +1104,10 @@
 
 
 
+
+
+
+
 </script>
 <script>
     function inActiveSubscription(id){
@@ -1126,7 +1135,6 @@
     });
 
     function deleteValue(id){
-    alert(id)
         sessionStorage.setItem('delObj',id)
     };
     $("#delete_button").click(function () {
@@ -1144,46 +1152,53 @@
 
 
 
+
+
+
+
 </script>
 <script>
     function getValue(id){
         sessionStorage.setItem('objdetail',id)
-    }
+    };
     function subscriptionDetail(id){
-<!--        $("#view_button").click(function () {-->
-        alert(id)
-        var object_id = sessionStorage.getItem('objdetail')
-        console.log('Id ',object_id)
-        var protocol = window.location.protocol
-        var hostname = window.location.hostname
-        var port = window.location.port
-        var url = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/subscription-detail" + "/" + id + "/"
-        sessionStorage.removeItem('objdetail')
-
-<!--        window.location.href = url-->
+        console.log('inside subscription detail function')
+        var url = "{% url 'adminpanel:subscription-detail'  %}"
+<!--            alert(id)-->
         $.ajax({
-            url:url,
-            methods:'GET',
-        }),
+        url:url,
+        method:'POST',
+        data:{
+            id:id,
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
         success: function(data){
-        data = data.responseJSON.message;
-        error = document.getElementById('detail_category')
-        console.log('error',error)
-        error.innerHTML = `<div class="alert alert-warning alert-dismissible" role="alert">
-                            ${data}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>`;
-         $(document).ready(function() {
-           $('#ShowModal').modal('toggle');
-           });
+            console.log(data)
+            var category = data['category']
+            var name = data['name']
+            var price = data['price']
+            var description = data['description']
+            $(document).ready(function() {
+                $('#ShowModal').modal('show');
+                show_category = document.getElementById('show_category')
+                show_category.innerHTML =  category
+                show_name = document.getElementById('show_name')
+                show_name.innerHTML =  name
+                show_price = document.getElementById('show_price')
+                show_price.innerHTML =  price
+                show_description = document.getElementById('show_description')
+                show_description.innerHTML =  description
+            });
         },
-       error: function(data){
-        alert(data)
+        error:function(data){
+            alert(error)
         },
-    });
+        });
     }
+
+
+
+
 
 
 </script>

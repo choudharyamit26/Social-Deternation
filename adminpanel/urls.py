@@ -49,7 +49,7 @@ urlpatterns = [
     path('delete-subscription-plan/<int:pk>/', DeleteSubscriptionPlan.as_view(), name='delete-subscription-plan'),
     path('inactive-organization/<int:pk>/', InactiveOrganization.as_view(), name='inactive-organization'),
     path('inactive-subscription-plan/<int:pk>/', InactiveSubscriptionPlan.as_view(), name='inactive-subscription-plan'),
-    path('subscription-detail/<int:pk>/', SubscriptionDetailView.as_view(), name='subscription-detail'),
+    path('subscription-detail/', SubscriptionDetailView.as_view(), name='subscription-detail'),
     path('export-organization-data/', ExportOrganizationDataView.as_view(), name='export-organization-data'),
     path('export-subscription-data/', ExportSubscriptionPlanDataView.as_view(), name='export-subscription-data')
 ]

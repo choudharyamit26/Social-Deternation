@@ -721,6 +721,26 @@ class InactiveSubscriptionPlan(LoginRequiredMixin, View):
 class SubscriptionDetailView(View):
     model = SubscriptionPlan
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         print(kwargs)
-        return JsonResponse({'data': SubscriptionPlan.objects.get(id=kwargs['id'])}, status=200)
+        print(self.request.POST)
+        # return render(self.request, 'superadmin/new/plan.html',
+        #               {'object': SubscriptionPlan.objects.get(id=self.request.POST['id'])})
+        subs_obj = SubscriptionPlan.objects.get(id=self.request.POST['id'])
+        d = []
+        d.append({'plan_type': subs_obj.plan_type})
+        d.append({'category': subs_obj.category})
+        d.append({'name': subs_obj.name})
+        d.append({'description': subs_obj.description})
+        d.append({'price': subs_obj.price})
+        d.append({'duration': subs_obj.duration})
+        d.append({'number_of_persons': subs_obj.number_of_persons})
+        d.append({'platform': subs_obj.platform})
+        d.append({'active': subs_obj.active})
+        d.append({'created_at': subs_obj.created_at})
+        return JsonResponse({'plan_type': subs_obj.plan_type, 'category': subs_obj.category, 'name': subs_obj.name,
+                             'description': subs_obj.description, 'price': subs_obj.price,
+                             'duration': subs_obj.duration, 'number_of_persons': subs_obj.number_of_persons,
+                             'platform': subs_obj.platform, 'active': subs_obj.active,
+                             'created_at': subs_obj.created_at},
+                            status=200)

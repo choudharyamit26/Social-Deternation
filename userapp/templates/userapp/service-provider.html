@@ -1,6 +1,8 @@
 {% extends 'userapp/base.html' %}
 {% load static %}
 {% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <section class="filterSe">
     <div class="container">
         <div class="row" style="padding-top: 40px;">
@@ -602,26 +604,30 @@
     </div>
 </section>
 <div class="modalBox">
-
     <div class="modal" id="selectslot">
         <div class="modal-dialog" style="max-width: 900px;">
             <div class="modal-content">
-
                 <div class="modal-body" style="padding: 25px;">
-                    <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
-                                                                                  alt="close"></button>
+                    <button type="button" class="close" data-dismiss="modal"><img
+                            src="{% static 'userapp/imgs/close.svg' %}"
+                            alt="close"></button>
                     <div class="slotBooking">
                         <h2 class="head">Mity Khan <span class="newStar">
                                     <ul>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                              alt="star"></a>
                                         </li>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                              alt="star"></a>
                                         </li>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                              alt="star"></a>
                                         </li>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}" alt="star"></a>
+                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                                              alt="star"></a>
                                         </li>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}" alt="star"></a>
+                                        <li><a href="javascript:void(0)"><img
+                                                src="{% static 'userapp/imgs/halfstar.svg' %}" alt="star"></a>
                                         </li>
 
                                     </ul>
@@ -716,17 +722,25 @@
                             <div class="btnsBottom" style="text-align: left;
                            padding-top: 25px;">
                                 <div class="modBt">
-
                                     <a href="payment.html" class="btns modalbtns">Book</a>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+<script src="{% static 'userapp/provider/js/calender.js' %}"></script>
+<script>
+$(document).on('click','.day',function(){
+<!--for multiselect remove today-->
+    $('.day').removeClass('today');
+    $(this).addClass('today');
+    var y = $(this).parents('#calendar').find('.current-month').text();
+    var x = $(this).text();
+    alert('date is '  +  x +  y);
+});
+</script>
 {% endblock body %}
