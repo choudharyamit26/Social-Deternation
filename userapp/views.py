@@ -1,25 +1,23 @@
 import json
+from datetime import datetime
 
-from django import forms
+from adminpanel.views import User
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
 from django.contrib import messages
 from django.contrib.auth import login, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
-from django.db.models import Q
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse, redirect
 from django.template.loader import render_to_string
-from django.utils.decorators import method_decorator
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import View, ListView, TemplateView, CreateView
-from adminpanel.views import User
+from django.views.generic import View, ListView, CreateView
 
 from .forms import SurvivorSignUpForm, AssaultForm, AssaultQuestionAnswerForm, SurvivorLoginByEmailForm
-from .models import Survivor, Assault, AssaultQuestionAnswer, Faq, Contact, Notification, ServiceProvider
+from .models import Survivor, Assault, AssaultQuestionAnswer, Faq, Contact, Notification, ServiceProvider, \
+    ServiceProviderSlots
 
 user = get_user_model()
 
@@ -29,6 +27,20 @@ class HomeView(View):
 
     def get(self, request, *args, **kwargs):
         return render(self.request, 'userapp/index.html')
+
+
+class GuestAssaultUser(View):
+    template_name = 'userapp/guest_record_from1.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'userapp/guest_record_from1.html')
+
+
+class GuestAssaultUserForm2View(View):
+    template_name = 'userapp/guest_assault_form_2.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'userapp/guest_assault_form_2.html')
 
 
 class SurvivorSignUp(CreateView):
@@ -702,3 +714,31 @@ class ProviderPasswordResetConfirmView(View):
             user_object.set_password(password1)
             user_object.save()
             return redirect('userapp:password-reset-complete')
+
+
+class CreateSlotView(View):
+    model = ServiceProviderSlots
+
+    def post(self, request, *args, **kwargs):
+        user = self.request.user
+        service_provider = ServiceProvider.objects.get(user=user)
+        date_time_str = self.request.POST['selected_date'].split(' ')
+        month_name = date_time_str[1]
+        datetime_object = datetime.strptime(month_name, "%B").month
+        if datetime_object < 10:
+            datetime_object = '0' + str(datetime_object)
+        else:
+            datetime_object = datetime_object
+        d = date_time_str[0]
+        if int(d) < 10:
+            d = '0' + str(d)
+        else:
+            d = d
+        selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
+        date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
+        ServiceProviderSlots.objects.create(
+            user=service_provider,
+            slot_date=date_time_obj,
+            slot_time=self.request.POST['selected_slot'],
+        )
+        return redirect("userapp:provider-availability")

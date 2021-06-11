@@ -21,6 +21,8 @@
 </head>
 
 <body>
+{% if user.is_authenticated %}
+
 <section class="headerSocial">
     <div class="container">
         <div class="sidebarIcon">
@@ -49,6 +51,8 @@
         </div>
     </div>
 </section>
+{% endif %}
+
 <header class="header boxs  ">
     <div class="container">
         <nav class="navbar myNavBar navbar-expand-sm">
@@ -62,8 +66,8 @@
                         <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:provider-requests' %}active{% endif %}">
                             <a class="nav-link" href="{% url 'userapp:provider-requests' %}">Requests</a>
                         </li>
-                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-availability' %}active{% endif %}">
-                            <a class="nav-link " href="{% url 'userapp:survivor-availability' %}">Availability</a>
+                        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:provider-availability' %}active{% endif %}">
+                            <a class="nav-link " href="{% url 'userapp:provider-availability' %}">Availability</a>
                         </li>
                         <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-subscription' %}active{% endif %}">
                             <a class="nav-link " href="{% url 'userapp:survivor-subscription' %}">subscription</a>
@@ -133,7 +137,7 @@
                                                          alt="logo"></a>
     <ul>
         <li class="active"><a href="{% url 'userapp:provider-requests' %}" class="active ">Requests</a></li>
-        <li><a href="{% url 'userapp:survivor-availability' %}" class="">Availability</a></li>
+        <li><a href="{% url 'userapp:provider-availability' %}" class="">Availability</a></li>
         <li><a href="{% url 'userapp:survivor-subscription' %}" class="">Subscription </a></li>
         <li><a href="{% url 'userapp:faq' %}" class="">FAQs</a></li>
         <li><a href="{% url 'userapp:survivor-contact' %}" class="">Contact</a></li>

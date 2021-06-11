@@ -81,3 +81,9 @@ class ServiceProvider(models.Model):
     country = models.CharField(default='', max_length=1000)
     city = models.CharField(default='', max_length=100)
     zip_code = models.CharField(default='', max_length=100)
+
+
+class ServiceProviderSlots(models.Model):
+    user = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
+    slot_date = models.DateField()
+    slot_time = models.CharField(default='', max_length=300)

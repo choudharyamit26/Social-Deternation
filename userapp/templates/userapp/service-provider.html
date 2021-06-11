@@ -740,7 +740,7 @@ $(document).on('click','.day',function(){
     $(this).addClass('today');
     var y = $(this).parents('#calendar').find('.current-month').text();
     var x = $(this).text();
-    alert('date is '  +  x +  y);
+    console.log(x,y)
 });
 </script>
 {% endblock body %}

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+{% if user.is_authenticated %}
 <section class="socialicons">
     <div class="container">
         <div class="socialInner profileUser">
@@ -38,7 +38,7 @@
 
     </div>
 </section>
-
+{% endif %}
 <section class="header">
     <div class="container">
         <div class="headerInner">
@@ -100,7 +100,6 @@
                         </div>
                     </li>
                 </ul>
-
             </div>
         </div>
     </div>

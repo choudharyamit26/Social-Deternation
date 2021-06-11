@@ -1,0 +1,507 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brasi | Home</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'userapp/imgs/logo.svg' %}" rel="icon" type="icon/image">
+    <link href="{% static 'userapp/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'userapp/css/niceCountryInput.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/style2.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/media.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<section class="welcomeBord">
+    <div class="container">
+        <h2>Welcome to BRASI</h2>
+        <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/cut.svg' %}" alt="close"></a>
+    </div>
+</section>
+<section class="socialicons">
+    <div class="container">
+        <div class="socialInner">
+            <ul>
+                <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+{% include 'userapp/common-headers.html' %}
+
+
+<section class="recordFills recordFills22" style="background-image: url('./imgs/bg2.png');">
+    <div class="container">
+        <div class="">
+            <div class="recordsfil">
+                <h2>Please fill the following details to seek help.</h2>
+
+                <div class="recordAccordian">
+
+                    <div class="patientAccordian">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapseOne">
+                                    <h4 class="panel-title">When</h4>
+
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse  in show">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q1. </span>
+                                                        What year
+                                                        did this happen?</label>
+                                                    <div class="before">
+                                                        <select name="year" id="year"
+                                                                class="form-control transparent formControl">
+                                                            <option value="o"></option>
+                                                            <option value="1">2018 - 2019</option>
+                                                            <option value="2">2019 - 2020</option>
+                                                            <option value="3">2020 - 2021</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q2.
+                                                            </span>What time of day was it?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="time" class="form-control formControl"
+                                                               placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q3.
+                                                            </span>Do you know the exact date?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input placeholder="Date"
+                                                               class="form-control formControl textbox-n" type="text"
+                                                               onfocus="(this.type = 'date')" id="date">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q4.
+                                                            </span>Is there anything else you remember about the
+                                                        date?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl"
+                                                               placeholder="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapseTwo">
+                                    <h4 class="panel-title">Where</h4>
+
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q5.
+                                                            </span>Where did it happen?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                            <textarea rows="4"
+                                                                      class="form-control formControl"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q6.
+                                                            </span>Are there any other details you remember about the
+                                                        location?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                            <textarea rows="4"
+                                                                      class="form-control formControl"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                         data-parent="#accordion" data-target="#collapseThree">
+                                        <h4 class="panel-title">People Who Know or Might Know</h4>
+
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse in show">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q7.
+                                                                </span>Did anyone else see or hear either all or
+                                                            any part of what happened?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q8.
+                                                                </span>Did you tell anyone about the incident?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q9.
+                                                                </span>Did you interact with anyone right before
+                                                            or after the incident?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q10.
+                                                                </span>What information do you know about the
+                                                            people you told?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q11.
+                                                                </span>What information do you know about the people
+                                                            described above?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q12.
+                                                                </span>Do you know if the offender told anyone
+                                                            about the incident?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                            <input type="text" class="form-control formControl">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                         data-parent="#accordion" data-target="#collapseFour4">
+                                        <h4 class="panel-title">Consent</h4>
+
+                                    </div>
+                                    <div id="collapseFour4" class="panel-collapse collapse in show">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="" class="label"><span class="colorBlack">Q13.
+                                                                </span>What are details of consent?</label>
+                                                        <div class="beforee" style="background:#fff">
+                                                                <textarea rows="4"
+                                                                          class="form-control formControl"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapseFour">
+                                    <h4 class="panel-title">Incident (s)</h4>
+
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q14.
+                                                            </span>What happened?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                            <textarea rows="4"
+                                                                      class="form-control formControl"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapsefive">
+                                    <h4 class="panel-title">Offender(s)</h4>
+
+                                </div>
+                                <div id="collapsefive" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label" style="padding-bottom: 30px;"><span
+                                                            class="colorBlack">Q15.
+                                                            </span>How many offenders were there?</label>
+                                                    <br>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q16.
+                                                            </span>Was the offender with anyone else either at the
+                                                        time of the incident or directly before or after?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q17.
+                                                            </span>What is their name?/What are their names?
+                                                        (if known)</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q18.
+                                                            </span>What information do you know about these
+                                                        people?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q19.
+                                                            </span>Do you know any other information about
+                                                        the offender(s)?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapsesix">
+                                    <h4 class="panel-title">Evidence</h4>
+
+                                </div>
+                                <div id="collapsesix" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="" class="label"><span class="colorBlack">Q20.
+                                                            </span>What types of evidence do you have now (or think
+                                                        might exist)?</label>
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="recordbtns" style="text-align: center;">
+                        <div class="remember form-group" style="margin-bottom: 0;">
+                            <div class="checkMiddle">
+                                <div class="CheckBox homo2"><input type="checkbox" id="check"><span class="Check"><span
+                                        class="rem"> Allow your information to match BRASI existing data.
+                                </span>
+                            </span></div>
+                            </div>
+                        </div>
+                        <div class="modBt">
+                            <a href="javascript:void(0)" class="info"><img src="{% static 'userapp/imgs/info.svg' %}"
+                                                                           alt="info"></a>
+                            <a href="record-fill.html" class="btns modalbtns submitt">Back</a>
+                            <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Save</a>
+                            <a href="javascript:void(0)" class="btns modalbtns submitt" data-toggle="modal"
+                               data-target="#submitRecord">Submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footerAll padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="footerLeft">
+                    <div class="footerlogo">
+                        <img src="{% static 'userapp/imgs/logo.svg' %}" alt="logo">
+                    </div>
+                    <p class="copyRight">
+                        Copyright © 2021 <span class="colorGreen">BRASI</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footerMiddle">
+                    <ul>
+                        <li>FAQs</li>
+                        <li><a href="javascript:void(0)"> For Survivors</a></li>
+                        <li><a href="javascript:void(0)"> For Service Providers</a></li>
+                        <li><a href="javascript:void(0)">For License Holders</a></li>
+                        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footerMiddle right">
+                    <ul>
+                        <li>Follow/Contact Us
+                        </li>
+                        <li><a href="javascript:void(0)">Twitter</a></li>
+                        <li><a href="javascript:void(0)">Facebook</a></li>
+                        <li><a href="javascript:void(0)">Instagram</a></li>
+                        <li><a href="javascript:void(0)">Email</a></li>
+                        <li><a href="javascript:void(0)">Term of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<div class="modalBox">
+
+    <div class="modal" id="submitRecord">
+        <div class="modal-dialog" style="max-width: 560px;">
+            <div class="modal-content">
+
+                <div class="modal-body" style="padding: 100px 25px;">
+
+                    <div class="submitrecord">
+                        <div class="dotsAll">
+                            <img src="{% static 'userapp/imgs/dots.svg' %}" alt="dits">
+                        </div>
+                        <div class="dotsContent">
+                            <h2 class="head">Please Wait</h2>
+                            <p class="head">Possible detection of repeat offenders in progress.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="submitRecord2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body" style="padding: 50px 25px;">
+                    <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
+                                                                                  alt="close"></button>
+                    <div class="recordSub">
+                        <div class="serhImg">
+                            <img src="{% static 'userapp/imgs/seach.svg' %}" alt="search">
+                        </div>
+                        <h2 class="head">3 records from our database match
+                            the offender information you provided</h2>
+                        <div class="table-responsive">
+                            <table class="table">
+
+                                <tbody>
+                                <tr>
+                                    <td><span class="bold">Name:</span></td>
+                                    <td>Varida</td>
+                                    <td><span class="bold">Incident description:</span></td>
+                                    <td>Blackmail his sister</td>
+                                </tr>
+
+                                <tr>
+                                    <td><span class="bold">Incident happened on:</span></td>
+                                    <td>2018</td>
+                                    <td><span class="bold">Skin Color</span></td>
+                                    <td>Dark</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modBt">
+
+                            <a href="javaScript:void(0)" class="btns modalbtns">OK</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'userapp/js/jquery.js' %}"></script>
+<script src="{% static 'userapp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'userapp/js/niceCountryInput.js' %}"></script>
+<script src="{% static 'userapp/js/custom.js' %}"></script>
+
+</body>
+
+</html>

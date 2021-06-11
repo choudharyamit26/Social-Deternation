@@ -1,0 +1,338 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brasi | Home</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'userapp/imgs/logo.svg' %}" rel="icon" type="icon/image">
+    <link href="{% static 'userapp/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'userapp/css/niceCountryInput.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/style2.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/media.css' %}" rel="stylesheet">
+</head>
+
+
+<body>
+
+<section class="welcomeBord">
+    <div class="container">
+        <h2>Welcome to BRASI</h2>
+        <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/cut.svg' %}" alt="close"></a>
+    </div>
+</section>
+<section class="socialicons">
+    <div class="container">
+        <div class="socialInner">
+            <ul>
+                <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+{% include 'userapp/common-headers.html' %}
+
+<section class="recordFills" style="background-image: url('./imgs/bg2.png');">
+    <div class="container">
+        <div class="recordWidth">
+            <div class="recordsfil">
+                <h2>Please fill the following details to seek help</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control formControl" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control formControl" placeholder="Last Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="lab">Gender:</label>
+                    <div class="signUpby signUpby2">
+
+                        <ul class="nav nav-tabs">
+                            <li class=" first">
+
+                                <div class="radio">
+                                    <input id="radio-6" name="radio3" type="radio">
+                                    <label for="radio-6" class="radio-label">Male</label>
+                                </div>
+
+                            </li>
+                            <li class="second active">
+                                <div class="radio">
+                                    <input id="radio-7" name="radio3" type="radio" checked>
+                                    <label for="radio-7" class="radio-label">Female</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-8" name="radio3" type="radio">
+                                    <label for="radio-8" class="radio-label">Other</label>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="lab">Build:</label>
+                    <div class="signUpby signUpby2">
+
+                        <ul class="nav nav-tabs">
+                            <li class=" first">
+
+                                <div class="radio">
+                                    <input id="radio-9" name="radio4" type="radio">
+                                    <label for="radio-9" class="radio-label">Small</label>
+                                </div>
+
+                            </li>
+                            <li class="second active">
+                                <div class="radio">
+                                    <input id="radio-10" name="radio4" type="radio" checked>
+                                    <label for="radio-10" class="radio-label">Medium</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-11" name="radio4" type="radio">
+                                    <label for="radio-11" class="radio-label">Large</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-12" name="radio4" type="radio">
+                                    <label for="radio-12" class="radio-label">Not Sure</label>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="lab">Height:</label>
+                    <div class="signUpby signUpby2">
+
+                        <ul class="nav nav-tabs">
+                            <li class=" first">
+
+                                <div class="radio">
+                                    <input id="radio-13" name="radio5" type="radio">
+                                    <label for="radio-13" class="radio-label">Small</label>
+                                </div>
+
+                            </li>
+                            <li class="second active">
+                                <div class="radio">
+                                    <input id="radio-14" name="radio5" type="radio" checked>
+                                    <label for="radio-14" class="radio-label">Medium</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-15" name="radio5" type="radio">
+                                    <label for="radio-15" class="radio-label">Large</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-16" name="radio5" type="radio">
+                                    <label for="radio-16" class="radio-label">Not Sure</label>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="lab">Eye Colour:</label>
+                    <div class="signUpby signUpby2">
+
+                        <ul class="nav nav-tabs">
+                            <li class=" first">
+
+                                <div class="radio">
+                                    <input id="radio-17" name="radio6" type="radio">
+                                    <label for="radio-17" class="radio-label">Brown</label>
+                                </div>
+
+                            </li>
+                            <li class="second active">
+                                <div class="radio">
+                                    <input id="radio-18" name="radio6" type="radio" checked>
+                                    <label for="radio-18" class="radio-label">Green</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-19" name="radio6" type="radio">
+                                    <label for="radio-19" class="radio-label">Blue</label>
+                                </div>
+                            </li>
+
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-20" name="radio6" type="radio">
+                                    <label for="radio-20" class="radio-label">Not Sure</label>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control formControl" placeholder="Special Body Mark">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control formControl" placeholder="Mobile Number">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control formControl" placeholder="Hair Colour">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="" class="lab">Skin Colour:</label>
+                    <div class="signUpby signUpby2">
+
+                        <ul class="nav nav-tabs">
+                            <li class=" first">
+
+                                <div class="radio">
+                                    <input id="radio-21" name="radio7" type="radio">
+                                    <label for="radio-21" class="radio-label">Light</label>
+                                </div>
+
+                            </li>
+                            <li class="second active">
+                                <div class="radio">
+                                    <input id="radio-22" name="radio7" type="radio" checked>
+                                    <label for="radio-22" class="radio-label">Dark</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-23" name="radio7" type="radio">
+                                    <label for="radio-23" class="radio-label">Not Sure</label>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="lab">Race:</label>
+                    <div class="signUpby signUpby2">
+
+                        <ul class="nav nav-tabs">
+                            <li class=" first">
+
+                                <div class="radio">
+                                    <input id="radio-24" name="radio8" type="radio">
+                                    <label for="radio-24" class="radio-label">Caucasian</label>
+                                </div>
+
+                            </li>
+                            <li class="second active">
+                                <div class="radio">
+                                    <input id="radio-25" name="radio8" type="radio" checked>
+                                    <label for="radio-25" class="radio-label">Asian</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-26" name="radio8" type="radio">
+                                    <label for="radio-26" class="radio-label">Africa</label>
+                                </div>
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-27" name="radio8" type="radio">
+                                    <label for="radio-27" class="radio-label">not sure</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="btnsBottom">
+            <a href="{% url 'userapp:guest-assault-2' %}" class="btns modalbtns">Next</a>
+
+        </div>
+    </div>
+</section>
+<footer class="footerAll padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="footerLeft">
+                    <div class="footerlogo">
+                        <img src="{% static 'userapp/imgs/logo.svg' %}" alt="logo">
+                    </div>
+                    <p class="copyRight">
+                        Copyright © 2021 <span class="colorGreen">BRASI</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footerMiddle">
+                    <ul>
+                        <li>FAQs</li>
+                        <li><a href="javascript:void(0)"> For Survivors</a></li>
+                        <li><a href="javascript:void(0)"> For Service Providers</a></li>
+                        <li><a href="javascript:void(0)">For License Holders</a></li>
+                        <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="footerMiddle right">
+                    <ul>
+                        <li>Follow/Contact Us
+                        </li>
+                        <li><a href="javascript:void(0)">Twitter</a></li>
+                        <li><a href="javascript:void(0)">Facebook</a></li>
+                        <li><a href="javascript:void(0)">Instagram</a></li>
+                        <li><a href="javascript:void(0)">Email</a></li>
+                        <li><a href="javascript:void(0)">Term of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+
+<script src="{% static 'userapp/js/jquery.js' %}"></script>
+<script src="{% static 'userapp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'userapp/js/niceCountryInput.js' %}"></script>
+<script src="{% static 'userapp/js/custom.js' %}"></script>
+
+</body>
+
+</html>
