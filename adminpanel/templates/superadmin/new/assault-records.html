@@ -69,7 +69,12 @@
                             <td>87</td>
                             <td>3/21/2021</td>
                             <td>76%</td>
-                            <td><a href="javascript:void(0);" class="Contact">Contact</a></td>
+                            <!--                            <td><a href="javascript:void(0);" class="Contact">Contact</a></td>-->
+                            <td class="d-flex"><a href="javascript:void(0);" class="Contact"
+                                                  style="width: max-content;">Contact</a>
+                                <a href="javascript:void(0);" class="Contact" style="width: max-content;"
+                                   data-toggle="modal" data-target="#warrent">View Record</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -79,7 +84,12 @@
                             <td>121</td>
                             <td>3/21/2021</td>
                             <td>82%</td>
-                            <td><a href="javascript:void(0);" class="Contact">Contact</a></td>
+                            <!--                            <td><a href="javascript:void(0);" class="Contact">Contact</a></td>-->
+                            <td class="d-flex"><a href="javascript:void(0);" class="Contact"
+                                                  style="width: max-content;">Contact</a>
+                                <a href="javascript:void(0);" class="Contact" style="width: max-content;"
+                                   data-toggle="modal" data-target="#warrent">View Record</a>
+                            </td>
                         </tr>
 
                         </tbody>
@@ -99,6 +109,40 @@
 
         </div>
 
+    </div>
+</div>
+<div class="ModalBox">
+    <div class="modal" id="warrent">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Please enter Warrant information</h3>
+
+                        <div class="form-group">
+                            <label>Enter Warrant Number <sup>*</sup></label>
+                            <input type="text" class="form-control" placeholder="Enter Warrant Number ">
+                        </div>
+
+                        <div class="CategoryBox">
+                            <div class="form-group">
+                                <label>Select Issue Date <sup>*</sup> </label>
+                                <input type="date" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Select Caught Date <sup>*</sup> </label>
+                                <input type="date" class="form-control">
+                            </div>
+
+                            <button class="Button Cancel">Cancel</button>
+                            <button class="Button">Open</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock body %}

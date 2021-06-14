@@ -1,0 +1,832 @@
+{% extends 'superadmin/new/new-base.html' %}
+{% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="WrapperArea">
+    <div class="WrapperBox">
+        <div class="content-wrapper">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="Small-Wrapper">
+            <h4 class="Title">
+                <span>BRASI Subscription</span>
+                <a href="JavaScript:Void(0);" data-toggle="modal" data-target="#AddModal"> Add Subscription </a>
+            </h4>
+
+            <div class="CommonTabs">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Brasi">
+                        <form method="get">
+                            <div class="FilterArea">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <input type="text" class="form-control" placeholder="Enter Category"
+                                           name="category"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter Name" name="name"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Duration</label>
+                                    <select class="form-control" name="duration">
+                                        <option> --- Select Duration ---</option>
+                                        <option value="15">15 Days</option>
+                                        <option value="1">1 Months</option>
+                                        <option value="2">2 Months</option>
+                                        <option value="3">3 Months</option>
+                                        <option value="6">6 Months</option>
+                                        <option value="12">1 Year</option>
+                                        <option value="24">2 Year</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="number" class="form-control" placeholder="Enter Price" name="price"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control" name="active">
+                                        <option> --- Select Status ---</option>
+                                        <option value="True">Active</option>
+                                        <option value="False">Inactive</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Created From</label>
+                                    <input type="date" class="form-control" name="from"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Created To</label>
+                                    <input type="date" class="form-control" name="to"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <button class="Button Reset" type="reset"><i class="fa fa-refresh"></i></button>
+                                    <button class="Button" type="submit">Apply</button>
+                                </div>
+                            </div>
+                        </form>
+                        {% if subs_obj %}
+                        <div class="TableList">
+                            <div class="CountExportArea">
+                                <a href="{% url 'adminpanel:export-subscription-data' %}" class="Export"><i
+                                        class="fa fa-file-excel-o"></i> Export
+                                </a>
+                                <label>
+                                    Show per page
+                                    <select>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="CustomerTable">
+                                <table style="width: 125%;">
+                                    <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Category</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>No of users allowed</th>
+                                        <th>Created On</th>
+                                        <th>Price (£)</th>
+                                        <th>Subscription Status</th>
+                                        <th>action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for object in subs_obj %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{object.category}}</td>
+                                        <td>{{object.name}}</td>
+                                        <td>{{object.description}}</td>
+                                        <td>{{object.number_of_persons}}</td>
+                                        <td>{{object.created_at}}</td>
+                                        <td>{{object.price}}</td>
+                                        <td>
+                                            {% if object.active %}
+                                            <span class="green">Active</span>
+                                            {% else %}
+                                            <span class="red">Inactive</span>
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            <div class="Actions">
+                                                {% if object.active %}
+                                                <label class="Switch">
+                                                    <input type="checkbox" onclick="inActiveSubscription({{object.id}})"
+                                                           checked/>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                {% else %}
+                                                <label class="Switch">
+                                                    <input type="checkbox"
+                                                           onclick="inActiveSubscription({{object.id}})"/>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                {% endif %}
+
+                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#EditModal">
+                                                    <i class="fa fa-pencil-square-o"
+                                                       onclick="editValue({{object.id}})"></i>
+                                                </a>
+
+                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#DeleteModal">
+                                                    <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
+                                                </a>
+
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})">
+                                                    <i class="fa fa-eye"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% elif pages %}
+                        <div class="TableList">
+                            <div class="CountExportArea">
+                                <a href="{% url 'adminpanel:export-subscription-data' %}" class="Export"><i
+                                        class="fa fa-file-excel-o"></i> Export
+                                </a>
+                                <label>
+                                    Show per page
+                                    <select>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="CustomerTable">
+                                <table style="width: 125%;">
+                                    <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Category</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>No of users allowed</th>
+                                        <th>Created On</th>
+                                        <th>Price (£)</th>
+                                        <th>Subscription Satus</th>
+                                        <th>action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for object in pages %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{object.category}}</td>
+                                        <td>{{object.name}}</td>
+                                        <td>{{object.description}}</td>
+                                        <td>{{object.number_of_persons}}</td>
+                                        <td>{{object.created_at}}</td>
+                                        <td>{{object.price}}</td>
+                                        <td>
+                                            {% if object.active %}
+                                            <span class="green">Active</span>
+                                            {% else %}
+                                            <span class="red">Inactive</span>
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            <div class="Actions">
+                                                {% if object.active %}
+                                                <label class="Switch">
+                                                    <input type="checkbox" onclick="inActiveSubscription({{object.id}})"
+                                                           checked/>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                {% else %}
+                                                <label class="Switch">
+                                                    <input type="checkbox"
+                                                           onclick="inActiveSubscription({{object.id}})"/>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                {% endif %}
+
+                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#EditModal">
+                                                    <i class="fa fa-pencil-square-o"
+                                                       onclick="editValue({{object.id}})"></i>
+                                                </a>
+
+                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#DeleteModal">
+                                                    <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
+                                                </a>
+
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})"
+                                                >
+                                                    <i class="fa fa-eye"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="TableList">
+                            <div class="CountExportArea">
+                                <a href="{% url 'adminpanel:export-subscription-data' %}" class="Export"><i
+                                        class="fa fa-file-excel-o"></i> Export
+                                </a>
+                                <label>
+                                    Show per page
+                                    <select>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="CustomerTable">
+                                <table style="width: 125%;">
+                                    <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Category</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>No of users allowed</th>
+                                        <th>Created On</th>
+                                        <th>Price (£)</th>
+                                        <th>Subscription Satus</th>
+                                        <th>action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for object in object_list %}
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{object.category}}</td>
+                                        <td>{{object.name}}</td>
+                                        <td>{{object.description}}</td>
+                                        <td>{{object.number_of_persons}}</td>
+                                        <td>{{object.created_at}}</td>
+                                        <td>{{object.price}}</td>
+                                        <td>
+                                            {% if object.active %}
+                                            <span class="green">Active</span>
+                                            {% else %}
+                                            <span class="red">Inactive</span>
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            <div class="Actions">
+                                                {% if object.active %}
+                                                <label class="Switch">
+                                                    <input type="checkbox" onclick="inActiveSubscription({{object.id}})"
+                                                           checked/>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                {% else %}
+                                                <label class="Switch">
+                                                    <input type="checkbox"
+                                                           onclick="inActiveSubscription({{object.id}})"/>
+                                                    <span class="slider"></span>
+                                                </label>
+                                                {% endif %}
+
+                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
+                                                   data-target="#EditModal">
+                                                    <i class="fa fa-pencil-square-o"
+                                                       onclick="editValue({{object.id}})"></i>
+                                                </a>
+
+                                                <a class="Red"
+                                                   data-target="#DeleteModal">
+                                                    <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
+                                                </a>
+                                                <a class="Blue" onclick="subscriptionDetail({{object.id}})">
+                                                    <i class="fa fa-eye"
+                                                    ></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!--                        <div class="Pagination">-->
+                        <!--                            <ul>-->
+                        <!--                                <li><a href="#">Previous</a></li>-->
+                        <!--                                <li class="active"><a href="#">1</a></li>-->
+                        <!--                                <li><a href="#">2</a></li>-->
+                        <!--                                <li><a href="#">3</a></li>-->
+                        <!--                                <li><a href="#">Next</a></li>-->
+                        <!--                            </ul>-->
+                        <!--                        </div>-->
+                        {% if pages.has_other_pages %}
+                        <ul class="Pagination">
+                            {% if pages.has_previous %}
+                            <li class="page-item"><a aria-label="Previous" class="page-link"
+                                                     href="?page={{ pages.previous_page_number }}">Previous</a></li>
+                            {% else %}
+                            <li class="page-item disabled"><span>&laquo;</span></li>
+                            {% endif %}
+                            {% for i in pages.paginator.page_range %}
+                            {% if pages.number == i %}
+                            <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                            </li>
+                            {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if pages.has_next %}
+                            <li class="page-item"><a aria-label="Next" class="page-link"
+                                                     href="?page={{ pages.next_page_number }}">Next</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled"><span>&raquo;</span></li>
+                            {% endif %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ModalBox">
+    <div class="modal" id="DeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Delete</h3>
+                        <p>Are you sure you want to delete this Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a id="delete_button" href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ActiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Active</h3>
+                        <p>Are you sure you want to active this Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a id="active_button" href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="InactiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Inactive</h3>
+                        <p>Are you sure you want to inactive this Subscription Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a id="inactive_button" href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="EditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Edit Subscription Plan</h3>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Plan Types</label>
+                                <select class="form-control" required name="plan_type" id="edit_plan_type">
+                                    <option> Select Subscription Plan Type</option>
+                                    <option value="Brasi_Platform">Brasi Platform</option>
+                                    <option value="General_Subscription_Plans">General Subscription Plans</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Category<sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Category" name="category"
+                                       id="edit_category" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Name <sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Name" name="name"
+                                       id="edit_name"
+                                       required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="4" placeholder="Description" name="description"
+                                          id="edit_description"
+                                          required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Price <sup>*</sup> </label>
+                                <input type="number" class="form-control" placeholder="Enter Price" name="price"
+                                       id="edit_price"
+                                       required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Duration (In Months) <sup>*</sup> </label>
+                                <input type="number" class="form-control" placeholder="Enter Duration (In Months)"
+                                       id="edit_duration"
+                                       name="duration" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Number of persons (Optional) </label>
+                                <input type="number" class="form-control" placeholder="Enter Number of persons"
+                                       id="edit_number_of_persons"
+                                       name="number_of_persons" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="CheckBox">
+                                    Make Inactive
+                                    <input type="checkbox" name="active" id="edit_active"/>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </form>
+                        <button class="Button" type="button" onclick="editSubscriptionPlan()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="AddModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="Category">
+                            <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                            <h3>Add New Subscription Plan</h3>
+                            <div class="form-group">
+                                <label>Plan Types</label>
+                                <select class="form-control" required name="plan_type" id="plan_type">
+                                    <option> Select Subscription Plan Type</option>
+                                    <option value="Brasi_Platform">Brasi Platform</option>
+                                    <option value="General_Subscription_Plans">General Subscription Plans</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Category<sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Category" name="category"
+                                       id="category" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Name <sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Name" name="name" id="name"
+                                       required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" rows="4" placeholder="Description" name="description"
+                                          id="description"
+                                          required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Price <sup>*</sup> </label>
+                                <input type="number" class="form-control" placeholder="Enter Price" name="price"
+                                       id="price"
+                                       required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Duration (In Months) <sup>*</sup> </label>
+                                <input type="number" class="form-control" placeholder="Enter Duration (In Months)"
+                                       id="duration"
+                                       name="duration" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Number of persons (Optional) </label>
+                                <input type="number" class="form-control" placeholder="Enter Number of persons"
+                                       id="number_of_persons"
+                                       name="number_of_persons" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="CheckBox">
+                                    Make Inactive
+                                    <input type="checkbox" name="active" id="active"/>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <button class="Button Cancel">Cancel</button>
+                            <button class="Button" type="button" onclick="createSubscriptionPlan()">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="ShowModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Infomation">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">&times;</a>
+                        <h3>Subscription Plan Preview</h3>
+
+                        <ul>
+                            <li>
+                                <label>Category</label>
+                                <span id="show_category"></span>
+                            </li>
+                            <li>
+                                <label>Name</label>
+                                <span id="show_name"></span>
+                            </li>
+                            <li>
+                                <label>Price (£)</label>
+                                <span id="show_price"></span>
+                            </li>
+                            <li>
+                                <label>Description</label>
+                                <span id="show_description"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function createSubscriptionPlan(){
+        var plan_type = $('#plan_type').val();
+        var category = $('#category').val();
+        var name = $('#name').val();
+        var description = $('#description').val();
+        var price = $('#price').val();
+        var duration = $('#duration').val();
+        var number_of_persons = $('#number_of_persons').val();
+        var check = document.getElementById("active").checked;
+        console.log(plan_type,category,name,description,price,duration,check)
+        var url = "{% url 'adminpanel:create-subscription-plan' %}"
+        $.ajax({
+        url : url,
+        method : 'POST',
+        data:{
+            plan_type:plan_type,
+            category:category,
+            name:name,
+            description : description,
+            price : price,
+            check : check,
+            duration : duration,
+            check : check,
+            number_of_persons : number_of_persons,
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+           console.log('inside success',data)
+            var protocol = window.location.protocol
+            var hostname = window.location.hostname
+            var port = window.location.port
+            var url2 = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/superadmin-subscription-plan" + "/"
+            //alert("remember_me", remember_me)
+            window.location.href = url2
+        },
+        error: function(data) {
+           console.log('error',error)
+        }
+    });
+    }
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function editValue(id){
+        sessionStorage.setItem('editId',id)
+    };
+    function editSubscriptionPlan(){
+        var plan_type = $('#edit_plan_type').val();
+        var category = $('#edit_category').val();
+        var name = $('#edit_name').val();
+        var description = $('#edit_description').val();
+        var price = $('#edit_price').val();
+        var duration = $('#edit_duration').val();
+        var number_of_persons = $('#edit_number_of_persons').val();
+        var check = document.getElementById("edit_active").checked;
+        console.log(plan_type,category,name,description,price,duration,check)
+        var url = "{% url 'adminpanel:edit-subscription-plan' %}"
+        $.ajax({
+        url : url,
+        method : 'POST',
+        data:{
+            obj_id:sessionStorage.getItem('editId'),
+            plan_type:plan_type,
+            category:category,
+            name:name,
+            description : description,
+            price : price,
+            check : check,
+            duration : duration,
+            check : check,
+            number_of_persons : number_of_persons,
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+           console.log('inside success',data)
+            var protocol = window.location.protocol
+            var hostname = window.location.hostname
+            var port = window.location.port
+            var url2 = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/superadmin-subscription-plan" + "/"
+            //alert("remember_me", remember_me)
+            sessionStorage.removeItem('editId')
+            window.location.href = url2
+        },
+        error: function(data) {
+           console.log('error',error)
+        }
+    });
+    }
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function inActiveSubscription(id){
+        sessionStorage.setItem('subscriptionObj',id)
+    };
+     $("#inactive_button").click(function () {
+        var object_id = sessionStorage.getItem('subscriptionObj')
+        console.log('Id ',object_id)
+        var protocol = window.location.protocol
+        var hostname = window.location.hostname
+        var port = window.location.port
+        var url = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/inactive-subscription-plan" + "/" + object_id + "/"
+        sessionStorage.removeItem('subscriptionObj')
+        window.location.href = url
+    });
+     $("#active_button").click(function () {
+        var object_id = sessionStorage.getItem('subscriptionObj')
+        console.log('Id ',object_id)
+        var protocol = window.location.protocol
+        var hostname = window.location.hostname
+        var port = window.location.port
+        var url = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/inactive-subscription-plan" + "/" + object_id + "/"
+        sessionStorage.removeItem('subscriptionObj')
+        window.location.href = url
+    });
+
+    function deleteValue(id){
+        sessionStorage.setItem('delObj',id)
+    };
+    $("#delete_button").click(function () {
+        var object_id = sessionStorage.getItem('delObj')
+        console.log('Id ',object_id)
+        var protocol = window.location.protocol
+        var hostname = window.location.hostname
+        var port = window.location.port
+        var url = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/delete-subscription-plan" + "/" + object_id + "/"
+        sessionStorage.removeItem('delObj')
+        window.location.href = url
+    });
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function getValue(id){
+        sessionStorage.setItem('objdetail',id)
+    };
+    function subscriptionDetail(id){
+        console.log('inside subscription detail function')
+        var url = "{% url 'adminpanel:subscription-detail'  %}"
+<!--            alert(id)-->
+        $.ajax({
+        url:url,
+        method:'POST',
+        data:{
+            id:id,
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+            console.log(data)
+            var category = data['category']
+            var name = data['name']
+            var price = data['price']
+            var description = data['description']
+            $(document).ready(function() {
+                $('#ShowModal').modal('show');
+                show_category = document.getElementById('show_category')
+                show_category.innerHTML =  category
+                show_name = document.getElementById('show_name')
+                show_name.innerHTML =  name
+                show_price = document.getElementById('show_price')
+                show_price.innerHTML =  price
+                show_description = document.getElementById('show_description')
+                show_description.innerHTML =  description
+            });
+        },
+        error:function(data){
+            alert(error)
+        },
+        });
+    }
+
+
+
+
+
+
+</script>
+{% endblock body %}

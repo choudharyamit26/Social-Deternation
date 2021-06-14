@@ -441,9 +441,9 @@ class PasswordChangeDoneView(PasswordContextMixin, TemplateView):
         return super().dispatch(*args, **kwargs)
 
 
-class SuperAdminSupscriptionView(LoginRequiredMixin, ListView):
+class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
     model = SubscriptionPlan
-    template_name = 'superadmin/new/plan.html'
+    template_name = 'superadmin/new/brasi-plan.html'
     login_url = "adminpanel:superadmin"
     paginate_by = 1
 
@@ -458,38 +458,49 @@ class SuperAdminSupscriptionView(LoginRequiredMixin, ListView):
                 Q(active__iexact=self.request.GET.get('active')) |
                 Q(created_at__range=(self.request.GET.get('from' or None), self.request.GET.get('to' or None))))
             print(subs_obj)
-            return render(self.request, "superadmin/new/plan.html",
-                          {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans'),
-                           'object_list2': SubscriptionPlan.objects.filter(plan_type='General Subscription Plans')})
-        elif self.request.GET.get('category2'):
-            subs_obj2 = SubscriptionPlan.objects.filter(
-                Q(category__iexact=self.request.GET.get('category2' or None)) |
-                Q(name__iexact=self.request.GET.get('name2' or None)) |
-                Q(duration__iexact=self.request.GET.get('duration2' or None)) |
-                Q(price__iexact=self.request.GET.get('price2' or None)) |
-                Q(active__iexact=self.request.GET.get('active2' or None)) |
-                Q(created_at__range=(self.request.GET.get('from2'), self.request.GET.get('to2'))))
-            print('---->>>', subs_obj2)
-            return render(self.request, "superadmin/new/plan.html",
-                          {'subs_obj2': subs_obj2.exclude(plan_type='Brasi Platform'),
-                           'object_list2': SubscriptionPlan.objects.filter(plan_type='General Subscription Plans')})
+            return render(self.request, "superadmin/new/brasi-plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans')})
         else:
             organizations = SubscriptionPlan.objects.filter(plan_type='Brasi Platform').order_by('-id')
             paginator = Paginator(organizations, self.paginate_by)
             page_number = self.request.GET.get('page')
             page_obj = paginator.get_page(page_number)
+            context = {
+                'object_list': SubscriptionPlan.objects.filter(plan_type='Brasi Platform'),
+                'pages': page_obj,
+            }
+            return render(self.request, "superadmin/new/brasi-plan.html", context)
+
+
+class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
+    model = SubscriptionPlan
+    template_name = 'superadmin/new/general-plan.html'
+    login_url = "adminpanel:superadmin"
+    paginate_by = 1
+
+    def get(self, request, *args, **kwargs):
+        print(self.request.GET)
+        if self.request.GET.get('category'):
+            subs_obj = SubscriptionPlan.objects.filter(
+                Q(category__iexact=self.request.GET.get('category' or None)) |
+                Q(name__iexact=self.request.GET.get('name' or None)) |
+                Q(duration__iexact=self.request.GET.get('duration' or None)) |
+                Q(price__iexact=self.request.GET.get('price' or None)) |
+                Q(active__iexact=self.request.GET.get('active')) |
+                Q(created_at__range=(self.request.GET.get('from' or None), self.request.GET.get('to' or None))))
+            print(subs_obj)
+            return render(self.request, "superadmin/new/general-plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
+        else:
             organizations = SubscriptionPlan.objects.filter(plan_type='General Subscription Plans').order_by('-id')
             paginator = Paginator(organizations, self.paginate_by)
             page_number = self.request.GET.get('page')
-            page_obj_2 = paginator.get_page(page_number)
+            page_obj = paginator.get_page(page_number)
             context = {
-                'object_list': SubscriptionPlan.objects.filter(plan_type='Brasi Platform'),
-                'object_list2': SubscriptionPlan.objects.filter(plan_type='General Subscription Plans'),
+                'object_list': SubscriptionPlan.objects.filter(plan_type='General Subscription Plans'),
                 'pages': page_obj,
-                'pages_2': page_obj_2
-                # 'page_obj': page_obj
             }
-            return render(self.request, "superadmin/new/plan.html", context)
+            return render(self.request, "superadmin/new/general-plan.html", context)
 
 
 class CreateSubscriptionPlan(View):
@@ -512,6 +523,26 @@ class CreateSubscriptionPlan(View):
         return redirect("adminpanel:superadmin-subscription-plan")
 
 
+class CreateGeneralSubscriptionPlan(View):
+    model = SubscriptionPlan
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        plan_type = ' '.join(self.request.POST['plan_type'].split('_'))
+        SubscriptionPlan.objects.create(
+            plan_type=plan_type,
+            category=self.request.POST['category'],
+            name=self.request.POST['name'],
+            description=self.request.POST['description'],
+            duration=self.request.POST['duration'],
+            price=self.request.POST['price'],
+            number_of_persons=self.request.POST['number_of_persons'],
+            active=self.request.POST['check'].title(),
+        )
+        messages.success(self.request, 'Subscription plan added successfully')
+        return redirect("adminpanel:superadmin-general-subscription-plan")
+
+
 class EditSubscriptionPlan(View):
     model = SubscriptionPlan
 
@@ -531,6 +562,27 @@ class EditSubscriptionPlan(View):
         print(subs_obj)
         messages.success(self.request, 'Subscription plan updated successfully')
         return redirect("adminpanel:superadmin-subscription-plan")
+
+
+class EditGeneralSubscriptionPlan(View):
+    model = SubscriptionPlan
+
+    def post(self, request, *args, **kwargs):
+        print('From edit subscription plan', self.request.POST)
+        plan_type = ' '.join(self.request.POST['plan_type'].split('_'))
+        subs_obj = SubscriptionPlan.objects.get(id=self.request.POST['obj_id'])
+        subs_obj.plan_type = plan_type
+        subs_obj.category = self.request.POST['category']
+        subs_obj.name = self.request.POST['name']
+        subs_obj.description = self.request.POST['description']
+        subs_obj.duration = self.request.POST['duration']
+        subs_obj.price = self.request.POST['price']
+        subs_obj.number_of_persons = self.request.POST['number_of_persons']
+        subs_obj.active = self.request.POST['check'].title()
+        subs_obj.save()
+        print(subs_obj)
+        messages.success(self.request, 'Subscription plan updated successfully')
+        return redirect("adminpanel:superadmin-general-subscription-plan")
 
 
 class SuperAdminClientsView(LoginRequiredMixin, ListView):
@@ -650,6 +702,17 @@ class DeleteSubscriptionPlan(View):
         return redirect("adminpanel:superadmin-subscription-plan")
 
 
+class DeleteGeneralSubscriptionPlan(View):
+    model = SubscriptionPlan
+
+    def get(self, request, *args, **kwargs):
+        print('inside delete general subscription plan')
+        organization_obj = SubscriptionPlan.objects.get(id=kwargs['pk'])
+        organization_obj.delete()
+        messages.success(self.request, "Subscription plan deleted successfully")
+        return redirect("adminpanel:superadmin-general-subscription-plan")
+
+
 class ExportOrganizationDataView(LoginRequiredMixin, View):
     model = Organization
     login_url = 'adminpanel:superadmin'
@@ -718,13 +781,28 @@ class InactiveSubscriptionPlan(LoginRequiredMixin, View):
         return redirect("adminpanel:superadmin-subscription-plan")
 
 
+class InactiveSubscriptionPlan2(LoginRequiredMixin, View):
+    model = SubscriptionPlan
+
+    def get(self, request, *args, **kwargs):
+        print(kwargs)
+        obj = SubscriptionPlan.objects.get(id=kwargs['pk'])
+        if obj.active:
+            obj.active = False
+            obj.save()
+        else:
+            obj.active = True
+            obj.save()
+        return redirect("adminpanel:superadmin-general-subscription-plan")
+
+
 class SubscriptionDetailView(View):
     model = SubscriptionPlan
 
     def post(self, request, *args, **kwargs):
         print(kwargs)
         print(self.request.POST)
-        # return render(self.request, 'superadmin/new/plan.html',
+        # return render(self.request, 'superadmin/new/brasi-plan.html',
         #               {'object': SubscriptionPlan.objects.get(id=self.request.POST['id'])})
         subs_obj = SubscriptionPlan.objects.get(id=self.request.POST['id'])
         d = []
@@ -744,3 +822,10 @@ class SubscriptionDetailView(View):
                              'platform': subs_obj.platform, 'active': subs_obj.active,
                              'created_at': subs_obj.created_at},
                             status=200)
+
+
+class HeroView(View):
+    template_name = 'superadmin/new/hero.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'superadmin/new/hero.html')
