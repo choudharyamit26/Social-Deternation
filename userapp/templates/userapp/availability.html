@@ -2,72 +2,600 @@
 {% load static %}
 {% block body %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<!--<section class="availablity">-->
+<!--    <div class="container">-->
+<!--        <div class="availablityMain">-->
+<!--            <ul class="nav nav-tabs">-->
+<!--                <li class="active first">-->
+<!--                    <div class="radio">-->
+<!--                        <input id="radio-30" name="radio3" type="radio" checked>-->
+<!--                        <label for="radio-30" class="radio-label">Single</label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li class="second">-->
+<!--                    <div class="radio">-->
+<!--                        <input id="radio-40" name="radio3" type="radio">-->
+<!--                        <label for="radio-40" class="radio-label">Multiple Date</label>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <br>-->
+<!--            <div id='calendar1'></div>-->
+<!--            <div class="text-center">-->
+<!--                <a href="javaScript:void(0)" data-toggle="modal" data-target="#MultipleSelect" class="Button bg-violet">Next</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 <section class="availablity">
-    <div class="container">
-        <div class="availablityMain">
-            <ul class="nav nav-tabs">
-                <li class="active first">
-                    <div class="radio">
-                        <input id="radio-30" name="radio3" type="radio" checked>
-                        <label for="radio-30" class="radio-label">Single</label>
-                    </div>
-                </li>
-                <li class="second">
-                    <div class="radio">
-                        <input id="radio-40" name="radio3" type="radio">
-                        <label for="radio-40" class="radio-label">Multiple Date</label>
-                    </div>
-                </li>
-            </ul>
-            <br>
-            <div id='calendar1'></div>
-            <div class="text-center">
-                <a href="javaScript:void(0)" data-toggle="modal" data-target="#MultipleSelect" class="Button bg-violet">Next</a>
-            </div>
-        </div>
-    </div>
-</section>
 
+    <div class="container">
+
+        <div class="availablityMain">
+
+            <ul class="nav nav-tabs">
+
+                <li class="active first">
+
+                    <a href="availability.html">
+                        <div class="radio">
+
+                            <input id="radio-30" name="radio3" type="radio">
+
+                            <label for="radio-30" class="radio-label single">Single</label>
+
+                        </div>
+                    </a>
+
+                </li>
+
+                <li class="second">
+
+                    <a href="multiple-date.html">
+                        <div class="radio">
+
+                            <input id="radio-40" name="radio3" type="radio">
+
+                            <label for="radio-40" class="radio-label multiple">Multiple Date</label>
+
+                        </div>
+                    </a>
+
+                </li>
+
+            </ul>
+
+            <div id='calendar1' class="calender"></div>
+            <!-- <div id='calendar2' class="multipleId"></div> -->
+            <div class="text-center">
+
+                <a href="javaScript:void(0)"
+                   class="Button bg-violet popnext" onclick="multiSlotTypeFun()">Next</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!--<div class="modalBox availbleModal">-->
+<!--    <div class="modal" id="MultipleSelect">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-body">-->
+<!--                    <button type="button" class="close" data-dismiss="modal"><img-->
+<!--                            src="{% static 'userapp/imgs/close.svg' %}"-->
+<!--                            alt="close"></button>-->
+<!--                    <div class="availabilitySlot">-->
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;" id="slot_date">May-05-2021-->
+<!--                                <span><a href="javaScript:void(0)"-->
+<!--                                         class="small pl-2 d-inline-block darkSky">Add Title</a></span>-->
+<!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add Hourly Fees</a></span>-->
+<!--                            </h2>-->
+<!--                            <form method="post">-->
+<!--                                {% csrf_token %}-->
+<!--                                <div class="availModal">-->
+<!--                                    <ul id="uItem">-->
+<!--                                        <li><a href="javaScript:void(0)">10:00 AM to 11:00 AM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">07:00 PM to 08:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)">08:00 PM to 09:00 PM</a></li>-->
+<!--                                        <li><a href="javaScript:void(0)" class="active">09:00 PM to 10:00 PM</a></li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="btnsBottom">-->
+<!--                        <div class="modBt">-->
+<!--                            <button class="Button bg-violet" onclick="simple()">Next</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="modal" id="MultipleEdit">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+
+<!--                <div class="modal-body">-->
+<!--                    <button type="button" class="close" data-dismiss="modal"><img-->
+<!--                            src="{% static 'userapp/imgs/close.svg' %}"-->
+<!--                            alt="close"></button>-->
+<!--                    <div class="availabilitySlot">-->
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021-->
+<!--                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"-->
+<!--                                                                              class="small pl-2 d-inline-block darkSky"><img-->
+<!--                                        src="imgs/awesome-edit.webp" alt=""></a></span>-->
+<!--                            </h2>-->
+<!--                            <div class="availModal">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021-->
+<!--                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"-->
+<!--                                                                              class="small pl-2 d-inline-block darkSky"><img-->
+<!--                                        src="imgs/awesome-edit.webp" alt=""></a></span>-->
+<!--                            </h2>-->
+<!--                            <div class="availModal">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021-->
+<!--                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"-->
+<!--                                                                              class="small pl-2 d-inline-block darkSky"><img-->
+<!--                                        src="imgs/awesome-edit.webp" alt=""></a></span>-->
+<!--                            </h2>-->
+<!--                            <div class="availModal">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021-->
+<!--                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"-->
+<!--                                                                              class="small pl-2 d-inline-block darkSky"><img-->
+<!--                                        src="imgs/awesome-edit.webp" alt=""></a></span>-->
+<!--                            </h2>-->
+<!--                            <div class="availModal">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021-->
+<!--                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"-->
+<!--                                                                              class="small pl-2 d-inline-block darkSky"><img-->
+<!--                                        src="imgs/awesome-edit.webp" alt=""></a></span>-->
+<!--                            </h2>-->
+<!--                            <div class="availModal">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021-->
+<!--                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"-->
+<!--                                                                              class="small pl-2 d-inline-block darkSky"><img-->
+<!--                                        src="imgs/awesome-edit.webp" alt=""></a></span>-->
+<!--                            </h2>-->
+<!--                            <div class="availModal">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="btnsBottom">-->
+<!--                        <div class="modBt">-->
+<!--                            <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Next</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="modal" id="SingleSelect">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-body">-->
+<!--                    <button type="button" class="close" data-dismiss="modal"><img src="imgs/close.svg" alt="close">-->
+<!--                    </button>-->
+<!--                    <div class="availabilitySlot">-->
+<!--                        <div class="checkAvailability">-->
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021-->
+<!--                                <span><a href="javaScript:void(0)"-->
+<!--                                         class="small pl-2 d-inline-block darkSky">Add Title</a></span>-->
+<!--                            </h2>-->
+<!--                            <div class="availModal">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>-->
+<!--                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="btnsBottom">-->
+<!--                        <div class="modBt">-->
+<!--                            <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Next</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div class="modalBox availbleModal">
     <div class="modal" id="MultipleSelect">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+
+                    <button type="button" class="close closee" data-dismiss="modal"><img
+                            src="{% static 'userapp/imgs/close.svg' %}"
+                            alt="close"></button>
+
+                    <div class="availabilitySlot">
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+                                            Hourly Fees</a></span>
+
+                            </h2>
+
+                            <div class="availModal">
+
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+                                            Hourly Fees</a></span>
+
+                            </h2>
+
+                            <div class="availModal availModal2 availModal23">
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+                                            Hourly Fees</a></span>
+
+                            </h2>
+
+                            <div class="availModal availModal3">
+
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+                                            Hourly Fees</a></span>
+
+                            </h2>
+
+                            <div class="availModal availModal4">
+
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+                                            Hourly Fees</a></span>
+
+                            </h2>
+
+                            <div class="availModal availModal5">
+
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+                                            Hourly Fees</a></span>
+
+                            </h2>
+
+                            <div class="availModal availModal6">
+
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="btnsBottom">
+
+                        <div class="modBt">
+
+                            <a href="javascript:void(0)" data-dismiss="modal" data-toggle="modal"
+                               data-target="#MultipleEdit" class="Button bg-violet">Next</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal" id="MultipleSelect2">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img
+                    <button type="button" class="close closee" data-dismiss="modal"><img
                             src="{% static 'userapp/imgs/close.svg' %}"
                             alt="close"></button>
                     <div class="availabilitySlot">
                         <div class="checkAvailability">
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;" id="slot_date">May-05-2021
-                                <span><a href="javaScript:void(0)"
-                                         class="small pl-2 d-inline-block darkSky">Add Title</a></span>
-                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add Hourly Fees</a></span>
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">
+                                <span><a href="javaScript:void(0)" id="slot_timing">
+                                            </a></span>
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+                                            Hourly Fees</a></span>
                             </h2>
-                            <form method="post">
-                                {% csrf_token %}
-                                <div class="availModal">
-                                    <ul id="uItem">
-                                        <li><a href="javaScript:void(0)">10:00 AM to 11:00 AM</a></li>
-                                        <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">07:00 PM to 08:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)">08:00 PM to 09:00 PM</a></li>
-                                        <li><a href="javaScript:void(0)" class="active">09:00 PM to 10:00 PM</a></li>
-                                    </ul>
-                                </div>
-                            </form>
+                            <div class="availModal">
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+
+                                    <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="btnsBottom">
                         <div class="modBt">
-                            <button class="Button bg-violet" onclick="simple()">Next</button>
+                            <a href="javascript:void(0)" class="Button bg-violet" onclick="simple()">Next</a>
                         </div>
                     </div>
                 </div>
@@ -75,152 +603,358 @@
         </div>
     </div>
     <div class="modal" id="MultipleEdit">
+
         <div class="modal-dialog">
+
             <div class="modal-content">
 
+
                 <div class="modal-body">
+
                     <button type="button" class="close" data-dismiss="modal"><img
                             src="{% static 'userapp/imgs/close.svg' %}"
                             alt="close"></button>
+
                     <div class="availabilitySlot">
-                        <div class="checkAvailability">
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
-                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="imgs/awesome-edit.webp" alt=""></a></span>
-                            </h2>
-                            <div class="availModal">
-                                <ul>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <div class="checkAvailability">
+
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
                                                                               class="small pl-2 d-inline-block darkSky"><img
-                                        src="imgs/awesome-edit.webp" alt=""></a></span>
+                                        src="{% static 'userapp/imgs/awesome-edit.webp' %}"
+                                        alt=""></a></span>
+
                             </h2>
+
                             <div class="availModal">
+
                                 <ul>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
                                 </ul>
+
                             </div>
+
                         </div>
 
-                        <div class="checkAvailability">
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
-                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="imgs/awesome-edit.webp" alt=""></a></span>
-                            </h2>
-                            <div class="availModal">
-                                <ul>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <div class="checkAvailability">
+
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
                                                                               class="small pl-2 d-inline-block darkSky"><img
-                                        src="imgs/awesome-edit.webp" alt=""></a></span>
+                                        src="{% static 'imgs/awesome-edit.webp' %}"
+                                        alt=""></a></span>
+
                             </h2>
+
                             <div class="availModal">
+
                                 <ul>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
                                 </ul>
+
                             </div>
+
                         </div>
 
-                        <div class="checkAvailability">
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
-                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="imgs/awesome-edit.webp" alt=""></a></span>
-                            </h2>
-                            <div class="availModal">
-                                <ul>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <div class="checkAvailability">
+
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
                                                                               class="small pl-2 d-inline-block darkSky"><img
-                                        src="imgs/awesome-edit.webp" alt=""></a></span>
+                                        src="{% static 'userapp/imgs/awesome-edit.webp' } %"
+                                        alt=""></a></span>
+
                             </h2>
+
                             <div class="availModal">
+
                                 <ul>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
                                     <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
                                 </ul>
+
                             </div>
+
                         </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'userapp/imgs/awesome-edit.webp' %}"
+                                        alt=""></a></span>
+
+                            </h2>
+
+                            <div class="availModal">
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'imgs/awesome-edit.webp'}"
+                                        alt=""></a></span>
+
+                            </h2>
+
+                            <div class="availModal">
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'imgs/awesome-edit.webp' %}"
+                                        alt=""></a></span>
+
+                            </h2>
+
+                            <div class="availModal">
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
                     </div>
+
                     <div class="btnsBottom">
+
                         <div class="modBt">
+
+                            <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet ">Next</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal" id="SingleSelect">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+
+                    <button type="button" class="close closee" data-dismiss="modal"><img
+                            src="{% static 'imgs/close.svg' %}"
+                            alt="close"></button>
+
+                    <div class="availabilitySlot">
+
+                        <div class="checkAvailability">
+
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+
+                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+                                            Title</a></span>
+
+                            </h2>
+
+                            <div class="availModal">
+
+                                <ul>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="btnsBottom">
+
+                        <div class="modBt">
+
                             <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Next</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal" id="multiModal">
+        <div class="modal-dialog" style=" max-width: 575px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close closee" data-dismiss="modal"><img
+                            src="{% static 'userapp/imgs/close.svg' %}"
+                            alt="close"></button>
+
+                    <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
+                        <p class="d">Select your availability type</p>
+                        <div id="multiSlotType">
+
+                        </div>
+                        <div class="btnsBottom btnsBoking">
+                            <div class="modBt" style="text-align: center;">
+                                <a href="javascript:void(0)" class="Button Button-violet-alt closee"
+                                   style="min-width: 140px;">Cancel</a>
+                                <a href="javascript:void(0)" class="Button bg-violet closee"
+                                   style="min-width: 140px;" data-toggle="modal"
+                                   data-target="#MultipleSelect">Proceed</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-    <div class="modal" id="SingleSelect">
-        <div class="modal-dialog">
+    <div class="modal" id="singleModal">
+        <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img src="imgs/close.svg" alt="close">
-                    </button>
-                    <div class="availabilitySlot">
-                        <div class="checkAvailability">
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
-                                <span><a href="javaScript:void(0)"
-                                         class="small pl-2 d-inline-block darkSky">Add Title</a></span>
-                            </h2>
-                            <div class="availModal">
-                                <ul>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-                                </ul>
-                            </div>
+                    <button type="button" class="close closee" data-dismiss="modal"><img
+                            src="{% static 'userapp/imgs/close.svg' %}"
+                            alt="close"></button>
+
+                    <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
+                        <p class="head selectedd" id="slot_date"></p>
+                        <p class="d">Select your availability type</p>
+                        <div class="availablityMain availablityMain2 ">
+                            <ul class="nav nav-tabs" style="margin: 0;display: flex;
+                        justify-content: center;padding: 0px 0px 10px;">
+                                <li class="active first">
+                                    <div class="radio">
+                                        <input id="radio-77" name="radio3" type="radio" value="Volunteer">
+                                        <label for="radio-77" class="radio-label type single">Volunteer</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-78" name="radio3" type="radio" value="Paid Service">
+                                        <label for="radio-78" class="radio-label type multiple">Paid Service</label>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="btnsBottom">
-                        <div class="modBt">
-                            <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Next</a>
+                        <div class="btnsBottom btnsBoking">
+                            <div class="modBt" style="text-align: center;">
+                                <a href="javascript:void(0)" class="Button Button-violet-alt closee"
+                                   style="min-width: 140px;">Cancel</a>
+                                <a href="javascript:void(0)" class="Button bg-violet closee"
+                                   style="min-width: 140px;" data-toggle="modal"
+                                   data-target="#MultipleSelect2">Proceed</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,32 +968,76 @@
 <script src="{% static 'userapp/provider/js/FullCalendarDayGrid.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarInteraction.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarTimeGrid.4.1.0.min.js' %}"></script>
+<!--<script>-->
+<!--    $(document).on('click','span.fc-day-number',function(){-->
+<!--    $('span.fc-day-number').parents('.fc-day-top').removeClass('fc-today');-->
+<!--    $(this).parents('.fc-day-top').addClass('fc-today');-->
+<!--    var y = $(this).parents('#calendar1').find('h2').text();-->
+<!--    var x = $(this).text();-->
+<!--    console.log(x,y)-->
+<!--    var d = document.getElementById('slot_date')-->
+<!--    d.innerHTML = x + ' '+ y-->
+<!--    var current_selected_date = x + ' ' + y-->
+<!--    sessionStorage.setItem('singleSelectDate', current_selected_date)-->
+<!--    console.log(sessionStorage.getItem('singleSelectDate'))-->
+<!--});-->
+
+
+<!--</script>-->
 <script>
-    $(document).on('click','span.fc-day-number',function(){
-    $('span.fc-day-number').parents('.fc-day-top').removeClass('fc-today');
-    $(this).parents('.fc-day-top').addClass('fc-today');
-    var y = $(this).parents('#calendar1').find('h2').text();
-    var x = $(this).text();
-    console.log(x,y)
-    var d = document.getElementById('slot_date')
-    d.innerHTML = x + ' '+ y
-    var current_selected_date = x + ' ' + y
-    sessionStorage.setItem('singleSelectDate', current_selected_date)
-    console.log(sessionStorage.getItem('singleSelectDate'))
-});
 
+function multiSlotTypeFun(){
+alert('inside function multiSlotType')
+    var multiSlots = sessionStorage.getItem('multiSelectDate').split(",")
+    var t = "";
+    for (var i=0; i<multiSlots.length; i++){
+        t += `<div class="slote">
+                            <p class="head selectedd" >Selected Date : <span class="dated">${multiSlots[i]}</span></p>
 
+                            <div class="availablityMain availablityMain2 ">
+                                <ul class="nav nav-tabs" style="margin: 0;display: flex;
+                     justify-content: center;padding: 0px 0px 10px;">
+                                    <li class="active first">
+                                        <div class="radio">
+                                            <input id="radio-40${i}" name="${i}" type="radio">
+                                            <label for="radio-40${i}" class="radio-label single">Volunteer</label>
+                                        </div>
 
-</script>
-<script>
-$(document).on('click','.availModal ul li a',function(){
-  var x = $(this).text();
-  sessionStorage.setItem('singleSelectSlot', x)
-});
+                                    </li>
+                                    <li class="second">
+                                        <div class="radio">
+                                            <input id="radio-40${i+10}" name="${i}" type="radio">
+                                            <label for="radio-40${i+10}" class="radio-label multiple">Paid Service</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> <br>
+` ;
+    }
+    var p = document.getElementById('multiSlotType')
+    p.innerHTML = t;
+    }
+    $(document).on('click','.availModal ul li a',function(){
+      var x = $(this).text();
+      sessionStorage.setItem('singleSelectSlot', x)
+    });
+    $(document).on('click','#radio-77',function(){
+      var x = $(this).val();
+      alert(x)
+      sessionStorage.setItem('selectSlotType', x)
+    });
+    $(document).on('click','#radio-78',function(){
+      var x = $(this).val();
+      alert(x)
+      sessionStorage.setItem('selectSlotType', x)
+    });
+
     function simple(){
         console.log(sessionStorage.getItem('singleSelectDate'))
         var d = sessionStorage.getItem('singleSelectDate')
         var e = sessionStorage.getItem('singleSelectSlot')
+        var f = sessionStorage.getItem('selectSlotType')
         console.log(d,e)
         var url = "{% url 'userapp:create-slot' %}"
       $.ajax({
@@ -268,6 +1046,7 @@ $(document).on('click','.availModal ul li a',function(){
         data:{
             selected_date:d,
             selected_slot:e,
+            select_slot_type:f,
             csrfmiddlewaretoken: "{{ csrf_token }}"
         },
         success:function(data){
@@ -284,7 +1063,6 @@ $(document).on('click','.availModal ul li a',function(){
         },
       });
     }
-
 </script>
 
 {% endblock body %}

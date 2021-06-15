@@ -48,7 +48,7 @@
             <div class="socialRight">
                 <ul>
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-dashboard' %}active{% endif %}">
-                        <a href="{% rl 'userapp:survivor-dashboard' %}">Record An Assault</a></li>
+                        <a href="{% url 'userapp:survivor-dashboard' %}">Record An Assault</a></li>
                     <li><a href="https://www.google.com/" target="_blank" class="Quickexit">Quick Exit</a></li>
                     <li class="survivors nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:service-provider' %}active{% endif %} ">
                         <a href="{% url 'userapp:service-provider' %}">Service Providers</a></li>

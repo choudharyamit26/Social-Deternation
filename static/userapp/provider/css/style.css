@@ -2791,3 +2791,51 @@ span.fc-day-number {
     background: var(--darkSky) !important;
     color: #fff;
 }
+p.selectedd{
+font-size: 14px;
+color: #3336;
+font-family: var(--Montserrat-Regular);
+cursor: pointer;
+}
+p span.dated{
+font-family: var(--Montserrat-Medium);
+color: var(--black);
+}
+.selectdate p.d{
+font-size: 16px;
+font-family: var(--Montserrat-Medium);
+cursor: pointer;
+padding: 20px 0px;
+/ text-align: center; /
+}
+.availablityMain.availablityMain2 .radio label{
+color: #000;
+}
+.slote p{
+padding-bottom: 10px;
+}
+.slote {
+padding-bottom: 10px;
+}
+.fc-button-group{
+display: none !important;
+}
+td.fc-day-top {
+padding: 18px;
+}
+td.fc-day-top.fc-today {
+background: #0075ff;
+}
+.availModal.availModal2.availModal23,.availModal {
+overflow-x: scroll;
+width: 100%;
+}
+.availModal.availModal2.availModal23 ul,.availModal ul {
+min-width: 2000px;
+}
+.fc-scroller.fc-day-grid-container{
+overflow: initial !important;
+}
+.fc-row.fc-widget-header{
+margin-right: 0 !important;
+}

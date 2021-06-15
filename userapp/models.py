@@ -87,3 +87,4 @@ class ServiceProviderSlots(models.Model):
     user = models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
     slot_date = models.DateField()
     slot_time = models.CharField(default='', max_length=300)
+    select_slot_type = models.CharField(default='', max_length=300)

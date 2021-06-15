@@ -181,3 +181,78 @@ $(document).on('click','.message2',function(){
  // alert('okk');
 });
 
+
+$(document).on('click','.radio label',function(){
+$('.radio label').removeClass('active');
+$(this).addClass('active');
+});
+
+$(document).on('click','.popnext',function(){
+if($('.radio-label.single').hasClass('active')){
+$('#singleModal').show();
+}
+});
+$(document).on('click','.popnext',function(){
+if($('.radio-label.multiple').hasClass('active')){
+$('#multiModal').show();
+}
+});
+
+$(document).on('click','.closee',function(){
+$('#singleModal,#multiModal').hide();
+});
+
+
+
+
+
+$(document).on('click','.radio-label.single',function(){
+$('.singleId ').hide();
+});
+
+$(document).on('click','.radio-label.single',function(){
+$('td.fc-day-top').removeClass('fc-today'),
+$('.calender').removeClass('multidate');
+$('.calender').addClass('singledate');
+});
+$(document).on('click','.radio-label.multiple',function(){
+$('td.fc-day-top').removeClass('fc-today'),
+$('.calender').removeClass('singledate');
+$('.calender').addClass('multidate');
+});
+
+$(document).on('click','.singledate td.fc-day-top',function(){
+$('.singledate td.fc-day-top').removeClass('fc-today'),
+$(this).addClass('fc-today');
+var x = $(this).find('span').text();
+var y = $(this).parents('#calendar1').find('h2').text();
+//alert(x + ' ' + y);
+
+var d = document.getElementById('slot_date')
+d.innerHTML = `Selected Date : <span class="dated">${x + ' '+ y} </span>`
+
+var e = document.getElementById('slot_timing')
+e.innerHTML = `<span class="dated">${x + ' '+ y} </span>`
+
+var current_selected_date = x + ' ' + y
+sessionStorage.setItem('singleSelectDate', current_selected_date)
+console.log(sessionStorage.getItem('singleSelectDate'))
+});
+var datesArr = []
+$(document).on('click','.multidate td.fc-day-top',function(){
+// $('.multiple td.fc-day-top').removeClass('fc-today'),
+$(this).addClass('fc-today');
+var x = $(this).find('span').text();
+var y = $(this).parents('#calendar1').find('h2').text();
+var d = x + ' ' + y
+alert(datesArr.includes(d))
+if (datesArr.includes(d)){
+    var index = datesArr.indexOf(d);
+    datesArr.splice(index,1);
+}else{
+    datesArr.push(x + ' ' + y);
+}
+alert(datesArr)
+sessionStorage.setItem('multiSelectDate', datesArr)
+//alert(x + ' ' + y);
+});

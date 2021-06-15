@@ -720,6 +720,7 @@ class CreateSlotView(View):
     model = ServiceProviderSlots
 
     def post(self, request, *args, **kwargs):
+        print(self.request.POST)
         user = self.request.user
         service_provider = ServiceProvider.objects.get(user=user)
         date_time_str = self.request.POST['selected_date'].split(' ')
@@ -740,5 +741,6 @@ class CreateSlotView(View):
             user=service_provider,
             slot_date=date_time_obj,
             slot_time=self.request.POST['selected_slot'],
+            select_slot_type=self.request.POST['select_slot_type'],
         )
         return redirect("userapp:provider-availability")
