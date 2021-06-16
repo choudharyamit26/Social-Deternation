@@ -744,3 +744,37 @@ class CreateSlotView(View):
             select_slot_type=self.request.POST['select_slot_type'],
         )
         return redirect("userapp:provider-availability")
+
+
+class CreateMultiSlotView(View):
+    model = ServiceProviderSlots
+
+    def post(self, request, *args, **kwargs):
+        d = self.request.POST['selected_date'].split(",")
+        e = self.request.POST['selected_slot'].split(",")
+        f = self.request.POST['select_slot_type'].split(",")
+        data = zip(d, e, f)
+        user = self.request.user
+        service_provider = ServiceProvider.objects.get(user=user)
+        for x in list(data):
+            date_time_str = x[0].split(' ')
+            month_name = date_time_str[1]
+            datetime_object = datetime.strptime(month_name, "%B").month
+            if datetime_object < 10:
+                datetime_object = '0' + str(datetime_object)
+            else:
+                datetime_object = datetime_object
+            d = date_time_str[0]
+            if int(d) < 10:
+                d = '0' + str(d)
+            else:
+                d = d
+            selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
+            date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
+            l = ServiceProviderSlots.objects.create(
+                user=service_provider,
+                slot_date=date_time_obj,
+                slot_time=x[1],
+                select_slot_type=x[2],
+            )
+        return redirect("userapp:provider-availability")
