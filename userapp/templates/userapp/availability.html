@@ -3,11 +3,22 @@
 {% block body %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <section class="availablity">
+<!--    <div class="fc-today">-->
+<!--        {% for object in object_list %}-->
+<!--        <tr>-->
+<!--            <td><h1>{{object.id}}</h1></td>-->
+<!--            <td><h1 class="fc-day-top  fc-today">{{object.slot_date}}</h1></td>-->
+<!--            <td><h1>{{object.slot_time}}</h1></td>-->
+<!--            <td><h1>{{object.select_slot_type}}</h1></td>-->
+<!--            <td><h1>{{object.category}}</h1></td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
     <div class="container">
         <div class="availablityMain">
             <ul class="nav nav-tabs">
                 <li class="active first">
-                    <a href="availability.html">
+                    <a>
                         <div class="radio">
                             <input id="radio-30" name="radio3" type="radio">
                             <label for="radio-30" class="radio-label single">Single</label>
@@ -15,7 +26,7 @@
                     </a>
                 </li>
                 <li class="second">
-                    <a href="multiple-date.html">
+                    <a>
                         <div class="radio">
                             <input id="radio-40" name="radio3" type="radio">
                             <label for="radio-40" class="radio-label multiple">Multiple Date</label>
@@ -120,8 +131,8 @@
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
 
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block darkSky"><img
-                                            src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
 
                             </h2>
 
@@ -151,8 +162,8 @@
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
 
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block darkSky"><img
-                                            src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
 
                             </h2>
 
@@ -182,8 +193,8 @@
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
 
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block darkSky"><img
-                                            src="{% static 'userapp/imgs/awesome-edit.webp' } %" alt=""></a></span>
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'userapp/imgs/awesome-edit.webp' } %" alt=""></a></span>
 
                             </h2>
 
@@ -204,8 +215,8 @@
                         <div class="checkAvailability">
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block darkSky"><img
-                                            src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
                             </h2>
                             <div class="availModal">
                                 <ul>
@@ -220,8 +231,8 @@
                         <div class="checkAvailability">
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block darkSky"><img
-                                            src="{% static 'imgs/awesome-edit.webp'}" alt=""></a></span>
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'imgs/awesome-edit.webp'}" alt=""></a></span>
                             </h2>
                             <div class="availModal">
                                 <ul>
@@ -236,8 +247,8 @@
                         <div class="checkAvailability">
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block darkSky"><img
-                                            src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
+                                                                              class="small pl-2 d-inline-block darkSky"><img
+                                        src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
                             </h2>
                             <div class="availModal">
                                 <ul>
@@ -319,145 +330,147 @@
     <div class="modal" id="multiModal">
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close closee" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
+                <div class="modal-body" style="position: relative;height: 700px;overflow-y: scroll;">
+                    <button type="button" class="close closee" data-dismiss="modal"><img
+                            src="{% static 'userapp/imgs/close.svg' %}"
                             alt="close"></button>
 
                     <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
                         <p class="d">Select your availability type</p>
-<!--                        <div class="allSlotess">-->
-<!--                            <div class="slote">-->
-<!--                                <p class="head selectedd">Selected Date : <span class="dated">June-11-2021</span>-->
-<!--                                </p>-->
+                        <!--                        <div class="allSlotess">-->
+                        <!--                            <div class="slote">-->
+                        <!--                                <p class="head selectedd">Selected Date : <span class="dated">June-11-2021</span>-->
+                        <!--                                </p>-->
 
-<!--                                <div class="availablityMain availablityMain2 ">-->
-<!--                                    <div class="categoryAll">-->
-<!--                                        <h2 class="cate">Category</h2>-->
-<!--                                        <select name="cars" id="cars" class="form-control formControl"-->
-<!--                                            style="padding: 15px;">-->
-<!--                                            <option>Select Category</option>-->
-<!--                                            <option>Legal Assistance</option>-->
-<!--                                            <option>Therapeutical Help</option>-->
-<!--                                            <option>Counselling</option>-->
-<!--                                        </select>-->
-<!--                                    </div>-->
-<!--                                    <h2 class="cate">Type</h2>-->
-<!--                                    <ul class="nav nav-tabs singleAmit" style="margin: 0;display: flex;-->
-<!--        padding: 0px 0px 10px;">-->
-<!--                                        <li class="active first">-->
-<!--                                            <div class="radio">-->
-<!--                                                <input id="radio-401" name="radio3" type="radio">-->
-<!--                                                <label for="radio-401" class="radio-label single">Volunteer</label>-->
-<!--                                            </div>-->
+                        <!--                                <div class="availablityMain availablityMain2 ">-->
+                        <!--                                    <div class="categoryAll">-->
+                        <!--                                        <h2 class="cate">Category</h2>-->
+                        <!--                                        <select name="cars" id="cars" class="form-control formControl"-->
+                        <!--                                            style="padding: 15px;">-->
+                        <!--                                            <option>Select Category</option>-->
+                        <!--                                            <option>Legal Assistance</option>-->
+                        <!--                                            <option>Therapeutical Help</option>-->
+                        <!--                                            <option>Counselling</option>-->
+                        <!--                                        </select>-->
+                        <!--                                    </div>-->
+                        <!--                                    <h2 class="cate">Type</h2>-->
+                        <!--                                    <ul class="nav nav-tabs singleAmit" style="margin: 0;display: flex;-->
+                        <!--        padding: 0px 0px 10px;">-->
+                        <!--                                        <li class="active first">-->
+                        <!--                                            <div class="radio">-->
+                        <!--                                                <input id="radio-401" name="radio3" type="radio">-->
+                        <!--                                                <label for="radio-401" class="radio-label single">Volunteer</label>-->
+                        <!--                                            </div>-->
 
-<!--                                        </li>-->
+                        <!--                                        </li>-->
 
-<!--                                        <li class="second">-->
+                        <!--                                        <li class="second">-->
 
-<!--                                            <div class="radio">-->
+                        <!--                                            <div class="radio">-->
 
-<!--                                                <input id="radio-402" name="radio3" type="radio">-->
+                        <!--                                                <input id="radio-402" name="radio3" type="radio">-->
 
-<!--                                                <label for="radio-402" class="radio-label multiple">Paid-->
-<!--                                                    Service</label>-->
+                        <!--                                                <label for="radio-402" class="radio-label multiple">Paid-->
+                        <!--                                                    Service</label>-->
 
-<!--                                            </div>-->
+                        <!--                                            </div>-->
 
-<!--                                        </li>-->
+                        <!--                                        </li>-->
 
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="slote">-->
-<!--                                <p class="head selectedd">Selected Date : <span class="dated">June-12-2021</span>-->
-<!--                                </p>-->
+                        <!--                                    </ul>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="slote">-->
+                        <!--                                <p class="head selectedd">Selected Date : <span class="dated">June-12-2021</span>-->
+                        <!--                                </p>-->
 
-<!--                                <div class="availablityMain availablityMain2 ">-->
-<!--                                    <div class="categoryAll">-->
-<!--                                        <h2 class="cate">Category</h2>-->
-<!--                                        <select name="cars" id="cars" class="form-control formControl"-->
-<!--                                            style="padding: 15px;">-->
-<!--                                            <option>Select Category</option>-->
-<!--                                            <option>Legal Assistance</option>-->
-<!--                                            <option>Therapeutical Help</option>-->
-<!--                                            <option>Counselling</option>-->
-<!--                                        </select>-->
-<!--                                    </div>-->
-<!--                                    <h2 class="cate">Type</h2>-->
-<!--                                    <ul class="nav nav-tabs" style="margin: 0;display: flex;-->
-<!--        padding: 0px 0px 10px;">-->
-<!--                                        <li class="active first">-->
-<!--                                            <div class="radio">-->
-<!--                                                <input id="radio-403" name="radio4" type="radio">-->
-<!--                                                <label for="radio-403" class="radio-label single">Volunteer</label>-->
-<!--                                            </div>-->
+                        <!--                                <div class="availablityMain availablityMain2 ">-->
+                        <!--                                    <div class="categoryAll">-->
+                        <!--                                        <h2 class="cate">Category</h2>-->
+                        <!--                                        <select name="cars" id="cars" class="form-control formControl"-->
+                        <!--                                            style="padding: 15px;">-->
+                        <!--                                            <option>Select Category</option>-->
+                        <!--                                            <option>Legal Assistance</option>-->
+                        <!--                                            <option>Therapeutical Help</option>-->
+                        <!--                                            <option>Counselling</option>-->
+                        <!--                                        </select>-->
+                        <!--                                    </div>-->
+                        <!--                                    <h2 class="cate">Type</h2>-->
+                        <!--                                    <ul class="nav nav-tabs" style="margin: 0;display: flex;-->
+                        <!--        padding: 0px 0px 10px;">-->
+                        <!--                                        <li class="active first">-->
+                        <!--                                            <div class="radio">-->
+                        <!--                                                <input id="radio-403" name="radio4" type="radio">-->
+                        <!--                                                <label for="radio-403" class="radio-label single">Volunteer</label>-->
+                        <!--                                            </div>-->
 
-<!--                                        </li>-->
+                        <!--                                        </li>-->
 
-<!--                                        <li class="second">-->
+                        <!--                                        <li class="second">-->
 
-<!--                                            <div class="radio">-->
+                        <!--                                            <div class="radio">-->
 
-<!--                                                <input id="radio-405" name="radio4" type="radio">-->
+                        <!--                                                <input id="radio-405" name="radio4" type="radio">-->
 
-<!--                                                <label for="radio-405" class="radio-label multiple">Paid-->
-<!--                                                    Service</label>-->
+                        <!--                                                <label for="radio-405" class="radio-label multiple">Paid-->
+                        <!--                                                    Service</label>-->
 
-<!--                                            </div>-->
+                        <!--                                            </div>-->
 
-<!--                                        </li>-->
+                        <!--                                        </li>-->
 
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="slote">-->
-<!--                                <p class="head selectedd">Selected Date : <span class="dated">June-14-2021</span>-->
-<!--                                </p>-->
+                        <!--                                    </ul>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="slote">-->
+                        <!--                                <p class="head selectedd">Selected Date : <span class="dated">June-14-2021</span>-->
+                        <!--                                </p>-->
 
-<!--                                <div class="availablityMain availablityMain2 ">-->
-<!--                                    <div class="categoryAll">-->
-<!--                                        <h2 class="cate">Category</h2>-->
-<!--                                        <select name="cars" id="cars" class="form-control formControl"-->
-<!--                                            style="padding: 15px;">-->
-<!--                                            <option>Select Category</option>-->
-<!--                                            <option>Legal Assistance</option>-->
-<!--                                            <option>Therapeutical Help</option>-->
-<!--                                            <option>Counselling</option>-->
-<!--                                        </select>-->
-<!--                                    </div>-->
-<!--                                    <h2 class="cate">Type</h2>-->
-<!--                                    <ul class="nav nav-tabs" style="margin: 0;display: flex;-->
-<!--        padding: 0px 0px 10px;">-->
-<!--                                        <li class="active first">-->
-<!--                                            <div class="radio">-->
-<!--                                                <input id="radio-407" name="radio4" type="radio" value="Volunteer">-->
-<!--                                                <label for="radio-407" class="radio-label single" >Volunteer</label>-->
-<!--                                            </div>-->
+                        <!--                                <div class="availablityMain availablityMain2 ">-->
+                        <!--                                    <div class="categoryAll">-->
+                        <!--                                        <h2 class="cate">Category</h2>-->
+                        <!--                                        <select name="cars" id="cars" class="form-control formControl"-->
+                        <!--                                            style="padding: 15px;">-->
+                        <!--                                            <option>Select Category</option>-->
+                        <!--                                            <option>Legal Assistance</option>-->
+                        <!--                                            <option>Therapeutical Help</option>-->
+                        <!--                                            <option>Counselling</option>-->
+                        <!--                                        </select>-->
+                        <!--                                    </div>-->
+                        <!--                                    <h2 class="cate">Type</h2>-->
+                        <!--                                    <ul class="nav nav-tabs" style="margin: 0;display: flex;-->
+                        <!--        padding: 0px 0px 10px;">-->
+                        <!--                                        <li class="active first">-->
+                        <!--                                            <div class="radio">-->
+                        <!--                                                <input id="radio-407" name="radio4" type="radio" value="Volunteer">-->
+                        <!--                                                <label for="radio-407" class="radio-label single" >Volunteer</label>-->
+                        <!--                                            </div>-->
 
-<!--                                        </li>-->
+                        <!--                                        </li>-->
 
-<!--                                        <li class="second">-->
+                        <!--                                        <li class="second">-->
 
-<!--                                            <div class="radio">-->
+                        <!--                                            <div class="radio">-->
 
-<!--                                                <input id="radio-408" name="radio3" type="radio" value="Paid Service">-->
-<!--                                                <label for="radio-408" class="radio-label multiple">Paid-->
-<!--                                                    Service</label>-->
-<!--                                            </div>-->
-<!--                                        </li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                        <!--                                                <input id="radio-408" name="radio3" type="radio" value="Paid Service">-->
+                        <!--                                                <label for="radio-408" class="radio-label multiple">Paid-->
+                        <!--                                                    Service</label>-->
+                        <!--                                            </div>-->
+                        <!--                                        </li>-->
+                        <!--                                    </ul>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                         <div id="multiSlotType">
 
                         </div>
                         <div class="btnsBottom btnsBoking">
                             <div class="modBt" style="text-align: center;">
                                 <a href="javascript:void(0)" class="Button Button-violet-alt closee"
-                                    style="min-width: 140px;">Cancel</a>
+                                   style="min-width: 140px;">Cancel</a>
                                 <a href="javascript:void(0)" class="Button bg-violet closee"
-                                    style="min-width: 140px;" data-toggle="modal" data-dismiss="modal" data-target="#MultipleSelect">Proceed</a>
+                                   style="min-width: 140px;" data-toggle="modal" data-dismiss="modal"
+                                   data-target="#MultipleSelect">Proceed</a>
                             </div>
                         </div>
                     </div>
@@ -509,7 +522,8 @@
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close closee" data-dismiss="modal"><img src="{% static '/userapp/imgs/close.svg' %}"
+                    <button type="button" class="close closee" data-dismiss="modal"><img
+                            src="{% static '/userapp/imgs/close.svg' %}"
                             alt="close"></button>
 
                     <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
@@ -518,7 +532,8 @@
                         <div class="availablityMain availablityMain2 ">
                             <div class="categoryAll">
                                 <h2 class="cate">Category</h2>
-                                <select name="cars" id="category" class="form-control formControl" style="padding: 15px;">
+                                <select name="cars" id="category" class="form-control formControl"
+                                        style="padding: 15px;">
                                     <option>Select Category</option>
                                     <option value="Legal Assistance">Legal Assistance</option>
                                     <option value="Therapeutical Help">Therapeutical Help</option>
@@ -526,12 +541,13 @@
                                 </select>
                             </div>
                             <h2 class="cate">Type</h2>
-                            <ul class="nav nav-tabs singleAmit" style="margin: 0;display: flex;
-        padding: 0px 0px 10px;">
+                            <ul class="nav nav-tabs singleAmit" style="margin: 0;display: flex;padding: 0px 0px 10px;">
                                 <li class="active first">
                                     <div class="radio">
                                         <input id="radio-77" name="radio3" type="radio" value="Volunteer">
-                                        <label for="radio-77" class="radio-label single">Volunteer <i class="fa fa-info-circle tooltip" title="Hello from speech bubble!" aria-hidden="true"></i></label>
+                                        <label for="radio-77" class="radio-label single">Volunteer
+                                            <a href="#" class="amitInfo" title="hi this is freeeeeeeee"><i class="fa fa-info-circle"></i></a>
+                                        </label>
                                     </div>
 
                                 </li>
@@ -550,9 +566,10 @@
                         <div class="btnsBottom btnsBoking">
                             <div class="modBt" style="text-align: center;">
                                 <a href="javascript:void(0)" class="Button Button-violet-alt closee"
-                                    style="min-width: 140px;">Cancel</a>
-                                <a href="javascript:void(0)"  class="Button bg-violet closee"
-                                    style="min-width: 140px;" data-toggle="modal"  data-target="#MultipleSelect2">Proceed</a>
+                                   style="min-width: 140px;">Cancel</a>
+                                <a href="javascript:void(0)" class="Button bg-violet closee"
+                                   style="min-width: 140px;" data-toggle="modal"
+                                   data-target="#MultipleSelect2">Proceed</a>
                             </div>
                         </div>
                     </div>
@@ -602,7 +619,11 @@
             sessionStorage.setItem('availabilityType', radio_button_value_arr)
         }
     });
+
+
+
     $(document).on('click', '.radio-label', function () {
+
         var x = $(this).text();
         if (x == '07:00 AM to 08:00 AM' || x == '08:00 AM to 09:00 AM' || x == '09:00 AM to 10:00 AM' || x == '10:00 AM to 11:00 AM' || x == '11:00 AM to 12:00 pM' || x == '12:00 PM to 01:00 PM' || x == '01:00 PM to 02:00 PM' || x == '02:00 PM to 03:00 PM' || x == '03:00 PM to 04:00 PM' || x == '04:00 PM to 05:00 PM' || x == '05:00 PM to 06:00 PM' || x == '06:00 PM to 07:00 PM') {
             multi_radio_button_value_arr.push(x)
@@ -639,11 +660,13 @@
                                         </select>
                                     </div>
                                     <h2 class="cate">Type</h2>
-             <ul class="nav nav-tabs" style="margin: 0;display: flex;justify-content: center;padding: 0px 0px 10px;">
+             <ul class="nav nav-tabs" style="margin: 0;padding: 0px 0px 10px;">
                                     <li class="active first">
                                         <div class="radio">
                                             <input id="radio-40${i}" name="${i}" type="radio" value="Volunteer">
-                                            <label for="radio-40${i}" class="radio-label single" >Volunteer</label>
+                                            <label for="radio-40${i}" class="radio-label single" >Volunteer
+                                            <a href="#" class="amitInfo" title="hi this is freeeeeeeee"><i class="fa fa-info-circle"></i></a>
+                                            </label>
                                         </div>
                                     </li>
                                     <li class="second">
@@ -665,7 +688,7 @@
 
                             </h2>
                             <div class="availModal availModalyy">
-                                <ul>
+                                <ul class="SelectSlotssss">
                                     <li><input type="radio" name="${i}" value="07:00 AM to 08:00 AM">
                                     <label class="radio-label single amitPy">07:00 AM to 08:00 AM</label></li>
 
@@ -756,6 +779,9 @@
             },
         });
     }
+
+
+
 </script>
 <script>
     function multiSlotCreate() {
@@ -790,6 +816,9 @@
             },
         });
     }
+
+
+
 </script>
 
 {% endblock body %}

@@ -2447,6 +2447,13 @@ width: 40px;
     margin-right: 10px;
     margin-bottom: 12px;
 }
+
+.availModal ul.SelectSlotssss li input{}
+
+.availModal ul.SelectSlotssss li label.active{
+    background-color: var(--violet) !important;
+    color: #fff !important;
+}
 .availModal ul li:nth-of-type(4){
     margin-right: 0;
 }
@@ -2877,4 +2884,17 @@ margin-right: 0 !important;
     }
 .singleAmit li{
     margin-right: 100px !important;
+}
+
+.testingDate{
+    background:black;
+    color:white;
+}
+.amitInfo{
+display: inline-block;
+    color: #007bff;
+    margin-left: 10px;
+}
+.amitInfo:hover{
+    color: #007bff;
 }

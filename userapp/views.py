@@ -574,9 +574,13 @@ class SurvivorNotificationDetail(View):
 
 class SurvivorAvailability(View):
     template_name = 'userapp/availability.html'
+    model = ServiceProviderSlots
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'userapp/availability.html')
+        user = self.request.user
+        service_provider = ServiceProvider.objects.get(user=user)
+        return render(self.request, 'userapp/availability.html',
+                      {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)[:5]})
 
 
 class SurvivorSubscriptionView(View):
@@ -760,7 +764,7 @@ class CreateMultiSlotView(View):
         service_provider = ServiceProvider.objects.get(user=user)
         # print(list(data))
         for x in list(data):
-            print('inside for loop',x)
+            print('inside for loop', x)
             date_time_str = x[0].split(' ')
             month_name = date_time_str[1]
             datetime_object = datetime.strptime(month_name, "%B").month

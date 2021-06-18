@@ -202,7 +202,11 @@ $(document).on('click','.closee',function(){
 $('#singleModal,#multiModal').hide();
 });
 
-
+$(document).ready(function(){
+    $(".radio-label.single.amitPy").click(function(){
+        $(this).toggleClass("active");
+    });
+});
 
 
 
