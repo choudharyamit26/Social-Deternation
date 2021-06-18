@@ -720,7 +720,7 @@ class CreateSlotView(View):
     model = ServiceProviderSlots
 
     def post(self, request, *args, **kwargs):
-        print(self.request.POST)
+        print('Form single slot creation', self.request.POST)
         user = self.request.user
         service_provider = ServiceProvider.objects.get(user=user)
         date_time_str = self.request.POST['selected_date'].split(' ')
@@ -742,6 +742,7 @@ class CreateSlotView(View):
             slot_date=date_time_obj,
             slot_time=self.request.POST['selected_slot'],
             select_slot_type=self.request.POST['select_slot_type'],
+            category=self.request.POST['category_type']
         )
         return redirect("userapp:provider-availability")
 
@@ -753,10 +754,13 @@ class CreateMultiSlotView(View):
         d = self.request.POST['selected_date'].split(",")
         e = self.request.POST['selected_slot'].split(",")
         f = self.request.POST['select_slot_type'].split(",")
-        data = zip(d, e, f)
+        g = self.request.POST['category_type'].split(",")
+        data = zip(d, e, f, g)
         user = self.request.user
         service_provider = ServiceProvider.objects.get(user=user)
+        # print(list(data))
         for x in list(data):
+            print('inside for loop',x)
             date_time_str = x[0].split(' ')
             month_name = date_time_str[1]
             datetime_object = datetime.strptime(month_name, "%B").month
@@ -771,10 +775,12 @@ class CreateMultiSlotView(View):
                 d = d
             selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
             date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
-            l = ServiceProviderSlots.objects.create(
+            ServiceProviderSlots.objects.create(
                 user=service_provider,
                 slot_date=date_time_obj,
                 slot_time=x[1],
                 select_slot_type=x[2],
+                # category=self.request.POST['category_type']
+                category=x[3]
             )
         return redirect("userapp:provider-availability")

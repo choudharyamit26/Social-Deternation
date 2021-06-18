@@ -2779,3 +2779,16 @@ span.pay {
 .uppercase{
     text-transform: uppercase;
 }
+.availModalyy input{
+    display: none !important;
+}
+.amitPy{ 
+    font-family: var(--Montserrat-Light);
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--violet);
+    display: inline-block;
+    border: 1px solid #707070;
+    padding: 10px 8px;
+    border-radius: 11px;
+}

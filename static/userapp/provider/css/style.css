@@ -2839,3 +2839,42 @@ overflow: initial !important;
 .fc-row.fc-widget-header{
 margin-right: 0 !important;
 }
+
+.availModalyy input{
+    display: none !important;
+}
+.amitPy{ 
+    font-family: var(--Montserrat-Light);
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--violet);
+    display: inline-block;
+    border: 1px solid #707070;
+    padding: 10px 8px;
+    border-radius: 11px;
+}
+.amitPy.active{
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.slote {
+    padding-bottom: 0px;
+    border-bottom: 1px solid #0000006e;
+    margin-bottom: 25px;
+    }
+    
+    h2.cate{
+    font-size: 14px;
+    color: #000;
+    font-family: var(--Montserrat-Medium);
+    cursor: pointer;
+    padding: 20px 0px;
+    }
+    .allSlotess {
+    overflow-y: auto;
+    max-height: 480px;
+    }
+.singleAmit li{
+    margin-right: 100px !important;
+}

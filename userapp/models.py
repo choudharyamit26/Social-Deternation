@@ -88,3 +88,4 @@ class ServiceProviderSlots(models.Model):
     slot_date = models.DateField()
     slot_time = models.CharField(default='', max_length=300)
     select_slot_type = models.CharField(default='', max_length=300)
+    category = models.CharField(default='', max_length=300)
