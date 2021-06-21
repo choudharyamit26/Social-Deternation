@@ -2898,3 +2898,29 @@ display: inline-block;
 .amitInfo:hover{
     color: #007bff;
 }
+
+.addTittle{
+display: inline-block;
+position: relative;
+}
+.tiitlebox{
+background: var(--colorWhite);
+padding: 10px;
+border: 1px solid #ccc;
+width: 270px;
+position: absolute;
+display: none;
+}
+
+.titleFlex{
+    display: flex;
+    justify-content: center;
+
+}
+.titleFlex li a.btns{
+    padding: 6px 8px;
+    color: #fff;
+}
+.titleFlex li:first-child{
+    margin-right: 5px;
+}

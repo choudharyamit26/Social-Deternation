@@ -3,17 +3,17 @@
 {% block body %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <section class="availablity">
-<!--    <div class="fc-today">-->
-<!--        {% for object in object_list %}-->
-<!--        <tr>-->
-<!--            <td><h1>{{object.id}}</h1></td>-->
-<!--            <td><h1 class="fc-day-top  fc-today">{{object.slot_date}}</h1></td>-->
-<!--            <td><h1>{{object.slot_time}}</h1></td>-->
-<!--            <td><h1>{{object.select_slot_type}}</h1></td>-->
-<!--            <td><h1>{{object.category}}</h1></td>-->
-<!--        </tr>-->
-<!--        {% endfor %}-->
-<!--    </div>-->
+    <!--    <div class="fc-today">-->
+    <!--        {% for object in object_list %}-->
+    <!--        <tr>-->
+    <!--            <td><h1>{{object.id}}</h1></td>-->
+    <!--            <td><h1 class="fc-day-top  fc-today">{{object.slot_date}}</h1></td>-->
+    <!--            <td><h1>{{object.slot_time}}</h1></td>-->
+    <!--            <td><h1>{{object.select_slot_type}}</h1></td>-->
+    <!--            <td><h1>{{object.category}}</h1></td>-->
+    <!--        </tr>-->
+    <!--        {% endfor %}-->
+    <!--    </div>-->
     <div class="container">
         <div class="availablityMain">
             <ul class="nav nav-tabs">
@@ -50,9 +50,7 @@
                     <button type="button" class="close closee" data-dismiss="modal"><img
                             src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                     <div class="availabilitySlot">
-
                         <div id="checkAvailability">
-
                         </div>
                     </div>
                     <div class="btnsBottom">
@@ -72,27 +70,75 @@
                             src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                     <div class="availabilitySlot">
                         <div class="checkAvailability">
+                            <!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">-->
+                            <!--                                                            <span><a href="javaScript:void(0)" id="slot_timing">-->
+                            <!--                                                                </a></span>-->
+                            <!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add-->
+                            <!--                                        Title</a></span>-->
+                            <!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add-->
+                            <!--                                        Hourly Fees</a></span>-->
+                            <!--                            </h2>-->
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">
                                 <span><a href="javaScript:void(0)" id="slot_timing">
                                     </a></span>
-                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
-                                        Title</a></span>
-                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
-                                        Hourly Fees</a></span>
+                                <span class="addTittle title"><a href="javaScript:void(0)"
+                                        class="small pl-2 d-inline-block darkSky">Add
+                                        Title</a>
+                                    <div class="tiitlebox titlslide">
+                                        <div class="form-group">
+                                            <label for="" class="label" style="padding: 0;">Add Tittle</label>
+                                            <input type="text" class="form-control formControl" placeholder="Add Title">
+                                        </div>
+                                        <div>
+                                            <ul class="titleFlex">
+                                                <li>
+                                                    <a class="btns button closed">
+                                                        Cancel
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="btns button closed">
+                                                        Save
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </span>
+
+                                <span class="addTittle title2"><a href="javaScript:void(0)"
+                                        class="small pl-2 d-inline-block violet">Add
+                                        Hourly Fees</a>
+                                    <div class="tiitlebox titlslide2">
+                                        <div class="form-group">
+                                            <label for="" class="label" style="padding: 0;">Add Fee</label>
+                                            <input type="text" class="form-control formControl" placeholder="Add Fee">
+                                        </div>
+                                        <div>
+                                            <ul class="titleFlex">
+                                                <li>
+                                                    <a class="btns button closed">
+                                                        Cancel
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="btns button closed">
+                                                        Save
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </span>
+
                             </h2>
                             <div class="availModal">
                                 <ul>
-
                                     <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
-
                                     <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
-
                                     <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
-
                                     <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
-
                                     <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-
                                     <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
                                     <li><a href="javaScript:void(0)">02:00 PM to 03:00 PM</a></li>
                                     <li><a href="javaScript:void(0)">03:00 PM to 04:00 PM</a></li>
@@ -113,110 +159,17 @@
         </div>
     </div>
     <div class="modal" id="MultipleEdit">
-
         <div class="modal-dialog">
-
             <div class="modal-content">
-
-
                 <div class="modal-body">
-
                     <button type="button" class="close" data-dismiss="modal"><img
                             src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
-
                     <div class="availabilitySlot">
-
-                        <div class="checkAvailability">
-
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
-
-                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
-
-                            </h2>
-
-                            <div class="availModal">
-
-                                <ul>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="checkAvailability">
-
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
-
-                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
-
-                            </h2>
-
-                            <div class="availModal">
-
-                                <ul>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="checkAvailability">
-
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
-
-                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="{% static 'userapp/imgs/awesome-edit.webp' } %" alt=""></a></span>
-
-                            </h2>
-
-                            <div class="availModal">
-
-                                <ul>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
-                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
-                                </ul>
-                            </div>
-                        </div>
                         <div class="checkAvailability">
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
+                                        class="small pl-2 d-inline-block darkSky"><img
+                                            src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
                             </h2>
                             <div class="availModal">
                                 <ul>
@@ -231,8 +184,8 @@
                         <div class="checkAvailability">
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="{% static 'imgs/awesome-edit.webp'}" alt=""></a></span>
+                                        class="small pl-2 d-inline-block darkSky"><img
+                                            src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
                             </h2>
                             <div class="availModal">
                                 <ul>
@@ -247,8 +200,57 @@
                         <div class="checkAvailability">
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
                                 <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
-                                                                              class="small pl-2 d-inline-block darkSky"><img
-                                        src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
+                                        class="small pl-2 d-inline-block darkSky"><img
+                                            src="{% static 'userapp/imgs/awesome-edit.webp' } %" alt=""></a></span>
+
+                            </h2>
+                            <div class="availModal">
+                                <ul>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="checkAvailability">
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
+                                        class="small pl-2 d-inline-block darkSky"><img
+                                            src="{% static 'userapp/imgs/awesome-edit.webp' %}" alt=""></a></span>
+                            </h2>
+                            <div class="availModal">
+                                <ul>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="checkAvailability">
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
+                                        class="small pl-2 d-inline-block darkSky"><img
+                                            src="{% static 'imgs/awesome-edit.webp'}" alt=""></a></span>
+                            </h2>
+                            <div class="availModal">
+                                <ul>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="checkAvailability">
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">May-05-2021
+                                <span class="violet pl-2 small">Lorem ipsum<a href="javaScript:void(0)"
+                                        class="small pl-2 d-inline-block darkSky"><img
+                                            src="{% static 'imgs/awesome-edit.webp' %}" alt=""></a></span>
                             </h2>
                             <div class="availModal">
                                 <ul>
@@ -332,8 +334,7 @@
             <div class="modal-content">
                 <div class="modal-body" style="position: relative;height: 700px;overflow-y: scroll;">
                     <button type="button" class="close closee" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
+                            src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
 
                     <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
                         <p class="d">Select your availability type</p>
@@ -467,10 +468,9 @@
                         <div class="btnsBottom btnsBoking">
                             <div class="modBt" style="text-align: center;">
                                 <a href="javascript:void(0)" class="Button Button-violet-alt closee"
-                                   style="min-width: 140px;">Cancel</a>
-                                <a href="javascript:void(0)" class="Button bg-violet closee"
-                                   style="min-width: 140px;" data-toggle="modal" data-dismiss="modal"
-                                   data-target="#MultipleSelect">Proceed</a>
+                                    style="min-width: 140px;">Cancel</a>
+                                <a href="javascript:void(0)" class="Button bg-violet closee" style="min-width: 140px;"
+                                    data-toggle="modal" data-dismiss="modal" data-target="#MultipleSelect">Proceed</a>
                             </div>
                         </div>
                     </div>
@@ -523,8 +523,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close closee" data-dismiss="modal"><img
-                            src="{% static '/userapp/imgs/close.svg' %}"
-                            alt="close"></button>
+                            src="{% static '/userapp/imgs/close.svg' %}" alt="close"></button>
 
                     <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
                         <p class="head selectedd" id="slot_date"></p>
@@ -533,7 +532,7 @@
                             <div class="categoryAll">
                                 <h2 class="cate">Category</h2>
                                 <select name="cars" id="category" class="form-control formControl"
-                                        style="padding: 15px;">
+                                    style="padding: 15px;">
                                     <option>Select Category</option>
                                     <option value="Legal Assistance">Legal Assistance</option>
                                     <option value="Therapeutical Help">Therapeutical Help</option>
@@ -546,7 +545,8 @@
                                     <div class="radio">
                                         <input id="radio-77" name="radio3" type="radio" value="Volunteer">
                                         <label for="radio-77" class="radio-label single">Volunteer
-                                            <a href="#" class="amitInfo" title="hi this is freeeeeeeee"><i class="fa fa-info-circle"></i></a>
+                                            <a href="#" class="amitInfo" title="hi this is freeeeeeeee"><i
+                                                    class="fa fa-info-circle"></i></a>
                                         </label>
                                     </div>
 
@@ -566,10 +566,9 @@
                         <div class="btnsBottom btnsBoking">
                             <div class="modBt" style="text-align: center;">
                                 <a href="javascript:void(0)" class="Button Button-violet-alt closee"
-                                   style="min-width: 140px;">Cancel</a>
-                                <a href="javascript:void(0)" class="Button bg-violet closee"
-                                   style="min-width: 140px;" data-toggle="modal"
-                                   data-target="#MultipleSelect2">Proceed</a>
+                                    style="min-width: 140px;">Cancel</a>
+                                <a href="javascript:void(0)" class="Button bg-violet closee" style="min-width: 140px;"
+                                    data-toggle="modal" data-target="#MultipleSelect2">Proceed</a>
                             </div>
                         </div>
                     </div>
@@ -680,13 +679,64 @@
                             </div> <br>`;
 
             u += `<div class="checkAvailability">
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">${multiSlots[i]}
-                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
-                                            Title</a></span>
-                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
-                                            Hourly Fees</a></span>
+<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">${multiSlots[i]}-->
+<!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add-->
+<!--                                            Title</a></span>-->
+<!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add-->
+<!--                                            Hourly Fees</a></span>-->
 
-                            </h2>
+<!--                            </h2>-->
+                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">${multiSlots[i]}
+
+<span class="addTittle title"><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add
+Title</a>
+<div class="tiitlebox titlslide">
+    <div class="form-group">
+        <label for="" class="label" style="padding: 0;">Add Tittle</label>
+        <input type="text" class="form-control formControl" placeholder="Add Title">
+    </div>
+    <div>
+        <ul class="titleFlex">
+            <li>
+                <a class="btns button closed">
+                    Cancel
+                </a>
+            </li>
+            <li>
+                <a class="btns button closed">
+                    Save
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</span>
+
+<span class="addTittle title2"><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
+Hourly Fees</a>
+<div class="tiitlebox titlslide2">
+    <div class="form-group">
+        <label for="" class="label" style="padding: 0;">Add Fee</label>
+        <input type="text" class="form-control formControl" placeholder="Add Fee">
+    </div>
+    <div>
+        <ul class="titleFlex">
+            <li>
+                <a class="btns button closed">
+                    Cancel
+                </a>
+            </li>
+            <li>
+            <a class="btns button closed">
+                Save
+            </a>
+            </li>s
+        </ul>
+    </div>
+</div>
+</span>
+
+</h2>
                             <div class="availModal availModalyy">
                                 <ul class="SelectSlotssss">
                                     <li><input type="radio" name="${i}" value="07:00 AM to 08:00 AM">
@@ -782,6 +832,7 @@
 
 
 
+
 </script>
 <script>
     function multiSlotCreate() {
@@ -789,7 +840,7 @@
         var e = sessionStorage.getItem('multiSlots')
         var f = sessionStorage.getItem('availabilityType')
         var g = sessionStorage.getItem('multiCategoryType')
-        console.log(d, e,f,g)
+        console.log(d, e, f, g)
         var url = "{% url 'userapp:create-multi-slot' %}"
         $.ajax({
             url: url,
@@ -819,6 +870,33 @@
 
 
 
-</script>
 
+</script>
+<script>
+    $(document).on('click', '.title', function () {
+        // ('.titlslide').slideDown();
+        $(this).find('.titlslide').slideDown();
+
+    });
+
+    $(document).on('click', '.title2', function () {
+        $(this).find('.titlslide2').slideDown();
+    });
+
+    document.addEventListener("mousedown", function (event) {
+        if (event.target.closest(".title ,.titlslide"))
+            return;
+        $('.titlslide').hide();
+    });
+    document.addEventListener("mousedown", function (event) {
+        if (event.target.closest(".title2 ,.titlslide2"))
+            return;
+        $('.titlslide2').hide();
+    });
+</script>
+<script>
+$(document).on('click','.closed',function(){
+  $('.tiitlebox').hide();
+});
+</script>
 {% endblock body %}
