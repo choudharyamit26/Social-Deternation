@@ -1,98 +1,108 @@
 {% extends 'superadmin/new/new-base.html' %}
 
 {% block body  %}
-<div class="WrapperArea">
-    <div class="WrapperBox">
+ <div class="WrapperArea">
+        <div class="WrapperBox">
 
-        <div class="DashboardCount">
+            <div class="DashboardCount">
 
-            <ol>
-                <li><a href="javascript:void(0);">Today</a></li>
-                <li><a href="javascript:void(0);">Weekly</a></li>
-                <li><a href="javascript:void(0);">Monthly</a></li>
-                <li><a href="javascript:void(0);">Yearly</a></li>
-            </ol>
+                <ol>
+                    <li><a href="javascript:void(0);">Today</a></li>
+                    <li><a href="javascript:void(0);">Weekly</a></li>
+                    <li><a href="javascript:void(0);">Monthly</a></li>
+                    <li><a href="javascript:void(0);">Yearly</a></li>
+                </ol>
 
-            <ul>
-                <li>
-                    <div class="Count">
-                        <p>New Subscriptions</p>
-                        <h4>500</h4>
-                    </div>
-                </li>
-                <li>
-                    <div class="Count">
-                        <p>New Service Provider</p>
-                        <h4>100</h4>
-                    </div>
-                </li>
-                <li>
-                    <div class="Count">
-                        <p>Assault Recorded</p>
-                        <h4>45</h4>
-                    </div>
-                </li>
-                <li>
-                    <div class="Count">
-                        <p>Match Recorded</p>
-                        <h4>15</h4>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="Small-Wrapper">
-            <h4 class="Title">Active/Inactive Users</h4>
-
-            <div class="Filter">
-                <div class="form-group">
-                    <label>User</label>
-                    <select class="form-control">
-                        <option>Select User</option>
-                        <option>Organizations</option>
-                        <option>Service Provider</option>
-                        <option>Clients</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Month</label>
-                    <select class="form-control">
-                        <option>Select Month</option>
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March ">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June ">June</option>
-                        <option value="July ">July</option>
-                        <option value="August ">August</option>
-                        <option value="September">September</option>
-                        <option value="October">October</option>
-                        <option value="November ">November</option>
-                        <option value="December">December</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Year</label>
-                    <select class="form-control">
-                        <option>Select Year</option>
-                        <option>2021</option>
-                        <option>2020</option>
-                        <option>2019</option>
-                        <option>2018</option>
-                        <option>2017</option>
-                        <option>2016</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>&nbsp;</label>
-                    <button class="Button">Apply</button>
-                </div>
+                <ul>
+                    <li>
+                        <div class="Count">
+                            <p>Registered Survivors</p>
+                            <h4>500</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Count">
+                            <p>Registered Service Providers</p>
+                            <h4>100</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Count">
+                            <p>Recorded Assault</p>
+                            <h4>45</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Count">
+                            <p>Generated Revenue</p>
+                            <h4>$15</h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="Count">
+                            <p>Service Delivered</p>
+                            <h4>15</h4>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <canvas id="myChart"></canvas>
+
+            <div class="Small-Wrapper">
+                <h4 class="Title">Active/Inactive Users</h4>
+
+                <div class="Filter">
+                    <div class="form-group">
+                        <label>User</label>
+                        <select class="form-control">
+                            <option>Select User</option>
+                             <option>Organizations</option>
+                              <option>Service Provider</option>
+                               <option>Clients</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Month</label>
+                        <select class="form-control">
+                            <option>Select Month</option>
+
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March ">March </option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June ">June </option>
+                            <option value="July ">July </option>
+                            <option value="August ">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November ">November</option>
+                            <option value="December">December</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <select class="form-control">
+                            <option>Select Year</option>
+                              <option>2021</option>
+                                 <option>2020</option>
+                                    <option>2019</option>
+                                       <option>2018</option>
+                                          <option>2017</option>
+                                             <option>2016</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button class="Button">Apply</button>
+                    </div>
+                </div>
+
+                <canvas id="myChart"></canvas>
+
+            </div>
+
         </div>
     </div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 

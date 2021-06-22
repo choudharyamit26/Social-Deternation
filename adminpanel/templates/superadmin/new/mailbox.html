@@ -1,0 +1,325 @@
+{% extends 'superadmin/new/new-base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+        <div class="mailbox">
+
+            <div class="bgcss">
+                <div class="mailInput">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="" class="label">Name</label>
+                                <input type="text" class="form-control formControl" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="" class="label">Email Id</label>
+                                <input type="text" class="form-control formControl" placeholder="Email Id">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="" class="label">Sort By</label>
+
+                                <select name="Category" id="Category" class="form-control formControl">
+                                    <option value="Category">A-Z</option>
+                                    <option value="Category">Z-A</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="mailLeft">
+                            <ul>
+                                <li class="compose">
+                                    <a href="javascript:void(0)" data-toggle="modal"
+                                       data-target="#myModal2" class="Button" style="color: #fff;">COMPOSE</a>
+                                </li>
+                                <li>
+                                    <a class="active" href="javascript:void(0)"><span><i
+                                            class="fa fa-envelope"></i></span>Inbox</a>
+                                </li>
+                                <li><a href="javascript:void(0)">
+                                    <span><i class="fa fa-paper-plane"></i></span>Sent
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <span><i class="fa fa-sticky-note"></i></span>Draft
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <span><i class="fa fa-trash"></i></span>
+                                    Archive</a>
+                                </li>
+                                <li><a href="javascript:void(0)" data-toggle="modal"
+                                       data-target="#myModal1">
+                                    <span><i class="fa fa-envelope-square"></i></span>
+                                    Automated Mails</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="mailRightAll">
+                            <div class="mailRight">
+                                <div class="mailright1">
+                                    <h2>Today</h2>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" class="active">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mailright1">
+                                    <h2>Yesterday</h2>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" class="active">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mailright1">
+                                    <h2>Monday</h2>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <div class="mRight">
+                                                    <p>Jeff Lewis (Basecamp)</p>
+                                                    <p>Re: <span>(Health Solution) Requested solution</span></p>
+                                                    <p>the client can see this in our profile.</p>
+                                                </div>
+                                                <div class="timer">
+                                                    <p>10.00 AM</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mailRightLast">
+                                <div class="mailLast">
+                                    <h3>Hi VisHu</h3>
+                                    <p>Isaac Hungbeme has joined your meeting.</p>
+                                    <ul class="meetingMail">
+                                        <li><span class="first">Topic</span> <span class="second"
+                                                                                   style="font-weight: 600;">BRASI Meeting</span>
+                                        </li>
+                                        <li><span class="first">Meeting ID</span> <span class="second">9896796979</span>
+                                        </li>
+                                        <li><span class="first">Time</span> <span class="second">Apr 27,2021 04:15 PM
+                                                    India</span></li>
+                                    </ul>
+                                    <div class="startbtn">
+                                        <a href="javascript:void(0)">Start Meeting</a>
+                                    </div>
+                                    <div class="regards">
+                                        <h4>Thank you for choosing BRASI.</h4>
+                                        <h4>- The BRASI Team</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<section class="modalBox">
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog" style="max-width: 650px;">
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modalBodyy">
+                        <div class="compose">
+                            <div class="subject form-group">
+                                <label for="" class="label">From:</label>
+                                <input type="text" class="form-control formControl"
+                                       value="vishu@gmail.com">
+                            </div>
+                            <div class="subject form-group">
+                                <label for="" class="label">To:</label>
+                                <input type="text" class="form-control formControl"
+                                       value="">
+                            </div>
+                            <div class="subject form-group">
+                                <label for="" class="label">Subject:</label>
+                                <input type="text" class="form-control formControl"
+                                       value="">
+                            </div>
+                            <div class="form-group" style="padding-top: 35px;padding-bottom: 15px;">
+                                <textarea class="form-control formControl" rows="7"
+                                          style="border: 1px solid #ddd;"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <a href="javascript:void(0)" style="border: none;" class="Button"><span><i
+                                        class="fa fa-paper-plane"></i></span> Send</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="myModal1">
+        <div class="modal-dialog" style="max-width: 650px;">
+            <div class="modal-content">
+
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modalBodyy">
+                        <div class="compose">
+                            <h3>Setup Automated Mail </h3>
+                            <div class="subject form-group">
+                                <label for="" class="label">To:</label>
+                                <input type="text" class="form-control formControl"
+                                       value="">
+                            </div>
+                            <div class="subject form-group">
+                                <label for="" class="label">Subject:</label>
+                                <input type="text" class="form-control formControl"
+                                       value="">
+                            </div>
+                            <div class="mailInsput mt-3">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="label">Select Date</label>
+                                            <input type="date" class="form-control " placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="" class="label">Select Time</label>
+                                            <input type="time" class="form-control " placeholder="Email Id">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 disCenter">
+                                        <div class="Checkboxs">
+                                            <label class="CheckBox">Send Now
+                                                <input type="checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="padding-top: 35px;padding-bottom: 15px;">
+                                <textarea class="form-control formControl" rows="7"
+                                          style="border: 1px solid #ddd;"></textarea>
+                            </div>
+                            <div class="form-group  ">
+                                <a href="javascript:void(0)" style="border: none;" class="Button"><span><i
+                                        class="fa fa-paper-plane"></i></span> Send</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

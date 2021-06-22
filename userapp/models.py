@@ -90,4 +90,4 @@ class ServiceProviderSlots(models.Model):
     select_slot_type = models.CharField(default='', max_length=300)
     category = models.CharField(default='', max_length=300)
     title = models.CharField(default='', max_length=100)
-    hourly_fees = models.DecimalField(default=0,max_digits=10, decimal_places=2)
+    hourly_fees = models.DecimalField(default=0, max_digits=10, decimal_places=2)

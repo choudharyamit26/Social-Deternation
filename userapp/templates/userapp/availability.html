@@ -36,7 +36,7 @@
             </ul>
             <div id='calendar1' class="calender"></div>
             <!-- <div id='calendar2' class="multipleId"></div> -->
-            <div class="text-center">
+            <div class="text-center" style="padding-top: 50px;">
                 <a href="javaScript:void(0)" class="Button bg-violet popnext" onclick="multiSlotTypeFun()">Next</a>
             </div>
         </div>
@@ -63,21 +63,13 @@
         </div>
     </div>
     <div class="modal" id="MultipleSelect2">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width:67%;">
             <div class="modal-content">
                 <div class="modal-body">
                     <button type="button" class="close closee" data-dismiss="modal"><img
                             src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
-                    <div class="availabilitySlot">
+                    <div class="availabilitySlot" style="overflow-y: auto;">
                         <div class="checkAvailability">
-                            <!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">-->
-                            <!--                                                            <span><a href="javaScript:void(0)" id="slot_timing">-->
-                            <!--                                                                </a></span>-->
-                            <!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky">Add-->
-                            <!--                                        Title</a></span>-->
-                            <!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add-->
-                            <!--                                        Hourly Fees</a></span>-->
-                            <!--                            </h2>-->
                             <h2 class="normalFont text-left pb-3" style="font-size: 18px;">
                                 <span><a href="javaScript:void(0)" id="slot_timing">
                                     </a></span>
@@ -86,8 +78,8 @@
                                         Title</a>
                                     <div class="tiitlebox titlslide">
                                         <div class="form-group">
-                                            <label for="" class="label" style="padding: 0;">Add Tittle</label>
-                                            <input type="text" class="form-control formControl" placeholder="Add Title">
+                                            <label for="" class="label" style="padding: 0;" id="title">Add Tittle</label>
+                                            <input type="text" class="form-control formControl" placeholder="Add Title" name="single_title">
                                         </div>
                                         <div>
                                             <ul class="titleFlex">
@@ -97,7 +89,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="btns button closed">
+                                                    <a class="btns button closed" id="single_title">
                                                         Save
                                                     </a>
                                                 </li>
@@ -111,8 +103,8 @@
                                         Hourly Fees</a>
                                     <div class="tiitlebox titlslide2">
                                         <div class="form-group">
-                                            <label for="" class="label" style="padding: 0;">Add Fee</label>
-                                            <input type="text" class="form-control formControl" placeholder="Add Fee">
+                                            <label for="" class="label" style="padding: 0;" id="fee">Add Fee</label>
+                                            <input type="number" class="form-control formControl" placeholder="Add Fee" name="single_fee">
                                         </div>
                                         <div>
                                             <ul class="titleFlex">
@@ -122,7 +114,7 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="btns button closed">
+                                                    <a class="btns button closed" id="single_price">
                                                         Save
                                                     </a>
                                                 </li>
@@ -132,7 +124,7 @@
                                 </span>
 
                             </h2>
-                            <div class="availModal">
+                            <div class="availModal" style="padding-bottom: 75px;">
                                 <ul>
                                     <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
                                     <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
@@ -304,31 +296,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="modal" id="multiModal">
-        <div class="modal-dialog" style="max-width: 575px;">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close closee" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
-
-                    <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
-                        <p class="d">Select your availability type</p>
-                        <div id="multiSlotType">
-
-                        </div>
-                        <div class="btnsBottom btnsBoking">
-                            <div class="modBt" style="text-align: center;">
-                                <a href="javascript:void(0)" class="Button Button-violet-alt closee"
-                                    style="min-width: 140px;">Cancel</a>
-                                <a href="javascript:void(0)" class="Button bg-violet closee" style="min-width: 140px;"
-                                    data-toggle="modal" data-target="#MultipleSelect">Proceed</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="modal" id="multiModal">
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
@@ -338,130 +305,6 @@
 
                     <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
                         <p class="d">Select your availability type</p>
-                        <!--                        <div class="allSlotess">-->
-                        <!--                            <div class="slote">-->
-                        <!--                                <p class="head selectedd">Selected Date : <span class="dated">June-11-2021</span>-->
-                        <!--                                </p>-->
-
-                        <!--                                <div class="availablityMain availablityMain2 ">-->
-                        <!--                                    <div class="categoryAll">-->
-                        <!--                                        <h2 class="cate">Category</h2>-->
-                        <!--                                        <select name="cars" id="cars" class="form-control formControl"-->
-                        <!--                                            style="padding: 15px;">-->
-                        <!--                                            <option>Select Category</option>-->
-                        <!--                                            <option>Legal Assistance</option>-->
-                        <!--                                            <option>Therapeutical Help</option>-->
-                        <!--                                            <option>Counselling</option>-->
-                        <!--                                        </select>-->
-                        <!--                                    </div>-->
-                        <!--                                    <h2 class="cate">Type</h2>-->
-                        <!--                                    <ul class="nav nav-tabs singleAmit" style="margin: 0;display: flex;-->
-                        <!--        padding: 0px 0px 10px;">-->
-                        <!--                                        <li class="active first">-->
-                        <!--                                            <div class="radio">-->
-                        <!--                                                <input id="radio-401" name="radio3" type="radio">-->
-                        <!--                                                <label for="radio-401" class="radio-label single">Volunteer</label>-->
-                        <!--                                            </div>-->
-
-                        <!--                                        </li>-->
-
-                        <!--                                        <li class="second">-->
-
-                        <!--                                            <div class="radio">-->
-
-                        <!--                                                <input id="radio-402" name="radio3" type="radio">-->
-
-                        <!--                                                <label for="radio-402" class="radio-label multiple">Paid-->
-                        <!--                                                    Service</label>-->
-
-                        <!--                                            </div>-->
-
-                        <!--                                        </li>-->
-
-                        <!--                                    </ul>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="slote">-->
-                        <!--                                <p class="head selectedd">Selected Date : <span class="dated">June-12-2021</span>-->
-                        <!--                                </p>-->
-
-                        <!--                                <div class="availablityMain availablityMain2 ">-->
-                        <!--                                    <div class="categoryAll">-->
-                        <!--                                        <h2 class="cate">Category</h2>-->
-                        <!--                                        <select name="cars" id="cars" class="form-control formControl"-->
-                        <!--                                            style="padding: 15px;">-->
-                        <!--                                            <option>Select Category</option>-->
-                        <!--                                            <option>Legal Assistance</option>-->
-                        <!--                                            <option>Therapeutical Help</option>-->
-                        <!--                                            <option>Counselling</option>-->
-                        <!--                                        </select>-->
-                        <!--                                    </div>-->
-                        <!--                                    <h2 class="cate">Type</h2>-->
-                        <!--                                    <ul class="nav nav-tabs" style="margin: 0;display: flex;-->
-                        <!--        padding: 0px 0px 10px;">-->
-                        <!--                                        <li class="active first">-->
-                        <!--                                            <div class="radio">-->
-                        <!--                                                <input id="radio-403" name="radio4" type="radio">-->
-                        <!--                                                <label for="radio-403" class="radio-label single">Volunteer</label>-->
-                        <!--                                            </div>-->
-
-                        <!--                                        </li>-->
-
-                        <!--                                        <li class="second">-->
-
-                        <!--                                            <div class="radio">-->
-
-                        <!--                                                <input id="radio-405" name="radio4" type="radio">-->
-
-                        <!--                                                <label for="radio-405" class="radio-label multiple">Paid-->
-                        <!--                                                    Service</label>-->
-
-                        <!--                                            </div>-->
-
-                        <!--                                        </li>-->
-
-                        <!--                                    </ul>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="slote">-->
-                        <!--                                <p class="head selectedd">Selected Date : <span class="dated">June-14-2021</span>-->
-                        <!--                                </p>-->
-
-                        <!--                                <div class="availablityMain availablityMain2 ">-->
-                        <!--                                    <div class="categoryAll">-->
-                        <!--                                        <h2 class="cate">Category</h2>-->
-                        <!--                                        <select name="cars" id="cars" class="form-control formControl"-->
-                        <!--                                            style="padding: 15px;">-->
-                        <!--                                            <option>Select Category</option>-->
-                        <!--                                            <option>Legal Assistance</option>-->
-                        <!--                                            <option>Therapeutical Help</option>-->
-                        <!--                                            <option>Counselling</option>-->
-                        <!--                                        </select>-->
-                        <!--                                    </div>-->
-                        <!--                                    <h2 class="cate">Type</h2>-->
-                        <!--                                    <ul class="nav nav-tabs" style="margin: 0;display: flex;-->
-                        <!--        padding: 0px 0px 10px;">-->
-                        <!--                                        <li class="active first">-->
-                        <!--                                            <div class="radio">-->
-                        <!--                                                <input id="radio-407" name="radio4" type="radio" value="Volunteer">-->
-                        <!--                                                <label for="radio-407" class="radio-label single" >Volunteer</label>-->
-                        <!--                                            </div>-->
-
-                        <!--                                        </li>-->
-
-                        <!--                                        <li class="second">-->
-
-                        <!--                                            <div class="radio">-->
-
-                        <!--                                                <input id="radio-408" name="radio3" type="radio" value="Paid Service">-->
-                        <!--                                                <label for="radio-408" class="radio-label multiple">Paid-->
-                        <!--                                                    Service</label>-->
-                        <!--                                            </div>-->
-                        <!--                                        </li>-->
-                        <!--                                    </ul>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
                         <div id="multiSlotType">
 
                         </div>
@@ -478,46 +321,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="modal" id="singleModal">
-        <div class="modal-dialog" style=" max-width: 575px;">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close closee" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
-
-                    <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
-                        <p class="head selectedd" id="slot_date"></p>
-                        <p class="d">Select your availability type</p>
-                        <div class="availablityMain availablityMain2 ">
-                            <ul class="nav nav-tabs" style="margin: 0;display: flex;
-                        justify-content: center;padding: 0px 0px 10px;">
-                                <li class="active first">
-                                    <div class="radio">
-                                        <input id="radio-77" name="radio3" type="radio" value="Volunteer">
-                                        <label for="radio-77" class="radio-label type single">Volunteer</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-78" name="radio3" type="radio" value="Paid Service">
-                                        <label for="radio-78" class="radio-label type multiple">Paid Service</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="btnsBottom btnsBoking">
-                            <div class="modBt" style="text-align: center;">
-                                <a href="javascript:void(0)" class="Button Button-violet-alt closee"
-                                    style="min-width: 140px;">Cancel</a>
-                                <a href="javascript:void(0)" class="Button bg-violet closee" style="min-width: 140px;"
-                                    data-toggle="modal" data-target="#MultipleSelect2">Proceed</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="modal" id="singleModal">
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
@@ -583,25 +386,45 @@
 <script src="{% static 'userapp/provider/js/FullCalendarDayGrid.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarInteraction.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarTimeGrid.4.1.0.min.js' %}"></script>
-<!--<script>-->
-<!--    $(document).on('click','span.fc-day-number',function(){-->
-<!--    $('span.fc-day-number').parents('.fc-day-top').removeClass('fc-today');-->
-<!--    $(this).parents('.fc-day-top').addClass('fc-today');-->
-<!--    var y = $(this).parents('#calendar1').find('h2').text();-->
-<!--    var x = $(this).text();-->
-<!--    console.log(x,y)-->
-<!--    var d = document.getElementById('slot_date')-->
-<!--    d.innerHTML = x + ' '+ y-->
-<!--    var current_selected_date = x + ' ' + y-->
-<!--    sessionStorage.setItem('singleSelectDate', current_selected_date)-->
-<!--    console.log(sessionStorage.getItem('singleSelectDate'))-->
-<!--});-->
 
-
-<!--</script>-->
 <script>
     var radio_button_value_arr = []
     var multi_radio_button_value_arr = []
+    var multi_title = []
+    var multi_fee = []
+    $(document).on('click', '.multi_fee', function () {
+        var z = $(this).prop('id');
+        var a = "#multi_fee_id"+z;
+        var x = $(a).val();
+        multi_fee.push(x)
+        sessionStorage.setItem('multiFee', multi_fee)
+    });
+
+
+    $(document).on('click', '.multi_title', function () {
+        var z = $(this).prop('id');
+        var a = "#multi_title_id"+z;
+        var x = $(a).val();
+        multi_title.push(x)
+        sessionStorage.setItem('multiTitle', multi_title)
+    });
+
+
+
+    $(document).on('click', '#single_title', function () {
+        var x = $("input[name=single_title]").val();
+        var y = document.getElementById('title')
+        y.innerHTML = x;
+        sessionStorage.setItem('singleTitle', x)
+    });
+
+    $(document).on('click', '#single_price', function () {
+        var x = $("input[name=single_fee]").val();
+        var y = document.getElementById('fee')
+        y.innerHTML = x;
+        console.log('SINGLE FEES',x)
+        sessionStorage.setItem('singleFees', x)
+    });
 
     $(document).on('click', '.radio-label', function () {
         var x = $(this).text();
@@ -693,7 +516,7 @@ Title</a>
 <div class="tiitlebox titlslide">
     <div class="form-group">
         <label for="" class="label" style="padding: 0;">Add Tittle</label>
-        <input type="text" class="form-control formControl" placeholder="Add Title">
+        <input type="text" class="form-control formControl " placeholder="Add Title" name="multi_title" id="multi_title_id${i}">
     </div>
     <div>
         <ul class="titleFlex">
@@ -703,7 +526,7 @@ Title</a>
                 </a>
             </li>
             <li>
-                <a class="btns button closed">
+                <a class="btns button closed multi_title" id="${i}">
                     Save
                 </a>
             </li>
@@ -717,7 +540,7 @@ Hourly Fees</a>
 <div class="tiitlebox titlslide2">
     <div class="form-group">
         <label for="" class="label" style="padding: 0;">Add Fee</label>
-        <input type="text" class="form-control formControl" placeholder="Add Fee">
+        <input type="number" class="form-control formControl" placeholder="Add Fee" name="multi_fee" id="multi_fee_idfee${i}">
     </div>
     <div>
         <ul class="titleFlex">
@@ -727,10 +550,10 @@ Hourly Fees</a>
                 </a>
             </li>
             <li>
-            <a class="btns button closed">
+            <a class="btns button closed multi_fee" id="fee${i}">
                 Save
             </a>
-            </li>s
+            </li>
         </ul>
     </div>
 </div>
@@ -802,6 +625,8 @@ Hourly Fees</a>
         var e = sessionStorage.getItem('singleSelectSlot')
         var f = sessionStorage.getItem('selectSlotType')
         var g = sessionStorage.getItem('categoryType')
+        var h = sessionStorage.getItem('singleTitle')
+        var i = sessionStorage.getItem('singleFees')
         console.log(d, e)
         var url = "{% url 'userapp:create-slot' %}"
         $.ajax({
@@ -812,6 +637,8 @@ Hourly Fees</a>
                 selected_slot: e,
                 select_slot_type: f,
                 category_type: g,
+                title: h,
+                fee: i,
                 csrfmiddlewaretoken: "{{ csrf_token }}"
             },
             success: function (data) {
@@ -840,6 +667,8 @@ Hourly Fees</a>
         var e = sessionStorage.getItem('multiSlots')
         var f = sessionStorage.getItem('availabilityType')
         var g = sessionStorage.getItem('multiCategoryType')
+        var h = sessionStorage.getItem('multiTitle')
+        var i = sessionStorage.getItem('multiFee')
         console.log(d, e, f, g)
         var url = "{% url 'userapp:create-multi-slot' %}"
         $.ajax({
@@ -850,6 +679,8 @@ Hourly Fees</a>
                 selected_slot: e,
                 select_slot_type: f,
                 category_type: g,
+                multi_title: h,
+                multi_fee: i,
                 csrfmiddlewaretoken: "{{ csrf_token }}"
             },
             success: function (data) {
@@ -860,6 +691,9 @@ Hourly Fees</a>
                 sessionStorage.removeItem('multiSelectDate')
                 sessionStorage.removeItem('multiSlots')
                 sessionStorage.removeItem('availabilityType')
+                sessionStorage.removeItem('multiCategoryType')
+                sessionStorage.removeItem('multiTitle')
+                sessionStorage.removeItem('multiFee')
                 window.location.href = url
             },
             error: function (data) {

@@ -614,6 +614,96 @@ class SuperAdminAssaultRecords(LoginRequiredMixin, ListView):
     login_url = "adminpanel:superadmin"
 
 
+class CMSBenefits(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/benefits.html'
+    login_url = "adminpanel:superadmin"
+
+
+class CMSFeature(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/features.html'
+    login_url = "adminpanel:superadmin"
+
+
+class CMSHowItWorks(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/how_it_work.html'
+    login_url = "adminpanel:superadmin"
+
+
+class CMSSocialPages(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/social.html'
+    login_url = "adminpanel:superadmin"
+
+
+class CMSPrivacyPolicy(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/privacy.html'
+    login_url = "adminpanel:superadmin"
+
+
+class CMSTermsOfUse(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/terms.html'
+    login_url = "adminpanel:superadmin"
+
+
+class FaqSurvivors(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/faq-survivors.html'
+    login_url = "adminpanel:superadmin"
+
+
+class FaqService(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/faq-service.html'
+    login_url = "adminpanel:superadmin"
+
+
+class FaqLicense(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/faq-license.html'
+    login_url = "adminpanel:superadmin"
+
+
+class ReportSurvivor(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/report-service.html'
+    login_url = "adminpanel:superadmin"
+
+
+class ReportServiceProvider(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/report-survivor.html'
+    login_url = "adminpanel:superadmin"
+
+
+class VoucherView(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/voucher.html'
+    login_url = "adminpanel:superadmin"
+
+
+class SpecialUserView(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/user.html'
+    login_url = "adminpanel:superadmin"
+
+
+class MailBoxView(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/mailbox.html'
+    login_url = "adminpanel:superadmin"
+
+
+class SuperAdminNotifications(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/notification.html'
+    login_url = "adminpanel:superadmin"
+
+
 class CreateOrganization(View):
     model = Organization
     template_name = 'superadmin/new/customer-management.html'

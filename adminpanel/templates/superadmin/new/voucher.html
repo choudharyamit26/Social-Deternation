@@ -1,0 +1,247 @@
+{% extends 'superadmin/new/new-base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+
+        <div class="Small-Wrapper">
+            <h4 class="Title">
+                <span>Vouchers Management</span>
+            </h4>
+
+
+            <div class="TableList">
+
+                <div class="CountExportArea">
+                    <a href="javascript:void(0);" class="Export ml-2"><i class="fa fa-file-excel-o"></i> Export </a>
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#Bulk" class="Export ml-2">Bulk
+                        Upload </a>
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#AddModal" class="Export ml-2"><i
+                            class="fa fa-plus"></i> Voucher </a>
+                    <label>
+                        Show per page
+                        <select>
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="CustomerTable">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Title</th>
+                            <th>Details</th>
+                            <th>Expire On</th>
+                            <th>Terms & Conditions</th>
+                            <th>Voucher Code</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Brasi 1</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur</td>
+                            <td>4/15/2021</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur</td>
+                            <td><span class="green">Brasi30</span></td>
+                            <td>
+                                <div class="Actions">
+                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#EditModal">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#ViewModal">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Brasi 2</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur</td>
+                            <td>4/15/2021</td>
+                            <td>Lorem ipsum dolor sit amet, consectetur</td>
+                            <td><span class="green">Brasi30</span></td>
+                            <td>
+                                <div class="Actions">
+                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#EditModal">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#ViewModal">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="Pagination">
+                <ul>
+                    <li><a href="#">Previous</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="ModalBox">
+
+    <div class="modal" id="DeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Delete</h3>
+                        <p>Are you sure you want to delete this Vouchers ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal show" id="AddModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                        <h3>Add New Voucher </h3>
+                        <div class="form-group">
+                            <label>Title<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Discount Percentage<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Discount Percentage">
+                        </div>
+                        <div class="form-group">
+                            <label>Details<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Details">
+                        </div>
+                        <div class="form-group">
+                            <label>Expiry Date<sup>*</sup> </label>
+                            <input type="date" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Terms & Conditions </label>
+                            <input type="text" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Generated Code</label>
+                            <input type="text" class="form-control" value="BRASI30">
+                            <a href="javaScript:void(0)" class="copyPosition"><span><i class="fa fa-files-o"
+                                                                                       aria-hidden="true"></i></span></a>
+                        </div>
+                        <div class="form-group">
+                            <a href="javaScript:void(0)"><i class="fa fa-share-alt" aria-hidden="true"></i> Share Via
+                                Email</a>
+                        </div>
+                        <button class="Button Cancel">Cancel</button>
+                        <button class="Button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal show" id="Bulk">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                        <h3>Upload Bulk Vouchers </h3>
+
+                        <div class="form-group">
+                            <label>Upload voucher </label>
+                            <input type="file" class="form-control" placeholder="Enter Category">
+                        </div>
+                        <div class="form-group">
+                            <p>Please upload excel as per specified format. <a href="javaScript:void(0)">Sample
+                                Excel</a></p>
+                        </div>
+                        <button class="Button Cancel">Cancel</button>
+                        <button class="Button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal show" id="EditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                        <h3>Edit Voucher </h3>
+                        <div class="form-group">
+                            <label>Title<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Discount Percentage<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Discount Percentage*">
+                        </div>
+                        <div class="form-group">
+                            <label>Details<sup>*</sup> </label>
+                            <input type="text" class="form-control" placeholder="Enter Details">
+                        </div>
+                        <div class="form-group">
+                            <label>Expiry Date<sup>*</sup> </label>
+                            <input type="date" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Terms & Conditions </label>
+                            <input type="text" class="form-control" placeholder="Enter Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Generated Code</label>
+                            <input type="text" class="form-control" value="BRASI30">
+                            <a href="javaScript:void(0)" class="copyPosition"><span><i class="fa fa-files-o"
+                                                                                       aria-hidden="true"></i></span></a>
+                        </div>
+                        <!-- <div class="form-group">
+                            <a href="javaScript:void(0)"><i class="fa fa-share-alt" aria-hidden="true"></i> Share Via Email</a>
+                        </div>  -->
+                        <button class="Button Cancel">Cancel</button>
+                        <button class="Button">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock body %}

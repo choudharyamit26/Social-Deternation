@@ -4,13 +4,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
+
+
+:root {
+    --colorGrey:#ecedf5;
+    --colorBlack:#000;
+--colorRed:#008b8b;
+--colorLight:#d22b1d2b;
+--colorWhite:#fff;
+--bold:'bold';
+}
+
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif !important;
     font-size: 14px;
     color: #3a3a3a;
-    font-weight: 400; 
+    font-weight: 400;
     position: relative;
 }
 
@@ -48,7 +60,7 @@ detail,
 nav,
 figure {
     position: relative;
-    
+
 }
 
 h1,
@@ -174,12 +186,12 @@ button.Cancel {
 .Header .Navigation .Avater ul li a:hover{background-color: #800080;color:#fff;}
 .Header .Navigation .Avater:hover ul{opacity:1;visibility:visible;top:115%}
 
-.SidenavBar{height:calc(100% - 60px);position:fixed;width: 250px;top:60px;padding:0;overflow:auto;box-shadow:0 0 15px rgba(0,0,0,.1);}
+.SidenavBar{height:calc(100% - 60px);position:fixed;width: 260px;top:60px;padding:0;overflow:auto;box-shadow:0 0 15px rgba(0,0,0,.1);}
 .SidenavBar::-webkit-scrollbar-track{background:#bbb;border-radius:0}
 .SidenavBar::-webkit-scrollbar-thumb{background-color: #438b8b;border-radius:0;transition:background-color 0.2s linear,width 0.2s ease-in-out;-webkit-transition:background-color 0.2s linear,width 0.2s ease-in-out;}
 .SidenavBar::-webkit-scrollbar{width:7px;border-radius:0}
 .SidenavBar ul{margin:0}
-.SidenavBar ul li{margin:0}
+.SidenavBar ul li{margin:0; padding:0 !important}
 .SidenavBar ul li a{display:block;cursor:pointer;padding:13px 10px 13px 44px;transition:0.5s all ease-in-out;color:#484848;font-size:14px;text-transform:capitalize;position:relative;border-bottom:1px solid #ddd;font-weight: 500;}
 .SidenavBar ul li a span{font-size:15px;display:inline-block;position:absolute;top:13px;left:20px}
 .SidenavBar ul li.active a,
@@ -190,7 +202,7 @@ button.Cancel {
 .SidenavBar ul li.dropdown .dropdown-menu ul li a{padding:13px 20px 13px 60px;background-color:#fff;color:#000}
 .SidenavBar ul li.dropdown .dropdown-menu ul li.active a{color:#438b8b}
 
-.WrapperArea{margin-left:250px;flex:1 1 auto;width:calc(100% - 250px);display:flex;flex-direction:column;margin-top:60px;transition:0.5s all ease-in-out}
+.WrapperArea{margin-left:260px;flex:1 1 auto;width:calc(100% - 260px);display:flex;flex-direction:column;margin-top:60px;transition:0.5s all ease-in-out}
 .WrapperArea .WrapperBox{padding:20px;background-color:#efefef;min-height:calc(100vh - 60px)}
 .Small-Wrapper{background-color:#fff;padding:25px;border:1px solid #dcdcdc;border-radius:5px}
 h4.Title{margin:0 0 15px;font-weight:600;color:#000;text-transform:capitalize;font-size:22px}
@@ -205,7 +217,7 @@ h4.Title a:hover{background-color:purple}
 .DashboardCount ul{display:flex}
 .DashboardCount ul li{width:100%;margin:0 15px 0 0}
 .DashboardCount ul li:last-child{margin:0}
-.DashboardCount ul li .Count{position:relative;overflow:hidden;background-color:#fff;padding:30px 15px 25px 15px;border-radius:5px}
+.DashboardCount ul li .Count{position:relative;overflow:hidden;background-color:#fff;padding:30px 15px 25px 15px;border-radius:5px;min-height: 173px;}
 .DashboardCount ul li .Count:before{content:'';position:absolute;top:-50px;right:-40px;width:120px;height:120px;opacity:.5;border-radius:200px}
 .DashboardCount ul li .Count:after{content:'';position:absolute;top:40px;right:-30px;width:80px;height:80px;opacity:.2;border-radius:200px}
 .DashboardCount ul li:nth-child(1) .Count:before{background-color:purple}
@@ -216,7 +228,9 @@ h4.Title a:hover{background-color:purple}
 .DashboardCount ul li:nth-child(3) .Count:after{background-color:#ed8a19}
 .DashboardCount ul li:nth-child(4) .Count:before{background-color:#d81a1a}
 .DashboardCount ul li:nth-child(4) .Count:after{background-color:#d81a1a}
-.DashboardCount ul li .Count p{font-size:16px;font-weight:500;margin:0 0 15px 0}
+.DashboardCount ul li:nth-child(5) .Count:before{background-color:burlywood}
+.DashboardCount ul li:nth-child(5) .Count:after{background-color:burlywood}
+.DashboardCount ul li .Count p{font-size:16px;font-weight:500;margin:0 0 15px 0;min-height: 48px;}
 .DashboardCount ul li .Count h4{font-weight:800;font-size:45px}
 
 
@@ -486,3 +500,278 @@ h4.Title a:hover{background-color:purple}
     color: var(--colorGreen);
 }
 /* radio code :end */
+
+
+
+
+
+
+
+/* mailbox started  */
+
+.formControl {
+    font-size: 16px;
+    color: var(--colorBlack);
+    font-weight: 500;
+    padding: 10px 15px;
+    background: var(--colorWhite);
+    border: 1px solid var(--colorBlack);
+    border-radius: 6px;
+    height: auto;
+}
+.formControl:focus{
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--colorRed);
+}
+
+.mailLeft ul li a{
+    font-size: 16px;
+    color: var(--colorBlack);
+    font-weight: 500;
+}
+/* .compose a {
+    font-weight: 300;
+    padding: 7px 25px;
+    border: 1px solid var(--colorBlack);
+}
+.compose a:hover{
+    border-color: var(--colorRed);
+} */
+.mailLeft ul li{
+    margin-bottom:20px;
+}
+.mailLeft ul li a span{
+    margin-right: 12px;
+    font-size: 22px;
+}
+.mailInput{
+    padding-bottom: 35px;
+}
+.mailLeft{
+    border-right: 1px solid var(--colorBlack);
+}
+.mailLeft ul li a:hover{
+    color: var(--colorRed);
+}
+.mailLeft ul li a.active{
+    color: var(--colorRed);
+}
+.mailright1 h2{
+    font-size: 14px;
+    color: var(--colorBlack);
+    padding:5px 15px;
+    font-weight: 500;
+    background: #aaaaaa7a;
+}
+.mRight p{
+    font-size: 12px;
+    color: var(--colorBlack);
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 150px;
+    white-space: nowrap;
+}
+.mRight p:nth-child(2){
+    padding: 2px 0px;
+}
+.timer p{
+    font-size: 10px;
+    color: var(--colorBlack);
+    font-weight: 500;
+}
+.mailright1 ul li a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    border-bottom: 1px solid #ddd;
+}
+.mailright1 ul li a.active,.mailright1 ul li a:hover{
+    background: #c6ced6;
+}
+.mailRight{
+    width: 38%;
+    overflow-y: auto;
+    height: 500px;
+}
+.mailLast{
+    padding: 25px;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-left: 10px;
+}
+.mailRightAll{
+    display: flex;
+}
+.mailRightLast{
+    width: 64%;
+}
+.mailLast h3{
+    font-size: 16px;
+    color: var(--colorBlack);
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+.mailLast p{
+    font-weight: 500;
+    color: var(--colorBlack);
+    font-size: 15px;
+    padding: 12px 0px;
+}
+.meetingMail li{
+    padding-top: 15px;
+    font-size: 15px;
+    color: var(--colorBlack);
+    font-weight: 500;
+}
+.meetingMail li span{
+    display: inline-block;
+}
+.meetingMail li span.first{
+    min-width: 150px;
+}
+.startbtn{
+    padding: 30px 0px 30px;
+    text-align: center;
+}
+.startbtn a{
+    font-size: 14px;
+    color: var(--colorWhite);
+    padding: 10px 25px;
+    background: #2d8cff;
+    display: inline-block;
+}
+.regards h4{
+    color: #716e6e;
+    font-size: 14px;
+    font-weight: 600;
+}
+.regards{
+    padding-top: 45px;
+}
+.subject{
+    display: flex;
+}
+.subject input.form-control.formControl {
+    border: none;
+    padding: 0;
+    padding-left: 10px;
+}
+.subject {
+    margin-bottom: 0;
+    padding: 10px 0px;
+    border-bottom: 1px solid #ddd;
+}
+.subject textarea{
+
+}
+.subject  label{
+    margin-bottom: 0;
+    padding: 0;
+    font-weight: 800;
+    position: relative;
+    top: 0px;
+    font-size: 16px;
+}
+.mailInput.profile h2{
+    font-size: 20px;
+    padding: 20px 0px;
+}
+.mailInput.profile .formControl{
+    padding-right: 35px;
+}
+.disCenter{
+    display: flex;
+    align-items: center;
+}
+
+.paraMain p{
+    padding-bottom: 30px;
+}
+.copyPosition{
+    position: absolute;
+    top: 39px;
+    right: 10px;
+}
+.DisFlex{
+    display: flex;
+    align-items: center;
+}
+.jcsv{
+    justify-content: space-evenly;
+}
+
+
+
+.HelpArea {
+    margin: 0
+}
+
+.HelpArea ul.nav-tabs {
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.HelpArea ul.nav-tabs li {
+    margin: 0 5px 0 0
+}
+
+.HelpArea ul.nav-tabs li a {
+    background-color: #e6e6e6;
+    border-radius: 0;
+    padding: 10px 25px;
+    border: none;
+    color: #000;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer
+}
+
+.HelpArea ul.nav-tabs .active a {
+    background-color: #007cd0;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.HelpArea .HelpContent {
+    margin: 0
+}
+
+.HelpArea .HelpContent a.Edit {
+    float: right;
+    background-color: #1e2024;
+    padding: 9px 30px;
+    text-transform: capitalize;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: .4px;
+    border-radius: 0;
+    transition: 0.5s all ease-in-out;
+    margin: -5px 0 0 0;
+    display: inline-block
+}
+
+.HelpArea .HelpContent a.Edit:hover {
+    background-color: #37d;
+}
+
+.HelpArea .HelpContent h3 {
+    margin: 0 0 15px;
+    font-weight: 600;
+    color: #000;
+    text-transform: capitalize;
+    font-size: 25px
+}
+
+.HelpArea .HelpContent p {
+    font-size: 15px;
+    line-height: 26px;
+    margin: 0 0 15px;
+    color: #464545;
+    font-family: "Roboto";
+    font-weight: 400
+}

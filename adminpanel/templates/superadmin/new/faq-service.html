@@ -1,0 +1,168 @@
+{% extends 'superadmin/new/new-base.html' %}
+{% block body %}
+<div class="WrapperArea">
+    <div class="WrapperBox">
+
+        <div class="Small-Wrapper">
+            <h4 class="Title">
+                <span>FAQs - Service Provider</span>
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#AddModal"> Add FAQs </a>
+            </h4>
+
+            <div class="FAQArea">
+
+                <div class="FAQBox">
+                    <h4>
+                        1. Who is Service Provider?
+                        <span>
+                                <a class="Red" data-target="#DeleteModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-trash"></i></a>
+                                <a class="Green" data-target="#EditModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-pencil-square-o"></i></a>
+                            </span>
+                    </h4>
+                    <p>
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui
+                        officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                    </p>
+                </div>
+
+                <div class="FAQBox">
+                    <h4>
+                        2. How does Survivor record an assault?
+                        <span>
+                                <a class="Red" data-target="#DeleteModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-trash"></i></a>
+                                <a class="Green" data-target="#EditModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-pencil-square-o"></i></a>
+                            </span>
+                    </h4>
+                    <p>
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui
+                        officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                    </p>
+                </div>
+
+                <div class="FAQBox">
+                    <h4>
+                        3. On which basis Survivor selects Service Provider?
+                        <span>
+                                <a class="Red" data-target="#DeleteModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-trash"></i></a>
+                                <a class="Green" data-target="#EditModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-pencil-square-o"></i></a>
+                            </span>
+                    </h4>
+                    <p>
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui
+                        officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                    </p>
+                </div>
+
+                <div class="FAQBox">
+                    <h4>
+                        4 .What is OTP and why do I need it?
+                        <span>
+                                <a class="Red" data-target="#DeleteModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-trash"></i></a>
+                                <a class="Green" data-target="#EditModal" data-toggle="modal"
+                                   href="JavaScript:Void(0);"><i class="fa fa-pencil-square-o"></i></a>
+                            </span>
+                    </h4>
+                    <p>
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui
+                        officia deserunt mollitia animi, id est laborum et dolorum fuga.
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<div class="ModalBox">
+
+    <div class="modal" id="DeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Delete</h3>
+                        <p>Are you sure you want to delete this FAQs ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal show" id="AddModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                        <h3>Add FAQs </h3>
+
+
+                        <div class="form-group">
+                            <label>Question </label>
+                            <input type="text" class="form-control" placeholder="Enter Title">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Answer</label>
+                            <textarea class="form-control" rows="8" placeholder="Description"> </textarea>
+                        </div>
+
+
+                        <button class="Button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal show" id="EditModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Category">
+                        <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                        <h3>Edit FAQs </h3>
+
+                        <div class="form-group">
+                            <label>Question </label>
+                            <input type="text" class="form-control" placeholder="Enter Title"
+                                   value="How do I download the app ?">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Answer</label>
+                            <textarea class="form-control" rows="8" placeholder="Description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</textarea>
+                        </div>
+
+                        <button class="Button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock body %}
+

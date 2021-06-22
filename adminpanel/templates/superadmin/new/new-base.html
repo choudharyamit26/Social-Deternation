@@ -24,6 +24,7 @@
                     <figure><img src="images/profile.jpg"></figure>
                     <h4> Bob Hyden <span>Administrator</span></h4>
                 </li>  -->
+                <li><a href="{% url 'adminpanel:superadmin-notification' %}"><span><i class="fa fa-bell"></i></span> Notification</a></li>
                 <li><a href="{% url 'adminpanel:change_password' %}"><span><i class="fa fa-unlock-alt"></i></span>
                     Change Password</a></li>
                 <li><a href="{% url 'adminpanel:super-admin-logout' %}"><span><i class="fa fa-sign-out"></i></span> Sign
@@ -58,15 +59,16 @@
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-subscription-plan' %}active{% endif %}">
                         <a href="{% url 'adminpanel:superadmin-subscription-plan' %}"> BRASI Platform </a></li>
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-general-subscription-plan' %}active{% endif %}">
-                        <a href="{% url 'adminpanel:superadmin-general-subscription-plan' %}"> General Subscription </a></li>
+                        <a href="{% url 'adminpanel:superadmin-general-subscription-plan' %}"> General Subscription </a>
+                    </li>
                 </ul>
             </div>
         </li>
-<!--        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-subscription-plan' %}active{% endif %}">-->
-<!--            <a href="{% url 'adminpanel:superadmin-subscription-plan' %}">-->
-<!--                <span><i class="fa fa-money"></i></span> Subscription-->
-<!--            </a>-->
-<!--        </li>-->
+        <!--        <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-subscription-plan' %}active{% endif %}">-->
+        <!--            <a href="{% url 'adminpanel:superadmin-subscription-plan' %}">-->
+        <!--                <span><i class="fa fa-money"></i></span> Subscription-->
+        <!--            </a>-->
+        <!--        </li>-->
 
         <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:superadmin-clients' %}active{% endif %}">
             <a href="{% url 'adminpanel:superadmin-clients' %}">
@@ -109,17 +111,64 @@
             <div class="dropdown-menu">
                 <ul>
                     <li><a href="{% url 'adminpanel:hero' %}"> Heros </a></li>
-                    <li><a href="javaScript:void(0)"> Benefits </a></li>
-                    <li><a href="javaScript:void(0)"> Features </a></li>
-                    <li><a href="javaScript:void(0)"> How it works </a></li>
+                    <li><a href="{% url 'adminpanel:cms-benefits' %}"> Benefits </a></li>
+                    <li><a href="{% url 'adminpanel:cms-features' %}"> Features </a></li>
+                    <li><a href="{% url 'adminpanel:cms-how-it-works' %}"> How it works </a></li>
+                    <li><a href="{% url 'adminpanel:cms-social-pages' %}"> Social Pages </a></li>
+                    <li><a href="{% url 'adminpanel:cms-privacy-policy' %}"> Privacy Policy </a></li>
+                    <li><a href="{% url 'adminpanel:cms-terms-of-use' %}"> Terms of Use </a></li>
                 </ul>
             </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                <span><i class="fa fa-file"></i></span> FAQs
+            </a>
+            <div class="dropdown-menu">
+                <ul>
+                    <li><a href="{% url 'adminpanel:faq-survivor' %}"> Survivors </a></li>
+                    <li><a href="{% url 'adminpanel:faq-service' %}"> Service provider </a></li>
+                    <li><a href="{% url 'adminpanel:faq-license' %}"> license holder </a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown ">
+            <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                <span><i class="fa fa-line-chart" aria-hidden="true"></i></span> Report & Analytics
+            </a>
+            <div class="dropdown-menu">
+                <ul>
+                    <li><a href="{% url 'adminpanel:report-survivor' %}"> Survivors </a></li>
+                    <li><a href="{% url 'adminpanel:report-service-provider' %}"> Service provider </a></li>
+                    <!-- <li> <a href="report-legal.html"> legal </a> </li>  -->
+                </ul>
+            </div>
+        </li>
+
+        <li>
+            <a href="{% url 'adminpanel:voucher-view' %}">
+                <span><i class="fa fa-envelope"></i></span> Voucher
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'adminpanel:user-view' %}">
+                <span><i class="fa fa-user"></i></span> User Management
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'adminpanel:mail-box' %}">
+                <span><i class="fa fa-envelope"></i></span> Mailbox
+            </a>
         </li>
         <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:change_password' %}active{% endif %}">
             <a href="{% url 'adminpanel:change_password' %}">
                 <span><i class="fa fa-unlock-alt" aria-hidden="true"></i></span> Change Password
             </a>
         </li>
+
 
         <!-- <li class="nav-item dropdown">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">

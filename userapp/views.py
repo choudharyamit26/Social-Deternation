@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from decimal import Decimal
 
 from adminpanel.views import User
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
@@ -741,12 +742,17 @@ class CreateSlotView(View):
             d = d
         selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
         date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
+        i = self.request.POST['fee']
+        # fee = float(i)
+        fee = Decimal(i)
         ServiceProviderSlots.objects.create(
             user=service_provider,
             slot_date=date_time_obj,
             slot_time=self.request.POST['selected_slot'],
             select_slot_type=self.request.POST['select_slot_type'],
-            category=self.request.POST['category_type']
+            category=self.request.POST['category_type'],
+            title=self.request.POST['title'],
+            hourly_fees=fee
         )
         return redirect("userapp:provider-availability")
 
@@ -755,11 +761,14 @@ class CreateMultiSlotView(View):
     model = ServiceProviderSlots
 
     def post(self, request, *args, **kwargs):
+        print(self.request.POST)
         d = self.request.POST['selected_date'].split(",")
         e = self.request.POST['selected_slot'].split(",")
         f = self.request.POST['select_slot_type'].split(",")
         g = self.request.POST['category_type'].split(",")
-        data = zip(d, e, f, g)
+        h = self.request.POST['multi_title'].split(",")
+        i = self.request.POST['multi_fee'].split(",")
+        data = zip(d, e, f, g, h, i)
         user = self.request.user
         service_provider = ServiceProvider.objects.get(user=user)
         # print(list(data))
@@ -779,12 +788,16 @@ class CreateMultiSlotView(View):
                 d = d
             selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
             date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
+            i = x[5]
+            fee = Decimal(i)
             ServiceProviderSlots.objects.create(
                 user=service_provider,
                 slot_date=date_time_obj,
                 slot_time=x[1],
                 select_slot_type=x[2],
                 # category=self.request.POST['category_type']
-                category=x[3]
+                category=x[3],
+                title=x[4],
+                hourly_fees=fee,
             )
         return redirect("userapp:provider-availability")

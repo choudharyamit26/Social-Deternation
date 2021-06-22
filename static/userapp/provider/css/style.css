@@ -2833,12 +2833,13 @@ padding: 18px;
 td.fc-day-top.fc-today {
 background: #0075ff;
 }
-.availModal.availModal2.availModal23,.availModal {
-overflow-x: scroll;
-width: 100%;
+.availModal.availModal2.availModal23, .availModal {
+    /* overflow-x: scroll; */
+    width: 100%;
+    border-bottom: 1px solid #0000003d;
 }
 .availModal.availModal2.availModal23 ul,.availModal ul {
-min-width: 2000px;
+/* min-width: 2000px; */
 }
 .fc-scroller.fc-day-grid-container{
 overflow: initial !important;
@@ -2885,6 +2886,10 @@ margin-right: 0 !important;
 .singleAmit li{
     margin-right: 100px !important;
 }
+.Button.bg-violet {
+
+    color: #fff !important;
+}
 
 .testingDate{
     background:black;
@@ -2910,6 +2915,7 @@ border: 1px solid #ccc;
 width: 270px;
 position: absolute;
 display: none;
+z-index: 999;
 }
 
 .titleFlex{
@@ -2918,9 +2924,10 @@ display: none;
 
 }
 .titleFlex li a.btns{
-    padding: 6px 8px;
+    padding: 5px 8px;
     color: #fff;
+    min-width: 100px;
 }
 .titleFlex li:first-child{
-    margin-right: 5px;
+    margin-right: 10px;
 }
