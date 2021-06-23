@@ -16,7 +16,7 @@
     <!--    </div>-->
     <div class="container">
         <div class="availablityMain">
-            <ul class="nav nav-tabs">
+            <ul class="nav nav-tabs ml-0">
                 <li class="active first">
                     <a>
                         <div class="radio">
@@ -129,6 +129,7 @@
                                     <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
                                     <li><a href="javaScript:void(0)">08:00 AM to 09:00 AM</a></li>
                                     <li><a href="javaScript:void(0)">09:00 AM to 10:00 AM</a></li>
+                                    <li><a href="javaScript:void(0)">10:00 AM to 11:00 AM</a></li>
                                     <li><a href="javaScript:void(0)">11:00 AM to 12:00 PM</a></li>
                                     <li><a href="javaScript:void(0)" class="active">12:00 PM to 01:00 PM</a></li>
                                     <li><a href="javaScript:void(0)">01:00 PM to 02:00 PM</a></li>
@@ -299,9 +300,10 @@
     <div class="modal" id="multiModal">
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
-                <div class="modal-body" style="position: relative;height: 700px;overflow-y: scroll;">
-                    <button type="button" class="close closee" data-dismiss="modal"><img
+                <button type="button" class="close closee" data-dismiss="modal"><img
                             src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
+                <div class="modal-body" style="position: relative;height: 540px;overflow-y: scroll;">
+
 
                     <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
                         <p class="d">Select your availability type</p>
@@ -560,41 +562,53 @@ Hourly Fees</a>
 </span>
 
 </h2>
-                            <div class="availModal availModalyy">
-                                <ul class="SelectSlotssss">
-                                    <li><input type="radio" name="${i}" value="07:00 AM to 08:00 AM">
-                                    <label class="radio-label single amitPy">07:00 AM to 08:00 AM</label></li>
 
-                                    <li><input type="radio" name="${i}" value="08:00 AM to 09:00 AM">
-                                    <label  class="radio-label single amitPy">08:00 AM to 09:00 AM</label></li>
+<div class="optionsWrapper">
+  <div class="flipSwitch" id="option1">
 
-                                    <li><input type="radio" name="${i}" value="09:00 AM to 10:00 AM">
-                                    <label class="radio-label single amitPy">09:00 AM to 10:00 AM</label></li>
+    <input type="radio" name="${i}" id="option1-value3${i}" value="07:00 AM to 08:00 AM" checked="">
+    <label for ="option1-value3${i}" class="radio-label">07:00 AM to 08:00 AM</label>
 
-                                    <li><input type="radio" name="${i}" value="11:00 AM to 12:00 PM">
-                                    <label class="radio-label single amitPy">11:00 AM to 12:00 PM</label></li>
+    <input type="radio" name="${i}" id="option1-value4${i}" value="08:00 AM to 09:00 AM">
+    <label  for ="option1-value4${i}" class="radio-label">08:00 AM to 09:00 AM</label>
 
-                                    <li><input type="radio" name="${i}" value="12:00 PM to 01:00 PM">
-                                    <label class="radio-label single amitPy">12:00 PM to 01:00 PM</label></li>
+    <input type="radio" name="${i}" id="option1-value1${i}" value="09:00 AM to 10:00 AM" >
+    <label for="option1-value1${i}" class="radio-label">09:00 AM to 10:00 AM</label>
 
-                                    <li><input type="radio" name="${i}" value="01:00 PM to 02:00 PM">
-                                    <label class="radio-label single amitPy">01:00 PM to 02:00 PM</label></li>
+    <input type="radio" name="${i}" id="option1-value2${i}" value="10:00 AM to 11:00 AM">
+    <label for="option1-value2${i}" class="radio-label">10:00 AM to 11:00 AM</label>
 
-                                    <li><input type="radio" name="${i}" value="02:00 PM to 03:00 PM">
-                                    <label class="radio-label single amitPy">02:00 PM to 03:00 PM</label></li>
 
-                                    <li><input type="radio" name="${i}" value="03:00 PM to 04:00 PM">
-                                    <label class="radio-label single amitPy">03:00 PM to 04:00 PM</label></li>
+    <input type="radio" name="${i}" id="option1-value5${i}" value="11:00 AM to 12:00 PM" checked="">
+    <label for ="option1-value5${i}" class="radio-label">11:00 AM to 12:00 PM</label>
 
-                                    <li><input type="radio" name="${i}" value="05:00 PM to 06:00 PM">
-                                    <label class="radio-label single amitPy">05:00 PM to 06:00 PM</label></li>
+    <input type="radio" name="${i}" id="option1-value6${i}" value="12:00 PM to 01:00 PM">
+    <label  for ="option1-value6${i}" class="radio-label">12:00 PM to 01:00 PM</label>
 
-                                    <li><input type="radio" name="${i}" value="06:00 PM to 07:00 PM">
-                                    <label class="radio-label single amitPy">06:00 PM to 07:00 PM</label><br></li>
-                                </ul>
-                            </div>
+    <input type="radio" name="${i}" id="option1-value7${i}" value="01:00 PM to 02:00 PM" >
+    <label for="option1-value7${i}" class="radio-label">01:00 PM to 02:00 PM</label>
 
-                        </div>
+    <input type="radio" name="${i}" id="option1-value8${i}" value="02:00 PM to 03:00 PM">
+    <label for="option1-value8${i}" class="radio-label">02:00 PM to 03:00 PM</label>
+
+
+    <input type="radio" name="${i}" id="option1-value9${i}" value="03:00 PM to 04:00 PM" checked="">
+    <label for ="option1-value9${i}" class="radio-label">03:00 PM to 04:00 PM</label>
+
+    <input type="radio" name="${i}" id="option1-value10${i}" value="04:00 PM to 05:00 PM">
+    <label  for ="option1-value10${i}" class="radio-label">04:00 PM to 05:00 PM</label>
+
+    <input type="radio" name="${i}" id="option1-value11${i}" value="05:00 PM to 06:00 PM" >
+    <label for="option1-value11${i}" class="radio-label">05:00 PM to 06:00 PM</label>
+
+    <input type="radio" name="${i}" id="option1-value12${i}" value="06:00 PM to 07:00 PM">
+    <label for="option1-value12${i}" class="radio-label">06:00 PM to 07:00 PM</label>
+
+    <a></a>
+
+  </div>
+</div>
+</div>
 `
         }
         var p = document.getElementById('multiSlotType')
@@ -649,6 +663,10 @@ Hourly Fees</a>
                 sessionStorage.removeItem('singleSelectSlot')
                 sessionStorage.removeItem('singleSelectDate')
                 sessionStorage.removeItem('selectSlotType')
+                sessionStorage.removeItem('categoryType')
+                sessionStorage.removeItem('singleTitle')
+                sessionStorage.removeItem('singleFees')
+                sessionStorage.removeItem('availabilityType')
                 window.location.href = url
             },
             error: function (data) {
