@@ -14,7 +14,8 @@
             </div>
             <div class="socialRight">
                 <ul>
-                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:home' %}active{% endif %}"><a href="{% url 'userapp:home' %}">Home</a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:home' %}active{% endif %}">
+                        <a href="{% url 'userapp:home' %}">Home</a></li>
                     <li><a href="javascript:void(0)">Bravescope</a></li>
                     <li class="survivors"><a href="javascript:void(0)">Survivors <span class="arrow"><i
                             class="fa fa-sort-down"></i></span></a>
@@ -61,7 +62,9 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:guest-assault' %}active{% endif %}"><a href="{% url 'userapp:guest-assault' %}" data-toggle="modal" data-target="#record">Guest Assualt</a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:guest-assault' %}active{% endif %}">
+                        <a href="{% url 'userapp:guest-assault' %}" data-toggle="modal" data-target="#emailId">Proxy
+                            Record</a></li>
                     <li><a href="javascript:void(0)">Subscribe</a></li>
                     <li><a href="javascript:void(0)">Blog</a></li>
                 </ul>
@@ -329,6 +332,9 @@
                         <input type="password" class="form-control formControl" placeholder="Nick Name" name="nick_name"
                                id="nick_name">
                     </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control formControl" placeholder="AVI/Screen Name">
+                    </div>
 
                     <div class="btnsBottom">
                         <div class="modBt">
@@ -353,8 +359,9 @@
         <div class="modal-content">
 
             <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
-                                                                              alt="close"></button>
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
                 <div class="CommonContent" style="padding: 0px 30px;">
 
                     <h2 class="heading">Record an <span class="colorGreen">Assault</span></h2>
@@ -1312,6 +1319,78 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="emailId">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body"
+                >
+                    <button type="button" class="close" data-dismiss="modal"><img
+                            src="{% static 'userapp/imgs/close.svg' %}"
+                            alt="close"></button>
+
+                    <div class="emailId" style="padding: 25px;">
+                        <div class="form-group">
+                            <label class="label" style="text-align: left;font-size: 16px;color: #000;">Email Id <sup
+                                    style="color:red">*</sup></label>
+                            <input type="text" name="" class="form-control formControl"
+                                   placeholder="Enter Your Email Id">
+                        </div>
+                        <div class="allbtnsssss" style="text-align: center;padding: 20px 0px 0px 0px">
+                            <a href="javascript:void(0)" class="btns" data-toggle="modal" data-dismiss="modal"
+                               data-target="#record5" style="min-width: 150px;text-align:center;">Next</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="record5">
+        <div class="modal-dialog" style="max-width: 560px;">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
+                                                                                  alt="close"></button>
+                    <div class="CommonContent" style="padding: 0px 30px;">
+
+                        <h2 class="heading" style="text-align: left;font-size: 18px;">I am recording assault for</h2>
+                        <div class="signUpby">
+
+                            <ul class="nav nav-tabs">
+                                <li class=" first" style="margin-right: 60px;">
+
+                                    <div class="radio">
+                                        <input id="radio-30" name="radio20" type="radio">
+                                        <label for="radio-30" class="radio-label">Myself</label>
+                                    </div>
+
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-40" name="radio20" type="radio">
+                                        <label for="radio-40" class="radio-label">Someone else</label>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div class="btnsBottom">
+                            <div class="modBt">
+                                <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-dismiss="modal">Cancel</a>
+                                <a href="javascript:void(0)" class="btns modalbtns" data-toggle="modal"
+                                   data-dismiss="modal" data-target="#record">Proceed</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 <script src="{% static 'userapp/js/jquery.js' %}"></script>
@@ -1339,6 +1418,8 @@
 
   });
 });
+
+
 
 
 
@@ -1407,6 +1488,8 @@
     });
     event.preventDefault();
     }
+
+
 
 
 
@@ -1508,6 +1591,8 @@
 
 
 
+
+
 </script>
 <script>
     function loginByEmail(){
@@ -1541,6 +1626,8 @@
     },
     });
     }
+
+
 
 
 
@@ -1590,6 +1677,8 @@
 
 
 
+
+
 </script>
 <script>
 function forgotPassword(){
@@ -1623,6 +1712,8 @@ function forgotPassword(){
     },
     })
     }
+
+
 
 
 
@@ -1672,6 +1763,8 @@ function forgotPassword(){
 
 
 
+
+
 </script>
 <script>
         function onChangeCallback(ctr) {
@@ -1684,6 +1777,8 @@ function forgotPassword(){
                 new NiceCountryInput(e).init();
             });
         });
+
+
 
 
 
@@ -1743,6 +1838,8 @@ function forgotPassword(){
     },
     })
     }
+
+
 
 
 
@@ -1818,6 +1915,8 @@ function forgotPassword(){
 
 
 
+
+
 </script>
 <script>
     function provideForgotPassword(){
@@ -1872,6 +1971,8 @@ function forgotPassword(){
         })
 
     }
+
+
 
 
 

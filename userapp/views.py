@@ -171,13 +171,25 @@ class SurvivorLoginByMobileNumberView(View):
             return JsonResponse({'message': 'User with this mobile number does not exists'}, status=400)
 
 
-class Dashboard(LoginRequiredMixin, ListView):
+class Dashboard(ListView):
     model = Assault
     template_name = 'userapp/record-an-assault.html'
 
+    # login_url = "userapp:home"
+
     def get(self, request, *args, **kwargs):
-        objects = Assault.objects.filter(user=self.request.user)
-        return render(self.request, 'userapp/record-an-assault.html', {'objects': objects})
+        if not self.request.user.is_anonymous:
+            objects = Assault.objects.filter(user=self.request.user)
+            return render(self.request, 'userapp/record-an-assault.html', {'objects': objects})
+        else:
+            return render(self.request, 'userapp/record-an-assault.html')
+
+
+class PaymentView(View):
+    template_name = 'userapp/payment.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'userapp/payment.html')
 
 
 class RecordAnAssault(View):

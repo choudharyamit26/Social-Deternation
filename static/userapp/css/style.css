@@ -1016,7 +1016,7 @@ td span.action{
 .signUpby ul li:nth-child(3):before {
     content: '';
 }
-.socialRight ul li a.Quickexit{
+.socialRight ul li a.Quickexit,.socialInner ul li a.Quickexit{
     background: #d40303;
     color: var(--colorWhite);
     background: #d40303;
@@ -1025,6 +1025,11 @@ td span.action{
     border-radius: 10px;
     display: block;
 }
+.socialInner ul li a.Quickexit{
+      font-size: 16px;
+    padding: 10px 15px;
+}
+
 .socialRight ul li a.Quickexit::before{
     height: 0;
     background: transparent;
@@ -2496,4 +2501,214 @@ padding-left: 160px;
     border: 1px solid #707070;
     padding: 10px 8px;
     border-radius: 11px;
+}
+
+/ new css :start /
+.modal.videoShow{
+display: block;
+}
+.videoAbox{
+padding: 30px 0px;
+}
+.videoo iframe{
+width: 100%;
+height: 350px;
+}
+.videoAbox h2{
+padding-bottom: 25px;
+}
+.voucher .form-group{
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.voucher .form-group input{
+width: 55%;
+border-radius: 0;
+padding: 10px 15px;
+box-shadow: 2px 2px 7px #ddd;
+}
+a.viewVoucher{
+color: var(--colorGreen);
+font-family: var(--semiBold);
+font-size: 14px;
+}
+a.viewVoucher:hover{
+color: var(--colorGreen);
+font-family: var(--semiBold);
+}
+.voucherDetails li{
+padding: 10px;
+}
+.voucherdet h2{
+font-size: 20px;
+padding-bottom: 10px;
+}
+.voucherdet h3{
+font-size: 16px;
+color: var(--colorBlack);
+padding-bottom: 8px;
+padding: 10px 0px;
+font-family: var(--medium);
+}
+.btns.modalbtns.submitt.colorGreen{
+background: var(--colorGreen) !important;
+}
+.viewVoucher.colorPurple{
+color: var(--colorPurple) !important;
+font-size: 16px;
+}
+.baches li{
+margin-right: 10px;
+display: inline-block;
+}
+.baches li img{
+width: 45px;
+}
+.baches{
+margin: 12px 0px 5px;
+text-align: center;
+}
+p.name a,p.name a:hover{
+font-size: 15px;
+color: var(--colorGreen);
+font-family: var(--medium);
+display: inline-block;
+margin-right: 8px;
+}
+.contactt,.contactt:hover{
+color: var(--colorGreen);
+font-family: var(--medium);
+padding-left: 10px;
+}
+/ new css :end /
+
+
+
+.bachesDetails{
+/*display: flex;*/
+justify-content: space-between;
+background: #fff;
+padding: 25px;
+}
+.bachesRight h2{
+font-family: var(--semiBold);
+font-size: 12px;
+padding-bottom: 5px;
+color: var(--colorBlack);
+}
+.bachesRight p{
+font-family: var(--regular);
+font-size: 12px;
+color: var(--colorBlack);
+}
+.bachesLeft img{
+min-width: 85px;
+}
+.bachesLeft{
+margin-bottom:20px;
+}
+.baches li{
+position: relative;
+}
+.bachesDetails{
+width: 275px;
+left: -50px;
+background: var(--colorWhite);
+position: absolute;
+box-shadow: 0px 1px 4px #ddd;
+border: 1px solid #dddddda8;
+visibility: hidden;
+top: 60px;
+opacity: 0;
+z-index: 999;
+transition: 0.5s all ease-in-out;
+}
+
+.baches li:hover .bachesDetails {
+visibility: visible;
+opacity: 1;
+top: 110%;
+}
+.bachesDetails::before {
+content: "";
+width: 0;
+height: 0;
+overflow: hidden;
+border-color: #fff transparent transparent;
+border-style: solid;
+border-width: 25px 25px 10px 0;
+position: absolute;
+top: -3px;
+left: 54px;
+z-index: -1;
+/ border: 1px solid #dddddda8; /
+right: 22px;
+transform: rotate(
+45deg
+);
+transform: rotate(
+45deg
+);
+}
+.bachesDetails.bachesDetails2 {
+width: 275px;
+left: -110px;
+}
+.bachesDetails.bachesDetails3 {
+left: -168px;
+}
+.bachesDetails.bachesDetails2::before{
+left: 115px;
+}
+.bachesDetails.bachesDetails3::before{
+right: 72px;
+left: unset;
+}
+
+
+.socialRight.socialRight44 ul li a{
+background: transparent !important;
+z-index: 1 !important;
+}
+
+
+
+
+.header.active {
+position: relative;
+z-index: auto;
+}
+.socialRight ul li a.active.active2 {
+font-family: var(--semiBold);
+position: relative;
+z-index: 999999;
+background: var(--colorWhite);
+padding: 5px;
+
+}
+.socialRight ul li a.Quickexit.active3{
+font-family: var(--semiBold);
+position: relative;
+z-index: 999999;
+background: var(--colorWhite);
+
+color: #000;
+}
+body.active{
+height: 100vh;
+overflow: hidden;
+}
+.ext.active,.ext2.active{
+display: block;
+}
+.signUpby.payments ul li:nth-child(2) .radio label{
+background: transparent;
+}
+.signUpby.payments ul li:nth-child(3) .radio label{
+background: #ebeff0;
+}
+.socialRight.socialRight44 ul li a{
+background: transparent !important;
+z-index: 1 !important;
 }

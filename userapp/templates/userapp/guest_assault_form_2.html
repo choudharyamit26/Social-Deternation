@@ -378,7 +378,7 @@
                             <a href="javascript:void(0)" class="info"><img src="{% static 'userapp/imgs/info.svg' %}"
                                                                            alt="info"></a>
                             <a href="record-fill.html" class="btns modalbtns submitt">Back</a>
-                            <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Save</a>
+                            <!--                            <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Save</a>-->
                             <a href="javascript:void(0)" class="btns modalbtns submitt" data-toggle="modal"
                                data-target="#submitRecord">Submit</a>
                         </div>
@@ -451,22 +451,69 @@
             </div>
         </div>
     </div>
+    <!--    <div class="modal" id="submitRecord2">-->
+    <!--        <div class="modal-dialog">-->
+    <!--            <div class="modal-content">-->
+
+    <!--                <div class="modal-body" style="padding: 50px 25px;">-->
+    <!--                    <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"-->
+    <!--                                                                                  alt="close"></button>-->
+    <!--                    <div class="recordSub">-->
+    <!--                        <div class="serhImg">-->
+    <!--                            <img src="{% static 'userapp/imgs/seach.svg' %}" alt="search">-->
+    <!--                        </div>-->
+    <!--                        <h2 class="head">3 records from our database match-->
+    <!--                            the offender information you provided</h2>-->
+    <!--                        <div class="table-responsive">-->
+    <!--                            <table class="table">-->
+
+    <!--                                <tbody>-->
+    <!--                                <tr>-->
+    <!--                                    <td><span class="bold">Name:</span></td>-->
+    <!--                                    <td>Varida</td>-->
+    <!--                                    <td><span class="bold">Incident description:</span></td>-->
+    <!--                                    <td>Blackmail his sister</td>-->
+    <!--                                </tr>-->
+
+    <!--                                <tr>-->
+    <!--                                    <td><span class="bold">Incident happened on:</span></td>-->
+    <!--                                    <td>2018</td>-->
+    <!--                                    <td><span class="bold">Skin Color</span></td>-->
+    <!--                                    <td>Dark</td>-->
+    <!--                                </tr>-->
+
+    <!--                                </tbody>-->
+    <!--                            </table>-->
+    <!--                        </div>-->
+    <!--                        <div class="modBt">-->
+
+    <!--                            <a href="javaScript:void(0)" class="btns modalbtns">OK</a>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
     <div class="modal" id="submitRecord2">
         <div class="modal-dialog">
             <div class="modal-content">
 
                 <div class="modal-body" style="padding: 50px 25px;">
-                    <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
-                                                                                  alt="close"></button>
+                    <a href="index.html" class="close"><img src="{% static 'userapp/imgs/close.svg' %}"
+                                                            alt="close"></a>
                     <div class="recordSub">
                         <div class="serhImg">
                             <img src="{% static 'userapp/imgs/seach.svg' %}" alt="search">
                         </div>
                         <h2 class="head">3 records from our database match
                             the offender information you provided</h2>
+
+                        <p class="head name">Your record was match with this 3 person. <br>
+                            <a href="{% url 'userapp:survivor-dashboard' %}">Arushi</a>,<a href="{% url 'userapp:survivor-dashboard' %}">Parul</a>,<a
+                                    href="{% url 'userapp:survivor-dashboard' %}">Twinkle</a></p>
                         <div class="table-responsive">
                             <table class="table">
-
                                 <tbody>
                                 <tr>
                                     <td><span class="bold">Name:</span></td>
@@ -485,9 +532,11 @@
                                 </tbody>
                             </table>
                         </div>
+
+
                         <div class="modBt">
 
-                            <a href="javaScript:void(0)" class="btns modalbtns">OK</a>
+                            <a href="index.html" class="btns modalbtns">OK</a>
                         </div>
                     </div>
                 </div>
