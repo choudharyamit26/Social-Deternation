@@ -487,10 +487,10 @@ img {
     position: relative;
     text-transform: capitalize;
 }
-.navbar-right li a.active {
+.navbar-right li a.active,.navbar-right li.active a {
     color: var(--darkSky);
 }
-.navbar-right li a.active::before{
+.navbar-right li a.active::before,.navbar-right li.active a::before{
     width: 25px;
     height: 2px;
     content: "";

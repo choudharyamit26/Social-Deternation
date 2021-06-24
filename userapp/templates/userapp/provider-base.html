@@ -26,6 +26,7 @@
 <section class="headerSocial">
     <div class="container">
         <div class="sidebarIcon">
+            {% if user.is_authenticated %}
             <div class="welcome">
                 <div class="welcomeText survivors" style="position: relative;">
                     <a href="javaScript:void(0)" class="">
@@ -48,6 +49,8 @@
                     </a>
                 </div>
             </div>
+            {% else %}
+            {% endif %}
         </div>
     </div>
 </section>

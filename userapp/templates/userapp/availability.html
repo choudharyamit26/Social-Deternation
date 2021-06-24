@@ -3,17 +3,17 @@
 {% block body %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <section class="availablity">
-    <!--    <div class="fc-today">-->
-    <!--        {% for object in object_list %}-->
-    <!--        <tr>-->
-    <!--            <td><h1>{{object.id}}</h1></td>-->
-    <!--            <td><h1 class="fc-day-top  fc-today">{{object.slot_date}}</h1></td>-->
-    <!--            <td><h1>{{object.slot_time}}</h1></td>-->
-    <!--            <td><h1>{{object.select_slot_type}}</h1></td>-->
-    <!--            <td><h1>{{object.category}}</h1></td>-->
-    <!--        </tr>-->
-    <!--        {% endfor %}-->
-    <!--    </div>-->
+<!--        <div class="fc-today">-->
+<!--            {% for object in object_list %}-->
+<!--            <tr>-->
+<!--                <td><h1>{{object.id}}</h1></td>-->
+<!--                <td><h1 class="fc-day-top  fc-today">{{object.slot_date}}</h1></td>-->
+<!--                <td><h1>{{object.slot_time}}</h1></td>-->
+<!--                <td><h1>{{object.select_slot_type}}</h1></td>-->
+<!--                <td><h1>{{object.category}}</h1></td>-->
+<!--            </tr>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
     <div class="container">
         <div class="availablityMain">
             <ul class="nav nav-tabs ml-0">
@@ -724,14 +724,14 @@ Hourly Fees</a>
 
 </script>
 <script>
-    $(document).on('click', '.title', function () {
+    $(document).on('click', '.title .small', function () {
         // ('.titlslide').slideDown();
-        $(this).find('.titlslide').slideDown();
+        $(this).siblings('.titlslide').slideDown();
 
     });
 
-    $(document).on('click', '.title2', function () {
-        $(this).find('.titlslide2').slideDown();
+    $(document).on('click', '.title2 .small', function () {
+        $(this).siblings('.titlslide2').slideDown();
     });
 
     document.addEventListener("mousedown", function (event) {

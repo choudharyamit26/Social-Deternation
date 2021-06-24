@@ -591,9 +591,13 @@ class SurvivorAvailability(View):
 
     def get(self, request, *args, **kwargs):
         user = self.request.user
-        service_provider = ServiceProvider.objects.get(user=user)
-        return render(self.request, 'userapp/availability.html',
-                      {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)[:5]})
+        try:
+            service_provider = ServiceProvider.objects.get(user=user)
+            return render(self.request, 'userapp/availability.html',
+                          {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)[:5]})
+        except Exception as e:
+            return render(self.request, 'userapp/availability.html',
+                          {'object_list': ''})
 
 
 class SurvivorSubscriptionView(View):
