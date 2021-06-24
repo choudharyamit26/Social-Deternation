@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView, PasswordResetDoneView, PasswordResetCompleteView
 from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardInformationView, MyProfileView, \
     PasswordResetView, PasswordResetConfirmView, SuperAdminLogin, SuperAdminDashboard, CustomerManagementView, \
@@ -84,4 +86,4 @@ urlpatterns = [
     path('user-view/', SpecialUserView.as_view(), name='user-view'),
     path('mail-box/', MailBoxView.as_view(), name='mail-box'),
     path('superadmin-notification/', SuperAdminNotifications.as_view(), name='superadmin-notification'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

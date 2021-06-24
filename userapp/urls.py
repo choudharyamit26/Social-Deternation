@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.auth.views import PasswordResetDoneView, PasswordResetCompleteView
 from .views import HomeView, SurvivorSignUp, Dashboard, RecordAnAssault, RecordAssault2, AssaultRecordQuestionAnswer, \
     ServiceProviderView, MyBookingsView, FaqView, ContactView, NotificationDetail, SurvivorProfileView, \
@@ -51,4 +53,4 @@ urlpatterns = [
     path('guest-assault/', GuestAssaultUser.as_view(), name='guest-assault'),
     path('guest-assault-2/', GuestAssaultUserForm2View.as_view(), name='guest-assault-2'),
     path('payment/', PaymentView.as_view(), name='payment'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
