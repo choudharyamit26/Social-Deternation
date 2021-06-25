@@ -128,7 +128,9 @@ input[type=date].form-control{ text-transform: uppercase !important; }
 button.Cancel {
     background-color: #D40000;
 }
-
+.fade:not(.show) {
+    opacity: 1;
+}
 .LoginArea{background-color: #801580;min-height:100vh;display:flex;align-items:center;justify-content:center;}
 .LoginArea .LoginBox{background-color:#fff;padding:35px;max-width:500px;margin:auto;width:95%;border-radius: 15px;border: 10px solid #942994;}
 .LoginArea .LoginBox figure{width: 135px;margin:0 auto 20px;height: 135px;overflow: hidden;border-radius: 50%;background-color: #ffffff;border: 5px solid #801580;box-shadow: 0px 0px 7px #ddd;display: flex;align-items: center;justify-content: space-around;}
@@ -139,7 +141,12 @@ button.Cancel {
 .LoginArea .LoginBox .form-group label{font-weight: 500;color:#17222c;font-size:14px;display:block;}
 .LoginArea .LoginBox .form-group label sup{color: #cc0909;font-size: 18px;top: -2px;}
 .LoginArea .LoginBox .form-group .form-control{box-shadow:none;border: 1px solid #d4d4d4;border-radius: 30px;height:40px;padding:0 20px 0 50px;font-size:14px;font-weight: 500;}
-.LoginArea .LoginBox .form-group .Icon{width:34px;height:34px;background-color: #d4d4d4;text-align:center;line-height:34px;border-radius: 50px;position:absolute;left:4px;z-index:100;top: 32px;color: #000;}
+.LoginArea .LoginBox .form-group .Icon{width:34px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:34px;background-color: #d4d4d4;text-align:center;line-height:34px;border-radius: 50px;position:absolute;left:4px;z-index:100;top: 32px;color: #000;}
 .LoginArea .LoginBox .Checkboxs{ margin: 0 0 20px 0;  }
 .LoginArea .LoginBox .Checkboxs a{color: #737070;font-size: 14px;font-weight: 500;text-transform: capitalize;letter-spacing: 0;float: right;}
 .LoginArea .LoginBox .Checkboxs a:hover{color: #800080;}
@@ -341,12 +348,12 @@ h4.Title a:hover{background-color:purple}
 .FAQArea .FAQBox+.FAQBox{margin:30px 0 0 0}
 .FAQArea .FAQBox h3{margin:0 0 15px;font-weight:600;color:#000;text-transform:capitalize;font-size:25px}
 .FAQArea .FAQBox h4{font-size:18px;font-weight:600;color:#000;margin:0 0 5px 0}
-.FAQArea .FAQBox h4 span{float:right}
+.FAQArea .FAQBox h4 span{float:right;display: flex;align-items: center;}
 .FAQArea .FAQBox h4 span a{font-size:14px;margin:0 0 0 11px}
 .FAQArea .FAQBox h4 span a.Red{color:red}
 .FAQArea .FAQBox h4 span a.Green{color:green}
 .FAQArea .FAQBox p{line-height:27px;margin:0 0 10px;color:#464545;font-weight:500;font-size:14px}
-
+.FAQArea .FAQBox h4 span label{margin-left: 10px;}
 
 
 

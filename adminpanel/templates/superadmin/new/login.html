@@ -18,14 +18,14 @@
             {% for message in messages %}
             <div class="alert alert-danger alert-dismissible fade in" role="alert">
                 {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <a href="javaScript:void(0)" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </a>
             </div>
             {% endfor %}
             {% endif %}
         </div>
-        <h5>Let's Started BARSI</h5>
+        <h5>Let's Started BRASI</h5>
         <h6>To keep connected with us please Sign in .</h6>
         <form method="post">
             {% csrf_token %}

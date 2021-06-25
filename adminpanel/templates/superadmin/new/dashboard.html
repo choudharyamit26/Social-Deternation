@@ -3,7 +3,18 @@
 {% block body  %}
  <div class="WrapperArea">
         <div class="WrapperBox">
-
+            <div class="content-wrapper">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                    {{ message }}
+                    <a href="javaScript:void(0)" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
             <div class="DashboardCount">
 
                 <ol>

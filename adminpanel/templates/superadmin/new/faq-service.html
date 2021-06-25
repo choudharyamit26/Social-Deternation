@@ -19,6 +19,10 @@
                                    href="JavaScript:Void(0);"><i class="fa fa-trash"></i></a>
                                 <a class="Green" data-target="#EditModal" data-toggle="modal"
                                    href="JavaScript:Void(0);"><i class="fa fa-pencil-square-o"></i></a>
+                                   <label class="Switch">
+                                    <input type="checkbox"/>
+                                    <span class="slider"></span>
+                                </label>
                             </span>
                     </h4>
                     <p>
@@ -162,7 +166,50 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="ActiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Active</h3>
+                        <p>Are you sure you want to active this Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a id="active_button" href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal" id="InactiveModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="Decline">
+                        <a href="JavaScript:Void(0);" data-dismiss="modal" class="CloseModal">×</a>
+                        <h3>Inactive</h3>
+                        <p>Are you sure you want to inactive this Subscription Plan ?</p>
+                        <h4>
+                            <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
+                            <a id="inactive_button" href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    $('.Switch input[type="checkbox"]').on("change", function (e) {
+    if (e.target.checked == true) {
+        $("#ActiveModal").modal("show");
+    } else {
+        $("#InactiveModal").modal("show");
+    }
+});
+</script>
 {% endblock body %}
 

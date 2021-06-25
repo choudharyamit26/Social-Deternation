@@ -8,7 +8,7 @@ from .views import HomeView, SurvivorSignUp, Dashboard, RecordAnAssault, RecordA
     PasswordResetView, PasswordResetConfirmView, ServiceProviderSignup, ProviderSignIn, ServiceProviderRequests, \
     SurvivorFaq, SurvivorContact, SurvivorNotificationDetail, SurvivorAvailability, SurvivorSubscriptionView, \
     ProviderForgotPassword, ProviderPasswordResetConfirmView, CreateSlotView, GuestAssaultUser, \
-    GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView
+    GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView, SurvivorCalendarEvent
 
 app_name = 'userapp'
 
@@ -53,6 +53,7 @@ urlpatterns = [
                   path('survivor-notification-detail/', SurvivorNotificationDetail.as_view(),
                        name='survivor-notification-detail'),
                   path('provider-availability/', SurvivorAvailability.as_view(), name='provider-availability'),
+                  path('calendar-event/', SurvivorCalendarEvent.as_view(), name='calendar-event'),
                   path('survivor-subscription/', SurvivorSubscriptionView.as_view(), name='survivor-subscription'),
                   path('create-slot/', CreateSlotView.as_view(), name='create-slot'),
                   path('create-multi-slot/', CreateMultiSlotView.as_view(), name='create-multi-slot'),
