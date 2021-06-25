@@ -594,7 +594,7 @@ class SurvivorAvailability(View):
         try:
             service_provider = ServiceProvider.objects.get(user=user)
             return render(self.request, 'userapp/availability.html',
-                          {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)[:5]})
+                          {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)[:15]})
         except Exception as e:
             return render(self.request, 'userapp/availability.html',
                           {'object_list': ''})

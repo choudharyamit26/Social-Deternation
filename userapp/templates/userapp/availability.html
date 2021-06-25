@@ -3,17 +3,27 @@
 {% block body %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <section class="availablity">
-<!--        <div class="fc-today">-->
-<!--            {% for object in object_list %}-->
-<!--            <tr>-->
-<!--                <td><h1>{{object.id}}</h1></td>-->
-<!--                <td><h1 class="fc-day-top  fc-today">{{object.slot_date}}</h1></td>-->
-<!--                <td><h1>{{object.slot_time}}</h1></td>-->
-<!--                <td><h1>{{object.select_slot_type}}</h1></td>-->
-<!--                <td><h1>{{object.category}}</h1></td>-->
-<!--            </tr>-->
-<!--            {% endfor %}-->
-<!--        </div>-->
+<!--    <div class="fc-today">-->
+<!--        {% for object in object_list %}-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <h1>{{object.id}}</h1>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <h1 class="fc-day-top  fc-today">{{object.slot_date}}</h1>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <h1>{{object.slot_time}}</h1>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <h1>{{object.select_slot_type}}</h1>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <h1>{{object.category}}</h1>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
     <div class="container">
         <div class="availablityMain">
             <ul class="nav nav-tabs ml-0">
@@ -78,8 +88,10 @@
                                         Title</a>
                                     <div class="tiitlebox titlslide">
                                         <div class="form-group">
-                                            <label for="" class="label" style="padding: 0;" id="title">Add Tittle</label>
-                                            <input type="text" class="form-control formControl" placeholder="Add Title" name="single_title">
+                                            <label for="" class="label" style="padding: 0;" id="title">Add
+                                                Tittle</label>
+                                            <input type="text" class="form-control formControl" placeholder="Add Title"
+                                                name="single_title">
                                         </div>
                                         <div>
                                             <ul class="titleFlex">
@@ -104,7 +116,8 @@
                                     <div class="tiitlebox titlslide2">
                                         <div class="form-group">
                                             <label for="" class="label" style="padding: 0;" id="fee">Add Fee</label>
-                                            <input type="number" class="form-control formControl" placeholder="Add Fee" name="single_fee">
+                                            <input type="number" class="form-control formControl" placeholder="Add Fee"
+                                                name="single_fee">
                                         </div>
                                         <div>
                                             <ul class="titleFlex">
@@ -301,7 +314,7 @@
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
                 <button type="button" class="close closee" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
+                        src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                 <div class="modal-body" style="position: relative;height: 540px;overflow-y: scroll;">
 
 
@@ -396,7 +409,7 @@
     var multi_fee = []
     $(document).on('click', '.multi_fee', function () {
         var z = $(this).prop('id');
-        var a = "#multi_fee_id"+z;
+        var a = "#multi_fee_id" + z;
         var x = $(a).val();
         multi_fee.push(x)
         sessionStorage.setItem('multiFee', multi_fee)
@@ -405,7 +418,7 @@
 
     $(document).on('click', '.multi_title', function () {
         var z = $(this).prop('id');
-        var a = "#multi_title_id"+z;
+        var a = "#multi_title_id" + z;
         var x = $(a).val();
         multi_title.push(x)
         sessionStorage.setItem('multiTitle', multi_title)
@@ -424,7 +437,7 @@
         var x = $("input[name=single_fee]").val();
         var y = document.getElementById('fee')
         y.innerHTML = x;
-        console.log('SINGLE FEES',x)
+        console.log('SINGLE FEES', x)
         sessionStorage.setItem('singleFees', x)
     });
 
@@ -746,8 +759,50 @@ Hourly Fees</a>
     });
 </script>
 <script>
-$(document).on('click','.closed',function(){
-  $('.tiitlebox').hide();
-});
+    $(document).on('click', '.closed', function () {
+        $('.tiitlebox').hide();
+    });
 </script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar1');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+      timeZone: 'UTC',
+      defaultView: 'dayGridMonth',
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      editable: true,
+      
+      events: [
+                    {% for event in object_list %}
+                        {
+                            title: "{{ event.title}}",
+                            start: "{{ event.slot_date|date:'Y-m-d' }}",
+                            id: "{{ event.id }}",
+                        },
+                        
+                    {% endfor %}
+                ],
+
+    });
+
+    calendar.render();
+  });
+
+</script>
+
+<script src="{% static 'userapp/provider/js/FullCalendarCorePackage.4.1.0.min.js' %}"></script>
+
+<script src="{% static 'userapp/provider/js/FullCalendarDayGrid.4.1.0.min.js' %}"></script>
+
+<script src="{% static 'userapp/provider/js/FullCalendarInteraction.4.1.0.min.js' %}"></script>
+
+<script src="{% static 'userapp/provider/js/FullCalendarTimeGrid.4.1.0.min.js' %}"></script>
 {% endblock body %}

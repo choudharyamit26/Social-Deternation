@@ -1,46 +1,56 @@
 
   // for full calender
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar1');
-  
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
-      timeZone: 'UTC',
-      defaultView: 'dayGridMonth',
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      editable: true,
-  
-      // JSON FEED INSTRUCTIONS
-      //
-      // 1. Open a new browser tab. Go to codepen.io
-      //
-      // 2. Create a new pen (Create > New Pen)
-      //
-      // 3. Paste your JSON into the JS pane
-      //
-      // 4. Hit the "Save" button
-      //
-      // 5. The page's URL will change. It will look like this:
-      //    https://codepen.io/anon/pen/eWPBOx
-      //
-      // 6. Append ".js" to it. Will become like this:
-      //    https://codepen.io/anon/pen/eWPBOx.js
-      //
-      // 7. Paste this URL below.
-      //
-      events: 'https://codepen.io/SSTWebmaster/pen/OGYByJ.js'
-  
-      // 8. Then, enter a date for defaultDate that best displays your events.
-      //
-      
-    });
-  
-    calendar.render();
-  });
+//  document.addEventListener('DOMContentLoaded', function() {
+//    var calendarEl = document.getElementById('calendar1');
+//
+//    var calendar = new FullCalendar.Calendar(calendarEl, {
+//      plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+//      timeZone: 'UTC',
+//      defaultView: 'dayGridMonth',
+//      header: {
+//        left: 'prev,next today',
+//        center: 'title',
+//        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+//      }
+//      events: [
+//                    {% for event in events %}
+//                        {
+//                            title: "{{ event.name}}",
+//                            start: '{{ event.start|date:"Y-m-d" }}',
+//                            end: '{{ event.end|date:"Y-m-d" }}',
+//                            id: '{{ event.id }}',
+//                        },
+//                    {% endfor %}
+//                ],
+//      editable: true,
+//
+//      // JSON FEED INSTRUCTIONS
+//      //
+//      // 1. Open a new browser tab. Go to codepen.io
+//      //
+//      // 2. Create a new pen (Create > New Pen)
+//      //
+//      // 3. Paste your JSON into the JS pane
+//      //
+//      // 4. Hit the "Save" button
+//      //
+//      // 5. The page's URL will change. It will look like this:
+//      //    https://codepen.io/anon/pen/eWPBOx
+//      //
+//      // 6. Append ".js" to it. Will become like this:
+//      //    https://codepen.io/anon/pen/eWPBOx.js
+//      //
+//      // 7. Paste this URL below.
+//      //
+//      events: 'https://codepen.io/SSTWebmaster/pen/OGYByJ.js'
+//
+//      // 8. Then, enter a date for defaultDate that best displays your events.
+//      //
+//
+//    });
+//
+//    calendar.render();
+//  });
 
   // full calender end 
 
