@@ -58,7 +58,7 @@
                             src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                     <div class="availabilitySlot" style="overflow-y: auto;">
                         <div class="checkAvailability">
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">
+                            <!-- <h2 class="normalFont text-left pb-3" style="font-size: 18px;">
                                 <span><a href="javaScript:void(0)" id="slot_timing">
                                     </a></span>
                                 <span class="addTittle title"><a href="javaScript:void(0)"
@@ -114,7 +114,41 @@
                                     </div>
                                 </span>
 
-                            </h2>
+                            </h2> -->
+                            <div class="avaliblitytitles">
+                                <ul>
+                                    <li>
+                                        <span><a href="javaScript:void(0)" id="slot_timing">
+                                        </a></span>
+                                    </li>
+                                    <li class="titleav"><span class="mainHeading mainHeading1" id="single_title">Add Title</span>
+                                        <div class="titleBoxs titleBoxs1">
+                                            <div class="form-group">
+                                                <label for="" class="label" style="padding: 0;">Add Tittle</label>
+                                                <input type="text" class="form-control formControl"
+                                                    placeholder="Add Title" name="single_title">
+                                            </div>
+                                            <div class="functionbtn">
+                                                <span class="cancle">Cancle</span>
+                                                <span class="savednew" id="single_title">Save</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="titleav"><span class="mainHeading mainHeading2" id="fee">Add Hourly Fees</span>
+                                        <div class="titleBoxs titleBoxs2">
+                                            <div class="form-group">
+                                                <label for="" class="label" style="padding: 0;">Add Tittle</label>
+                                                <input type="text" class="form-control formControl"
+                                                    placeholder="Add Title" name="single_fee">
+                                            </div>
+                                            <div class="functionbtn">
+                                                <span class="cancle">Cancle</span>
+                                                <span class="savednew" id="single_price">Save</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                             <div class="availModal" style="padding-bottom: 75px;">
                                 <ul>
                                     <li><a href="javaScript:void(0)">07:00 AM to 08:00 AM</a></li>
@@ -406,6 +440,36 @@
 <script src="{% static 'userapp/provider/js/FullCalendarInteraction.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarTimeGrid.4.1.0.min.js' %}"></script>
 <script>
+
+    $(document).on('click', '.avaliblitytitles ul li span.mainHeading1', function () {
+        $(this).siblings('.titleBoxs1').slideDown();
+    });
+    $(document).on('click', '.avaliblitytitles ul li span.mainHeading2', function () {
+        $(this).siblings('.titleBoxs2').slideDown();
+    });
+
+    $(document).on('click', '.cancle', function () {
+        $(this).parents('.titleBoxs').hide();
+    });
+
+    $(document).on('click', '.savednew', function () {
+        var x = $(this).parents('.functionbtn').siblings('.form-group').find('input').val();
+        $(this).parents('.titleav').find('span.mainHeading').text(x);
+        $('.titleBoxs').hide();
+    });
+
+    document.addEventListener("mousedown", function (event) {
+        if (event.target.closest(".avaliblitytitles ul li span.mainHeading1 ,.titleBoxs1"))
+            return;
+        $('.titleBoxs1').hide();
+    });
+    document.addEventListener("mousedown", function (event) {
+        if (event.target.closest(".avaliblitytitles ul li span.mainHeading2 ,.titleBoxs2"))
+            return;
+        $('.titleBoxs2').hide();
+    });
+</script>
+<script>
     // $(document).on('click', '.saved', function () {
     //     alert('clicked save button')
     //     // var x = $(this).siblings('.form-group').find('input').val();
@@ -423,14 +487,16 @@
 <script>
 
     document.getElementById("proceed").onclick = function () {
-        console.log('clicked proceed')
+        // console.log('clicked proceed')
         var x = document.getElementById("category").value;
+        // alert(x)
         // var y = $('input[name="radio3"]:checked').val();
         var y = ''
-        if (document.getElementById('radio-30').checked == false && document.getElementById('radio-40').checked == false){
-            console.log('---', y)
+        if (document.getElementById('radio-78').checked == false && document.getElementById('radio-77').checked == false){
+            // alert('testing radio button');
+            // console.log('---', y)
             typeError = "Please select a valid type";
-            console.log('inside type error--', typeError)
+            // console.log('inside type error--', typeError)
             document.getElementById("radio_error").innerHTML = typeError;
             $(document).ready(function () {
                 $('#MultipleSelect2').modal('hide');
@@ -443,7 +509,7 @@
             $(document).ready(function () {
                 $('#MultipleSelect2').modal('show');
             });
-            console.log('>>>>>',y)
+            // console.log('>>>>>',y)
         }
         if (x == null || x == "" || x == 'Select Category') {
             categoryError = "Please select a category";
@@ -506,31 +572,40 @@
 
     $(document).on('click', '#single_title', function () {
         var x = $("input[name=single_title]").val();
+        // alert('single title', x)
         var y = document.getElementById('title')
-        y.innerHTML = x;
+        // y.innerHTML = x;
         sessionStorage.setItem('singleTitle', x)
     });
 
     $(document).on('click', '#single_price', function () {
         var x = $("input[name=single_fee]").val();
+        // alert('single price', x)
         var y = document.getElementById('fee')
-        y.innerHTML = x;
+        // y.innerHTML = x;
         console.log('SINGLE FEES', x)
         sessionStorage.setItem('singleFees', x)
     });
 
     $(document).on('click', '.radio-label', function () {
-        var x = $(this).text();
+        console.log('inside volunteeer in multipselect')
+        var x = $(this).text().trim();
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>',x,x== String('test'),typeof(x),typeof('Volunteer'))
         if (x == 'Volunteer') {
             radio_button_value_arr.push(x)
+            alert('---',radio_button_value_arr)
             sessionStorage.setItem('availabilityType', radio_button_value_arr)
         }
     });
 
     $(document).on('click', '.radio-label', function () {
+
         var x = $(this).text();
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>',x,x== 'Paid Service',typeof(x),typeof('Paid Service'))
+
         if (x == 'Paid Service') {
             radio_button_value_arr.push(x)
+            alert('radio lable for array2',radio_button_value_arr)
             sessionStorage.setItem('availabilityType', radio_button_value_arr)
         }
     });
@@ -578,8 +653,8 @@
              <ul class="nav nav-tabs" style="margin: 0;padding: 0px 0px 10px;">
                                     <li class="active first">
                                         <div class="radio">
-                                            <input id="radio-40${i}" name="${i}" type="radio" value="Volunteer">
-                                            <label for="radio-40${i}" class="radio-label single" >Volunteer
+                                            <input id="radio-40${i}" name="${i}" type="radio" value="test">
+                                            <label for="radio-40${i}" class="radio-label single">Volunteer
                                             <a href="#" class="amitInfo" title="hi this is freeeeeeeee"><i class="fa fa-info-circle"></i></a>
                                             </label>
                                         </div>
@@ -595,64 +670,42 @@
                             </div> <br>`;
 
             u += `<div class="checkAvailability">
-<!--                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">${multiSlots[i]}-->
-<!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky smaller">Add-->
-<!--                                            Title</a></span>-->
-<!--                                <span><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add-->
-<!--                                            Hourly Fees</a></span>-->
 
-<!--                            </h2>-->
-                            <h2 class="normalFont text-left pb-3" style="font-size: 18px;">${multiSlots[i]}
-
-<span class="addTittle title"><a href="javaScript:void(0)" class="small pl-2 d-inline-block darkSky smaller">Add
-Title</a>
-<div class="tiitlebox titlslide">
-    <div class="form-group">
+                <div class="avaliblitytitles">
+    <ul>
+        <li>
+            <span><a href="javaScript:void(0)">
+            ${multiSlots[i]}
+        </a></span>
+        </li>
+        <li class="titleav"><span class="mainHeading mainHeading1">Add Title</span>
+        <div class="titleBoxs titleBoxs1">
+        <div class="form-group">
         <label for="" class="label" style="padding: 0;">Add Tittle</label>
-        <input type="text" class="form-control formControl " placeholder="Add Title" name="multi_title" id="multi_title_id${i}">
+            <input type="text" class="form-control formControl"
+                placeholder="Add Title" name="multi_title" id="multi_title_id${i}">
+        </div>
+    <div class="functionbtn">
+    <span class="cancle">Cancle</span>
+    <span class="savednew closed multi_title" id="${i}">Save</span>
     </div>
-    <div>
-        <ul class="titleFlex">
-            <li>
-                <a class="btns button closed">
-                    Cancel
-                </a>
-            </li>
-            <li>
-                <a class="btns button closed multi_title" id="${i}">
-                    Save
-                </a>
-            </li>
-        </ul>
     </div>
-</div>
-</span>
-
-<span class="addTittle title2"><a href="javaScript:void(0)" class="small pl-2 d-inline-block violet">Add
-Hourly Fees</a>
-<div class="tiitlebox titlslide2">
+    </li>
+    <li class="titleav"><span class="mainHeading mainHeading2">Add Hourly Fees</span>
+    <div class="titleBoxs titleBoxs2">
     <div class="form-group">
-        <label for="" class="label" style="padding: 0;">Add Fee</label>
-        <input type="number" class="form-control formControl" placeholder="Add Fee" name="multi_fee" id="multi_fee_idfee${i}">
+    <label for="" class="label" style="padding: 0;">Add Tittle</label>
+    <input type="text" class="form-control formControl"
+    placeholder="Add Title" name="multi_fee" id="multi_fee_idfee${i}">
     </div>
-    <div>
-        <ul class="titleFlex">
-            <li>
-                <a class="btns button closed">
-                    Cancel
-                </a>
-            </li>
-            <li>
-            <a class="btns button closed multi_fee saved" id="fee${i}">
-                Save
-            </a>
-            </li>
-        </ul>
+    <div class="functionbtn">
+    <span class="cancle">Cancle</span>
+    <span class="savednew closed multi_fee saved" id="fee${i}">Save</span>
     </div>
-</div>
-</span>
-
-</h2>
+    </div>
+    </li>
+    </ul>
+    </div>
 
 <div class="optionsWrapper">
   <div class="flipSwitch" id="option1">
@@ -712,10 +765,12 @@ Hourly Fees</a>
     });
 
     $(document).on('click', '#radio-77', function () {
+        alert('clicked radio-77')
         var x = $(this).val();
         sessionStorage.setItem('selectSlotType', x)
     });
     $(document).on('click', '#radio-78', function () {
+        alert('clicked radio-78')
         var x = $(this).val();
         sessionStorage.setItem('selectSlotType', x)
     });

@@ -2996,4 +2996,44 @@ tr:first-child>td>.fc-day-grid-event {
 }
 
 
+.avaliblitytitles ul li{
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+    }
+    
+    .avaliblitytitles ul li span{
+    font-size: 14px;
+    font-family: var(--Montserrat-SemiBold);
+    line-height: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    cursor: pointer;
+    }
+    .avaliblitytitles ul li:first-child span{
+    color: var(--darkSky) !important;
+    }
+    .titleBoxs{
+    background: var(--colorWhite);
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 270px;
+    position: absolute;
+    z-index: 9;
+    display: none;
+    }
+    .functionbtn span{
+    display: inline-block;
+    width: 100px;
+    font-size: 14px;
+    font-family: var(--Montserrat-SemiBold);
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    border-radius: 4px;
+    }
+
+
 
