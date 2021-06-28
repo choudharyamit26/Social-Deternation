@@ -50,7 +50,7 @@
             </a>
         </li>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown {% if request.resolver_match.view_name  == 'adminpanel:superadmin-subscription-plan' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:superadmin-general-subscription-plan' %}active{% endif %}">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                 <span><i class="fa fa-money"></i></span> Subscription
             </a>
@@ -76,7 +76,7 @@
             </a>
         </li>
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown {% if request.resolver_match.view_name  == 'adminpanel:superadmin-service-providers' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:superadmin-service-providers-category' %}active{% endif %}">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                 <span><i class="fa fa-product-hunt"></i></span> Service Providers
             </a>
@@ -89,8 +89,8 @@
                 </ul>
             </div>
         </li>
-
-        <li class="nav-item dropdown">
+        
+        <li class="nav-item dropdown {% if request.resolver_match.view_name  == 'adminpanel:superadmin-assault-form' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:superadmin-assault-records' %}active{% endif %}">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                 <span><i class="fa fa-database"></i></span> Assault
             </a>
@@ -104,43 +104,43 @@
             </div>
         </li>
 
-        <li class="nav-item dropdown ">
+        <li class="nav-item dropdown {% if request.resolver_match.view_name  == 'adminpanel:hero' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:cms-benefits' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:cms-features' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:cms-how-it-works' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:cms-social-pages' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:cms-privacy-policy' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:cms-terms-of-use' %}active{% endif %}">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                 <span><i class="fa fa-cog"></i></span> CMS
             </a>
             <div class="dropdown-menu">
                 <ul>
-                    <li><a href="{% url 'adminpanel:hero' %}"> Heros </a></li>
-                    <li><a href="{% url 'adminpanel:cms-benefits' %}"> Benefits </a></li>
-                    <li><a href="{% url 'adminpanel:cms-features' %}"> Features </a></li>
-                    <li><a href="{% url 'adminpanel:cms-how-it-works' %}"> How it works </a></li>
-                    <li><a href="{% url 'adminpanel:cms-social-pages' %}"> Social Pages </a></li>
-                    <li><a href="{% url 'adminpanel:cms-privacy-policy' %}"> Privacy Policy </a></li>
-                    <li><a href="{% url 'adminpanel:cms-terms-of-use' %}"> Terms of Use </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:hero' %}active{% endif %}"><a href="{% url 'adminpanel:hero' %}"> Heros </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:cms-benefits' %}active{% endif %}"><a href="{% url 'adminpanel:cms-benefits' %}"> Benefits </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:cms-features' %}active{% endif %}"><a href="{% url 'adminpanel:cms-features' %}"> Features </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:cms-how-it-works' %}active{% endif %}"><a href="{% url 'adminpanel:cms-how-it-works' %}"> How it works </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:cms-social-pages' %}active{% endif %}"><a href="{% url 'adminpanel:cms-social-pages' %}"> Social Pages </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:cms-privacy-policy' %}active{% endif %}"><a href="{% url 'adminpanel:cms-privacy-policy' %}"> Privacy Policy </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:cms-terms-of-use' %}active{% endif %}"><a href="{% url 'adminpanel:cms-terms-of-use' %}"> Terms of Use </a></li>
                 </ul>
             </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown {% if request.resolver_match.view_name  == 'adminpanel:faq-survivor' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:faq-service' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:faq-license' %}active{% endif %}">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                 <span><i class="fa fa-file"></i></span> FAQ
             </a>
             <div class="dropdown-menu">
                 <ul>
-                    <li><a href="{% url 'adminpanel:faq-survivor' %}"> Survivors </a></li>
-                    <li><a href="{% url 'adminpanel:faq-service' %}"> Service provider </a></li>
-                    <li><a href="{% url 'adminpanel:faq-license' %}"> license holder </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:faq-survivor' %}active{% endif %}"><a href="{% url 'adminpanel:faq-survivor' %}"> Survivors </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:faq-service' %}active{% endif %}"><a href="{% url 'adminpanel:faq-service' %}"> Service provider </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:faq-license' %}active{% endif %}"><a href="{% url 'adminpanel:faq-license' %}"> license holder </a></li>
                 </ul>
             </div>
         </li>
 
-        <li class="nav-item dropdown ">
+        <li class="nav-item dropdown {% if request.resolver_match.view_name  == 'adminpanel:report-survivor' %}active{% endif %} {% if request.resolver_match.view_name  == 'adminpanel:report-service-provider' %}active{% endif %}">
             <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
                 <span><i class="fa fa-line-chart" aria-hidden="true"></i></span> Report & Analytics
             </a>
             <div class="dropdown-menu">
                 <ul>
-                    <li><a href="{% url 'adminpanel:report-survivor' %}"> Survivors </a></li>
-                    <li><a href="{% url 'adminpanel:report-service-provider' %}"> Service provider </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:report-survivor' %}active{% endif %}"><a href="{% url 'adminpanel:report-survivor' %}"> Survivors </a></li>
+                    <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'adminpanel:report-service-provider' %}active{% endif %}"><a href="{% url 'adminpanel:report-service-provider' %}"> Service provider </a></li>
                     <!-- <li> <a href="report-legal.html"> legal </a> </li>  -->
                 </ul>
             </div>
