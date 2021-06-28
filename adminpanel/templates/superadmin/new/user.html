@@ -1,5 +1,6 @@
 {% extends 'superadmin/new/new-base.html' %}
 {% block body %}
+
 <div class="WrapperArea">
     <div class="WrapperBox">
 
@@ -30,64 +31,64 @@
                 <div class="CustomerTable">
                     <table>
                         <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>Name</th>
-                            <th>Email Id</th>
-                            <th>Mobile Number</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                        </tr>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Email Id</th>
+                                <th>Mobile Number</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Jesus</td>
-                            <td>vishu@gmail.com</td>
-                            <td>9876543212</td>
-                            <td>Customer Support</td>
-                            <td>
-                                <div class="Actions">
-                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#EditModal">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                    </a>
+                            <tr>
+                                <td>1</td>
+                                <td>John Jesus</td>
+                                <td>vishu@gmail.com</td>
+                                <td>9876543212</td>
+                                <td>Customer Support</td>
+                                <td>
+                                    <div class="Actions">
+                                        <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                            data-target="#EditModal">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </a>
 
-                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#DeleteModal">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#ViewModal">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>John Jesus</td>
-                            <td>vishu@gmail.com</td>
-                            <td>9876543212</td>
-                            <td>Customer Support</td>
-                            <td>
-                                <div class="Actions">
-                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#EditModal">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                    </a>
+                                        <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
+                                            data-target="#DeleteModal">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                            data-target="#ViewModal">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>John Jesus</td>
+                                <td>vishu@gmail.com</td>
+                                <td>9876543212</td>
+                                <td>Customer Support</td>
+                                <td>
+                                    <div class="Actions">
+                                        <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                            data-target="#EditModal">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </a>
 
-                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#DeleteModal">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#ViewModal">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                                        <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
+                                            data-target="#DeleteModal">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
+                                            data-target="#ViewModal">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>
@@ -183,28 +184,28 @@
                         </div>
                         <div class="form-group">
                             <label>Assign</label>
-                            <select>
-                                <option>Dashboard</option>
-                                <option>Organisation Management</option>
-                                <option>Clients</option>
-                                <option>Subscription</option>
-                                <option>Service Providers - List</option>
-                                <option>Service Providers - Category</option>
-                                <option>Assault - Questions</option>
-                                <option>Assault - Records</option>
-                                <option>User Management</option>
-                                <option>CMS - Heros</option>
-                                <option>CMS - Features</option>
-                                <option>CMS - Benefits</option>
-                                <option>CMS - How to</option>
-                                <option>CMS - Social Pages</option>
-                                <option>CMS - Privacy Policy</option>
-                                <option>CMS - Terms Of Use</option>
-                                <option>Mailbox</option>
-                                <option>FAQs - Survivors</option>
-                                <option>FAQs - Service Provider</option>
-                                <option>FAQs - License Holders</option>
-                                <option>Change Password</option>
+                            <select id="multiselect" multiple="multiple" class="form-control">
+                                <option value="Dashboard">Dashboard</option>
+                                <option value="Organisation">Organisation Management</option>
+                                <option value="Clients">Clients</option>
+                                <option value="Subscription">Subscription</option>
+                                <option value="Service Providers - List">Service Providers - List</option>
+                                <option value="Service Providers - Providers">Service Providers - Category</option>
+                                <option value="Assault - Questions">Assault - Questions</option>
+                                <option value="Assault - Records">Assault - Records</option>
+                                <option value="User Management">User Management</option>
+                                <option value="CMS - Heros">CMS - Heros</option>
+                                <option value="CMS - Features">CMS - Features</option>
+                                <option value="CMS - Benefits">CMS - Benefits</option>
+                                <option value="CMS - How to">CMS - How to</option>
+                                <option value="CMS - Social Pages">CMS - Social Pages</option>
+                                <option value="CMS - Privacy Policy">CMS - Privacy Policy</option>
+                                <option value="CMS - Terms Of Use">CMS - Terms Of Use</option>
+                                <option value="Mailbox">Mailbox</option>
+                                <option value="FAQs - Survivors">FAQs - Survivors</option>
+                                <option value="FAQs - Service Provider">FAQs - Service Provider</option>
+                                <option value="FAQs - License Holders">FAQs - License Holders</option>
+                                <option value="Change Password">Change Password</option>
                             </select>
                         </div>
                         <button class="Button Cancel">Cancel</button>
@@ -278,7 +279,5 @@
     </div>
 
 </div>
-<script>
-    
-</script>
+
 {% endblock body %}

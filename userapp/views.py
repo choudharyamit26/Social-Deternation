@@ -323,6 +323,14 @@ class SurvivorProfileView(View):
         return render(self.request, 'userapp/myprofile.html')
 
 
+class ServiceProviderProfile(View):
+    model = ServiceProvider
+    template_name = 'userapp/myprofile.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'userapp/myprofile.html')
+
+
 class SurvivorLogout(View):
 
     def get(self, request, *args, **kwargs):
@@ -606,10 +614,12 @@ class SurvivorCalendarEvent(View):
         print(self.request.GET)
         # return JsonResponse({'data':'clicked event'})
         service_provider = ServiceProvider.objects.get(user=self.request.user)
-        service_provider_slots = ServiceProviderSlots.objects.filter(user=service_provider, slot_date=self.request.GET['date'])
+        service_provider_slots = ServiceProviderSlots.objects.filter(user=service_provider,
+                                                                     slot_date=self.request.GET['date'])
         print(service_provider_slots)
         return render(self.request, 'userapp/calendar-event.html',
-                      {'object_list': ServiceProviderSlots.objects.filter(user=service_provider),'slots_per_day': service_provider_slots})
+                      {'object_list': ServiceProviderSlots.objects.filter(user=service_provider),
+                       'slots_per_day': service_provider_slots})
 
 
 class SurvivorSubscriptionView(View):

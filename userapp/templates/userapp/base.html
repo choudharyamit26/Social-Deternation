@@ -47,17 +47,27 @@
             </div>
             <div class="socialRight">
                 <ul>
+                    {% if user.is_authenticated %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-dashboard' %}active{% endif %}">
                         <a href="{% url 'userapp:survivor-dashboard' %}">Record An Assault</a></li>
+                    {% else %}
+                    {% endif %}
                     <li><a href="https://www.google.com/" target="_blank" class="Quickexit">Quick Exit</a></li>
                     <li class="survivors nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:service-provider' %}active{% endif %} ">
                         <a href="{% url 'userapp:service-provider' %}">Service Providers</a></li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:ongoing-booking' %}active{% endif %}">
                         <a href="{% url 'userapp:ongoing-booking' %}">My Bookings</a></li>
+                    {% else %}
+                    {% endif %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:faq' %}active{% endif %}">
                         <a href="{% url 'userapp:faq' %}">FAQs</a></li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:contact-us' %}active{% endif %}">
                         <a href="{% url 'userapp:contact-us' %}">Contact</a></li>
+                    {% else %}
+                    {% endif %}
+                    {% if user.is_authenticated %}
                     <li class="notification"><a href="javascript:void(0)">Notifications</a>
                         <div class="notificationDet">
                             <ul>
@@ -99,6 +109,8 @@
                             </div>
                         </div>
                     </li>
+                    {% else %}
+                    {% endif %}
                 </ul>
             </div>
         </div>
