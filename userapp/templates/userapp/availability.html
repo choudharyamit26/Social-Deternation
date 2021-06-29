@@ -58,91 +58,36 @@
                             src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                     <div class="availabilitySlot" style="overflow-y: auto;">
                         <div class="checkAvailability">
-                            <!-- <h2 class="normalFont text-left pb-3" style="font-size: 18px;">
-                                <span><a href="javaScript:void(0)" id="slot_timing">
-                                    </a></span>
-                                <span class="addTittle title"><a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block darkSky smaller">Add
-                                        Title</a>
-                                    <div class="tiitlebox titlslide">
-                                        <div class="form-group">
-                                            <label for="" class="label" style="padding: 0;" id="title">Add
-                                                Tittle</label>
-                                            <input type="text" class="form-control formControl" placeholder="Add Title"
-                                                name="single_title">
-                                        </div>
-                                        <div class="titleValue">
-                                            <ul class="titleFlex">
-                                                <li>
-                                                    <a class="btns button closed">
-                                                        Cancel
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btns button closed saved" id="single_title">
-                                                        Save
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </span>
-
-                                <span class="addTittle title2"><a href="javaScript:void(0)"
-                                        class="small pl-2 d-inline-block violet">Add
-                                        Hourly Fees</a>
-                                    <div class="tiitlebox titlslide2">
-                                        <div class="form-group">
-                                            <label for="" class="label" style="padding: 0;" id="fee">Add Fee</label>
-                                            <input type="number" class="form-control formControl" placeholder="Add Fee"
-                                                name="single_fee">
-                                        </div>
-                                        <div>
-                                            <ul class="titleFlex">
-                                                <li>
-                                                    <a class="btns button closed">
-                                                        Cancel
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="btns button closed saved" id="single_price">
-                                                        Save
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </span>
-
-                            </h2> -->
                             <div class="avaliblitytitles">
                                 <ul>
                                     <li>
                                         <span><a href="javaScript:void(0)" id="slot_timing">
-                                        </a></span>
+                                            </a></span>
                                     </li>
-                                    <li class="titleav"><span class="mainHeading mainHeading1" id="single_title">Add Title</span>
+                                    <li class="titleav"><span class="mainHeading mainHeading1" id="single_title">Add
+                                            Title</span>
                                         <div class="titleBoxs titleBoxs1">
                                             <div class="form-group">
                                                 <label for="" class="label" style="padding: 0;">Add Tittle</label>
                                                 <input type="text" class="form-control formControl"
-                                                    placeholder="Add Title" name="single_title">
+                                                    placeholder="Add Title" name="single_title" id="single_title_field">
                                             </div>
                                             <div class="functionbtn">
-                                                <span class="cancle">Cancle</span>
+                                                <span class="cancle">Cancel</span>
                                                 <span class="savednew" id="single_title">Save</span>
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="titleav"><span class="mainHeading mainHeading2" id="fee">Add Hourly Fees</span>
+                                    <li class="titleav"><span class="mainHeading mainHeading2" id="fee">Add Hourly
+                                            Fees</span>
                                         <div class="titleBoxs titleBoxs2">
                                             <div class="form-group">
                                                 <label for="" class="label" style="padding: 0;">Add Tittle</label>
                                                 <input type="text" class="form-control formControl"
-                                                    placeholder="Add Title" name="single_fee">
+                                                    placeholder="Add Title" name="single_fee" id="single _fee_field">
                                             </div>
                                             <div class="functionbtn">
-                                                <span class="cancle">Cancle</span>
+                                                <span class="cancle">Cancel</span>
                                                 <span class="savednew" id="single_price">Save</span>
                                             </div>
                                         </div>
@@ -325,7 +270,7 @@
     <div class="modal" id="multiModal">
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
-                <button type="button" class="close closee" data-dismiss="modal"><img
+                <button type="button" class="close closedd closee" data-dismiss="modal"><img
                         src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                 <div class="modal-body" style="position: relative;height: 540px;overflow-y: scroll;">
 
@@ -340,7 +285,8 @@
                                 <a href="javascript:void(0)" class="Button Button-violet-alt closee"
                                     style="min-width: 140px;">Cancel</a>
                                 <a href="javascript:void(0)" class="Button bg-violet closee" style="min-width: 140px;"
-                                    data-toggle="modal" data-dismiss="modal" data-target="#MultipleSelect">Proceed</a>
+                                    data-toggle="modal" data-dismiss="modal" data-target="#MultipleSelect"
+                                    id="multiple_proceed">Proceed</a>
                             </div>
                         </div>
                     </div>
@@ -352,8 +298,8 @@
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close closee" data-dismiss="modal"><img
-                            src="{% static '/userapp/imgs/close.svg' %}" alt="close"></button>
+                    <button type="button" class="close closedd closee"><img src="{% static '/userapp/imgs/close.svg' %}"
+                            alt="close"></button>
 
                     <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
                         <p class="head selectedd" id="slot_date"></p>
@@ -370,6 +316,7 @@
                                 </select>
                                 <span class="error">
                                     <p id="category_error" style="color: red;"></p>
+                                </span>
                             </div>
                             <h2 class="cate">Type</h2>
                             <ul class="nav nav-tabs singleAmit" style="margin: 0;display: flex;padding: 0px 0px 10px;">
@@ -383,6 +330,7 @@
                                     </div>
                                     <span class="error">
                                         <p id="radio_error" style="color: red;"></p>
+                                    </span>
                                 </li>
 
                                 <li class="second">
@@ -402,7 +350,7 @@
                                     style="min-width: 140px;">Cancel</a>
                                 <button href="javascript:void(0)" class="Button bg-violet closee"
                                     style="min-width: 140px;" id="proceed" data-toggle="modal"
-                                    data-target="#MultipleSelect2">Proceed</button>
+                                    data-target="#MultipleSelect2" data-dismiss="modal">Proceed</button>
                             </div>
                         </div>
                     </div>
@@ -410,7 +358,7 @@
             </div>
         </div>
     </div>
-    <div class="modal" id="slotsModal">
+    <!-- <div class="modal" id="slotsModal">
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
                 <div class="modal-body">
@@ -430,7 +378,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
 <script src="{% static 'userapp/provider/js/jquery.min.js' %}"></script>
@@ -470,46 +418,33 @@
     });
 </script>
 <script>
-    // $(document).on('click', '.saved', function () {
-    //     alert('clicked save button')
-    //     // var x = $(this).siblings('.form-group').find('input').val();
-    //     // alert(x);
-    //     // $(this).parents('.tiitlebox').siblings('.small').text(x);
-    // });
-
     $(document).on('click', '.saved', function () {
         var x = $(this).parents('.titleValue').siblings('.form-group').find('input').val();
-        // alert(x);
         $(this).parents('.addTittle').find('a.smaller').text(x);
-        // $(this).siblings('.form-group').find('input').val('');
     });
 </script>
 <script>
 
     document.getElementById("proceed").onclick = function () {
-        // console.log('clicked proceed')
         var x = document.getElementById("category").value;
-        // alert(x)
-        // var y = $('input[name="radio3"]:checked').val();
         var y = ''
-        if (document.getElementById('radio-78').checked == false && document.getElementById('radio-77').checked == false){
-            // alert('testing radio button');
-            // console.log('---', y)
+        if (document.getElementById('radio-78').checked == false && document.getElementById('radio-77').checked == false) {
             typeError = "Please select a valid type";
-            // console.log('inside type error--', typeError)
             document.getElementById("radio_error").innerHTML = typeError;
             $(document).ready(function () {
                 $('#MultipleSelect2').modal('hide');
+                $('.modal-backdrop').removeClass('.show');
+
             });
             $(document).ready(function () {
                 $('#singleModal').modal('show');
             });
-        }else{
+            // alert(typeError)
+        } else {
             var y = $('input[name="radio3"]:checked').val();
             $(document).ready(function () {
                 $('#MultipleSelect2').modal('show');
             });
-            // console.log('>>>>>',y)
         }
         if (x == null || x == "" || x == 'Select Category') {
             categoryError = "Please select a category";
@@ -517,26 +452,15 @@
             document.getElementById("category_error").innerHTML = categoryError;
             $(document).ready(function () {
                 $('#MultipleSelect2').modal('hide');
+                $('.modal-backdrop').removeClass('.show');
+            });
+            $(document).ready(function () {
                 $('#singleModal').modal('show');
             });
+            // alert(categoryError)
         }
 
-        // if (y == null || y == "") {
-        //     console.log('---', y)
-        //     typeError = "Please select a valid type";
-        //     console.log('inside type error--', typeError)
-        //     document.getElementById("radio_error").innerHTML = typeError;
-        //     $(document).ready(function () {
-        //         $('#MultipleSelect2').modal('toggle');
-        //         $('#singleModal').modal('show');
-        //     });
-        // }
-        // if ((x != null && x != '') && (y!= null && y != '')){
-        //     console.log('inside second modal')
-        //     $('#MultipleSelect2').modal('show');
-        // }
         console.log(x, y)
-        // return submit;
     }
 
     function removeWarning() {
@@ -545,6 +469,69 @@
 
     document.getElementById("category").onkeyup = removeWarning;
     document.getElementById("radio3").onkeyup = removeWarning;
+</script>
+<script>
+    document.getElementById("multiple_proceed").onclick = function () {
+        var multiSlots = sessionStorage.getItem('multiSelectDate').split(",")
+        // alert(multiSlots.length)
+        for (var i = 0; i < multiSlots.length; i++) {
+            // alert('inside for loop')
+            var z = "multicategory" + i
+            // console.log(z)
+            var a = "radio-40" + i
+            // console.log(a)
+            var b = "radio-40" + (parseInt(i) + parseInt(10))
+            // console.log(b)
+            var c = "radio_error" + i
+            // console.log(c)
+            var d = "category_error" + i
+            // console.log(d)
+            var x = document.getElementById(z).value;
+            // console.log(x)
+            var y = ''
+            if (document.getElementById(a).checked == false && document.getElementById(b).checked == false) {
+                // alert('inside multi radio button')
+                typeError = "Please select a valid type";
+                document.getElementById(c).innerHTML = typeError;
+                $(document).ready(function () {
+                    $('#MultipleSelect').modal('hide');
+                    $('.modal-backdrop').removeClass('.show');
+                });
+                $(document).ready(function () {
+                    $('#multiModal').modal('show');
+                });
+                // alert(typeError)
+            } else {
+                var y = $('input[name="radio' + i + '"]:checked').val();
+                // alert(y)
+                $(document).ready(function () {
+                    $('#MultipleSelect').modal('show');
+                });
+            }
+            if (x == null || x == "" || x == 'Select Category') {
+                categoryError = "Please select a category";
+                // console.log('inside category error--', categoryError)
+                document.getElementById(d).innerHTML = categoryError;
+                $(document).ready(function () {
+                    $('#MultipleSelect').modal('hide');
+                    $('.modal-backdrop').removeClass('.show');
+                });
+                $(document).ready(function () {
+                    $('#multiModal').modal('show');
+                });
+                // alert(categoryError)
+            }
+
+            console.log(x, y)
+        }
+
+        function removeWarning() {
+            document.getElementById(this.id + "_error").innerHTML = "";
+        }
+
+        document.getElementById("category").onkeyup = removeWarning;
+        document.getElementById("radio3").onkeyup = removeWarning;
+    }
 </script>
 <script>
     var radio_button_value_arr = []
@@ -590,7 +577,7 @@
     $(document).on('click', '.radio-label', function () {
         console.log('inside volunteeer in multipselect')
         var x = $(this).text().trim();
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>',x,x== String('test'),typeof(x),typeof('Volunteer'))
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>', x, x == String('test'), typeof (x), typeof ('Volunteer'))
         if (x == 'Volunteer') {
             radio_button_value_arr.push(x)
             // alert('---',radio_button_value_arr)
@@ -601,7 +588,7 @@
     $(document).on('click', '.radio-label', function () {
 
         var x = $(this).text();
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>',x,x== 'Paid Service',typeof(x),typeof('Paid Service'))
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>', x, x == 'Paid Service', typeof (x), typeof ('Paid Service'))
 
         if (x == 'Paid Service') {
             radio_button_value_arr.push(x)
@@ -623,14 +610,26 @@
     });
 
     var category_arr = []
-    $(document).on('click', '#multicategory', function () {
-        var x = $(this).val();
-        category_arr.push(x)
-        sessionStorage.setItem('multiCategoryType', category_arr)
-    });
+    var multiSlots = sessionStorage.getItem('multiSelectDate').split(",")
+
+    for (var i = 0; i < multiSlots.length; i++) {
+        $(document).on('click', '#multicategory' + i + '', function () {
+            var x = $(this).val().trim();
+            if (x == 'Select Category') {
+
+            } else {
+                category_arr.push(x)
+                sessionStorage.setItem('multiCategoryType', category_arr)
+            }
+
+        });
+    }
 
     function multiSlotTypeFun() {
-        var multiSlots = sessionStorage.getItem('multiSelectDate').split(",")
+        var multiSlots = sessionStorage.getItem('multiSelectDate').split(",");
+        if (sessionStorage.getItem('multiCategoryType')) {
+            var multiCategoryType = sessionStorage.getItem('multiCategoryType').split(",")
+        }
         var t = "";
         var u = "";
         for (var i = 0; i < multiSlots.length; i++) {
@@ -641,21 +640,25 @@
                                 <div class="availablityMain availablityMain2 ">
                                     <div class="categoryAll">
                                         <h2 class="cate">Category</h2>
-                                        <select name="cars" id="multicategory" class="form-control formControl"
+                                        <select name="cars" id="multicategory${i}" class="form-control formControl"
                                             style="padding: 15px;">
                                             <option>Select Category</option>
                                             <option value="Legal Assistance">Legal Assistance</option>
                                             <option value="Therapeutical Help">Therapeutical Help</option>
                                             <option value="Counselling">Counselling</option>
                                         </select>
+                                        <span class="error">
+                                    <p id="category_error${i}" style="color: red;"></p>
+                                </span>
                                     </div>
+                                    
                                     <h2 class="cate">Type</h2>
              <ul class="nav nav-tabs" style="margin: 0;padding: 0px 0px 10px;">
                                     <li class="active first">
                                         <div class="radio">
                                             <input id="radio-40${i}" name="${i}" type="radio" value="test">
                                             <label for="radio-40${i}" class="radio-label single">Volunteer
-                                            <a href="#" class="amitInfo" title="hi this is freeeeeeeee"><i class="fa fa-info-circle"></i></a>
+                                            <a href="#" class="amitInfo" title="Volunteer means free service"><i class="fa fa-info-circle"></i></a>
                                             </label>
                                         </div>
                                     </li>
@@ -666,6 +669,9 @@
                                         </div>
                                     </li>
                                 </ul>
+                                <span class="error">
+                                        <p id="radio_error${i}" style="color: red;"></p>
+                                    </span>
                                 </div>
                             </div> <br>`;
 
@@ -685,25 +691,25 @@
             <input type="text" class="form-control formControl"
                 placeholder="Add Title" name="multi_title" id="multi_title_id${i}">
         </div>
-    <div class="functionbtn">
-    <span class="cancle">Cancle</span>
-    <span class="savednew closed multi_title" id="${i}">Save</span>
-    </div>
-    </div>
-    </li>
-    <li class="titleav"><span class="mainHeading mainHeading2">Add Hourly Fees</span>
-    <div class="titleBoxs titleBoxs2">
-    <div class="form-group">
-    <label for="" class="label" style="padding: 0;">Add Tittle</label>
-    <input type="text" class="form-control formControl"
-    placeholder="Add Title" name="multi_fee" id="multi_fee_idfee${i}">
-    </div>
-    <div class="functionbtn">
-    <span class="cancle">Cancle</span>
-    <span class="savednew closed multi_fee saved" id="fee${i}">Save</span>
-    </div>
-    </div>
-    </li>
+        <div class="functionbtn">
+        <span class="cancle">Cancel</span>
+        <span class="savednew closed multi_title" id="${i}">Save</span>
+        </div>
+        </div>
+        </li>
+        <li class="titleav"><span class="mainHeading mainHeading2">Add Hourly Fees</span>
+        <div class="titleBoxs titleBoxs2">
+        <div class="form-group">
+        <label for="" class="label" style="padding: 0;">Add Tittle</label>
+        <input type="text" class="form-control formControl"
+        placeholder="Add Title" name="multi_fee" id="multi_fee_idfee${i}">
+        </div>
+        <div class="functionbtn">
+        <span class="cancle">Cancel</span>
+        <span class="savednew closed multi_fee saved" id="fee${i}">Save</span>
+        </div>
+        </div>
+        </li>
     </ul>
     </div>
 
@@ -815,7 +821,7 @@
                 window.location.href = url
             },
             error: function (data) {
-                alert('Something went wrong')
+                alert('One or more field is empty. Please fill all the required fields')
             },
         });
     }
@@ -826,6 +832,7 @@
 
 </script>
 <script>
+
     function multiSlotCreate() {
         var d = sessionStorage.getItem('multiSelectDate')
         var e = sessionStorage.getItem('multiSlots')
@@ -861,7 +868,7 @@
                 window.location.href = url
             },
             error: function (data) {
-                alert('Something went wrong')
+                alert('One or more field is empty. Please fill all the required fields')
             },
         });
     }
@@ -898,9 +905,12 @@
     $(document).on('click', '.closed', function () {
         $('.tiitlebox').hide();
     });
+    $(document).on('click', '.closedd', function () {
+        $('.modal-backdrop.show').addClass('demo');
+        $('body').removeClass('modal-open');
+    });
 
 </script>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

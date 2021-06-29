@@ -801,41 +801,45 @@ class CreateMultiSlotView(View):
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
         d = self.request.POST['selected_date'].split(",")
+        print('---',d)
         e = self.request.POST['selected_slot'].split(",")
         f = self.request.POST['select_slot_type'].split(",")
         g = self.request.POST['category_type'].split(",")
         h = self.request.POST['multi_title'].split(",")
         i = self.request.POST['multi_fee'].split(",")
-        data = zip(d, e, f, g, h, i)
-        user = self.request.user
-        service_provider = ServiceProvider.objects.get(user=user)
-        # print(list(data))
-        for x in list(data):
-            print('inside for loop', x)
-            date_time_str = x[0].split(' ')
-            month_name = date_time_str[1]
-            datetime_object = datetime.strptime(month_name, "%B").month
-            if datetime_object < 10:
-                datetime_object = '0' + str(datetime_object)
-            else:
-                datetime_object = datetime_object
-            d = date_time_str[0]
-            if int(d) < 10:
-                d = '0' + str(d)
-            else:
-                d = d
-            selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
-            date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
-            i = x[5]
-            fee = Decimal(i)
-            ServiceProviderSlots.objects.create(
-                user=service_provider,
-                slot_date=date_time_obj,
-                slot_time=x[1],
-                select_slot_type=x[2],
-                # category=self.request.POST['category_type']
-                category=x[3],
-                title=x[4],
-                hourly_fees=fee,
-            )
-        return redirect("userapp:provider-availability")
+        if len(d) == len(h) and len(d) == len(i) and len(d) == len(f) and len(d) == len(g):
+            data = zip(d, e, f, g, h, i)
+            user = self.request.user
+            service_provider = ServiceProvider.objects.get(user=user)
+            # print(list(data))
+            for x in list(data):
+                print('inside for loop', x)
+                date_time_str = x[0].split(' ')
+                month_name = date_time_str[1]
+                datetime_object = datetime.strptime(month_name, "%B").month
+                if datetime_object < 10:
+                    datetime_object = '0' + str(datetime_object)
+                else:
+                    datetime_object = datetime_object
+                d = date_time_str[0]
+                if int(d) < 10:
+                    d = '0' + str(d)
+                else:
+                    d = d
+                selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
+                date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
+                i = x[5]
+                fee = Decimal(i)
+                ServiceProviderSlots.objects.create(
+                    user=service_provider,
+                    slot_date=date_time_obj,
+                    slot_time=x[1],
+                    select_slot_type=x[2],
+                    # category=self.request.POST['category_type']
+                    category=x[3],
+                    title=x[4],
+                    hourly_fees=fee,
+                )
+            return redirect("userapp:provider-availability")
+        else:
+            return JsonResponse({'data': 'error'}, status=400)

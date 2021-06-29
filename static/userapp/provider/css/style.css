@@ -3034,6 +3034,10 @@ tr:first-child>td>.fc-day-grid-event {
     margin-right: 10px;
     border-radius: 4px;
     }
+    .modal-backdrop.show.demo{
+        z-index: -1;
+        opacity: 0;
+    }
 
 
 
