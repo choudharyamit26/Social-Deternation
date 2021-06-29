@@ -348,9 +348,8 @@
                             <div class="modBt" style="text-align: center;">
                                 <a href="javascript:void(0)" class="Button Button-violet-alt closee"
                                     style="min-width: 140px;">Cancel</a>
-                                <button href="javascript:void(0)" class="Button bg-violet closee"
-                                    style="min-width: 140px;" id="proceed" data-toggle="modal"
-                                    data-target="#MultipleSelect2" data-dismiss="modal">Proceed</button>
+                                <button class="Button bg-violet closee" style="min-width: 140px;" id="proceed"
+                                    type="button">Proceed</button>
                             </div>
                         </div>
                     </div>
@@ -387,6 +386,23 @@
 <script src="{% static 'userapp/provider/js/FullCalendarDayGrid.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarInteraction.4.1.0.min.js' %}"></script>
 <script src="{% static 'userapp/provider/js/FullCalendarTimeGrid.4.1.0.min.js' %}"></script>
+<!-- <script>
+
+    function showSigleModal(){
+        alert('inside function')
+        var f = sessionStorage.getItem('selectSlotType')
+        alert(f)
+        if (f.trim()=='Volunteer'){
+            alert('inside f')
+            var hourly_fees = document.getElementsByClassName('mainHeading2').style.display = "none";
+            
+        }else{
+
+        }
+        $('#singleModal').modal('show');
+
+    }
+</script> -->
 <script>
 
     $(document).on('click', '.avaliblitytitles ul li span.mainHeading1', function () {
@@ -431,11 +447,11 @@
         if (document.getElementById('radio-78').checked == false && document.getElementById('radio-77').checked == false) {
             typeError = "Please select a valid type";
             document.getElementById("radio_error").innerHTML = typeError;
-            $(document).ready(function () {
-                $('#MultipleSelect2').modal('hide');
-                $('.modal-backdrop').removeClass('.show');
+            // $(document).ready(function () {
+            $('#MultipleSelect2').modal('hide');
+            $('.modal-backdrop').removeClass('.show');
 
-            });
+            // });
             $(document).ready(function () {
                 $('#singleModal').modal('show');
             });
@@ -443,7 +459,18 @@
         } else {
             var y = $('input[name="radio3"]:checked').val();
             $(document).ready(function () {
+                // alert(y)
+                if (y.trim() == 'Volunteer') {
+                    // alert('inside f')
+                    $('.mainHeading2').css('display', 'none')
+                } else {
+                    $('.mainHeading2').css('display', 'block')
+
+                    // console.log('>>>>>')
+                }
+                $('#singleModal').modal('hide');
                 $('#MultipleSelect2').modal('show');
+
             });
         }
         if (x == null || x == "" || x == 'Select Category') {
@@ -504,7 +531,10 @@
             } else {
                 var y = $('input[name="radio' + i + '"]:checked').val();
                 // alert(y)
+                   
                 $(document).ready(function () {
+                    // alert('from error loop')
+                    multiAvailibility();
                     $('#MultipleSelect').modal('show');
                 });
             }
@@ -529,8 +559,8 @@
             document.getElementById(this.id + "_error").innerHTML = "";
         }
 
-        document.getElementById("category").onkeyup = removeWarning;
-        document.getElementById("radio3").onkeyup = removeWarning;
+        // document.getElementById("category").onkeyup = removeWarning;
+        // document.getElementById("radio3").onkeyup = removeWarning;
     }
 </script>
 <script>
@@ -627,11 +657,13 @@
 
     function multiSlotTypeFun() {
         var multiSlots = sessionStorage.getItem('multiSelectDate').split(",");
-        if (sessionStorage.getItem('multiCategoryType')) {
-            var multiCategoryType = sessionStorage.getItem('multiCategoryType').split(",")
-        }
+        // var multiCategoryType = ''
+        // if (sessionStorage.getItem('selectSlotType')) {
+        //     
+        // }
+        // console.log('_____________________',sessionStorage.getItem('selectSlotType'))
+        // alert(multiCategoryType)
         var t = "";
-        var u = "";
         for (var i = 0; i < multiSlots.length; i++) {
             t += `<div class="slote">
                                 <p class="head selectedd">Selected Date : <span class="dated">${multiSlots[i]}</span>
@@ -675,96 +707,113 @@
                                 </div>
                             </div> <br>`;
 
-            u += `<div class="checkAvailability">
 
-                <div class="avaliblitytitles">
-    <ul>
-        <li>
-            <span><a href="javaScript:void(0)">
-            ${multiSlots[i]}
-        </a></span>
-        </li>
-        <li class="titleav"><span class="mainHeading mainHeading1">Add Title</span>
-        <div class="titleBoxs titleBoxs1">
-        <div class="form-group">
-        <label for="" class="label" style="padding: 0;">Add Tittle</label>
-            <input type="text" class="form-control formControl"
-                placeholder="Add Title" name="multi_title" id="multi_title_id${i}">
-        </div>
-        <div class="functionbtn">
-        <span class="cancle">Cancel</span>
-        <span class="savednew closed multi_title" id="${i}">Save</span>
-        </div>
-        </div>
-        </li>
-        <li class="titleav"><span class="mainHeading mainHeading2">Add Hourly Fees</span>
-        <div class="titleBoxs titleBoxs2">
-        <div class="form-group">
-        <label for="" class="label" style="padding: 0;">Add Tittle</label>
-        <input type="text" class="form-control formControl"
-        placeholder="Add Title" name="multi_fee" id="multi_fee_idfee${i}">
-        </div>
-        <div class="functionbtn">
-        <span class="cancle">Cancel</span>
-        <span class="savednew closed multi_fee saved" id="fee${i}">Save</span>
-        </div>
-        </div>
-        </li>
-    </ul>
-    </div>
-
-<div class="optionsWrapper">
-  <div class="flipSwitch" id="option1">
-
-    <input type="radio" name="${i}" id="option1-value3${i}" value="07:00 AM to 08:00 AM" checked="">
-    <label for ="option1-value3${i}" class="radio-label">07:00 AM to 08:00 AM</label>
-
-    <input type="radio" name="${i}" id="option1-value4${i}" value="08:00 AM to 09:00 AM">
-    <label  for ="option1-value4${i}" class="radio-label">08:00 AM to 09:00 AM</label>
-
-    <input type="radio" name="${i}" id="option1-value1${i}" value="09:00 AM to 10:00 AM" >
-    <label for="option1-value1${i}" class="radio-label">09:00 AM to 10:00 AM</label>
-
-    <input type="radio" name="${i}" id="option1-value2${i}" value="10:00 AM to 11:00 AM">
-    <label for="option1-value2${i}" class="radio-label">10:00 AM to 11:00 AM</label>
-
-
-    <input type="radio" name="${i}" id="option1-value5${i}" value="11:00 AM to 12:00 PM" checked="">
-    <label for ="option1-value5${i}" class="radio-label">11:00 AM to 12:00 PM</label>
-
-    <input type="radio" name="${i}" id="option1-value6${i}" value="12:00 PM to 01:00 PM">
-    <label  for ="option1-value6${i}" class="radio-label">12:00 PM to 01:00 PM</label>
-
-    <input type="radio" name="${i}" id="option1-value7${i}" value="01:00 PM to 02:00 PM" >
-    <label for="option1-value7${i}" class="radio-label">01:00 PM to 02:00 PM</label>
-
-    <input type="radio" name="${i}" id="option1-value8${i}" value="02:00 PM to 03:00 PM">
-    <label for="option1-value8${i}" class="radio-label">02:00 PM to 03:00 PM</label>
-
-    <input type="radio" name="${i}" id="option1-value9${i}" value="03:00 PM to 04:00 PM" checked="">
-    <label for ="option1-value9${i}" class="radio-label">03:00 PM to 04:00 PM</label>
-
-    <input type="radio" name="${i}" id="option1-value10${i}" value="04:00 PM to 05:00 PM">
-    <label  for ="option1-value10${i}" class="radio-label">04:00 PM to 05:00 PM</label>
-
-    <input type="radio" name="${i}" id="option1-value11${i}" value="05:00 PM to 06:00 PM" >
-    <label for="option1-value11${i}" class="radio-label">05:00 PM to 06:00 PM</label>
-
-    <input type="radio" name="${i}" id="option1-value12${i}" value="06:00 PM to 07:00 PM">
-    <label for="option1-value12${i}" class="radio-label">06:00 PM to 07:00 PM</label>
-
-    <a></a>
-
-  </div>
-</div>
-</div>
-`
         }
         var p = document.getElementById('multiSlotType')
         p.innerHTML = t;
+    }
+
+
+    function multiAvailibility() {
+        // alert('inside multiAvailibility function')
+        var selectSlotType = sessionStorage.getItem('availabilityType').split(",")
+        var multiSlots = sessionStorage.getItem('multiSelectDate').split(",");
+        var u = "";
+        for (var i = 0; i < multiSlots.length; i++){
+            u += `<div class="checkAvailability">
+
+            <div class="avaliblitytitles">
+            <ul>
+            <li>
+            <span><a href="javaScript:void(0)">
+            ${multiSlots[i]}
+            </a></span>
+            </li>
+            <li class="titleav"><span class="mainHeading mainHeading1">Add Title</span>
+            <div class="titleBoxs titleBoxs1">
+            <div class="form-group">
+            <label for="" class="label" style="padding: 0;">Add Tittle</label>
+            <input type="text" class="form-control formControl"
+            placeholder="Add Title" name="multi_title" id="multi_title_id${i}">
+            </div>
+            <div class="functionbtn">
+            <span class="cancle">Cancel</span>
+            <span class="savednew closed multi_title" id="${i}">Save</span>
+            </div>
+            </div>
+            </li>
+            <li class="titleav"><span class="mainHeading mainHeading2" style=${(selectSlotType[i].trim() == 'Volunteer') ? "display:none" : "display:block"}>Add Hourly Fees</span>
+            <div class="titleBoxs titleBoxs2">
+            <div class="form-group">
+            <label for="" class="label" style="padding: 0;">Add Tittle</label>
+            <input type="text" class="form-control formControl"
+            placeholder="Add Title" name="multi_fee" id="multi_fee_idfee${i}">
+            </div>
+            <div class="functionbtn">
+            <span class="cancle">Cancel</span>
+            <span class="savednew closed multi_fee saved" id="fee${i}">Save</span>
+            </div>
+            </div>
+            </li>
+            </ul>
+            </div>
+
+            <div class="optionsWrapper">
+            <div class="flipSwitch" id="option1">
+
+            <input type="radio" name="${i}" id="option1-value3${i}" value="07:00 AM to 08:00 AM" checked="">
+            <label for ="option1-value3${i}" class="radio-label">07:00 AM to 08:00 AM</label>
+
+            <input type="radio" name="${i}" id="option1-value4${i}" value="08:00 AM to 09:00 AM">
+            <label  for ="option1-value4${i}" class="radio-label">08:00 AM to 09:00 AM</label>
+
+            <input type="radio" name="${i}" id="option1-value1${i}" value="09:00 AM to 10:00 AM" >
+            <label for="option1-value1${i}" class="radio-label">09:00 AM to 10:00 AM</label>
+
+            <input type="radio" name="${i}" id="option1-value2${i}" value="10:00 AM to 11:00 AM">
+            <label for="option1-value2${i}" class="radio-label">10:00 AM to 11:00 AM</label>
+
+
+            <input type="radio" name="${i}" id="option1-value5${i}" value="11:00 AM to 12:00 PM" checked="">
+            <label for ="option1-value5${i}" class="radio-label">11:00 AM to 12:00 PM</label>
+
+            <input type="radio" name="${i}" id="option1-value6${i}" value="12:00 PM to 01:00 PM">
+            <label  for ="option1-value6${i}" class="radio-label">12:00 PM to 01:00 PM</label>
+
+            <input type="radio" name="${i}" id="option1-value7${i}" value="01:00 PM to 02:00 PM" >
+            <label for="option1-value7${i}" class="radio-label">01:00 PM to 02:00 PM</label>
+
+            <input type="radio" name="${i}" id="option1-value8${i}" value="02:00 PM to 03:00 PM">
+            <label for="option1-value8${i}" class="radio-label">02:00 PM to 03:00 PM</label>
+
+            <input type="radio" name="${i}" id="option1-value9${i}" value="03:00 PM to 04:00 PM" checked="">
+            <label for ="option1-value9${i}" class="radio-label">03:00 PM to 04:00 PM</label>
+
+            <input type="radio" name="${i}" id="option1-value10${i}" value="04:00 PM to 05:00 PM">
+            <label  for ="option1-value10${i}" class="radio-label">04:00 PM to 05:00 PM</label>
+
+            <input type="radio" name="${i}" id="option1-value11${i}" value="05:00 PM to 06:00 PM" >
+            <label for="option1-value11${i}" class="radio-label">05:00 PM to 06:00 PM</label>
+
+            <input type="radio" name="${i}" id="option1-value12${i}" value="06:00 PM to 07:00 PM">
+            <label for="option1-value12${i}" class="radio-label">06:00 PM to 07:00 PM</label>
+
+            <a></a>
+
+            </div>
+            </div>
+            </div>
+                `
+        }
         var q = document.getElementById('checkAvailability')
         q.innerHTML = u;
     }
+
+
+
+
+
+
     $(document).on('click', '.availModal ul li a', function () {
         var x = $(this).text();
         sessionStorage.setItem('singleSelectSlot', x)

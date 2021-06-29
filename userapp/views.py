@@ -533,6 +533,15 @@ class ProviderSignIn(View):
             final_data.update(data)
         print(final_data)
         print(final_data['email'])
+        if not final_data.get('membership_code') or final_data['membership_code'] == '':
+            return JsonResponse({'message': 'Membership code cannot be blank'}, status=400)
+        if final_data['email'] == '':
+            return JsonResponse({'message': 'Email cannot be blank'}, status=400)
+        if final_data['password'] == '':
+            return JsonResponse({'message': 'Password cannot be blank'}, status=400)
+        if final_data['membership_code'] == '':
+            return JsonResponse({'message': 'Membership code cannot be blank'}, status=400)
+
         try:
             user = User.objects.get(email=final_data['email'])
             # remember_me = final_data['check'].title()
@@ -602,7 +611,7 @@ class SurvivorAvailability(View):
         try:
             service_provider = ServiceProvider.objects.get(user=user)
             return render(self.request, 'userapp/availability.html',
-                          {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)[:15]})
+                          {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)})
         except Exception as e:
             return render(self.request, 'userapp/availability.html',
                           {'object_list': ''})
@@ -641,6 +650,10 @@ class ProviderForgotPassword(View):
         for d in incoming_data:
             f_d.update(d)
         print(f_d)
+        if f_d['membership_code'] == '':
+            return JsonResponse({'message': 'Membership code may not be blank'}, status=400)
+        if f_d['email'] == '':
+            return JsonResponse({'message': 'Email may not be blank'}, status=400)
         user = get_user_model()
         email = f_d['email']
         print(email)
@@ -780,9 +793,12 @@ class CreateSlotView(View):
             d = d
         selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
         date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
-        i = self.request.POST['fee']
+        i = self.request.POST.get('fee')
         # fee = float(i)
-        fee = Decimal(i)
+        try:
+            fee = Decimal(i)
+        except:
+            fee = 0
         ServiceProviderSlots.objects.create(
             user=service_provider,
             slot_date=date_time_obj,
@@ -801,14 +817,27 @@ class CreateMultiSlotView(View):
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
         d = self.request.POST['selected_date'].split(",")
-        print('---',d)
+        print('---', d)
         e = self.request.POST['selected_slot'].split(",")
         f = self.request.POST['select_slot_type'].split(",")
         g = self.request.POST['category_type'].split(",")
         h = self.request.POST['multi_title'].split(",")
-        i = self.request.POST['multi_fee'].split(",")
-        if len(d) == len(h) and len(d) == len(i) and len(d) == len(f) and len(d) == len(g):
-            data = zip(d, e, f, g, h, i)
+        fee_list = self.request.POST['multi_fee'].split(",")
+        new_fee_list = ['0'] * len(f)
+        for i in range(len(f)):
+            if f[i] == 'Volunteer':
+                pass
+            else:
+                new_fee_list[i] = 'p'
+        print('>>>>', new_fee_list)
+        counter = 0
+        for i in range(len(new_fee_list)):
+            if new_fee_list[i] == 'p':
+                new_fee_list[i] = fee_list[counter]
+                counter += 1
+
+        if len(d) == len(h) and len(d) == len(f) and len(d) == len(g):
+            data = zip(d, e, f, g, h, new_fee_list)
             user = self.request.user
             service_provider = ServiceProvider.objects.get(user=user)
             # print(list(data))
@@ -828,8 +857,11 @@ class CreateMultiSlotView(View):
                     d = d
                 selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
                 date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
-                i = x[5]
-                fee = Decimal(i)
+                try:
+                    i = x[5]
+                    fee = Decimal(i)
+                except:
+                    fee = 0
                 ServiceProviderSlots.objects.create(
                     user=service_provider,
                     slot_date=date_time_obj,

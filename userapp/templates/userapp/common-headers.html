@@ -783,8 +783,7 @@
                                 <div class="btnsBottom">
                                     <div class="modBt">
 
-                                        <button onclick="providerSignup1()" class="Button bg-violet" data-toggle="modal"
-                                                data-target="#providersignup2" data-dismiss="modal">Next
+                                        <button onclick="providerSignup1()" class="Button bg-violet">Next
                                         </button>
                                     </div>
                                 </div>
@@ -1371,8 +1370,6 @@
                                         <label for="radio-40" class="radio-label">Someone else</label>
                                     </div>
                                 </li>
-
-
                             </ul>
                         </div>
                         <div class="btnsBottom">
@@ -1381,11 +1378,9 @@
                                 <a href="javascript:void(0)" class="btns modalbtns" data-toggle="modal"
                                    data-dismiss="modal" data-target="#record">Proceed</a>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -1698,13 +1693,24 @@ function forgotPassword(){
 <script>
     function providerSignup1(){
             providerValues = []
+            var vaild = true
             var organization = $('#organization').val();
             providerValues.push({'organization':organization})
             var mobile_number = $('#provider_mobile_number').val();
             console.log('Mobile number', mobile_number)
             var g_mobile_number = $('#g_mobile_number').val();
             console.log('g_mobile_number--->>', g_mobile_number)
-            if (mobile_number === '' && g_mobile_number !== ''){
+            if (mobile_number === '' && g_mobile_number === ''){
+                alert('Mobile number cannot be blank')
+                vaild = false
+                // $('#providersignup2').modal('hide');
+
+                return false;
+                // $('#providersignup').modal('show');
+
+                // providersignup
+            }
+            else if (mobile_number === '' && g_mobile_number !== ''){
                 providerValues.push({'mobile_number':g_mobile_number})
             }
             else{
@@ -1712,14 +1718,28 @@ function forgotPassword(){
             }
             var email = $('#provider_email').val();
             var g_email = $('#g_email').val();
-            if (email === '' && g_email !== ''){
+            if (email === '' && g_email === ''){
+                alert('Email cannot be blank')
+                vaild = false
+                // $('#providersignup2').modal('hide');
+                return false;
+                // $('#providersignup').modal('show');
+            }
+            else if (email === '' && g_email !== ''){
                 providerValues.push({'email':g_email})
             }else{
                 providerValues.push({'email':email})
             }
             var password = $('#provider_password').val();
             var g_password = $('#g_password').val();
-            if (password === '' && g_password !== ''){
+            if (password === '' && g_password === ''){
+                alert('Password cannot be blank')
+                vaild = false
+                // $('#providersignup2').modal('hide');
+                return false;
+                // $('#providersignup').modal('show');
+            }
+            else if (password === '' && g_password !== ''){
                providerValues.push({'password':g_password})
             }else{
                   providerValues.push({'password':password})
@@ -1732,6 +1752,12 @@ function forgotPassword(){
                 }
             console.log('data---',providerValues)
             sessionStorage.setItem("providersignup1values",JSON.stringify(providerValues))
+            if (vaild){
+                $('#providersignup').modal('hide');
+                $('#providersignup4').modal('show');
+            }
+            
+
     }
 
 
@@ -1819,20 +1845,20 @@ function forgotPassword(){
     providerSigninarray = []
     var p_membership_code = $('#p_membership_code').val();
     var q_membership_code = $('#p_membership_code').val();
-    if (p_membership_code === '' && q_membership_code !== ''){
+    if (p_membership_code === '' && q_membership_code === ''){
+        // alert('Membership field cannot be empty')
+        // $('#providersignin4').modal('hide');
+        //    $(document).ready(function() {
+        //    $('#providersignin').modal('toggle');
+        //    });
+    }
+    else if (p_membership_code === '' && q_membership_code !== ''){
         providerSigninarray.push({'membership_code':q_membership_code})
     }else{
         providerSigninarray.push({'membership_code':p_membership_code})
 
     }
-<!--    var provider_sigin_check = document.getElementById("provider_sigin_check").checked;-->
-<!--    var provider_sign_in_check = document.getElementById("provider_sign_in_check").checked;-->
-<!--    if (provider_sigin_check === '' && provider_sign_in_check !== ''){-->
-<!--            providerSigninarray.push({'check':provider_sign_in_check})-->
-<!--    }else{-->
-<!--            providerSigninarray.push({'check':provider_sigin_check})-->
 
-<!--    }-->
     var p_email = $('#p_email').val();
     var q_email = $('#q_email').val();
     if (p_email === '' && q_email !== ''){
