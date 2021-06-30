@@ -1,8 +1,18 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brasi | Home</title>
+    <!-- Bootstrap -->
+    <link href="{% static 'userapp/imgs/logo.svg' %}" rel="icon" type="icon/image">
+    <link href="{% static 'userapp/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'userapp/css/niceCountryInput.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/style2.css' %}" rel="stylesheet">
+    <link href="{% static 'userapp/css/media.css' %}" rel="stylesheet">
 </head>
 <body>
 {% block header %}
@@ -1028,7 +1038,7 @@
                         <form method="post">
                             {% csrf_token %}
                             <div class="signUpby">
-                                <ul class="nav nav-tabs">
+                                <ul class="nav nav-tabs demooo">
                                     <li class="active first">
                                         <div class="radio">
                                             <input id="radio-3" name="radio" type="radio" checked>
@@ -1038,7 +1048,7 @@
                                     <li class="second">
                                         <div class="radio">
                                             <input id="radio-4" name="radio" type="radio">
-                                            <label for="radio-4" class="radio-label">Individual or Sole Trader</label>
+                                            <label for="radio-4" class="radio-label">Individual Sole Trader</label>
                                         </div>
                                     </li>
                                 </ul>
@@ -1197,7 +1207,7 @@
                             {% csrf_token %}
                             <div class="signUpby">
 
-                                <ul class="nav nav-tabs">
+                                <ul class="nav nav-tabs ">
                                     <li class="active first">
                                         <div class="radio">
                                             <input id="radio-5" name="radio3" type="radio" checked>

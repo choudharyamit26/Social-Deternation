@@ -25,11 +25,13 @@
                     alt="profile"></span></a>
             <div class="profileDettt">
                 <ul>
-                    <li><a href="{% url 'userapp:survivor-profile'  %}"><span><img src="{% static 'userapp/imgs/usernew.svg' %}"
-                                                            alt="user"></span>My Profile</a>
+                    <li><a href="{% url 'userapp:survivor-profile'  %}"><span><img
+                            src="{% static 'userapp/imgs/usernew.svg' %}"
+                            alt="user"></span>My Profile</a>
                     </li>
-                    <li><a href="{% url 'userapp:survivor-logout' %}"><span><img src="{% static 'userapp/imgs/logout.svg' %}"
-                                                                      alt="user"></span>Logout</a>
+                    <li><a href="{% url 'userapp:survivor-logout' %}"><span><img
+                            src="{% static 'userapp/imgs/logout.svg' %}"
+                            alt="user"></span>Logout</a>
                     </li>
                 </ul>
             </div>
@@ -39,6 +41,7 @@
     </div>
 </section>
 {% endif %}
+{% if user.is_authenticated %}
 <section class="header">
     <div class="container">
         <div class="headerInner">
@@ -47,27 +50,17 @@
             </div>
             <div class="socialRight">
                 <ul>
-                    {% if user.is_authenticated %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:survivor-dashboard' %}active{% endif %}">
                         <a href="{% url 'userapp:survivor-dashboard' %}">Record An Assault</a></li>
-                    {% else %}
-                    {% endif %}
                     <li><a href="https://www.google.com/" target="_blank" class="Quickexit">Quick Exit</a></li>
                     <li class="survivors nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:service-provider' %}active{% endif %} ">
                         <a href="{% url 'userapp:service-provider' %}">Service Providers</a></li>
-                    {% if user.is_authenticated %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:ongoing-booking' %}active{% endif %}">
                         <a href="{% url 'userapp:ongoing-booking' %}">My Bookings</a></li>
-                    {% else %}
-                    {% endif %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:faq' %}active{% endif %}">
                         <a href="{% url 'userapp:faq' %}">FAQs</a></li>
-                    {% if user.is_authenticated %}
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:contact-us' %}active{% endif %}">
                         <a href="{% url 'userapp:contact-us' %}">Contact</a></li>
-                    {% else %}
-                    {% endif %}
-                    {% if user.is_authenticated %}
                     <li class="notification"><a href="javascript:void(0)">Notifications</a>
                         <div class="notificationDet">
                             <ul>
@@ -109,13 +102,27 @@
                             </div>
                         </div>
                     </li>
-                    {% else %}
-                    {% endif %}
                 </ul>
             </div>
         </div>
     </div>
+    {% else %}
+    <section class="socialicons">
+        <div class="container">
+            <div class="socialInner">
+                <ul>
+                    <li><a href="https://www.google.com/" target="_blank" class="Quickexit">Quick Exit</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-facebook-f"></i></a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+            </div>
 
+        </div>
+    </section>
+    {% include 'userapp/common-headers.html' %}
+
+    {% endif %}
 </section>
 {% block body %}
 {% endblock body %}
