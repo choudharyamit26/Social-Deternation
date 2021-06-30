@@ -744,8 +744,8 @@
                             <div class="before">
                                 <select class="form-control transparent formControl" name="organization"
                                         id="organization">
-                                    <option value="Corporate Organisation1">Corporate Organisation</option>
-                                    <option value="Corporate Organisation2">Individual Sole Trader</option>
+                                    <option value="Corporate Organisation">Corporate Organisation</option>
+                                    <option value="Individual Sole Trader">Individual Sole Trader</option>
                                 </select>
                             </div>
 
@@ -804,8 +804,7 @@
                                 <div class="btnsBottom">
                                     <div class="modBt">
 
-                                        <button onclick="providerSignup1()" class="Button bg-violet" data-toggle="modal"
-                                                data-target="#providersignup2" data-dismiss="modal">Next
+                                        <button onclick="providerSignup1()" class="Button bg-violet">Next
                                         </button>
                                     </div>
                                 </div>
@@ -1701,14 +1700,12 @@ function forgotPassword(){
             var g_mobile_number = $('#g_mobile_number').val();
             console.log('g_mobile_number--->>', g_mobile_number)
             if (mobile_number === '' && g_mobile_number === ''){
+                console.log('inside if 1 ',vaild)
                 alert('Mobile number cannot be blank')
                 vaild = false
-                // $('#providersignup2').modal('hide');
-
+                alert('inside if ',vaild)
+                console.log('inside if 2 ',vaild)
                 return false;
-                // $('#providersignup').modal('show');
-
-                // providersignup
             }
             else if (mobile_number === '' && g_mobile_number !== ''){
                 providerValues.push({'mobile_number':g_mobile_number})
@@ -1721,9 +1718,8 @@ function forgotPassword(){
             if (email === '' && g_email === ''){
                 alert('Email cannot be blank')
                 vaild = false
-                // $('#providersignup2').modal('hide');
+                alert('inside if ',vaild)
                 return false;
-                // $('#providersignup').modal('show');
             }
             else if (email === '' && g_email !== ''){
                 providerValues.push({'email':g_email})
@@ -1735,9 +1731,7 @@ function forgotPassword(){
             if (password === '' && g_password === ''){
                 alert('Password cannot be blank')
                 vaild = false
-                // $('#providersignup2').modal('hide');
                 return false;
-                // $('#providersignup').modal('show');
             }
             else if (password === '' && g_password !== ''){
                providerValues.push({'password':g_password})
@@ -1746,15 +1740,24 @@ function forgotPassword(){
             }
             var ele = document.getElementsByName('organization_type');
             for(i = 0; i < ele.length; i++) {
-                if(ele[i].checked)
-                providerValues.push({'organization_type':ele[i].value})
-                console.log(ele[i].value)
+                if(ele[i].checked){
+                        // alert('inside if case')
+                        // alert(ele[i].value)
+                        providerValues.push({'organization_type':ele[i].value})
+                        console.log(ele[i].value)
+                    }
                 }
+            if (providerValues.length < 5){
+                    alert('Please select a valid organization type')
+                    vaild = false
+                    return false;
+                }
+                
             console.log('data---',providerValues)
             sessionStorage.setItem("providersignup1values",JSON.stringify(providerValues))
             if (vaild){
                 $('#providersignup').modal('hide');
-                $('#providersignup4').modal('show');
+                $('#providersignup2').modal('show');
             }
             
 
