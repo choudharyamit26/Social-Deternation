@@ -372,14 +372,17 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         subscription_plan_objects = None
-        if self.request.GET.get('organization_name') and self.request.GET.get('from_date') and self.request.GET.get('to_date'):
+        if self.request.GET.get('organization_name') and self.request.GET.get('from_date') and self.request.GET.get(
+                'to_date'):
             subscription_plan_objects = SubscriptionStatus.objects.filter(
                 Q(organization_name__organization_name__iexact=self.request.GET.get('organization_name')) |
                 Q(organization_name__first_name__iexact=self.request.GET.get('first_name')) |
                 Q(organization_name__email__iexact=self.request.GET.get('email')) |
                 Q(organization_name__client_code__iexact=self.request.GET.get('client_code')) |
-                Q(organization_name__created_at__range=(self.request.GET.get('from_date'), self.request.GET.get('to_date'))))
-        elif self.request.GET:
+                Q(organization_name__created_at__range=(
+                    self.request.GET.get('from_date'), self.request.GET.get('to_date'))))
+        elif self.request.GET.get('organization_name') or self.request.GET.get('first_name') or self.request.GET.get(
+                'email') or self.request.GET.get('client_code'):
             subscription_plan_objects = SubscriptionStatus.objects.filter(
                 Q(organization_name__organization_name__iexact=self.request.GET.get('organization_name')) |
                 Q(organization_name__first_name__iexact=self.request.GET.get('first_name')) |
@@ -456,7 +459,8 @@ class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         print(self.request.GET)
-        if self.request.GET.get('category'):
+        subs_obj = None
+        if self.request.GET.get('category') and self.request.GET.get('from'):
             subs_obj = SubscriptionPlan.objects.filter(
                 Q(category__iexact=self.request.GET.get('category' or None)) |
                 Q(name__iexact=self.request.GET.get('name' or None)) |
@@ -465,6 +469,17 @@ class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
                 Q(active__iexact=self.request.GET.get('active')) |
                 Q(created_at__range=(self.request.GET.get('from' or None), self.request.GET.get('to' or None))))
             print(subs_obj)
+            return render(self.request, "superadmin/new/brasi-plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans')})
+        elif self.request.GET.get('category') or self.request.GET.get('name') or self.request.GET.get(
+                'duration') or self.request.GET.get('price') or self.request.GET.get('active'):
+            subs_obj = SubscriptionPlan.objects.filter(
+                Q(category__iexact=self.request.GET.get('category' or None)) |
+                Q(name__iexact=self.request.GET.get('name' or None)) |
+                Q(duration__iexact=self.request.GET.get('duration' or None)) |
+                Q(price__iexact=self.request.GET.get('price' or None)) |
+                Q(active__iexact=self.request.GET.get('active')))
+
             return render(self.request, "superadmin/new/brasi-plan.html",
                           {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans')})
         else:
@@ -487,7 +502,8 @@ class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         print(self.request.GET)
-        if self.request.GET.get('category'):
+        subs_obj = None
+        if self.request.GET.get('category') and self.request.GET.get('from'):
             subs_obj = SubscriptionPlan.objects.filter(
                 Q(category__iexact=self.request.GET.get('category' or None)) |
                 Q(name__iexact=self.request.GET.get('name' or None)) |
@@ -496,6 +512,16 @@ class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
                 Q(active__iexact=self.request.GET.get('active')) |
                 Q(created_at__range=(self.request.GET.get('from' or None), self.request.GET.get('to' or None))))
             print(subs_obj)
+            return render(self.request, "superadmin/new/general-plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
+        elif  self.request.GET.get('category') or self.request.GET.get('name') or self.request.GET.get(
+                'duration') or self.request.GET.get('price') or self.request.GET.get('active'):
+            subs_obj = SubscriptionPlan.objects.filter(
+                Q(category__iexact=self.request.GET.get('category' or None)) |
+                Q(name__iexact=self.request.GET.get('name' or None)) |
+                Q(duration__iexact=self.request.GET.get('duration' or None)) |
+                Q(price__iexact=self.request.GET.get('price' or None)) |
+                Q(active__iexact=self.request.GET.get('active')))
             return render(self.request, "superadmin/new/general-plan.html",
                           {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
         else:
