@@ -368,21 +368,28 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
     model = SubscriptionPlan
     template_name = "superadmin/new/customer-management.html"
     login_url = "adminpanel:superadmin"
-    paginate_by = 10
+    paginate_by = 1
 
     def get(self, request, *args, **kwargs):
-        if self.request.GET.get('organization_name'):
+        subscription_plan_objects = None
+        if self.request.GET.get('organization_name') and self.request.GET.get('from_date') and self.request.GET.get('to_date'):
             subscription_plan_objects = SubscriptionStatus.objects.filter(
-                Q(organization_name__organization_name__iexact=self.request.GET['organization_name']) |
-                Q(organization_name__first_name__iexact=self.request.GET['first_name']) |
-                Q(organization_name__email__iexact=self.request.GET['email']) |
-                Q(organization_name__client_code__iexact=self.request.GET['client_code']) |
-                Q(organization_name__created_at__range=(self.request.GET['from_date'], self.request.GET['to_date'])))
+                Q(organization_name__organization_name__iexact=self.request.GET.get('organization_name')) |
+                Q(organization_name__first_name__iexact=self.request.GET.get('first_name')) |
+                Q(organization_name__email__iexact=self.request.GET.get('email')) |
+                Q(organization_name__client_code__iexact=self.request.GET.get('client_code')) |
+                Q(organization_name__created_at__range=(self.request.GET.get('from_date'), self.request.GET.get('to_date'))))
+        elif self.request.GET:
+            subscription_plan_objects = SubscriptionStatus.objects.filter(
+                Q(organization_name__organization_name__iexact=self.request.GET.get('organization_name')) |
+                Q(organization_name__first_name__iexact=self.request.GET.get('first_name')) |
+                Q(organization_name__email__iexact=self.request.GET.get('email')) |
+                Q(organization_name__client_code__iexact=self.request.GET.get('client_code')))
             if len(subscription_plan_objects) > 0:
                 return render(self.request, 'superadmin/new/customer-management.html',
                               {'object_list': SubscriptionStatus.objects.all(), 'filter': subscription_plan_objects})
             else:
-
+                print('inside else')
                 return render(self.request, 'superadmin/new/customer-management.html',
                               {'object_list': SubscriptionStatus.objects.all(), 'no_data': 'subscription_plan_objects'})
         else:

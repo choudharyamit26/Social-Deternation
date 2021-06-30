@@ -870,3 +870,27 @@ h4.Title a:hover{background-color:purple}
         height: auto;
         width: auto;
     }
+    .Actions button{
+        border: none;
+        outline: 0;
+        background: transparent;
+    }
+    .ModalBox .modal-dialog .Decline h4 button{
+        border: none;
+        outline: 0;
+        background: transparent;
+
+        text-transform: capitalize;
+        margin: 0 0 0 30px;
+        font-size: 17px;
+        color: #49a0d5;
+        font-weight: 500;
+        -webkit-transition: 0.5s all ease-in-out;
+        transition: 0.5s all ease-in-out;
+    }
+
+    input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
