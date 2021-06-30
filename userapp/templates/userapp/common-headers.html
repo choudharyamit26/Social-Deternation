@@ -743,7 +743,7 @@
                         <div class="form-group pt-4 pb-2">
                             <div class="before">
                                 <select class="form-control transparent formControl" name="organization"
-                                        id="organization">
+                                        id="organization" required>
                                     <option value="Corporate Organisation">Corporate Organisation</option>
                                     <option value="Individual Sole Trader">Individual Sole Trader</option>
                                 </select>
@@ -755,14 +755,14 @@
                             <ul class="nav nav-tabs">
                                 <li class="active first pr-5">
                                     <div class="radio">
-                                        <input id="radio-9" name="organization_type" type="radio" value="Private">
+                                        <input id="radio-9" name="organization_type" type="radio" value="Private" required>
                                         <label for="radio-9" class="radio-label">Private</label>
                                     </div>
                                 </li>
                                 <li class="second">
                                     <div class="radio">
                                         <input id="radio-20" name="organization_type" type="radio"
-                                               value="Government Funded">
+                                               value="Government Funded" required>
                                         <label for="radio-20" class="radio-label">Government Funded</label>
                                     </div>
                                 </li>
@@ -770,15 +770,15 @@
                             <div class="formByMail active">
                                 <div class="form-group">
                                     <input type="text" class="form-control formControl" name="mobile_number"
-                                           placeholder="Contact Person’s Mobile*" id="provider_mobile_number">
+                                           placeholder="Contact Person’s Mobile*" id="provider_mobile_number" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control formControl" name="email"
-                                           placeholder="Contact Person’s Email ID*" id="provider_email">
+                                           placeholder="Contact Person’s Email ID*" id="provider_email" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control formControl" placeholder="Password*"
-                                           name="password" id="provider_password">
+                                           name="password" id="provider_password" required>
                                 </div>
                                 <div class="btnsBottom">
                                     <div class="modBt">
@@ -903,7 +903,7 @@
                             <li class="active"><img src="{% static 'userapp/imgs/user.svg' %}" alt="user"></li>
                         </ul>
 
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="img_upload">
                                 <div class="form-group">
@@ -915,23 +915,23 @@
                                                 <span>Drop your image here or <span class="darkSky d-inline-block"> Browse</span></span>
                                             </p>
                                         </div>
-                                        <input type="file" name="company_logo" class="dropzone" id="company_logo">
+                                        <input type="file" name="company_logo" class="dropzone" id="company_logo" >
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group" style="padding-top: 25px;">
                                 <input type="text" class="form-control formControl" placeholder="Company/Business Name*"
-                                       name="company_name" id="company_name">
+                                       name="company_name" id="company_name"  >
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control formControl"
                                        placeholder="Contact Person’s First Name*" name="contact_persons_first_name"
-                                       id="contact_persons_first_name">
+                                       id="contact_persons_first_name" >
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control formControl"
                                        placeholder="Contact Person’s Last Name*" name="contact_persons_last_name"
-                                       id="contact_persons_last_name">
+                                       id="contact_persons_last_name" >
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control formControl"
@@ -985,12 +985,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" value="" name="data1" id="data1">
                             <div class="btnsBottom">
                                 <div class="modBt">
                                     <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
                                        data-target="#providersignup2" data-dismiss="modal">Back</a>
-                                    <button onclick="finalProviderSignup()" class="Button bg-violet" data-toggle="modal"
-                                            data-target="#providersignin" data-dismiss="modal">Sign Up
+                                    <button onclick="finalProviderSignup()" class="Button bg-violet" type="button">Sign Up
                                     </button>
                                 </div>
                                 <p class="regulary">Already have an account? <a href="javascript:void(0)"
@@ -1695,6 +1695,18 @@ function forgotPassword(){
             var vaild = true
             var organization = $('#organization').val();
             providerValues.push({'organization':organization})
+            var ele = document.getElementsByName('organization_type');
+            for(i = 0; i < ele.length; i++) {
+                if(ele[i].checked){
+                        providerValues.push({'organization_type':ele[i].value})
+                        console.log(ele[i].value)
+                    }
+                }
+            if (providerValues.length < 2){
+                    alert('Please select a valid organization type')
+                    vaild = false
+                    return false;
+                }
             var mobile_number = $('#provider_mobile_number').val();
             console.log('Mobile number', mobile_number)
             var g_mobile_number = $('#g_mobile_number').val();
@@ -1734,18 +1746,7 @@ function forgotPassword(){
             }else{
                   providerValues.push({'password':password})
             }
-            var ele = document.getElementsByName('organization_type');
-            for(i = 0; i < ele.length; i++) {
-                if(ele[i].checked){
-                        providerValues.push({'organization_type':ele[i].value})
-                        console.log(ele[i].value)
-                    }
-                }
-            if (providerValues.length < 5){
-                    alert('Please select a valid organization type')
-                    vaild = false
-                    return false;
-                }
+
                 
             console.log('data---',providerValues)
             sessionStorage.setItem("providersignup1values",JSON.stringify(providerValues))
@@ -1776,57 +1777,142 @@ function forgotPassword(){
         });
 </script>
 <script>
-    function finalProviderSignup(){
-    finalarray = []
-    var company_logo = $('#company_logo').val();
-    finalarray.push({'company_logo':company_logo})
-    var company_name = $('#company_name').val();
-    finalarray.push({'company_name':company_name})
-    var contact_persons_first_name = $('#contact_persons_first_name').val();
-    finalarray.push({'contact_persons_first_name':contact_persons_first_name})
-    var contact_persons_last_name = $('#contact_persons_last_name').val();
-    finalarray.push({'contact_persons_last_name':contact_persons_last_name})
-    var company_address_1 = $('#company_address_1').val();
-    finalarray.push({'company_address_1':company_address_1})
-    var company_address_2 = $('#company_address_2').val();
-    finalarray.push({'company_address_2':company_address_2})
-    var country = $('#country').val();
-    finalarray.push({'country':country})
-    var city = $('#city').val();
-    finalarray.push({'city':city})
-    var zip_code = $('#zip_code').val();
-    finalarray.push({'zip_code':zip_code})
-    sessionStorage.setItem('finalarray', JSON.stringify(finalarray))
-    console.log('-----------',finalarray,sessionStorage.getItem("providersignup1values"))
-    url = '{% url 'userapp:service-provider-signup'  %}'
-    $.ajax({
-    url:url,
-    method:'POST',
-    data:{
-        data1:JSON.stringify(finalarray),
-        data2:sessionStorage.getItem("providersignup1values"),
-        csrfmiddlewaretoken: "{{ csrf_token }}"
-    },
-    success: function(data){
-        console.log('inside success case')
-    },
-    error: function(data) {
-    console.log('inside login error case')
-    data = data.responseJSON.message;
-    console.log('message-->',data)
-    error = document.getElementById('errorprovider')
-    error.innerHTML = `<div class="alert alert-warning alert-dismissible" role="alert">
-                            ${data}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                       </div>`;
-           $('#providersignin').modal('hide');
-           $(document).ready(function() {
+    function finalProviderSignup2(){
+        finalarray = []
+        var company_logo = $('#company_logo').val();
+        console.log('>>>>>>>>>>>>inside new function company logo',company_logo)
+        if (company_logo == '' || company_logo == null){
+            alert('Company log cannot be empty')
+            // break;
+            // return false;
+            $(document).ready(function() {
            $('#providersignup').modal('toggle');
            });
+        }
+    }
+</script>
+<script>
+    function finalProviderSignup(){
+    finalarray = []
+    // var data1 = document.getElementById('data1')
+    // data1.value = sessionStorage.getItem("providersignup1values")
+    var company_logo = $('#company_logo').val();
+    if (company_logo == '' || company_logo == null){
+        alert('Company log cannot be empty')
+        return false;
+
+    }
+    finalarray.push({'company_logo':company_logo})
+    var company_name = $('#company_name').val();
+    if (company_name == '' || company_name == null){
+        alert('Company Name cannot be empty')
+        return false;
+
+    }else{
+    finalarray.push({'company_name':company_name})
+    }
+    var contact_persons_first_name = $('#contact_persons_first_name').val();
+    if (contact_persons_first_name == '' || contact_persons_first_name == null){
+        alert('Contact persons first name cannot be empty')
+        return false;
+    }
+    else{
+        finalarray.push({'contact_persons_first_name':contact_persons_first_name})
+
+    }
+    var contact_persons_last_name = $('#contact_persons_last_name').val();
+    if (contact_persons_last_name == '' || contact_persons_last_name == null){
+        alert('Contact persons last name cannot be empty')
+        return false;
+
+    }else{
+        finalarray.push({'contact_persons_last_name':contact_persons_last_name})
+    }
+    var company_address_1 = $('#company_address_1').val();
+    if (company_address_1 == '' || company_address_1 == null){
+        alert('Company address cannot be empty')
+        return false;
+
+    }else{
+        finalarray.push({'company_address_1':company_address_1})
+
+    }
+    var company_address_2 = $('#company_address_2').val();
+    if (company_address_2 == '' || company_address_2 == null){
+        alert('Company address cannot be empty')
+        return false;
+
+    }else{
+        finalarray.push({'company_address_2':company_address_2})
+
+    }
+    var country = $('#country').val();
+    if (country == '' || country == null){
+        alert('Country cannot be empty')
+        return false;
+
+    }else{
+        finalarray.push({'country':country})
+
+    }
+    var city = $('#city').val();
+    if (city == '' || city == null){
+        alert('City  cannot be empty')
+        return false;
+
+    }else{
+        finalarray.push({'city':city})
+
+    }
+    var zip_code = $('#zip_code').val();
+    if (zip_code == '' || zip_code == null){
+        alert('Zip code log cannot be empty')
+        return false;
+
+    }else{
+        finalarray.push({'zip_code':zip_code})
+
+    }
+    sessionStorage.setItem('finalarray', JSON.stringify(finalarray))
+    console.log('-----------',finalarray,sessionStorage.getItem("providersignup1values"))
+    if (company_logo == '' || company_name=='' || contact_persons_first_name=='' || contact_persons_last_name=='' || company_address_1 =='' || company_address_2 =='' || country =='' || city =='' || zip_code ==''){
+        console.log('Some fields are empty')
+    }else{
+        url = '{% url 'userapp:service-provider-signup'  %}'
+        $.ajax({
+        url:url,
+        method:'POST',
+        data:{
+            data1:JSON.stringify(finalarray),
+            data2:sessionStorage.getItem("providersignup1values"),
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+            $(document).ready(function() {
+            $('#providersignup4').modal('hide');
+            $('#providersignup').modal('hide');
+            });
+            $('#providersignin').modal('show');
+            console.log('inside success case')
+        },
+        error: function(data) {
+        console.log('inside login error case')
+        data = data.responseJSON.message;
+        console.log('message-->',data)
+        error = document.getElementById('errorprovider')
+        error.innerHTML = `<div class="alert alert-warning alert-dismissible" role="alert">
+                                ${data}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>`;
+            $('#providersignin').modal('hide');
+            $(document).ready(function() {
+            $('#providersignup').modal('toggle');
+            });
     },
     })
+    }
     }
 
 
@@ -1928,7 +2014,7 @@ function forgotPassword(){
             providerForgotEmail.push({'email':providerforgotemail})
         }
         console.log('---->>>',providerForgotEmail)
-        url = {% url 'userapp:provider-password-reset' %}
+        url = "{% url 'userapp:provider-password-reset' %}"
         $.ajax({
             url:url,
             method:'POST',
