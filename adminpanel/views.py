@@ -408,6 +408,21 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
             return render(self.request, 'superadmin/new/customer-management.html', context)
 
 
+class CustomerManagementDetailView(View):
+    model = Organization
+    login_url = "adminpanel:superadmin"
+    paginate_by = 1
+
+    def post(self, request, *args, **kwargs):
+        organization_obj = Organization.objects.get(id=self.request.POST.get('id'))
+        return JsonResponse({'organization_name': organization_obj.organization_name,
+                             'first_name': organization_obj.first_name,
+                             'last_name': organization_obj.last_name,
+                             'email': organization_obj.email,
+                             'mobile_number': organization_obj.mobile_number
+                             }, status=200)
+
+
 class SuperAdminLogout(LoginRequiredMixin, View):
     model = User
 
@@ -494,6 +509,30 @@ class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
             return render(self.request, "superadmin/new/brasi-plan.html", context)
 
 
+class SubscriptionBrasiPlanDetail(View):
+    model = SubscriptionPlan
+    template_name = 'superadmin/new/brasi-plan.html'
+    login_url = "adminpanel:superadmin"
+    paginate_by = 1
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.GET)
+        organizations = SubscriptionPlan.objects.get(id=self.request.POST.get('id'))
+        # paginator = Paginator(organizations, self.paginate_by)
+        # page_number = self.request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
+        # context = {
+        #     'object_list': SubscriptionPlan.objects.filter(plan_type='Brasi Platform'),
+        #     'pages': page_obj,
+        #     'plan_obj': SubscriptionPlan.objects.get(id=self.request.GET.get('id'))
+        # }
+        # return render(self.request, "superadmin/new/brasi-plan.html", context)
+        return JsonResponse(
+            {'category': organizations.category, 'name': organizations.name, 'price': organizations.price,
+             'description': organizations.description, 'duration': organizations.duration,
+             'number_of_persons': organizations.number_of_persons}, status=200)
+
+
 class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
     model = SubscriptionPlan
     template_name = 'superadmin/new/general-plan.html'
@@ -514,7 +553,7 @@ class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
             print(subs_obj)
             return render(self.request, "superadmin/new/general-plan.html",
                           {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
-        elif  self.request.GET.get('category') or self.request.GET.get('name') or self.request.GET.get(
+        elif self.request.GET.get('category') or self.request.GET.get('name') or self.request.GET.get(
                 'duration') or self.request.GET.get('price') or self.request.GET.get('active'):
             subs_obj = SubscriptionPlan.objects.filter(
                 Q(category__iexact=self.request.GET.get('category' or None)) |
@@ -534,6 +573,20 @@ class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
                 'pages': page_obj,
             }
             return render(self.request, "superadmin/new/general-plan.html", context)
+
+
+class SubscriptionGeneralPlanDetail(View):
+    model = SubscriptionPlan
+    template_name = 'superadmin/new/general-plan.html'
+    login_url = "adminpanel:superadmin"
+    paginate_by = 1
+
+    def post(self, request, *args, **kwargs):
+        organizations = SubscriptionPlan.objects.get(id=self.request.POST.get('id'))
+        return JsonResponse(
+            {'category': organizations.category, 'name': organizations.name, 'price': organizations.price,
+             'description': organizations.description, 'duration': organizations.duration,
+             'number_of_persons': organizations.number_of_persons}, status=200)
 
 
 class CreateSubscriptionPlan(View):
@@ -778,9 +831,11 @@ class EditOrganization(View):
         print(kwargs)
         try:
             organization_by_name = Organization.objects.filter(Q(email=self.request.POST['edit_email']) | Q(
-                organization_name=self.request.POST['edit_organization_name']))
+                organization_name=self.request.POST['edit_organization_name'])).first()
             print(organization_by_name)
-            if len(organization_by_name) > 0:
+            if (organization_by_name and organization_by_name.organization_name != self.request.POST[
+                'edit_organization_name']) or organization_by_name and organization_by_name.email != self.request.POST[
+                'edit_email']:
                 return JsonResponse(
                     {'message': 'Organization with email/name already exists. Please supply different values'},
                     status=400)

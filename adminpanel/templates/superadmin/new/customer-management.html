@@ -171,14 +171,13 @@
                                     </label>
                                     {% endif %}
                                     <button class="Green organizationEdit"
-                                            data-toggle="modal"
-                                            data-target="#EditModal" id="{{object.organization_name.id}}"
+                                             id="{{object.organization_name.id}}"
                                             value="{{object.organization_name.id}}">
                                         <i class="fa fa-pencil-square-o"
                                            onclick="editValue({{object.organization_name.id}})"></i>
                                     </button>
 
-                                    <button class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                    <button class="Red" data-toggle="modal"
                                             data-target="#DeleteModal"
                                             onclick="deleteValue({{object.organization_name.id}})">
                                         <i class="fa fa-trash"></i>
@@ -262,8 +261,7 @@
                                     </label>
                                     {% endif %}
                                     <button class="Green organizationEdit"
-                                            data-toggle="modal"
-                                            data-target="#EditModal" id="{{object.organization_name.id}}"
+                                             id="{{object.organization_name.id}}"
                                             value="{{object.organization_name.id}}">
                                         <i class="fa fa-pencil-square-o"
                                            onclick="editValue({{object.organization_name.id}})"></i>
@@ -351,8 +349,7 @@
                                     </label>
                                     {% endif %}
                                     <button class="Green organizationEdit"
-                                            data-toggle="modal"
-                                            data-target="#EditModal" id="{{object.organization_name.id}}"
+                                             id="{{object.organization_name.id}}"
                                             value="{{object.organization_name.id}}">
                                         <i class="fa fa-pencil-square-o"
                                            onclick="editValue({{object.organization_name.id}})"></i>
@@ -515,31 +512,31 @@
                                 <label>Organization Name</label>
                                 <input type="text" class="form-control" placeholder="Enter Organization Name"
                                        name="organization_name" required id="edit_organization_name"
-                                       value="">
+                                       >
                             </div>
 
                             <div class="form-group">
                                 <label>Person First Name <sup>*</sup> </label>
-                                <input type="text" class="form-control" placeholder="Enter First Name" value=""
+                                <input type="text" class="form-control" placeholder="Enter First Name" value="{{organization_detail_obj.first_name}}"
                                        name="first_name" id="edit_first_name" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Person Last Name <sup>*</sup> </label>
-                                <input type="text" class="form-control" placeholder="Enter Last Name" value=""
+                                <input type="text" class="form-control" placeholder="Enter Last Name" value="{{organization_detail_obj.last_name}}"
                                        name="last_name" required id="edit_last_name">
                             </div>
 
                             <div class="form-group">
                                 <label>Email ID <sup>*</sup> </label>
                                 <input type="text" class="form-control" placeholder="Enter Email Address"
-                                       value="" required name="email" id="edit_email">
+                                       value="{{organization_detail_obj.email}}" required name="email" id="edit_email">
                             </div>
 
                             <div class="form-group">
                                 <label>Mobile Number <sup>*</sup> </label>
                                 <input type="text" class="form-control" placeholder="Enter Mobile Number"
-                                       value="" name="mobile_number" required id="edit_mobile_number">
+                                       value="{{organization_detail_obj.organization_name}}" name="mobile_number" required id="edit_mobile_number">
                             </div>
                         </form>
 
@@ -652,8 +649,10 @@
     var email = $('#email').val();
     var password = $('#password').val();
     var check = document.getElementById("active").checked;
-
-    var url = "{% url 'adminpanel:create-organization' %}"
+    if (organization_name =='' || organization_name == null || first_name=='' || first_name == null || last_name == '' || last_name == null || mobile_number == '' || mobile_number == null ){
+        alert('One or more fields are blank. Please fill all the fields')
+    }else{
+        var url = "{% url 'adminpanel:create-organization' %}"
 
     $.ajax({
         url : url,
@@ -692,6 +691,8 @@
            });
         }
     });
+    }
+    
     event.preventDefault();
     }
 
@@ -718,12 +719,48 @@ function editValue(id){
    var x = '#' + id
    var value =  $('#' + id).val();
    $("#object_id_placeholder_div").html(`<input hidden="true" id="object_id_placeholder_input" value="` + value + `">`)
-    console.log('value--->>',value)
+    console.log('inside edit value and value is:',value)
    $('.CloseModal').click(function (e) {
         e.preventDefault();
 //      $('.modal').removeClass('show');
     });
     sessionStorage.setItem('objId', id)
+    var url = '{% url 'adminpanel:customer-detail' %}'
+
+    $.ajax({
+        url:url,
+        method:'POST',
+        data:{
+            id:id,
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success:function(data){
+            console.log(data)
+            // document.write(data)
+            console.log(data)
+            var organization_name = data['organization_name']
+            var first_name = data['first_name']
+            var last_name = data['last_name']
+            var email = data['email']
+            var mobile_number = data['mobile_number']
+            $(document).ready(function() {
+                $('#EditModal').modal('show');
+                edit_organization_name = document.getElementById('edit_organization_name')
+                edit_organization_name.value =  organization_name
+                edit_first_name = document.getElementById('edit_first_name')
+                edit_first_name.value =  first_name
+                edit_last_name = document.getElementById('edit_last_name')
+                edit_last_name.value =  last_name
+                edit_email = document.getElementById('edit_email')
+                edit_email.value =  email
+                edit_mobile_number = document.getElementById('edit_mobile_number')
+                edit_mobile_number.value =  mobile_number
+            });
+        },
+        error:function(){
+            console.log('inside error')
+        }
+    })
 };
 
 function editOrganization(){
@@ -732,10 +769,12 @@ function editOrganization(){
     var edit_last_name = $('#edit_last_name').val();
     var edit_email = $('#edit_email').val();
     var edit_mobile_number = $('#edit_mobile_number').val();
-<!--    var obj_id = $('#object_id_placeholder_input').val();-->
+//  var obj_id = $('#object_id_placeholder_input').val();
     var obj_id = sessionStorage.getItem('objId');
-    console.log(obj_id)
-    var url = '{% url 'adminpanel:edit-organization' %}'
+    if (edit_organization_name == '' || edit_organization_name==null || edit_first_name == '' || edit_first_name==null || edit_last_name == '' || edit_last_name==null || edit_email == '' || edit_email==null || edit_mobile_number == '' || edit_mobile_number==null){
+        alert('One or more fields are empty. Please fill the fields')
+    }else{
+        var url = '{% url 'adminpanel:edit-organization' %}'
       $.ajax({
         url: url,
         method : 'POST',
@@ -774,6 +813,8 @@ function editOrganization(){
 
       },
       })
+    }
+    console.log(obj_id)
 }
 
 

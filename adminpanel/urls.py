@@ -13,7 +13,8 @@ from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardIn
     InactiveSubscriptionPlan2, DeleteGeneralSubscriptionPlan, EditGeneralSubscriptionPlan, \
     CreateGeneralSubscriptionPlan, CMSBenefits, CMSFeature, CMSHowItWorks, CMSSocialPages, CMSPrivacyPolicy, \
     CMSTermsOfUse, FaqSurvivors, FaqService, FaqLicense, ReportSurvivor, ReportServiceProvider, VoucherView, \
-    SpecialUserView, MailBoxView, SuperAdminNotifications
+    SpecialUserView, MailBoxView, SuperAdminNotifications, CustomerManagementDetailView, SubscriptionBrasiPlanDetail, \
+    SubscriptionGeneralPlanDetail
 
 app_name = 'adminpanel'
 
@@ -23,6 +24,7 @@ urlpatterns = [
                   path("logout/", LogoutView.as_view(template_name='logout.html'), name="logout"),
                   path("super-admin-logout/", SuperAdminLogout.as_view(), name="super-admin-logout"),
                   path("customer-management/", CustomerManagementView.as_view(), name="customer-management"),
+                  path("customer-detail/", CustomerManagementDetailView.as_view(), name="customer-detail"),
                   path("dashboard/", Dashboard.as_view(), name="dashboard"),
                   path("superadmin-dashboard/", SuperAdminDashboard.as_view(), name="superadmin-dashboard"),
                   path("subscription/", SubscriptionView.as_view(), name="subscription"),
@@ -31,6 +33,10 @@ urlpatterns = [
                   path("my-profile/", MyProfileView.as_view(), name="my-profile"),
                   path("superadmin-subscription-plan/", SuperAdminBrasiSupscriptionView.as_view(),
                        name="superadmin-subscription-plan"),
+                  path("superadmin-subscription-plan-detail/", SubscriptionBrasiPlanDetail.as_view(),
+                       name="superadmin-subscription-plan-detail"),
+                  path("superadmin-subscription-general-plan-detail/", SubscriptionGeneralPlanDetail.as_view(),
+                       name="superadmin-subscription-general-plan-detail"),
                   path("superadmin-general-subscription-plan/", SuperAdminGeneralSupscriptionView.as_view(),
                        name="superadmin-general-subscription-plan"),
                   path("superadmin-clients/", SuperAdminClientsView.as_view(), name="superadmin-clients"),

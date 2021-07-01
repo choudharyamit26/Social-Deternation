@@ -150,8 +150,7 @@
                                                 </label>
                                                 {% endif %}
 
-                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#EditModal">
+                                                <a class="Green" href="JavaScript:Void(0);">
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -240,8 +239,7 @@
                                                 </label>
                                                 {% endif %}
 
-                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#EditModal">
+                                                <a class="Green" href="JavaScript:Void(0);" >
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -331,8 +329,7 @@
                                                 </label>
                                                 {% endif %}
 
-                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#EditModal">
+                                                <a class="Green" href="JavaScript:Void(0);">
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -518,8 +515,7 @@
                                                     <span class="slider"></span>
                                                 </label>
                                                 {% endif %}
-                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#EditModal">
+                                                <a class="Green" href="JavaScript:Void(0);">
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -608,8 +604,7 @@
                                                 </label>
                                                 {% endif %}
 
-                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#EditModal">
+                                                <a class="Green" href="JavaScript:Void(0);" >
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -699,8 +694,7 @@
                                                 </label>
                                                 {% endif %}
 
-                                                <a class="Green" href="JavaScript:Void(0);" data-toggle="modal"
-                                                   data-target="#EditModal">
+                                                <a class="Green" href="JavaScript:Void(0);">
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -830,7 +824,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>Plan Types</label>
-                                <select class="form-control" required name="plan_type" id="edit_plan_type">
+                                <select class="form-control" required name="plan_type" id="edit_plan_type" value="{{plan_obj.plan_type}}">
                                     <option> Select Subscription Plan Type</option>
                                     <option value="Brasi_Platform">Brasi Platform</option>
                                     <option value="General_Subscription_Plans">General Subscription Plans</option>
@@ -840,41 +834,41 @@
                             <div class="form-group">
                                 <label>Category<sup>*</sup> </label>
                                 <input type="text" class="form-control" placeholder="Enter Category" name="category"
-                                       id="edit_category" required/>
+                                       id="edit_category" value="{{plan_obj.category}}" required/>
                             </div>
 
                             <div class="form-group">
                                 <label>Name <sup>*</sup> </label>
                                 <input type="text" class="form-control" placeholder="Enter Name" name="name"
-                                       id="edit_name"
+                                       id="edit_name" value="{{plan_obj.name}}"
                                        required/>
                             </div>
 
                             <div class="form-group">
                                 <label>Description</label>
                                 <textarea class="form-control" rows="4" placeholder="Description" name="description"
-                                          id="edit_description"
-                                          required></textarea>
+                                          id="edit_description" value="{{plan_obj.description}}"
+                                          required>{{plan_obj.description}}</textarea>
                             </div>
 
                             <div class="form-group">
                                 <label>Price <sup>*</sup> </label>
                                 <input type="number" class="form-control" placeholder="Enter Price" name="price"
-                                       id="edit_price"
+                                       id="edit_price" value="{{plan_obj.price}}"
                                        required/>
                             </div>
 
                             <div class="form-group">
                                 <label>Duration (In Months) <sup>*</sup> </label>
                                 <input type="number" class="form-control" placeholder="Enter Duration (In Months)"
-                                       id="edit_duration"
+                                       id="edit_duration" value="{{plan_obj.duration}}"
                                        name="duration" required/>
                             </div>
 
                             <div class="form-group">
                                 <label>Number of persons (Optional) </label>
                                 <input type="number" class="form-control" placeholder="Enter Number of persons"
-                                       id="edit_number_of_persons"
+                                       id="edit_number_of_persons" value="{{plan_obj.number_of_persons}}"
                                        name="number_of_persons" required/>
                             </div>
 
@@ -1010,35 +1004,42 @@
         var number_of_persons = $('#number_of_persons').val();
         var check = document.getElementById("active").checked;
         console.log(plan_type,category,name,description,price,duration,check)
-        var url = "{% url 'adminpanel:create-general-subscription-plan' %}"
-        $.ajax({
-        url : url,
-        method : 'POST',
-        data:{
-            plan_type:plan_type,
-            category:category,
-            name:name,
-            description : description,
-            price : price,
-            check : check,
-            duration : duration,
-            check : check,
-            number_of_persons : number_of_persons,
-            csrfmiddlewaretoken: "{{ csrf_token }}"
-        },
-        success: function(data){
-           console.log('inside success',data)
-            var protocol = window.location.protocol
-            var hostname = window.location.hostname
-            var port = window.location.port
-            var url2 = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/superadmin-general-subscription-plan" + "/"
-            //alert("remember_me", remember_me)
-            window.location.href = url2
-        },
-        error: function(data) {
-           console.log('error',error)
+        if (plan_type.trim() == 'Select Subscription Plan Type'){
+            alert('Please select a valid subscription plan type')
         }
-    });
+        else if(plan_type == '' || plan_type == null || category =='' || category == null || name =='' || name == null || description == ''|| description == null || price == '' || price == null || duration== '' || duration == null || number_of_persons == '' || number_of_persons == null){
+            alert('One or more fields are blank. Please fill all the fields')
+        }else{
+            var url = "{% url 'adminpanel:create-general-subscription-plan' %}"
+            $.ajax({
+            url : url,
+            method : 'POST',
+            data:{
+                plan_type:plan_type,
+                category:category,
+                name:name,
+                description : description,
+                price : price,
+                check : check,
+                duration : duration,
+                check : check,
+                number_of_persons : number_of_persons,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success: function(data){
+            console.log('inside success',data)
+                var protocol = window.location.protocol
+                var hostname = window.location.hostname
+                var port = window.location.port
+                var url2 = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/superadmin-general-subscription-plan" + "/"
+                //alert("remember_me", remember_me)
+                window.location.href = url2
+            },
+            error: function(data) {
+            console.log('error',error)
+            }
+        });
+        }
     }
 
 
@@ -1054,6 +1055,43 @@
 <script>
     function editValue(id){
         sessionStorage.setItem('editId',id)
+        url = "{% url 'adminpanel:superadmin-subscription-general-plan-detail' %}"
+        $.ajax({
+            url:url,
+            method:'POST',
+            data:{
+                id:sessionStorage.getItem('editId'),
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success:function(data){
+                console.log(data)
+                // document.write(data)
+                var category = data['category']
+                var name = data['name']
+                var price = data['price']
+                var description = data['description']
+                var duration = data['duration']
+                var number_of_persons = data['number_of_persons']
+                $(document).ready(function() {
+                    $('#EditModal').modal('show');
+                    show_category = document.getElementById('edit_category')
+                    show_category.value =  category
+                    show_name = document.getElementById('edit_name')
+                    show_name.value =  name
+                    show_price = document.getElementById('edit_price')
+                    show_price.value =  price
+                    show_description = document.getElementById('edit_description')
+                    show_description.value =  description
+                    show_duration = document.getElementById('edit_duration')
+                    show_duration.value =  duration
+                    show_number_of_persons = document.getElementById('edit_number_of_persons')
+                    show_number_of_persons.value =  number_of_persons
+            });
+            },
+            error:function(){
+
+            }
+        })
     };
     function editSubscriptionPlan(){
         var plan_type = $('#edit_plan_type').val();
@@ -1065,37 +1103,44 @@
         var number_of_persons = $('#edit_number_of_persons').val();
         var check = document.getElementById("edit_active").checked;
         console.log(plan_type,category,name,description,price,duration,check)
-        var url = "{% url 'adminpanel:edit-general-subscription-plan' %}"
-        $.ajax({
-        url : url,
-        method : 'POST',
-        data:{
-            obj_id:sessionStorage.getItem('editId'),
-            plan_type:plan_type,
-            category:category,
-            name:name,
-            description : description,
-            price : price,
-            check : check,
-            duration : duration,
-            check : check,
-            number_of_persons : number_of_persons,
-            csrfmiddlewaretoken: "{{ csrf_token }}"
-        },
-        success: function(data){
-           console.log('inside success',data)
-            var protocol = window.location.protocol
-            var hostname = window.location.hostname
-            var port = window.location.port
-            var url2 = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/superadmin-general-subscription-plan" + "/"
-            //alert("remember_me", remember_me)
-            sessionStorage.removeItem('editId')
-            window.location.href = url2
-        },
-        error: function(data) {
-           console.log('error',error)
+        if (plan_type.trim() == 'Select Subscription Plan Type'){
+            alert('Please select a valid subscription plan type')
         }
-    });
+        else if (plan_type == '' || plan_type == null || category == '' || category == null || name == ''|| name == null || description == '' || description == null || price == '' || price==null || duration =='' || duration == null || number_of_persons == '' || number_of_persons==null){
+            alert('One or more fields are blank. Please fill all the fields')
+        }else{
+            var url = "{% url 'adminpanel:edit-general-subscription-plan' %}"
+            $.ajax({
+            url : url,
+            method : 'POST',
+            data:{
+                obj_id:sessionStorage.getItem('editId'),
+                plan_type:plan_type,
+                category:category,
+                name:name,
+                description : description,
+                price : price,
+                check : check,
+                duration : duration,
+                check : check,
+                number_of_persons : number_of_persons,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success: function(data){
+            console.log('inside success',data)
+                var protocol = window.location.protocol
+                var hostname = window.location.hostname
+                var port = window.location.port
+                var url2 = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/superadmin-general-subscription-plan" + "/"
+                //alert("remember_me", remember_me)
+                sessionStorage.removeItem('editId')
+                window.location.href = url2
+            },
+            error: function(data) {
+            console.log('error',error)
+            }
+        });
+    }
     }
 
 
