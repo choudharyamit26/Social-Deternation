@@ -595,6 +595,14 @@ class CreateSubscriptionPlan(View):
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
         plan_type = ' '.join(self.request.POST['plan_type'].split('_'))
+        inactive = self.request.POST['check'].title()
+        print(inactive)
+        check = None
+        if inactive == 'True':
+            check = False
+        else:
+            check = True
+        print(check)
         SubscriptionPlan.objects.create(
             plan_type=plan_type,
             category=self.request.POST['category'],
@@ -603,7 +611,7 @@ class CreateSubscriptionPlan(View):
             duration=self.request.POST['duration'],
             price=self.request.POST['price'],
             number_of_persons=self.request.POST['number_of_persons'],
-            active=self.request.POST['check'].title(),
+            active=check,
         )
         messages.success(self.request, 'Subscription plan added successfully')
         return redirect("adminpanel:superadmin-subscription-plan")
@@ -615,6 +623,14 @@ class CreateGeneralSubscriptionPlan(View):
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
         plan_type = ' '.join(self.request.POST['plan_type'].split('_'))
+        inactive = self.request.POST['check'].title()
+        print(inactive)
+        check = None
+        if inactive == 'True':
+            check = False
+        else:
+            check = True
+        print(check)
         SubscriptionPlan.objects.create(
             plan_type=plan_type,
             category=self.request.POST['category'],
@@ -623,7 +639,7 @@ class CreateGeneralSubscriptionPlan(View):
             duration=self.request.POST['duration'],
             price=self.request.POST['price'],
             number_of_persons=self.request.POST['number_of_persons'],
-            active=self.request.POST['check'].title(),
+            active=check,
         )
         messages.success(self.request, 'Subscription plan added successfully')
         return redirect("adminpanel:superadmin-general-subscription-plan")
@@ -802,7 +818,14 @@ class CreateOrganization(View):
         last_name = self.request.POST['last_name']
         mobile_number = self.request.POST['mobile_number']
         email = self.request.POST['email']
-        check = self.request.POST['check']
+        inactive = self.request.POST['check'].title()
+        print(inactive)
+        check = None
+        if inactive == 'True':
+            check = False
+        else:
+            check = True
+        print(check)
         try:
             try:
                 organization_by_name = Organization.objects.get(Q(organization_name=organization_name) | Q(email=email))
@@ -814,7 +837,7 @@ class CreateOrganization(View):
                 print(e)
                 org = Organization.objects.create(organization_name=organization_name, first_name=first_name,
                                                   last_name=last_name,
-                                                  mobile_number=mobile_number, email=email, active=check.title())
+                                                  mobile_number=mobile_number, email=email, active=check)
                 SubscriptionStatus.objects.create(organization_name=org)
                 messages.success(self.request, "Organization created successfully")
                 return redirect("adminpanel:customer-management")
