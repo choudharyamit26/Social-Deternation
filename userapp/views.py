@@ -129,6 +129,11 @@ class SurvivorLoginByEmailView(View):
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
         # return redirect("userapp:survivor-dashboard")
+        if self.request.POST.get('loginemail') == '':
+            return JsonResponse({'message': 'Please enter a valid email'}, status=400)
+        if self.request.POST.get('loginpssword') == '':
+            return JsonResponse({'message': 'Please enter a valid password'}, status=400)
+
         try:
             user = User.objects.get(email=self.request.POST['loginemail'])
             if user.check_password(self.request.POST['loginpssword']):
@@ -347,6 +352,8 @@ class PasswordResetView(View):
     def post(self, request, *args, **kwargs):
         user = get_user_model()
         email = request.POST.get('email')
+        if email == '':
+            return JsonResponse({'message': 'Please enter a valid email'}, status=400)
         email_template = "userapp/password_reset_email.html"
         user_qs = user.objects.filter(email=email)
         print(user_qs)

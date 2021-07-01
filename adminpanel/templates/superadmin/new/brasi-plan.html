@@ -243,7 +243,8 @@
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
 
-                                                <a class="Red" href="JavaScript:Void(0);" >
+                                                <a class="Red" href="JavaScript:Void(0);" data-toggle="modal"
+                                                data-target="#DeleteModal">
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
 
@@ -333,7 +334,8 @@
                                                 </a>
 
                                                 <a class="Red"
-                                                   data-target="#DeleteModal">
+                                                data-toggle="modal"
+                                                data-target="#DeleteModal">
                                                     <i class="fa fa-trash" onclick="deleteValue({{object.id}})"></i>
                                                 </a>
                                                 <a class="Blue" onclick="subscriptionDetail({{object.id}})">
@@ -588,7 +590,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <button class="Button Cancel">Cancel</button>
+                            <button class="Button Cancel" data-dismiss="modal" class="CloseModal">Cancel</button>
                             <button class="Button" type="button" onclick="createSubscriptionPlan()">Save</button>
                         </div>
                     </form>

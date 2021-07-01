@@ -368,7 +368,7 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
     model = SubscriptionPlan
     template_name = "superadmin/new/customer-management.html"
     login_url = "adminpanel:superadmin"
-    paginate_by = 1
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         subscription_plan_objects = None
@@ -470,7 +470,7 @@ class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
     model = SubscriptionPlan
     template_name = 'superadmin/new/brasi-plan.html'
     login_url = "adminpanel:superadmin"
-    paginate_by = 1
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         print(self.request.GET)
@@ -537,7 +537,7 @@ class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
     model = SubscriptionPlan
     template_name = 'superadmin/new/general-plan.html'
     login_url = "adminpanel:superadmin"
-    paginate_by = 1
+    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         print(self.request.GET)
