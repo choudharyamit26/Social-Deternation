@@ -26,7 +26,7 @@
                 <ul>
                     <li class="nav-item nav-link {% if request.resolver_match.view_name  == 'userapp:home' %}active{% endif %}">
                         <a href="{% url 'userapp:home' %}">Home</a></li>
-                    <li><a href="javascript:void(0)">Bravescope</a></li>
+                    <li><a href="javascript:void(0)" data-target="#bravescope" data-toggle="modal">Bravescope</a></li>
                     <li class="survivors"><a href="javascript:void(0)">Survivors <span class="arrow"><i
                             class="fa fa-sort-down"></i></span></a>
                         <div class="signModal">
@@ -84,6 +84,7 @@
 
 </section>
 {% endblock header %}
+
 <div class="modalBox">
     <div class="modal" id="firstmodal">
         <div class="modal-dialog">
@@ -158,7 +159,6 @@
         </div>
     </div>
 </div>
-
 <div class="modal" id="signup2">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -210,7 +210,7 @@
                     <form method="post" action="{% url 'userapp:survivor-signup' %}">
                         {% csrf_token %}
                         <div class="form-group field" style="padding-top: 35px;">
-                            <input type="text" class="form-control formControl" id="mobile_number" placeholder="Mobile*"
+                            <input type="text" class="form-control formControl" id="mobile_number" placeholder="Mobile Number*"
                                    name="mobile_number" required>
                         </div>
                         <div class="form-group field">
@@ -224,7 +224,7 @@
                         <div class="remember form-group">
                             <div class="CheckBox homo2"><input type="checkbox" id="check"><span
                                     class="Check"><span
-                                    class="rem">I consent to connect with a Survivor who has matching <br>
+                                    class="rem">I consent to connect with a Survivor who has matching
                                         record.</span>
                                 </span></div>
                         </div>
@@ -276,7 +276,7 @@
                         <li><img src="{% static 'userapp/imgs/user1.svg' %}" alt="user"></li>
                     </ul>
                     <div class="modCo">
-                        <p>One-Time Password has been sent to 9899559955 <span><img
+                        <p>One-Time Password has been sent to 9899559955 <span data-toggle="modal" data-target="#signup2" data-dismiss="modal"><img
                                 src="{% static 'userapp/imgs/edit.svg' %}"
                                 alt="edit"></span></p>
                     </div>
@@ -403,7 +403,8 @@
                     </div>
                     <div class="btnsBottom">
                         <div class="modBt">
-                            <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-dismiss="modal">Cancel</a>
+                            <a href="javascript:void(0)" class="btns modalbtns modalbtns2"
+                               data-dismiss="modal">Cancel</a>
                             <a href="{% url 'userapp:guest-assault' %}" class="btns modalbtns">Proceed</a>
                         </div>
 
@@ -455,11 +456,11 @@
                             <form method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <input type="text" class="form-control formControl" placeholder="Email Id"
+                                    <input type="text" class="form-control formControl" placeholder="Email Id*"
                                            name="email" id="loginemail">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control formControl" placeholder="Password"
+                                    <input type="password" class="form-control formControl" placeholder="Password*"
                                            name="password" id="loginpssword">
                                 </div>
                                 <div class="form-group forgott">
@@ -484,11 +485,11 @@
                             <form method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <input type="text" class="form-control formControl" placeholder="Mobile Number"
+                                    <input type="text" class="form-control formControl" placeholder="Mobile Number*"
                                            name="mobile_number" id="loginmobile">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control formControl" placeholder="Password"
+                                    <input type="password" class="form-control formControl" placeholder="Password*"
                                            name="password" id="loginpssword2">
                                 </div>
                                 <div class="form-group forgott">
@@ -542,7 +543,7 @@
 
                     </ul>
                     <div class="modCo">
-                        <p>One-Time Password has been sent to web@brasi.com<span><img
+                        <p>One-Time Password has been sent to web@brasi.com<span data-toggle="modal" data-dismiss="modal" data-target="#signin"><img
                                 src="{% static 'userapp/imgs/edit.svg' %}"
                                 alt="edit"></span></p>
                     </div>
@@ -730,6 +731,25 @@
         </div>
     </div>
 </div>
+<div class="modal show" id="bravescope">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
+                <div class="CommonContent CommonContent2">
+                    <div class="logoImg">
+                        <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
+                    </div>
+                    <h2 class="largeFont">COMING <span class="darkSky"> SOON</span></h2>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 <div class="modalBox">
     <!-- Sign Up start -->
     <div class="modal" id="providersignup">
@@ -765,7 +785,8 @@
                             <ul class="nav nav-tabs">
                                 <li class="active first pr-5">
                                     <div class="radio">
-                                        <input id="radio-9" name="organization_type" type="radio" value="Private" required>
+                                        <input id="radio-9" name="organization_type" type="radio" value="Private"
+                                               required>
                                         <label for="radio-9" class="radio-label">Private</label>
                                     </div>
                                 </li>
@@ -925,23 +946,23 @@
                                                 <span>Drop your image here or <span class="darkSky d-inline-block"> Browse</span></span>
                                             </p>
                                         </div>
-                                        <input type="file" name="company_logo" class="dropzone" id="company_logo" >
+                                        <input type="file" name="company_logo" class="dropzone" id="company_logo">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group" style="padding-top: 25px;">
                                 <input type="text" class="form-control formControl" placeholder="Company/Business Name*"
-                                       name="company_name" id="company_name"  >
+                                       name="company_name" id="company_name">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control formControl"
                                        placeholder="Contact Person’s First Name*" name="contact_persons_first_name"
-                                       id="contact_persons_first_name" >
+                                       id="contact_persons_first_name">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control formControl"
                                        placeholder="Contact Person’s Last Name*" name="contact_persons_last_name"
-                                       id="contact_persons_last_name" >
+                                       id="contact_persons_last_name">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control formControl"
@@ -1000,7 +1021,8 @@
                                 <div class="modBt">
                                     <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
                                        data-target="#providersignup2" data-dismiss="modal">Back</a>
-                                    <button onclick="finalProviderSignup()" class="Button bg-violet" type="button">Sign Up
+                                    <button onclick="finalProviderSignup()" class="Button bg-violet" type="button">Sign
+                                        Up
                                     </button>
                                 </div>
                                 <p class="regulary">Already have an account? <a href="javascript:void(0)"
@@ -1041,14 +1063,14 @@
                                 <ul class="nav nav-tabs demooo">
                                     <li class="active first">
                                         <div class="radio">
-                                            <input id="radio-3" name="radio" type="radio" checked>
-                                            <label for="radio-3" class="radio-label">Corporate Organisation</label>
+                                            <input id="radio-3k" name="radio" type="radio" checked>
+                                            <label for="radio-3k" class="radio-label">Corporate Organisation</label>
                                         </div>
                                     </li>
                                     <li class="second">
                                         <div class="radio">
-                                            <input id="radio-4" name="radio" type="radio">
-                                            <label for="radio-4" class="radio-label">Individual Sole Trader</label>
+                                            <input id="radio-4k" name="radio" type="radio">
+                                            <label for="radio-4k" class="radio-label">Individual Sole Trader</label>
                                         </div>
                                     </li>
                                 </ul>
@@ -1357,8 +1379,9 @@
             <div class="modal-content">
 
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}"
-                                                                                  alt="close"></button>
+                    <button type="button" class="close" data-dismiss="modal"><img
+                            src="{% static 'userapp/imgs/close.svg' %}"
+                            alt="close"></button>
                     <div class="CommonContent" style="padding: 0px 30px;">
 
                         <h2 class="heading" style="text-align: left;font-size: 18px;">I am recording assault for</h2>
@@ -1421,6 +1444,7 @@
   });
 });
 
+
 </script>
 <script>
     function signup() {
@@ -1467,6 +1491,7 @@
     });
     event.preventDefault();
     }
+
 
 
 
@@ -1572,6 +1597,7 @@
 
 
 
+
 </script>
 <script>
     function loginByEmail(){
@@ -1605,6 +1631,7 @@
     },
     });
     }
+
 
 
 
@@ -1658,6 +1685,7 @@
 
 
 
+
 </script>
 <script>
 function forgotPassword(){
@@ -1691,6 +1719,7 @@ function forgotPassword(){
     },
     })
     }
+
 
 
 
@@ -1774,6 +1803,7 @@ function forgotPassword(){
 
 
 
+
 </script>
 <script>
         function onChangeCallback(ctr) {
@@ -1785,6 +1815,7 @@ function forgotPassword(){
                 new NiceCountryInput(e).init();
             });
         });
+
 </script>
 <script>
     function finalProviderSignup2(){
@@ -1800,6 +1831,7 @@ function forgotPassword(){
            });
         }
     }
+
 </script>
 <script>
     function finalProviderSignup(){
@@ -1931,6 +1963,7 @@ function forgotPassword(){
 
 
 
+
 </script>
 <script>
     function providerSignIn(){
@@ -2003,6 +2036,7 @@ function forgotPassword(){
 
 
 
+
 </script>
 <script>
     function provideForgotPassword(){
@@ -2057,6 +2091,7 @@ function forgotPassword(){
         })
 
     }
+
 
 
 
