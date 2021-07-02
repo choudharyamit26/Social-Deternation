@@ -379,15 +379,19 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
                 Q(organization_name__first_name__iexact=self.request.GET.get('first_name')) |
                 Q(organization_name__email__iexact=self.request.GET.get('email')) |
                 Q(organization_name__client_code__iexact=self.request.GET.get('client_code')) |
+                Q(organization_name__mobile_number__iexact=self.request.GET.get('mobile_number')) |
                 Q(organization_name__created_at__range=(
                     self.request.GET.get('from_date'), self.request.GET.get('to_date'))))
         elif self.request.GET.get('organization_name') or self.request.GET.get('first_name') or self.request.GET.get(
-                'email') or self.request.GET.get('client_code'):
+                'email') or self.request.GET.get('client_code') or self.request.GET.get('mobile_number'):
             subscription_plan_objects = SubscriptionStatus.objects.filter(
                 Q(organization_name__organization_name__iexact=self.request.GET.get('organization_name')) |
                 Q(organization_name__first_name__iexact=self.request.GET.get('first_name')) |
                 Q(organization_name__email__iexact=self.request.GET.get('email')) |
-                Q(organization_name__client_code__iexact=self.request.GET.get('client_code')))
+                Q(organization_name__client_code__iexact=self.request.GET.get('client_code')) |
+                Q(organization_name__mobile_number__iexact=self.request.GET.get(
+                                                             'mobile_number')
+                  ))
             if len(subscription_plan_objects) > 0:
                 return render(self.request, 'superadmin/new/customer-management.html',
                               {'object_list': SubscriptionStatus.objects.all(), 'filter': subscription_plan_objects})
@@ -868,7 +872,7 @@ class EditOrganization(View):
                 organization_obj.first_name = self.request.POST['edit_first_name']
                 organization_obj.last_name = self.request.POST['edit_last_name']
                 organization_obj.email = self.request.POST['edit_email']
-                organization_obj.mobile_number = self.request.POST['edit_email']
+                organization_obj.mobile_number = self.request.POST['edit_mobile_number']
                 organization_obj.save()
                 return redirect("adminpanel:customer-management")
         except Exception as e:
@@ -878,7 +882,7 @@ class EditOrganization(View):
             organization_obj.first_name = self.request.POST['edit_first_name']
             organization_obj.last_name = self.request.POST['edit_last_name']
             organization_obj.email = self.request.POST['edit_email']
-            organization_obj.mobile_number = self.request.POST['edit_email']
+            organization_obj.mobile_number = self.request.POST['edit_mobile_number']
             organization_obj.save()
             return redirect("adminpanel:customer-management")
 
@@ -927,7 +931,7 @@ class ExportOrganizationDataView(LoginRequiredMixin, View):
              'active', 'created_at'])
         organizations = Organization.objects.all().values_list('id', 'organization_name', 'first_name',
                                                                'last_name', 'email', 'mobile_number', 'client_code',
-                                                               'active', 'created_at')
+                                                               'active', 'created_at').order_by('-id')
         for organization in organizations:
             writer.writerow(organization)
         return response

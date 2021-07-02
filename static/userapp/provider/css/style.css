@@ -3043,3 +3043,25 @@ tr:first-child>td>.fc-day-grid-event {
     .demooo .radio input[type=radio] + .radio-label:before{
         display: none !important;
     }
+    button:disabled{ 
+        background-color: gray !important;
+        border-color: gray !important;
+        cursor: not-allowed !important;
+        color: white !important;
+    }
+
+    td.fc-past span{
+        display: none !important;
+    }
+
+    .singledate .fc-day-top.fc-today{ 
+        background-color: #fff  !important;
+    color: #000 !important 
+} 
+    
+    .singledate .fc-day-top.active,
+    .singledate .fc-day-top.fc-today.active {
+        background: var(--darkSky) !important;
+        color: #fff !important;
+    }
+

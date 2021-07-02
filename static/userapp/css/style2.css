@@ -1094,6 +1094,9 @@ height: 0;
   .radio input[type=radio] {
 	position: absolute;
 	opacity: 0;
+    height: 20px;
+    width: 20px;
+    z-index: 9;
   }
   .radio input[type=radio] + .radio-label:before {
 	content: "";
@@ -2792,3 +2795,4 @@ span.pay {
     padding: 10px 8px;
     border-radius: 11px;
 }
+
