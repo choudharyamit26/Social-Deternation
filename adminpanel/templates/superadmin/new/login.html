@@ -44,7 +44,7 @@
             </div>
 
             <div class="Checkboxs">
-                <a href="forgot.html">Forgot password?</a>
+                <a href="{% url 'adminpanel:superadmin-password-reset' %}">Forgot password?</a>
                 <label class="CheckBox">Remember Me
                     <input type="checkbox" name="remember_me" class="remember_me" id='remember' value="{{remember_me}}">
                     <span class="checkmark"></span>

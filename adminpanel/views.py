@@ -91,6 +91,7 @@ class LoginView(View):
                 messages.error(self.request, "Incorrect Password")
                 return HttpResponseRedirect(self.request.path_info, status=403)
         except Exception as e:
+            print(e)
             messages.error(self.request, "Email doesn't exists")
             return HttpResponseRedirect(self.request.path_info, status=403)
 
@@ -218,6 +219,58 @@ class PasswordResetConfirmView(View):
             return redirect('adminpanel:password-reset-complete')
 
 
+class SuperadminPasswordResetConfirmView(View):
+    template_name = 'superadmin/new/superadmin_password_reset_confirm.html'
+
+    # success_url = reverse_lazy('adminpanel:password_reset_complete')
+
+    def get(self, request, *args, **kwargs):
+        token = kwargs['token']
+        user_id_b64 = kwargs['uidb64']
+        uid = urlsafe_base64_decode(user_id_b64).decode()
+        user_object = user.objects.get(id=uid)
+        token_generator = default_token_generator
+        if token_generator.check_token(user_object, token):
+            return render(self.request, 'superadmin/new/superadmin_password_reset_confirm.html')
+        else:
+            messages.error(self.request, "Link is Invalid")
+            return render(self.request, 'superadmin/new/superadmin_password_reset_confirm.html')
+
+    def post(self, request, *args, **kwargs):
+
+        token = kwargs['token']
+        user_id_b64 = kwargs['uidb64']
+        uid = urlsafe_base64_decode(user_id_b64).decode()
+        user_object = user.objects.get(id=uid)
+        token_generator = default_token_generator
+        if not token_generator.check_token(user_object, token):
+            messages.error(self.request, "Link is Invalid")
+            return render(request, 'superadmin/new/superadmin_password_reset_confirm.html')
+
+        password1 = self.request.POST.get('new_password1')
+        password2 = self.request.POST.get('new_password2')
+
+        if password1 != password2:
+            messages.error(self.request, "Passwords do not match")
+            return render(self.request, 'superadmin/new/superadmin_password_reset_confirm.html')
+        elif len(password1) < 8:
+            messages.error(
+                self.request, "Password must be atleast 8 characters long")
+            return render(request, 'superadmin/new/superadmin_password_reset_confirm.html')
+        elif password1.isdigit() or password2.isdigit() or password1.isalpha() or password2.isalpha():
+            messages.error(
+                self.request, "Passwords must have a mix of numbers and characters")
+            return render(request, 'superadmin/new/superadmin_password_reset_confirm.html')
+        else:
+            token = kwargs['token']
+            user_id_b64 = kwargs['uidb64']
+            uid = urlsafe_base64_decode(user_id_b64).decode()
+            user_object = user.objects.get(id=uid)
+            user_object.set_password(password1)
+            user_object.save()
+            return redirect('adminpanel:superadmin-password-reset-complete')
+
+
 class PasswordResetView(View):
     template_name = 'password_reset.html'
 
@@ -232,7 +285,9 @@ class PasswordResetView(View):
         if len(user_qs) == 0:
             messages.error(request, 'Email does not exists')
             return render(request, 'password_reset.html')
-
+        if not user_qs[0].is_staff:
+            messages.error(request, 'Unauthorised acces')
+            return render(request, 'password_reset.html')
         elif len(user_qs) == 1:
             user_object = user_qs[0]
             email = user_object.email
@@ -289,6 +344,81 @@ class PasswordResetView(View):
             send_mail(subject, email_body, DEFAULT_FROM_EMAIL,
                       [email], fail_silently=False)
             return redirect('adminpanel:password-reset-done')
+
+
+class SuperadminPasswordResetView(View):
+    template_name = 'superadmin/new/superadmin_password_reset.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'superadmin/new/superadmin_password_reset.html')
+
+    def post(self, request, *args, **kwargs):
+        user = get_user_model()
+        email = request.POST.get('email')
+        email_template = "superadmin/new/superadmin_password_reset_email.html"
+        user_qs = user.objects.filter(email=email)
+        if len(user_qs) == 0:
+            messages.error(request, 'Email does not exists')
+            return render(request, 'superadmin/new/superadmin_password_reset.html')
+        if not user_qs[0].is_staff:
+            messages.error(request, 'Unauthorised access')
+            return render(request, 'superadmin/new/superadmin_password_reset.html')
+        elif len(user_qs) == 1:
+            user_object = user_qs[0]
+            email = user_object.email
+            uid = urlsafe_base64_encode(force_bytes(user_object.id))
+            token = default_token_generator.make_token(user_object)
+            if request.is_secure():
+                protocol = "https"
+            else:
+                protocol = "http"
+            domain = request.META['HTTP_HOST']
+            user = user_object
+            site_name = "Brasi"
+
+            context = {
+                "email": email,
+                "uid": uid,
+                "token": token,
+                "protocol": protocol,
+                "domain": domain,
+                "user": user,
+                "site_name": site_name
+            }
+            subject = "Reset Password Link"
+            email_body = render_to_string(email_template, context)
+            send_mail(subject, email_body, DEFAULT_FROM_EMAIL,
+                      [email], fail_silently=False)
+            return redirect('adminpanel:superadmin-password-reset-done')
+        else:
+
+            user_object = user_qs[0]
+            email = user_object.email
+            uid = urlsafe_base64_encode(force_bytes(user_object.id))
+            token = default_token_generator.make_token(user_object)
+            if request.is_secure():
+                protocol = "https"
+            else:
+                protocol = "http"
+            domain = request.META['HTTP_HOST']
+            user = user_object
+            site_name = "Brasi"
+
+            context = {
+                "email": email,
+                "uid": uid,
+                "token": token,
+                "protocol": protocol,
+                "domain": domain,
+                "user": user,
+                "site_name": site_name
+            }
+
+            subject = "Reset Password Link"
+            email_body = render_to_string(email_template, context)
+            send_mail(subject, email_body, DEFAULT_FROM_EMAIL,
+                      [email], fail_silently=False)
+            return redirect('adminpanel:superadmin-password-reset-done')
 
 
 class SuperAdminLogin(View):
@@ -353,6 +483,7 @@ class SuperAdminLogin(View):
                 messages.error(self.request, "Incorrect Password")
                 return HttpResponseRedirect(self.request.path_info, status=403)
         except Exception as e:
+            print(e)
             messages.error(self.request, "Email doesn't exists")
             return HttpResponseRedirect(self.request.path_info, status=403)
         # return redirect("adminpanel:superadmin-dashboard")
@@ -390,8 +521,8 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
                 Q(organization_name__email__iexact=self.request.GET.get('email')) |
                 Q(organization_name__client_code__iexact=self.request.GET.get('client_code')) |
                 Q(organization_name__mobile_number__iexact=self.request.GET.get(
-                                                             'mobile_number')
-                  ))
+                    'mobile_number')
+                ))
             if len(subscription_plan_objects) > 0:
                 return render(self.request, 'superadmin/new/customer-management.html',
                               {'object_list': SubscriptionStatus.objects.all(), 'filter': subscription_plan_objects})

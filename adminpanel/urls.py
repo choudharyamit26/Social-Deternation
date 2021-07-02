@@ -14,7 +14,7 @@ from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardIn
     CreateGeneralSubscriptionPlan, CMSBenefits, CMSFeature, CMSHowItWorks, CMSSocialPages, CMSPrivacyPolicy, \
     CMSTermsOfUse, FaqSurvivors, FaqService, FaqLicense, ReportSurvivor, ReportServiceProvider, VoucherView, \
     SpecialUserView, MailBoxView, SuperAdminNotifications, CustomerManagementDetailView, SubscriptionBrasiPlanDetail, \
-    SubscriptionGeneralPlanDetail
+    SubscriptionGeneralPlanDetail, SuperadminPasswordResetView, SuperadminPasswordResetConfirmView
 
 app_name = 'adminpanel'
 
@@ -49,13 +49,22 @@ urlpatterns = [
                   path("superadmin-service-providers-category/", SuperAdminProvidersCategory.as_view(),
                        name="superadmin-service-providers-category"),
                   path("password-reset/", PasswordResetView.as_view(), name="password-reset"),
+                  path("superadmin-password-reset/", SuperadminPasswordResetView.as_view(), name="superadmin-password-reset"),
                   path("password-reset-confirm/<uidb64>/<token>/", PasswordResetConfirmView.as_view(),
                        name="password-reset-confirm"),
+                  path("superadmin-password-reset-confirm/<uidb64>/<token>/", SuperadminPasswordResetConfirmView.as_view(),
+                       name="superadmin-password-reset-confirm"),
                   path("password-reset-done/", PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
                        name="password-reset-done"),
+                  path("superadmin-password-reset-done/", PasswordResetDoneView.as_view(template_name='superadmin/new/superadmin_password_reset_done.html'),
+                       name="superadmin-password-reset-done"),
+                  path("superadmin-password-reset-complete/",
+                       PasswordResetCompleteView.as_view(template_name='superadmin/new/password_reset_complete.html'),
+                       name="superadmin-password-reset-complete"),
                   path("password-reset-complete/",
                        PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
                        name="password-reset-complete"),
+
                   path('change-password/', PasswordChangeView.as_view(template_name='superadmin/change_password.html'),
                        name='change_password'),
                   path('password-change-done/',
