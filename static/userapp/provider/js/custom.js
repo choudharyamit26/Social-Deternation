@@ -299,3 +299,26 @@ $(document).on('click', '.multidate td.fc-day-top', function () {
   sessionStorage.setItem('multiSelectDate', datesArr)
   // alert(x + ' ' + y);
 });
+
+
+
+
+$(document).on('click', '.singledate td.fc-future fc-other-month', function () {
+  var x = $(this).parents('.fc-other-month span').attr('data-date')
+  $('.singledate td.fc-day-top').removeClass('active'),
+  $(this).addClass('active');
+  // var x = $(this).find('span').text();
+  alert(x);
+  // var y = $(this).parents('#calendar1').find('h2').text();
+  if (x !== null || x !== '') {
+    $('.popnext').removeAttr("disabled");
+  }
+  var d = document.getElementById('slot_date')
+  d.innerHTML = `Selected Date : <span class="dated">${x + ' ' + y} </span>`
+  var e = document.getElementById('slot_timing')
+  e.innerHTML = `<span class="dated">${x + ' ' + y} </span>`
+  var current_selected_date = x + ' ' + y
+  sessionStorage.setItem('singleSelectDate', current_selected_date)
+  // alert('Current selected date',current_selected_date)
+  console.log(sessionStorage.getItem('singleSelectDate'))
+});

@@ -11,13 +11,13 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control formControl" name="first_name"
-                                       placeholder="First Name" id="first_name">
+                                    placeholder="First Name" id="first_name">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control formControl" name="last_name"
-                                       placeholder="Last Name" id="last_name">
+                                    placeholder="Last Name" id="last_name">
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
 
                                     <div class="radio">
                                         <input id="radio-13" name="height" type="radio" value="Small">
-                                        <label for="radio-13" class="radio-label" >Small</label>
+                                        <label for="radio-13" class="radio-label">Small</label>
                                     </div>
 
                                 </li>
@@ -160,13 +160,13 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control formControl" name="special_body_mark"
-                                       placeholder="Special Body Mark" id="special_body_mark">
+                                    placeholder="Special Body Mark" id="special_body_mark">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <input type="number" class="form-control formControl" name="mobile_number"
-                                       placeholder="Mobile Number" id="mobile_number">
+                                    placeholder="Mobile Number" id="mobile_number">
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <input type="text" class="form-control formControl" name="hair_color"
-                                       placeholder="Hair Colour" id="hair_color">
+                                    placeholder="Hair Colour" id="hair_color">
                             </div>
                         </div>
 
@@ -247,83 +247,90 @@
             </div>
         </div>
         <div class="btnsBottom">
-            <a href="{% url 'userapp:record-assault-2' %}" onclick="getFormValues()" class="btns modalbtns">Next</a>
+            <button onclick="getFormValues()" class="btns modalbtns">Next</button>
         </div>
     </div>
 </section>
 <script>
-function getFormValues(){
-var filledValues = []
-var first_name = $('#first_name').val();
-filledValues.push({'first_name':first_name})
-var last_name = $('#last_name').val();
-filledValues.push({'last_name':last_name})
-var ele = document.getElementsByName('gender');
-for(i = 0; i < ele.length; i++) {
-     if(ele[i].checked)
-     filledValues.push({'gender':ele[i].value})
-     console.log(ele[i].value)
-     }
-var ele = document.getElementsByName('build');
-for(i = 0; i < ele.length; i++) {
-     if(ele[i].checked)
-     filledValues.push({'build':ele[i].value})
-     console.log(ele[i].value)
-     }
-var ele = document.getElementsByName('height');
-for(i = 0; i < ele.length; i++) {
-     if(ele[i].checked)
-     filledValues.push({'height':ele[i].value})
-     console.log(ele[i].value)
-     }
-var ele = document.getElementsByName('eye_color');
-for(i = 0; i < ele.length; i++) {
-     if(ele[i].checked)
-     filledValues.push({'eye_color':ele[i].value})
-     console.log(ele[i].value)
-     }
-
-var special_body_mark = $('#special_body_mark').val();
-filledValues.push({'special_body_mark':special_body_mark})
-
-
-var mobile_number = $('#mobile_number').val();
-filledValues.push({'mobile_number':mobile_number})
-var hair_color = $('#hair_color').val();
-filledValues.push({'hair_color':hair_color})
-
-var ele = document.getElementsByName('skin_color');
-for(i = 0; i < ele.length; i++) {
-     if(ele[i].checked)
-     filledValues.push({'skin_color':ele[i].value})
-     console.log(ele[i].value)
-     }
-var ele = document.getElementsByName('race');
-for(i = 0; i < ele.length; i++) {
-     if(ele[i].checked)
-     filledValues.push({'race':ele[i].value})
-     console.log(ele[i].value)
-     }
-     var type_of_violence = sessionStorage.getItem("type_of_violence");
-     filledValues.push({'type_of_violence':type_of_violence})
-     sessionStorage.setItem("storedFormFieldValues",JSON.stringify(filledValues))
-    var url = "{% url 'userapp:record-assault-2' %}"
-    $.ajax({
-        url :url,
-        method : 'POST',
-        data:{
-        data: JSON.stringify(filledValues),
-        csrfmiddlewaretoken: "{{ csrf_token }}"
-        },
-        success: function(data){
-           console.log('inside success',data)
-
-        },
-        error: function(data) {
-            console.log('inside error case')
+    function getFormValues() {
+        var filledValues = []
+        var first_name = $('#first_name').val();
+        filledValues.push({ 'first_name': first_name })
+        var last_name = $('#last_name').val();
+        filledValues.push({ 'last_name': last_name })
+        var ele = document.getElementsByName('gender');
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                filledValues.push({ 'gender': ele[i].value })
+            console.log(ele[i].value)
         }
-    });
-     }
+        var ele = document.getElementsByName('build');
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                filledValues.push({ 'build': ele[i].value })
+            console.log(ele[i].value)
+        }
+        var ele = document.getElementsByName('height');
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                filledValues.push({ 'height': ele[i].value })
+            console.log(ele[i].value)
+        }
+        var ele = document.getElementsByName('eye_color');
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                filledValues.push({ 'eye_color': ele[i].value })
+            console.log(ele[i].value)
+        }
+
+        var special_body_mark = $('#special_body_mark').val();
+        filledValues.push({ 'special_body_mark': special_body_mark })
+
+
+        var mobile_number = $('#mobile_number').val();
+        filledValues.push({ 'mobile_number': mobile_number })
+        var hair_color = $('#hair_color').val();
+        filledValues.push({ 'hair_color': hair_color })
+
+        var ele = document.getElementsByName('skin_color');
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                filledValues.push({ 'skin_color': ele[i].value })
+            console.log(ele[i].value)
+        }
+        var ele = document.getElementsByName('race');
+        for (i = 0; i < ele.length; i++) {
+            if (ele[i].checked)
+                filledValues.push({ 'race': ele[i].value })
+            console.log(ele[i].value)
+        }
+        var type_of_violence = sessionStorage.getItem("type_of_violence");
+        filledValues.push({ 'type_of_violence': type_of_violence })
+        if (filledValues.length < 12){
+            alert('One or more fields are empty. Please fill all the fields')
+        }else{
+            sessionStorage.setItem("storedFormFieldValues", JSON.stringify(filledValues))
+            var url = "{% url 'userapp:record-assault-2' %}"
+            $.ajax({
+                url: url,
+                method: 'POST',
+                data: {
+                    data: JSON.stringify(filledValues),
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success: function (data) {
+                    console.log('inside success', data)
+                    sessionStorage.removeItem('storedFormFieldValues')
+                    window.location.href = '{% url "userapp:record-assault-qa" %}'
+
+                },
+                error: function (data) {
+                    console.log('inside error case')
+                }
+            });
+            }
+
+    }
 
 </script>
 {% endblock body %}

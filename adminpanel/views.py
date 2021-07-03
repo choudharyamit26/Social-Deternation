@@ -513,6 +513,37 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
                 Q(organization_name__mobile_number__iexact=self.request.GET.get('mobile_number')) |
                 Q(organization_name__created_at__range=(
                     self.request.GET.get('from_date'), self.request.GET.get('to_date'))))
+            print(subscription_plan_objects)
+            if len(subscription_plan_objects) > 0:
+                return render(self.request, 'superadmin/new/customer-management.html',
+                              {'object_list': SubscriptionStatus.objects.all(), 'filter': subscription_plan_objects})
+        elif self.request.GET.get('from_date') and self.request.GET.get(
+                'to_date'):
+            subscription_plan_objects = SubscriptionStatus.objects.filter(Q(organization_name__created_at__range=(
+                self.request.GET.get('from_date'), self.request.GET.get('to_date'))))
+            print('inside both date', subscription_plan_objects,subscription_plan_objects)
+            if len(subscription_plan_objects) > 0:
+                return render(self.request, 'superadmin/new/customer-management.html',
+                              {'object_list': SubscriptionStatus.objects.all(), 'filter': subscription_plan_objects})
+            else:
+                return render(self.request, 'superadmin/new/customer-management.html',
+                              {'object_list': SubscriptionStatus.objects.all(),
+                               'no_data': subscription_plan_objects})
+        elif self.request.GET.get('from_date') or self.request.GET.get('to_date'):
+            d = None
+            if self.request.GET.get('from_date'):
+                d = self.request.GET.get('from_date')
+            else:
+                self.request.GET.get('to_date')
+            subscription_plan_objects = SubscriptionStatus.objects.filter(Q(organization_name__created_at__date=d))
+            print(subscription_plan_objects)
+            if len(subscription_plan_objects) > 0:
+                return render(self.request, 'superadmin/new/customer-management.html',
+                              {'object_list': SubscriptionStatus.objects.all(), 'filter': subscription_plan_objects})
+            else:
+                return render(self.request, 'superadmin/new/customer-management.html',
+                              {'object_list': SubscriptionStatus.objects.all(),
+                               'no_data': subscription_plan_objects})
         elif self.request.GET.get('organization_name') or self.request.GET.get('first_name') or self.request.GET.get(
                 'email') or self.request.GET.get('client_code') or self.request.GET.get('mobile_number'):
             subscription_plan_objects = SubscriptionStatus.objects.filter(

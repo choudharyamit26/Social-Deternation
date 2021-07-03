@@ -19,7 +19,6 @@
                             <option value="1">Category1</option>
                             <option value="2">Category2</option>
                             <option value="3">Category3</option>
-
                         </select>
                     </div>
                 </div>
@@ -51,6 +50,7 @@
 <section class="serviceProide">
     <div class="container">
         <div class="row">
+            {% for obj in object_list %}
             <div class="col-sm-4">
                 <div class="clietservice">
                     <div class="serviceDet">
@@ -59,22 +59,22 @@
                                 <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
                             </div>
                             <div class="serviceRight">
-                                <h2>Mity Khan</h2>
+                                <h2>{{obj.contact_persons_first_name}} {{obj.contact_persons_last_name}}</h2>
                                 <p>Category: <span>Counsellor</span></p>
                             </div>
                         </div>
                         <div class="serviceStar">
                             <ul>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
+                                            alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
+                                            alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
+                                            alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
+                                            alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
+                                            alt="star"></a></li>
                             </ul>
 
                         </div>
@@ -124,117 +124,18 @@
                         <table class="table tablefont">
 
                             <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
+                                <tr>
+                                    <td><span class="bold">Qualifications:</span></td>
+                                    <td>Bachelor of Psychology M.Sc
+                                        in Counselling
+                                    </td>
 
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="bold">Experience:</span></td>
+                                    <td>12 Years</td>
 
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
+                                </tr>
 
 
                             </tbody>
@@ -244,704 +145,12 @@
                         <div class="btnLeft">
                             <h2>£40 /Hour</h2>
                         </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
+                        <a href="javascript:void(0)" class="btns" onclick="getServiceProviderSlots({{obj.id}})">Select
+                            Slot</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="clietservice">
-                    <div class="serviceDet">
-                        <div class="service">
-                            <div class="serviceLeft">
-                                <img src="{% static 'userapp/imgs/profile.svg' %}" alt="profile">
-                            </div>
-                            <div class="serviceRight">
-                                <h2>Mity Khan</h2>
-                                <p>Category: <span>Counsellor</span></p>
-                            </div>
-                        </div>
-                        <div class="serviceStar">
-                            <ul>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                      alt="star"></a></li>
-                                <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                                      alt="star"></a></li>
-                            </ul>
-
-                        </div>
-
-                    </div>
-                    <div class="bachesdet">
-                        <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails3">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Private Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table tablefont">
-
-                            <tbody>
-                            <tr>
-                                <td><span class="bold">Qualifications:</span></td>
-                                <td>Bachelor of Psychology M.Sc
-                                    in Counselling
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td><span class="bold">Experience:</span></td>
-                                <td>12 Years</td>
-
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tableBtn">
-                        <div class="btnLeft">
-                            <h2>£40 /Hour</h2>
-                        </div>
-                        <a href="javascript:void(0)" class="btns" data-toggle="modal"
-                           data-target="#selectslot">Select Slot</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
 
         </div>
     </div>
@@ -952,31 +161,38 @@
             <div class="modal-content">
                 <div class="modal-body" style="padding: 25px;">
                     <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
+                            src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                     <div class="slotBooking">
-                        <h2 class="head">Mity Khan <span class="newStar">
-                                    <ul>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                              alt="star"></a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                              alt="star"></a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                              alt="star"></a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                                              alt="star"></a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><img
-                                                src="{% static 'userapp/imgs/halfstar.svg' %}" alt="star"></a>
-                                        </li>
+                        <div>
+                            <span id="service_provider_name">
 
-                                    </ul>
-                                </span> <span class="" style="float: right;
+                            </span>
+                            <span id=error>
+
+                            </span>
+                        </div>
+                        <h2 class="head"> <span class="newStar">
+                                <ul>
+                                    <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                alt="star"></a>
+                                    </li>
+                                    <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                alt="star"></a>
+                                    </li>
+                                    <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                alt="star"></a>
+                                    </li>
+                                    <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
+                                                alt="star"></a>
+                                    </li>
+                                    <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
+                                                alt="star"></a>
+                                    </li>
+
+                                </ul>
+                            </span> <span class="" style="float: right;
                                 padding-right: 8%;"><a href="javascript:void(0)" data-dismiss="modal" class="btns"
-                                                       style="padding: 4px 20px;">Change</a></span></h2>
+                                    style="padding: 4px 20px;">Change</a></span></h2>
                         <div class="decription">
                             <h2>Description:</h2>
                             <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out
@@ -1077,14 +293,53 @@
 </div>
 <script src="{% static 'userapp/provider/js/calender.js' %}"></script>
 <script>
-$(document).on('click','.day',function(){
-<!--for multiselect remove today-->
-    $('.day').removeClass('today');
-    $(this).addClass('today');
-    var y = $(this).parents('#calendar').find('.current-month').text();
-    var x = $(this).text();
-    console.log(x,y)
-});
+    $(document).on('click', '.day', function () {
+        $('.day').removeClass('today');
+        $(this).addClass('today');
+        var y = $(this).parents('#calendar').find('.current-month').text();
+        var x = $(this).text();
+        console.log(x, y)
+    });
 
+</script>
+<script>
+    function getServiceProviderSlots(id) {
+        var id = id
+        var url = "{% url 'userapp:get-service-provider-availability' %}"
+        $.ajax({
+            url: url + '?id=' + id,
+            method: 'GET',
+            success: function (data) {
+                console.log('inside success',data)
+                // alert('clicked successfully')
+                $(document).ready(function () {
+                    $('#selectslot').modal('show');
+                    console.log(data)
+                    var service_provider_name = data['data']['name']
+                    var service_provider_name_show = document.getElementById('service_provider_name')
+                    service_provider_name_show.innerHTML = service_provider_name
+                });
+            },
+            error: function (data) {
+                // alert('Something went wrong')
+                console.log('inside success', data.responseJSON.data)
+
+                $('#selectslot').modal('show');
+                console.log(data)
+                var service_provider_name = data.responseJSON.data['name']
+                var service_provider_name_show = document.getElementById('service_provider_name')
+                service_provider_name_show.innerHTML = service_provider_name
+                // error
+                message = data.responseJSON.message;
+                error = document.getElementById('error')
+                error.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                                ${message}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>`;
+            },
+        });
+    }
 </script>
 {% endblock body %}

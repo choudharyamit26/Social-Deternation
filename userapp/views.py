@@ -219,6 +219,7 @@ class RecordAssault2(View):
         return render(self.request, 'userapp/assault-form-2.html')
 
     def post(self, request, *args, **kwargs):
+        print('>>>>>', self.request.POST)
         d = {}
         for key in json.loads(self.request.POST['data']):
             d.update(key)
@@ -230,7 +231,11 @@ class AssaultRecordQuestionAnswer(View):
     template_name = 'userapp/assault-form-2.html'
     form_class = AssaultQuestionAnswerForm
 
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'userapp/assault-form-2.html')
+
     def post(self, request, *args, **kwargs):
+        print(self.request.POST)
         x = json.loads(self.request.POST['data'])
         y = json.loads(x)
         final_data = {}
@@ -285,7 +290,7 @@ class ServiceProviderView(View):
     template_name = 'userapp/service-provider.html'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'userapp/service-provider.html')
+        return render(self.request, 'userapp/service-provider.html', {'object_list': ServiceProvider.objects.all()})
 
 
 class MyBookingsView(View):
@@ -882,3 +887,29 @@ class CreateMultiSlotView(View):
             return redirect("userapp:provider-availability")
         else:
             return JsonResponse({'data': 'error'}, status=400)
+
+
+class GetServiceProviderAvailability(LoginRequiredMixin, View):
+    model = ServiceProviderSlots
+
+    def get(self, request, *args, **kwargs):
+        print(self.request.GET)
+        service_provider = ServiceProvider.objects.get(id=self.request.GET.get('id'))
+        try:
+            service_provider_slots = ServiceProviderSlots.objects.filter(user=service_provider)
+            data = {'name': service_provider_slots[0].user.contact_persons_first_name + ' ' + service_provider_slots[
+                0].user.contact_persons_last_name}
+            slots = {}
+            for obj in service_provider_slots:
+                if f'{obj.slot_date}' in data:
+                    data[f'{obj.slot_date}'].append(obj.slot_time)
+                else:
+                    data[f'{obj.slot_date}'] = [obj.slot_time]
+            print(data)
+            # data = data.update(slots)
+            # print(data)
+            return JsonResponse({'data': data}, status=200)
+        except:
+            data = {
+                'name': service_provider.contact_persons_first_name + ' ' + service_provider.contact_persons_last_name}
+            return JsonResponse({'message': 'No slots available', 'data': data}, status=400)

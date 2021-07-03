@@ -8,7 +8,8 @@ from .views import HomeView, SurvivorSignUp, Dashboard, RecordAnAssault, RecordA
     PasswordResetView, PasswordResetConfirmView, ServiceProviderSignup, ProviderSignIn, ServiceProviderRequests, \
     SurvivorFaq, SurvivorContact, SurvivorNotificationDetail, SurvivorAvailability, SurvivorSubscriptionView, \
     ProviderForgotPassword, ProviderPasswordResetConfirmView, CreateSlotView, GuestAssaultUser, \
-    GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView, SurvivorCalendarEvent, ServiceProviderProfile
+    GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView, SurvivorCalendarEvent, ServiceProviderProfile, \
+    GetServiceProviderAvailability
 
 app_name = 'userapp'
 
@@ -61,4 +62,7 @@ urlpatterns = [
                   path('guest-assault/', GuestAssaultUser.as_view(), name='guest-assault'),
                   path('guest-assault-2/', GuestAssaultUserForm2View.as_view(), name='guest-assault-2'),
                   path('payment/', PaymentView.as_view(), name='payment'),
+                  path('get-service-provider-availability/', GetServiceProviderAvailability.as_view(),
+                       name='get-service-provider-availability'),
+
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
