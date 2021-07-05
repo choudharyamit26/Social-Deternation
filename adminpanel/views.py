@@ -528,7 +528,7 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
             else:
                 return render(self.request, 'superadmin/new/customer-management.html',
                               {'object_list': SubscriptionStatus.objects.all(),
-                               'no_data': subscription_plan_objects})
+                               'no_data': 'subscription_plan_objects'})
         elif self.request.GET.get('from_date') or self.request.GET.get('to_date'):
             d = None
             if self.request.GET.get('from_date'):
@@ -543,7 +543,7 @@ class CustomerManagementView(LoginRequiredMixin, ListView):
             else:
                 return render(self.request, 'superadmin/new/customer-management.html',
                               {'object_list': SubscriptionStatus.objects.all(),
-                               'no_data': subscription_plan_objects})
+                               'no_data': 'subscription_plan_objects'})
         elif self.request.GET.get('organization_name') or self.request.GET.get('first_name') or self.request.GET.get(
                 'email') or self.request.GET.get('client_code') or self.request.GET.get('mobile_number'):
             subscription_plan_objects = SubscriptionStatus.objects.filter(
