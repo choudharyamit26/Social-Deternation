@@ -843,8 +843,17 @@
         var g = sessionStorage.getItem('categoryType')
         var h = sessionStorage.getItem('singleTitle')
         var i = sessionStorage.getItem('singleFees')
-        console.log(d, e)
-        var url = "{% url 'userapp:create-slot' %}"
+        if (h == '' || h == null){
+            alert('Please enter title')
+        }
+        else if((f.trim() == 'Paid Service' && i == '') || (f.trim() == 'Paid Service' && i == null)){
+            alert('Please enter fees')
+        }
+        else if (e == '' || e==null){
+            alert('Please select a slot')
+        }
+        else{
+            var url = "{% url 'userapp:create-slot' %}"
         $.ajax({
             url: url,
             method: 'POST',
@@ -875,6 +884,7 @@
                 alert('One or more field is empty. Please fill all the required fields')
             },
         });
+        }
     }
 
 
@@ -929,6 +939,13 @@
 
 
 </script>
+<script>
+    $(document).on('click','.fc-other-month.fc-future',function(){
+        alert("Please go to next month to create slot in next month");
+    });
+</script>
+
+
 <script>
     $(document).on('click', '.title .small', function () {
         // ('.titlslide').slideDown();

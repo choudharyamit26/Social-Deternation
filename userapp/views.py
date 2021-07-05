@@ -789,6 +789,8 @@ class CreateSlotView(View):
 
     def post(self, request, *args, **kwargs):
         print('Form single slot creation', self.request.POST)
+        print()
+        selected_slot = self.request.POST['selected_slot'].split(',')
         user = self.request.user
         service_provider = ServiceProvider.objects.get(user=user)
         date_time_str = self.request.POST['selected_date'].split(' ')
@@ -811,15 +813,16 @@ class CreateSlotView(View):
             fee = Decimal(i)
         except:
             fee = 0
-        ServiceProviderSlots.objects.create(
-            user=service_provider,
-            slot_date=date_time_obj,
-            slot_time=self.request.POST['selected_slot'],
-            select_slot_type=self.request.POST['select_slot_type'],
-            category=self.request.POST['category_type'],
-            title=self.request.POST['title'],
-            hourly_fees=fee
-        )
+        for i in range(len(self.request.POST['selected_slot'].split(','))):
+            ServiceProviderSlots.objects.create(
+                user=service_provider,
+                slot_date=date_time_obj,
+                slot_time=selected_slot[i],
+                select_slot_type=self.request.POST['select_slot_type'],
+                category=self.request.POST['category_type'],
+                title=self.request.POST['title'],
+                hourly_fees=fee
+            )
         return redirect("userapp:provider-availability")
 
 
