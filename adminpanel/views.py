@@ -639,7 +639,6 @@ class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
-        print(self.request.GET)
         subs_obj = None
         if self.request.GET.get('category') and self.request.GET.get('from'):
             subs_obj = SubscriptionPlan.objects.filter(
@@ -649,7 +648,6 @@ class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
                 Q(price__iexact=self.request.GET.get('price' or None)) |
                 Q(active__iexact=self.request.GET.get('active')) |
                 Q(created_at__range=(self.request.GET.get('from' or None), self.request.GET.get('to' or None))))
-            print([x.category for x in subs_obj])
             return render(self.request, "superadmin/new/brasi-plan.html",
                           {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans')})
         elif self.request.GET.get('from') and self.request.GET.get('to'):
@@ -660,13 +658,11 @@ class SuperAdminBrasiSupscriptionView(LoginRequiredMixin, ListView):
         elif self.request.GET.get('from'):
             subs_obj = SubscriptionPlan.objects.filter(
                 Q(created_at__date=self.request.GET.get('from')))
-            print('<<<<>>>>', [x.category for x in subs_obj])
             return render(self.request, "superadmin/new/brasi-plan.html",
                           {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans')})
         elif self.request.GET.get('to'):
             subs_obj = SubscriptionPlan.objects.filter(
                 Q(created_at__date=self.request.GET.get('to')))
-            print('>>>><<<<', [x.category for x in subs_obj])
             return render(self.request, "superadmin/new/brasi-plan.html",
                           {'subs_obj': subs_obj.exclude(plan_type='General Subscription Plans')})
         elif self.request.GET.get('category') or self.request.GET.get('name') or self.request.GET.get(
@@ -699,17 +695,7 @@ class SubscriptionBrasiPlanDetail(View):
     paginate_by = 1
 
     def post(self, request, *args, **kwargs):
-        print(self.request.GET)
         organizations = SubscriptionPlan.objects.get(id=self.request.POST.get('id'))
-        # paginator = Paginator(organizations, self.paginate_by)
-        # page_number = self.request.GET.get('page')
-        # page_obj = paginator.get_page(page_number)
-        # context = {
-        #     'object_list': SubscriptionPlan.objects.filter(plan_type='Brasi Platform'),
-        #     'pages': page_obj,
-        #     'plan_obj': SubscriptionPlan.objects.get(id=self.request.GET.get('id'))
-        # }
-        # return render(self.request, "superadmin/new/brasi-plan.html", context)
         return JsonResponse(
             {'category': organizations.category, 'name': organizations.name, 'price': organizations.price,
              'description': organizations.description, 'duration': organizations.duration,
@@ -736,6 +722,22 @@ class SuperAdminGeneralSupscriptionView(LoginRequiredMixin, ListView):
             print(subs_obj)
             return render(self.request, "superadmin/new/general-plan.html",
                           {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
+        elif self.request.GET.get('from') and self.request.GET.get('to'):
+            subs_obj = SubscriptionPlan.objects.filter(
+                Q(created_at__date__range=(self.request.GET.get('from'), self.request.GET.get('to'))))
+            return render(self.request, "superadmin/new/general-plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
+        elif self.request.GET.get('from'):
+            subs_obj = SubscriptionPlan.objects.filter(
+                Q(created_at__date=self.request.GET.get('from')))
+            return render(self.request, "superadmin/new/general-plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
+        elif self.request.GET.get('to'):
+            subs_obj = SubscriptionPlan.objects.filter(
+                Q(created_at__date=self.request.GET.get('to')))
+            return render(self.request, "superadmin/new/general-plan.html",
+                          {'subs_obj': subs_obj.exclude(plan_type='Brasi Platform')})
+
         elif self.request.GET.get('category') or self.request.GET.get('name') or self.request.GET.get(
                 'duration') or self.request.GET.get('price') or self.request.GET.get('active'):
             subs_obj = SubscriptionPlan.objects.filter(
