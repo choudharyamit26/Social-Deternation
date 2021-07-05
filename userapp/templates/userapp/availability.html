@@ -564,6 +564,26 @@
     }
 </script>
 <script>
+    var singleSlot_arr = []
+    $(document).on('click','.availModal ul li a',function(){
+        // alert('okk');
+        // var amit = $(this).text();
+        // alert(amit);
+        var x = $(this).text();
+        // alert(singleSlot_arr)
+        singleSlot_arr.push(x)
+        sessionStorage.setItem('singleSelectSlot', singleSlot_arr)
+        // alert(sessionStorage.getItem('singleSlot_arr'))
+    });
+</script>
+<script>
+    $(document).on('click', '#category', function () {
+        // alert('category clicked')
+        var x = $(this).val();
+        sessionStorage.setItem('categoryType', x)
+    });
+</script>
+<script>
     var radio_button_value_arr = []
     var multi_radio_button_value_arr = []
     var multi_title = []
@@ -631,12 +651,18 @@
 
     $(document).on('click', '.radio-label', function () {
 
-        var x = $(this).text();
+        var x = $(this).text(); 
         if (x == '07:00 AM to 08:00 AM' || x == '08:00 AM to 09:00 AM' || x == '09:00 AM to 10:00 AM' || x == '10:00 AM to 11:00 AM' || x == '11:00 AM to 12:00 pM' || x == '12:00 PM to 01:00 PM' || x == '01:00 PM to 02:00 PM' || x == '02:00 PM to 03:00 PM' || x == '03:00 PM to 04:00 PM' || x == '04:00 PM to 05:00 PM' || x == '05:00 PM to 06:00 PM' || x == '06:00 PM to 07:00 PM') {
-            multi_radio_button_value_arr.push(x)
+            var z = $(this).parents('.optionsWrapper').siblings('.avaliblitytitles').find('.multislotDateClass').text();
+            let z1 = z 
+            // alert(z);
+            // console.log('>>>>>>>>>',z,{z:x})
+            multi_radio_button_value_arr.push(JSON.stringify({slot:x,date:z.replace(/(\r\n|\n|\r)/gm, "").trim()}))
+            console.log(multi_radio_button_value_arr)
             sessionStorage.setItem('multiSlots', multi_radio_button_value_arr)
             console.log(multi_radio_button_value_arr)
         }
+  
     });
 
     var category_arr = []
@@ -725,7 +751,7 @@
             <div class="avaliblitytitles">
             <ul>
             <li>
-            <span><a href="javaScript:void(0)">
+            <span><a href="javaScript:void(0)" class="multislotDateClass">
             ${multiSlots[i]}
             </a></span>
             </li>
@@ -812,37 +838,26 @@
 
 
 
-    singleSlot_arr = []
-    $(document).on('click', '.availModal ul li a', function () {
-        var x = $(this).text();
-        // alert(singleSlot_arr)
-        singleSlot_arr.push(x)
-        sessionStorage.setItem('singleSelectSlot', singleSlot_arr)
-        // alert(sessionStorage.getItem('singleSlot_arr'))
-    });
-
     $(document).on('click', '#radio-77', function () {
-        // alert('clicked radio-77')
+        alert('clicked radio-77',$(this).val())
         var x = $(this).val();
         sessionStorage.setItem('selectSlotType', x)
     });
     $(document).on('click', '#radio-78', function () {
-        // alert('clicked radio-78')
+        alert('clicked radio-78',$(this).val())
         var x = $(this).val();
         sessionStorage.setItem('selectSlotType', x)
     });
-    $(document).on('click', '#category', function () {
-        var x = $(this).val();
-        sessionStorage.setItem('categoryType', x)
-    });
+
     function simple() {
         console.log(sessionStorage.getItem('singleSelectDate'))
         var d = sessionStorage.getItem('singleSelectDate')
         var e = sessionStorage.getItem('singleSelectSlot')
-        var f = sessionStorage.getItem('selectSlotType')
+        var f = sessionStorage.getItem('availabilityType')
         var g = sessionStorage.getItem('categoryType')
         var h = sessionStorage.getItem('singleTitle')
         var i = sessionStorage.getItem('singleFees')
+        console.log(d,e,f,g,h,i)
         if (h == '' || h == null){
             alert('Please enter title')
         }
@@ -897,6 +912,7 @@
     function multiSlotCreate() {
         var d = sessionStorage.getItem('multiSelectDate')
         var e = sessionStorage.getItem('multiSlots')
+        // alert(multiSlots)
         var f = sessionStorage.getItem('availabilityType')
         var g = sessionStorage.getItem('multiCategoryType')
         var h = sessionStorage.getItem('multiTitle')
@@ -978,6 +994,8 @@
         $('body').removeClass('modal-open');
     });
 </script>
+
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

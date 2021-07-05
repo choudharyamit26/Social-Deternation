@@ -832,8 +832,27 @@ class CreateMultiSlotView(View):
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
         d = self.request.POST['selected_date'].split(",")
-        print('---', d)
-        e = self.request.POST['selected_slot'].split(",")
+        e = self.request.POST['selected_slot']
+        e = json.dumps(e)
+        selected_slot_list = []
+        for x in json.loads(e).split('}'):
+            if x.startswith('{'):
+                selected_slot_list.append(x.replace('{', '', 1))
+            elif x.startswith(',{'):
+                selected_slot_list.append(x.replace(',{', '', 1))
+        slots = []
+        for i in selected_slot_list:
+            slots.append({i.split(',')[1].split(':"')[1].replace('" ', '', 1).replace('"', '', 1):
+                              i.split(',')[0].split(':"')[1].replace('"', '', 1)})
+
+        slots_dict = {}
+        for slot in slots:
+            for key in slot.keys():
+                if key in slots_dict:
+                    slots_dict[key].append(slot[key])
+                else:
+                    slots_dict[key] = [slot[key]]
+            # print(key,value)
         f = self.request.POST['select_slot_type'].split(",")
         g = self.request.POST['category_type'].split(",")
         h = self.request.POST['multi_title'].split(",")
@@ -844,20 +863,17 @@ class CreateMultiSlotView(View):
                 pass
             else:
                 new_fee_list[i] = 'p'
-        print('>>>>', new_fee_list)
         counter = 0
         for i in range(len(new_fee_list)):
             if new_fee_list[i] == 'p':
                 new_fee_list[i] = fee_list[counter]
                 counter += 1
-
         if len(d) == len(h) and len(d) == len(f) and len(d) == len(g):
-            data = zip(d, e, f, g, h, new_fee_list)
+            print('-------------------------------------------------------------')
+            data = zip(d, f, g, h, new_fee_list)
             user = self.request.user
             service_provider = ServiceProvider.objects.get(user=user)
-            # print(list(data))
             for x in list(data):
-                print('inside for loop', x)
                 date_time_str = x[0].split(' ')
                 month_name = date_time_str[1]
                 datetime_object = datetime.strptime(month_name, "%B").month
@@ -877,16 +893,17 @@ class CreateMultiSlotView(View):
                     fee = Decimal(i)
                 except:
                     fee = 0
-                ServiceProviderSlots.objects.create(
-                    user=service_provider,
-                    slot_date=date_time_obj,
-                    slot_time=x[1],
-                    select_slot_type=x[2],
-                    # category=self.request.POST['category_type']
-                    category=x[3],
-                    title=x[4],
-                    hourly_fees=fee,
-                )
+                for i in slots_dict[x[0]]:
+                    slot_obj = ServiceProviderSlots.objects.create(
+                        user=service_provider,
+                        slot_date=date_time_obj,
+                        slot_time=i,
+                        select_slot_type=x[2],
+                        # category=self.request.POST['category_type']
+                        category=x[3],
+                        title=x[4],
+                        hourly_fees=fee,
+                    )
             return redirect("userapp:provider-availability")
         else:
             return JsonResponse({'data': 'error'}, status=400)
