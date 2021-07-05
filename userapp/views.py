@@ -869,7 +869,6 @@ class CreateMultiSlotView(View):
                 new_fee_list[i] = fee_list[counter]
                 counter += 1
         if len(d) == len(h) and len(d) == len(f) and len(d) == len(g):
-            print('-------------------------------------------------------------')
             data = zip(d, f, g, h, new_fee_list)
             user = self.request.user
             service_provider = ServiceProvider.objects.get(user=user)
@@ -889,7 +888,7 @@ class CreateMultiSlotView(View):
                 selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
                 date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
                 try:
-                    i = x[5]
+                    i = x[4]
                     fee = Decimal(i)
                 except:
                     fee = 0
@@ -898,10 +897,10 @@ class CreateMultiSlotView(View):
                         user=service_provider,
                         slot_date=date_time_obj,
                         slot_time=i,
-                        select_slot_type=x[2],
+                        select_slot_type=x[1],
                         # category=self.request.POST['category_type']
-                        category=x[3],
-                        title=x[4],
+                        category=x[2],
+                        title=x[3],
                         hourly_fees=fee,
                     )
             return redirect("userapp:provider-availability")
