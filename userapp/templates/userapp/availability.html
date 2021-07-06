@@ -82,9 +82,9 @@
                                             Fees</span>
                                         <div class="titleBoxs titleBoxs2">
                                             <div class="form-group">
-                                                <label for="" class="label" style="padding: 0;">Add Tittle</label>
+                                                <label for="" class="label" style="padding: 0;">Add Hourly Fee</label>
                                                 <input type="text" class="form-control formControl"
-                                                    placeholder="Add Title" name="single_fee" id="single _fee_field">
+                                                    placeholder="Add Hourly Fee" name="single_fee" id="single _fee_field">
                                             </div>
                                             <div class="functionbtn">
                                                 <span class="cancle">Cancel</span>
@@ -771,9 +771,9 @@
             <li class="titleav"><span class="mainHeading mainHeading2" style=${(selectSlotType[i].trim() == 'Volunteer') ? "display:none" : "display:block"}>Add Hourly Fees</span>
             <div class="titleBoxs titleBoxs2">
             <div class="form-group">
-            <label for="" class="label" style="padding: 0;">Add Tittle</label>
+            <label for="" class="label" style="padding: 0;">Add Hourly Fee</label>
             <input type="text" class="form-control formControl"
-            placeholder="Add Title" name="multi_fee" id="multi_fee_idfee${i}">
+            placeholder="Add Hourly Fee" name="multi_fee" id="multi_fee_idfee${i}">
             </div>
             <div class="functionbtn">
             <span class="cancle">Cancel</span>
@@ -839,12 +839,12 @@
 
 
     $(document).on('click', '#radio-77', function () {
-        alert('clicked radio-77',$(this).val())
+        // alert('clicked radio-77',$(this).val())
         var x = $(this).val();
         sessionStorage.setItem('selectSlotType', x)
     });
     $(document).on('click', '#radio-78', function () {
-        alert('clicked radio-78',$(this).val())
+        // alert('clicked radio-78',$(this).val())
         var x = $(this).val();
         sessionStorage.setItem('selectSlotType', x)
     });

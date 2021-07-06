@@ -387,7 +387,10 @@
                             <h6>Time: {{obj.slot_time}}</h6>
                             <h6>Type: {{obj.select_slot_type}}</h6>
                             <h6>Category: {{obj.category}}</h6>
+                            {% if obj.select_slot_type == 'Volunteer' %}
+                            {% else %}
                             <h6>Fees: {{obj.hourly_fees}}</h6>
+                            {% endif %}
                             <hr>
                             {% endfor %}
                         </div>

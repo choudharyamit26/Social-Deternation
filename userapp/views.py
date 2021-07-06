@@ -19,6 +19,7 @@ from django.views.generic import View, ListView, CreateView
 from .forms import SurvivorSignUpForm, AssaultForm, AssaultQuestionAnswerForm, SurvivorLoginByEmailForm
 from .models import Survivor, Assault, AssaultQuestionAnswer, Faq, Contact, Notification, ServiceProvider, \
     ServiceProviderSlots
+from adminpanel.utils import send_otp
 
 user = get_user_model()
 
@@ -576,7 +577,9 @@ class ProviderSignIn(View):
                     # else:
                     #     self.request.session.set_expiry(0)
                     # return redirect('adminpanel:superadmin-dashboard"')
-                    return redirect("userapp:provider-requests")
+                    # return redirect("userapp:provider-requests")
+                    send_otp(user.country_code, user.phone_number)
+                    return JsonResponse({'number': user.phone_number}, status=200)
                 else:
                     return JsonResponse({'message': 'Unauthorised access'}, status=400)
             else:

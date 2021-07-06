@@ -3073,6 +3073,7 @@ tr:first-child>td>.fc-day-grid-event {
 
 
 
+
 .multidate .fc-day-top.fc-today {
     background-color: #fff !important;
     color: #000 !important;
@@ -3083,3 +3084,4 @@ tr:first-child>td>.fc-day-grid-event {
     background: var(--darkSky) !important;
     color: #fff !important;
 }
+

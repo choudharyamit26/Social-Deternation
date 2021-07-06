@@ -16,6 +16,9 @@
 </head>
 <body>
 {% block header %}
+<div class="body">
+
+</div>
 <section class="header">
     <div class="container">
         <div class="headerInner">
@@ -594,9 +597,7 @@
 
                     </ul>
                     <div class="modCo">
-                        <p>One-Time Password has been sent to 9023232323<span><img
-                                src="{% static 'userapp/imgs/edit.svg' %}"
-                                alt="edit"></span></p>
+                        <p>One-Time Password has been sent to <span id="survivor_logged_in_number"></span></p>
                     </div>
                     <div class="form-group otp" style="padding-top: 25px;">
                         <input type="text" class="form-control" maxlength="1">
@@ -910,7 +911,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -1103,8 +1103,7 @@
                                         <div class="modBt">
 
                                             <button onclick="providerSignIn()" class="Button bg-violet"
-                                                    data-toggle="modal"
-                                                    data-target="#providersignin4" data-dismiss="modal">Next
+                                                    data-dismiss="modal">Next
                                             </button>
                                         </div>
                                     </div>
@@ -1175,9 +1174,7 @@
                             <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
                         </div>
                         <div class="modCo">
-                            <p>One-Time Password has been sent to 9023232323<span><img
-                                    src="{% static 'userapp/imgs/edit.svg' %}"
-                                    alt="edit"></span></p>
+                            <p>One-Time Password has been sent to <span id=provider_logged_in_number></span></p>
                         </div>
                         <div class="form-group otp" style="padding-top: 25px;">
                             <input type="text" class="form-control" maxlength="1">
@@ -1729,6 +1726,19 @@ function forgotPassword(){
 
 </script>
 <script>
+    $(document).on('click','#organization',function(){
+        var t = $('#organization').val();
+        sessionStorage.setItem('tempOrganizationType',t)
+        if (t.trim() == 'Individual Sole Trader'){
+            $('.nav.nav-tabs').addClass('active');
+        }else{
+            $('.nav.nav-tabs').removeClass('active');
+        }
+        
+    })
+</script>
+
+<script>
     function providerSignup1(){
             providerValues = []
             var vaild = true
@@ -1741,7 +1751,7 @@ function forgotPassword(){
                         console.log(ele[i].value)
                     }
                 }
-            if (providerValues.length < 2){
+            if (sessionStorage.getItem('tempOrganizationType').trim() !='Individual Sole Trader' && providerValues.length < 2){
                     alert('Please select a valid organization type')
                     vaild = false
                     return false;
@@ -1833,30 +1843,24 @@ function forgotPassword(){
     }
 
 </script>
-<script>
-    $(document).ready(function () {
-	$('#company_logo').change(function () {
-       console.log(this.files);
-    });
-});
-</script>
+
 <script>
     function finalProviderSignup(){
     finalarray = []
     // var data1 = document.getElementById('data1')
     // data1.value = sessionStorage.getItem("providersignup1values")
-    var company_logo = ''
-    var formData= new FormData()
-    $(document).ready(function () {
-	$('#company_logo').change(function () {
-        console.log(this.files.name);
-        company_logo = this.files[0].name
-        formData.append('company_logo',this.files)
-        alert(company_logo)
-        finalarray.push({'company_logo':company_logo})
-        });
-    });
-    console.log(formData)
+    // var company_logo = ''
+    // var formData= new FormData()
+    // $(document).ready(function () {
+	// $('#company_logo').change(function () {
+    //     console.log(this.files.name);
+    //     company_logo = this.files[0].name
+    //     formData.append('company_logo',this.files)
+    //     alert(company_logo)
+    //     finalarray.push({'company_logo':company_logo})
+    //     });
+    // });
+    // console.log(formData)
     var company_logo = $('#company_logo').val();
     if (company_logo == '' || company_logo == null){
         alert('Company logo cannot be empty')
@@ -2028,8 +2032,18 @@ function forgotPassword(){
         data:JSON.stringify(providerSigninarray),
         csrfmiddlewaretoken: "{{ csrf_token }}"
     },
+    beforeSend: function(){
+        $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+    },
     success: function(data){
-        console.log('inside success case')
+        $('.body').html('')
+        console.log('inside success case',data,data['number'])
+        var number = data['number']
+        $(document).ready(function(data) {
+        $('#providersignin4').modal('show');
+        var logged_in_number = document.getElementById('provider_logged_in_number')
+        logged_in_number.innerHTML = number
+        });
     },
     error: function(data) {
     console.log('inside login error case')
@@ -2042,9 +2056,9 @@ function forgotPassword(){
                                 <span aria-hidden="true">&times;</span>
                             </button>
                        </div>`;
-           $('#providersignin4').modal('hide');
+        //    $('#providersignin4').modal('hide');
            $(document).ready(function() {
-           $('#providersignin').modal('toggle');
+           $('#providersignin').modal('show');
            });
     },
     })
