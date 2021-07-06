@@ -1019,8 +1019,7 @@
                             <input type="hidden" value="" name="data1" id="data1">
                             <div class="btnsBottom">
                                 <div class="modBt">
-                                    <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
-                                       data-target="#providersignup2" data-dismiss="modal">Back</a>
+                                    <a href="javascript:void(0)" class="Button-violet-alt"  data-dismiss="modal">Back</a>
                                     <button onclick="finalProviderSignup()" class="Button bg-violet" type="button">Sign
                                         Up
                                     </button>
@@ -1267,8 +1266,7 @@
                                 <div class="modBt">
                                     <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
                                        data-target="#providersignin" data-dismiss="modal">Back</a>
-                                    <button data-toggle="modal" data-target="#providersignin6"
-                                            data-dismiss="modal" class="Button bg-violet"
+                                    <button data-dismiss="modal" class="Button bg-violet"
                                             onclick="provideForgotPassword()">Send
                                     </button>
                                 </div>
@@ -1867,7 +1865,7 @@ function forgotPassword(){
         return false;
 
     }
-    // finalarray.push({'company_logo':company_logo})
+    finalarray.push({'company_logo':company_logo})
     var company_name = $('#company_name').val();
     if (company_name == '' || company_name == null){
         alert('Company Name cannot be empty')
@@ -1953,10 +1951,10 @@ function forgotPassword(){
             csrfmiddlewaretoken: "{{ csrf_token }}"
         },
         success: function(data){
-            $(document).ready(function() {
+            // $(document).ready(function() {
             $('#providersignup4').modal('hide');
-            $('#providersignup').modal('hide');
-            });
+            // $('#providersignup').modal('hide');
+            // });
             $('#providersignin').modal('show');
             console.log('inside success case')
         },
@@ -1971,9 +1969,9 @@ function forgotPassword(){
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                         </div>`;
-            $('#providersignin').modal('hide');
+            $('#providersignup4').modal('hide');
             $(document).ready(function() {
-            $('#providersignup').modal('toggle');
+            $('#providersignup').modal('show');
             });
     },
     })
@@ -2046,6 +2044,7 @@ function forgotPassword(){
         });
     },
     error: function(data) {
+    $('.body').html('')
     console.log('inside login error case')
     data = data.responseJSON.message;
     console.log('message-->',data)
@@ -2099,10 +2098,17 @@ function forgotPassword(){
             data:JSON.stringify(providerForgotEmail),
             csrfmiddlewaretoken: "{{ csrf_token }}"
             },
+        beforeSend: function(){
+            $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+        },
         success: function(data){
+            $('.body').html('')
             console.log('inside success case')
+            $('#providersignin6').modal('show');
+
         },
         error: function(data) {
+        $('.body').html('')
         console.log('inside login error case')
         data = data.responseJSON.message;
         console.log('message-->',data)
@@ -2113,9 +2119,9 @@ function forgotPassword(){
                                 <span aria-hidden="true">&times;</span>
                             </button>
                        </div>`;
-           $('#providersignin6').modal('hide');
+        //    $('#providersignin6').modal('hide');
            $(document).ready(function() {
-           $('#providersignin5').modal('toggle');
+           $('#providersignin5').modal('show');
            });
         },
         })

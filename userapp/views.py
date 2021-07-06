@@ -488,6 +488,12 @@ class ServiceProviderSignup(View):
         for d in data2:
             final_data.update(d)
         print(final_data)
+        organization_type = None
+        if final_data.get('organization_type'):
+            organization_type = final_data.get('organization_type')
+        else:
+            organization_type = ''
+
         try:
             user = User.objects.get(email=final_data['email'])
             if user:
@@ -505,11 +511,11 @@ class ServiceProviderSignup(View):
             ServiceProvider.objects.create(
                 user=user,
                 organization=final_data['organization'],
-                organization_type=final_data['organization_type'],
+                organization_type=organization_type,
                 mobile_number=final_data['mobile_number'],
                 email=final_data['email'],
                 password=final_data['password'],
-                company_logo=final_data['company_logo'],
+                company_logo=final_data.get('company_logo'),
                 company_name=final_data['company_name'],
                 contact_persons_first_name=final_data['contact_persons_first_name'],
                 contact_persons_last_name=final_data['contact_persons_last_name'],
