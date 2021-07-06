@@ -3050,9 +3050,9 @@ tr:first-child>td>.fc-day-grid-event {
         color: white !important;
     }
 
-    td.fc-past span{
-        display: none !important;
-    }
+        /* td.fc-past span{
+            display: none !important;
+        } */
 
     .singledate .fc-day-top.fc-today{ 
         background-color: #fff  !important;
@@ -3068,4 +3068,18 @@ tr:first-child>td>.fc-day-grid-event {
 .fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active,
 .fc-timeGridWeek-button,.fc-timeGridDay-button{
     display: none !important;
+}
+
+
+
+
+.multidate .fc-day-top.fc-today {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.fc-day-top.fc-today.active,
+.fc-day-top.fc-future.active {
+    background: var(--darkSky) !important;
+    color: #fff !important;
 }

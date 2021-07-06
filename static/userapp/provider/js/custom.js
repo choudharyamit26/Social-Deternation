@@ -230,7 +230,7 @@ $(document).on('click', '.radio-label.single', function () {
   $('.calender').addClass('singledate');
 });
 $(document).on('click', '.radio-label.multiple', function () {
-  $('td.fc-day-top').removeClass('fc-today'),
+  $('td.fc-day-top').removeClass('active'),
     $('.calender').removeClass('singledate');
   $('.calender').addClass('multidate');
 });
@@ -238,21 +238,26 @@ $(document).on('click', '.radio-label.multiple', function () {
 $(document).on('click', '.singledate td.fc-future', function () {
     $('.singledate td.fc-day-top').removeClass('active'),
     $(this).addClass('active');
-    var x = $(this).find('span').text();
-    var y = $(this).parents('#calendar1').find('h2').text();
-    if (x !== null || x !== '') {
-      $('.popnext').removeAttr("disabled");
+    if ($(this).hasClass('fc-other-month')){
+      alert('Please go to next month to create slot in next month')
+    }else{
+      var x = $(this).find('span').text();
+      var y = $(this).parents('#calendar1').find('h2').text();
+      if (x !== null || x !== '') {
+        $('.popnext').removeAttr("disabled");
+      }
+    var d = document.getElementById('slot_date')
+    d.innerHTML = `Selected Date : <span class="dated">${x + ' ' + y} </span>`
+  
+    var e = document.getElementById('slot_timing')
+    e.innerHTML = `<span class="dated">${x + ' ' + y} </span>`
+  
+    var current_selected_date = x + ' ' + y
+    sessionStorage.setItem('singleSelectDate', current_selected_date)
+    // alert('Current selected date',current_selected_date)
+    console.log(sessionStorage.getItem('singleSelectDate'))
     }
-  var d = document.getElementById('slot_date')
-  d.innerHTML = `Selected Date : <span class="dated">${x + ' ' + y} </span>`
-
-  var e = document.getElementById('slot_timing')
-  e.innerHTML = `<span class="dated">${x + ' ' + y} </span>`
-
-  var current_selected_date = x + ' ' + y
-  sessionStorage.setItem('singleSelectDate', current_selected_date)
-  // alert('Current selected date',current_selected_date)
-  console.log(sessionStorage.getItem('singleSelectDate'))
+    
 });
 
 $(document).on('click', '.singledate td.fc-today', function () {
@@ -263,10 +268,6 @@ $(document).on('click', '.singledate td.fc-today', function () {
   if (x !== null || x !== '') {
     $('.popnext').removeAttr("disabled");
   }
-
-
-
-
 var d = document.getElementById('slot_date')
 d.innerHTML = `Selected Date : <span class="dated">${x + ' ' + y} </span>`
 
@@ -279,9 +280,49 @@ sessionStorage.setItem('singleSelectDate', current_selected_date)
 console.log(sessionStorage.getItem('singleSelectDate'))
 });
 var datesArr = []
-$(document).on('click', '.multidate td.fc-day-top', function () {
+$(document).on('click', '.multidate td.fc-future', function () {
   // $('.multiple td.fc-day-top').removeClass('fc-today'),
-  $(this).addClass('fc-today');
+  $(this).addClass('active');
+  var x = $(this).find('span').text();
+  var y = $(this).parents('#calendar1').find('h2').text();
+  if ($(this).hasClass('fc-other-month')){
+    alert('Please go to next month to create slot in next month')
+  }
+  else{
+    var d = x + ' ' + y
+    if (x !== null || x !== '') {
+      $('.popnext').removeAttr("disabled");
+    }
+  
+    if (datesArr.includes(d)) {
+      var index = datesArr.indexOf(d);
+      datesArr.splice(index, 1);
+    } 
+    else {
+      datesArr.push(x + ' ' + y);
+    }
+    // alert(datesArr)
+    sessionStorage.setItem('multiSelectDate', datesArr)
+  }
+
+  // alert(x + ' ' + y);
+});
+
+
+$(document).on('click', '.multidate td.fc-future.fc-other-month', function () {
+  // $('.multiple td.fc-day-top').removeClass('fc-today'),
+  $(this).addClass('active');
+  var x = $(this).find('span').text();
+  var y = $(this).parents('#calendar1').find('h2').text();
+  var d = x + ' ' + y
+  // if (x !== null || x !== '') {
+  //   $('.popnext').removeAttr("disabled");
+  // }
+});
+
+$(document).on('click', '.multidate td.fc-today', function () {
+  // $('.multiple td.fc-day-top').removeClass('fc-today'),
+  $(this).addClass('active');
   var x = $(this).find('span').text();
   var y = $(this).parents('#calendar1').find('h2').text();
   var d = x + ' ' + y

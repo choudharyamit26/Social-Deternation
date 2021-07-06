@@ -26,6 +26,7 @@ from django.views.generic import ListView, View, TemplateView, FormView
 # from .filters import OrganizationFilter
 from .forms import AdminLoginForm
 from .models import User, Organization, SubscriptionPlan, SubscriptionStatus
+from userapp.models import Survivor, ServiceProvider, Assault
 
 user = get_user_model()
 
@@ -490,9 +491,16 @@ class SuperAdminLogin(View):
 
 
 class SuperAdminDashboard(LoginRequiredMixin, ListView):
-    model = User
+    model = Survivor
     template_name = "superadmin/new/dashboard.html"
     login_url = "adminpanel:superadmin"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['survivors'] = User.objects.filter(is_survivor=True).count()
+        context['service_providers'] = ServiceProvider.objects.all().count()
+        context['assaults'] = Assault.objects.all().count()
+        return context
 
 
 class CustomerManagementView(LoginRequiredMixin, ListView):

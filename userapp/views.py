@@ -335,10 +335,10 @@ class SurvivorProfileView(View):
 
 class ServiceProviderProfile(View):
     model = ServiceProvider
-    template_name = 'userapp/myprofile.html'
+    template_name = 'userapp/service-provider-profile.html'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'userapp/myprofile.html')
+        return render(self.request, 'userapp/service-provider-profile.html')
 
 
 class SurvivorLogout(View):

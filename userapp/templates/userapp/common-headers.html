@@ -801,7 +801,7 @@
                             <div class="formByMail active">
                                 <div class="form-group">
                                     <input type="text" class="form-control formControl" name="mobile_number"
-                                           placeholder="Contact Person’s Mobile*" id="provider_mobile_number" required>
+                                           placeholder="Contact Person’s Mobile Number*" id="provider_mobile_number" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control formControl" name="email"
@@ -850,7 +850,7 @@
                                                                             class="darkSky d-inline-block"
                                                                             data-toggle="modal"
                                                                             data-target="#providersignin"
-                                                                            data-dismiss="modal">Sign In</a></p>
+                                                                            data-dismiss="modal" style="display: block !important;">Sign In</a></p>
                         </div>
                     </div>
                 </div>
@@ -941,12 +941,12 @@
                                     <div class="dropzone-wrapper">
                                         <div class="dropzone-desc">
                                             <img src="{% static 'userapp/imgs/insert-photo.webp' %}" alt="insert-photo"
-                                                 class="img-fluid">
+                                                 class="img-fluid" >
                                             <p>Company Logo
                                                 <span>Drop your image here or <span class="darkSky d-inline-block"> Browse</span></span>
                                             </p>
                                         </div>
-                                        <input type="file" name="company_logo" class="dropzone" id="company_logo">
+                                        <input type="file" name="company_logo" class="dropzone" id="company_logo" >
                                     </div>
                                 </div>
                             </div>
@@ -1150,7 +1150,7 @@
                                                                               class="darkSky d-inline-block"
                                                                               data-toggle="modal"
                                                                               data-target="#providersignup"
-                                                                              data-dismiss="modal">Sign Up</a></p>
+                                                                              data-dismiss="modal" style="display:block !important">Sign Up</a></p>
 
                             </div>
                         </form>
@@ -1834,17 +1834,36 @@ function forgotPassword(){
 
 </script>
 <script>
+    $(document).ready(function () {
+	$('#company_logo').change(function () {
+       console.log(this.files);
+    });
+});
+</script>
+<script>
     function finalProviderSignup(){
     finalarray = []
     // var data1 = document.getElementById('data1')
     // data1.value = sessionStorage.getItem("providersignup1values")
+    var company_logo = ''
+    var formData= new FormData()
+    $(document).ready(function () {
+	$('#company_logo').change(function () {
+        console.log(this.files.name);
+        company_logo = this.files[0].name
+        formData.append('company_logo',this.files)
+        alert(company_logo)
+        finalarray.push({'company_logo':company_logo})
+        });
+    });
+    console.log(formData)
     var company_logo = $('#company_logo').val();
     if (company_logo == '' || company_logo == null){
-        alert('Company log cannot be empty')
+        alert('Company logo cannot be empty')
         return false;
 
     }
-    finalarray.push({'company_logo':company_logo})
+    // finalarray.push({'company_logo':company_logo})
     var company_name = $('#company_name').val();
     if (company_name == '' || company_name == null){
         alert('Company Name cannot be empty')

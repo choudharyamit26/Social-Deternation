@@ -1,0 +1,289 @@
+{% extends 'userapp/provider-base.html' %}
+{% load static %}
+{% block body %}
+<section class="recordFills" style="background-image: url('./imgs/bg2.png');">
+    <div class="container">
+        <div class="">
+            <div class="recordsfil">
+                <h2 class="pb-5">Please fill the following details.</h2>
+
+                <div class="recordAccordian">
+
+                    <div class="patientAccordian profileAccord">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapseOne">
+                                    <h4 class="panel-title darkSky">Personal Details</h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse  in show">
+                                    <div class="panel-body">
+                                        <form action="" method="POST" enctype="multipart/form-data">
+                                            <div class="img_upload">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="preview-zone hidden">
+                                                                <div class="box box-solid">
+                                                                    <div class="box-header with-border">
+                                                                        <div><b>Preview</b></div>
+                                                                        <div class="box-tools pull-right">
+                                                                            <button type="button"
+                                                                                    class="btn btn-danger btn-xs remove-preview">
+                                                                                <i class="fa fa-times"></i> Reset This
+                                                                                Image
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-body"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="dropzone-wrapper">
+                                                                <div class="dropzone-desc">
+                                                                    <img src="{% static 'userapp/imgs/insert-photo.webp' %}" alt="insert-photo"
+                                                                         class="img-fluid">
+                                                                    <p>Company Logo
+                                                                        <span>Drop your image here or <span
+                                                                                class="darkSky d-inline-block"> Browse</span></span>
+                                                                    </p>
+                                                                </div>
+                                                                <input type="file" name="img_logo" class="dropzone">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="beforee" style="background:#fff">
+                                                        <input type="text" class="form-control formControl"
+                                                               placeholder="Company/Business Name*">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Contact Person’s First Name*">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Contact Person’s Last Name*">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="contact Person’s Mobile No.">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Company Street Address 1">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Company Street Address 2">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="before">
+                                                    <select name="year" id="year"
+                                                            class="form-control transparent formControl">
+                                                        <option value="o">Select Country*</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="before">
+                                                    <select name="year" id="year"
+                                                            class="form-control transparent formControl">
+                                                        <option value="o">Select State*</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="before">
+                                                    <select name="year" id="year"
+                                                            class="form-control transparent formControl">
+                                                        <option value="o">Select City*</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Zip/Postal Code*">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapseTwo">
+                                    <h4 class="panel-title darkSky">Service Details</h4>
+
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h2 class="pb-4">Select your further assistance type</h2>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="remember form-group">
+                                                    <div class="CheckBox homo2">
+                                                        <input type="checkbox" id="check">
+                                                        <span class="Check"><span class="rem">Legal Assistance­­</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="remember form-group">
+                                                    <div class="CheckBox homo2">
+                                                        <input type="checkbox" id="check">
+                                                        <span class="Check"><span
+                                                                class="rem">Therapeutical Help­­</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="remember form-group">
+                                                    <div class="CheckBox homo2">
+                                                        <input type="checkbox" id="check">
+                                                        <span class="Check"><span
+                                                                class="rem">Counselling­­</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="checkVerified pt-5">
+                                            <h3 class="colorlight">
+                                                <img src="{% static 'userapp/imgs/check-circle.webp' %}" alt="crossImg" class="img-fluid">
+                                                Your Account is verified.
+                                            </h3>
+                                            <h3><a href="javaScript:void(0)" class="darkSky">https://developers.veriff.com/#getting-started-with-veriff</a>
+                                            </h3>
+                                            <h3><a href="javaScript:void(0)" class="violet regulary"
+                                                   style="text-decoration: underline;font-family: 'Montserrat-Medium';">Click
+                                                here to update your documents</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#collapseThree">
+                                    <h4 class="panel-title darkSky">Bank Details</h4>
+
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse in show">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="before">
+                                                        <select name="year" id="year"
+                                                                class="form-control transparent formControl">
+                                                            <option value="o">Bank Name</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="before">
+                                                        <select name="year" id="year"
+                                                                class="form-control transparent formControl">
+                                                            <option value="o">Bank Location</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Account Holder Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Sort Code">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Account Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="BIC Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control formControl"
+                                                           placeholder="Zip/Postal Code">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center pt-4">
+                            <a href="javaScript:void(0)" data-toggle="modal" data-target="#signin7"
+                               class="Button bg-violet">update</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+<div class="modalBox">
+    <div class="modal" id="signin7">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><img src="imgs/close.svg"
+                                                                                  alt="close"></button>
+                    <div class="CommonContent paddingSucces">
+
+                        <img src="imgs/verified.webp" alt="verificaion" class="img-fluid">
+                        <h2 class="normalFont darkSky">Your Verification is Successfully Done.</h2>
+                        <div class="btnsBottom">
+                            <div class="modBt">
+                                <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Done</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
