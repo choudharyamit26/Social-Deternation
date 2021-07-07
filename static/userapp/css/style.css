@@ -2715,3 +2715,12 @@ z-index: 1 !important;
 .signUpby ul.active{
     display: none !important;
 }
+
+.resendotp{
+    font-size: 12px;
+    color: var(--colorPurple);
+    font-family: var(--medium);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

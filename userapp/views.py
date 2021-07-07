@@ -1,8 +1,8 @@
 import json
 from datetime import datetime
 from decimal import Decimal
-
 from adminpanel.views import User
+from adminpanel.models import Otp
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
 from django.contrib import messages
 from django.contrib.auth import login, logout, get_user_model
@@ -12,10 +12,14 @@ from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse, redirect
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic import View, ListView, CreateView
+import datetime
+import pytz
 
+utc = pytz.UTC
 from .forms import SurvivorSignUpForm, AssaultForm, AssaultQuestionAnswerForm, SurvivorLoginByEmailForm
 from .models import Survivor, Assault, AssaultQuestionAnswer, Faq, Contact, Notification, ServiceProvider, \
     ServiceProviderSlots
@@ -941,3 +945,63 @@ class GetServiceProviderAvailability(LoginRequiredMixin, View):
             data = {
                 'name': service_provider.contact_persons_first_name + ' ' + service_provider.contact_persons_last_name}
             return JsonResponse({'message': 'No slots available', 'data': data}, status=400)
+
+
+class SendOtp(View):
+    model = Otp
+
+    def get(self, request, *args, **kwargs):
+        number = self.request.GET.get('number')
+        try:
+            send_otp(+91, number)
+            return JsonResponse({'message': 'Otp Sent successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'message': 'Something went wrong'}, status=400)
+
+
+class VerifyOtp(View):
+    model = Otp
+
+    def get(self, request, *args, **kwargs):
+        otp = self.request.GET.get('otp')
+        try:
+            otp_obj = Otp.objects.filter(otp=int(otp)).first()
+            if int(otp) == otp_obj.otp and datetime.datetime.now() > otp_obj.created_at.replace(
+                    tzinfo=None) + datetime.timedelta(
+                seconds=60):
+                return JsonResponse({'message': 'Otp has expired'}, status=400)
+            elif int(otp) == otp_obj.otp:
+                otp_obj = Otp.objects.filter(otp=int(otp))
+                for i in otp_obj:
+                    i.delete()
+                return JsonResponse({'message': 'Otp verified successfully'}, status=200)
+            else:
+                return JsonResponse({'message': 'Incorrect otp'}, status=400)
+        except Exception as e:
+            print(e)
+            return JsonResponse({'message': 'Otp not found'}, status=400)
+
+
+class ResendOtp(View):
+    model = Otp
+
+    def get(self, request, *args, **kwargs):
+        number = self.request.GET.get('number')
+        try:
+            user_obj = User.objects.get(phone_number=number)
+            send_otp(user_obj.country_code, number)
+            return JsonResponse({'message': 'Otp sent successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'message': str(e)}, status=400)
+
+
+class ProviderResendOtp(View):
+    model = Otp
+
+    def get(self, request, *args, **kwargs):
+        number = self.request.GET.get('number')
+        try:
+            send_otp(+91, number)
+            return JsonResponse({'message': 'Otp Sent successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'message': 'Something went wrong'}, status=400)

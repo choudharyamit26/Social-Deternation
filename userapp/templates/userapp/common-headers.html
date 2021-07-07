@@ -284,12 +284,12 @@
                                 alt="edit"></span></p>
                     </div>
                     <div class="form-group otp" style="padding-top: 25px;">
-                        <input type="text" class="form-control" maxlength="1">
-                        <input type="text" class="form-control">
-                        <input type="text" class="form-control">
-                        <input type="text" class="form-control">
-                        <input type="text" class="form-control">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" maxlength="1" id="first_digit_otp">
+                        <input type="text" class="form-control" id="second_digit_otp">
+                        <input type="text" class="form-control" id="third_digit_otp">
+                        <input type="text" class="form-control" id="fourth_digit_otp">
+                        <input type="text" class="form-control" id="fifth_digit_otp">
+                        <input type="text" class="form-control" id="sixth_digit_otp">
                     </div>
                     <div class="resend">
                         <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
@@ -880,28 +880,28 @@
                         </ul>
 
                         <div class="modCo">
-                            <p>One-Time Password has been sent to 9023232323<span><img
+                            <p>One-Time Password has been sent to <b id="provider_signup_mobile_number"></b><span data-target="#providersignup" data-toggle="modal" data-dismiss="modal">
+                                <img
                                     src="{% static 'userapp/imgs/edit.svg' %}"
                                     alt="edit"></span></p>
                         </div>
                         <div class="form-group otp" style="padding-top: 25px;">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
+                            <input type="number" id = "codeBox7" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(7, event)" onfocus="onFocusEvent(7)">
+                            <input type="number" id = "codeBox8" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(8, event)" onfocus="onFocusEvent(8)">
+                            <input type="number" id = "codeBox9" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(9, event)" onfocus="onFocusEvent(9)">
+                            <input type="number" id = "codeBox10" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(10, event)" onfocus="onFocusEvent(10)">
+                            <input type="number" id = "codeBox11" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(11, event)" onfocus="onFocusEvent(11)">
+                            <input type="number" id = "codeBox12" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(12, event)" onfocus="onFocusEvent(12)">
                         </div>
                         <div class="resend">
                             <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
-                            <a href="javascript:void(0)">Resend OTP</a>
+                            <button onclick="providerSignUpreSendOtp()" class="resendotp">Resend OTP</button>
                         </div>
                         <div class="btnsBottom">
                             <div class="modBt">
                                 <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
                                    data-target="#providersignup" data-dismiss="modal">Back</a>
-                                <a href="javascript:void(0)" class="Button bg-violet" data-toggle="modal"
-                                   data-target="#providersignup4" data-dismiss="modal">Next</a>
+                                <a href="javascript:void(0)" class="Button bg-violet" onclick="providerSignUpVerifyOtp()">Next</a>
                             </div>
                             <p class="regulary">Already have an account? <a href="javascript:void(0)"
                                                                             class="darkSky d-inline-block"
@@ -1135,9 +1135,7 @@
                                     <div class="btnsBottom">
                                         <div class="modBt">
 
-                                            <button onclick="providerSignIn()" class="Button bg-violet"
-                                                    data-toggle="modal"
-                                                    data-target="#providersignin4" data-dismiss="modal">Next
+                                            <button onclick="providerSignIn()" class="Button bg-violet" data-dismiss="modal">Next
                                             </button>
                                         </div>
                                     </div>
@@ -1175,24 +1173,31 @@
                         <div class="modCo">
                             <p>One-Time Password has been sent to <span id=provider_logged_in_number></span></p>
                         </div>
+                        <div id="errorotp">
+
+                        </div>
                         <div class="form-group otp" style="padding-top: 25px;">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
-                            <input type="text" class="form-control" maxlength="1">
+                            <input id="codeBox1" class="form-control" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                            <input id="codeBox2" class="form-control" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                            <input id="codeBox3" class="form-control" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                            <input id="codeBox4" class="form-control"type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                            <input id="codeBox5" class="form-control"type="number" maxlength="1" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                            <input id="codeBox6" class="form-control"type="number" maxlength="1" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+
+                            
                         </div>
                         <div class="resend">
                             <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
-                            <a href="javascript:void(0)">Resend OTP</a>
+                            <button type="button" class="resendotp" onclick="reSendOtp()">Resend OTP</button>
                         </div>
 
                         <div class="btnsBottom">
                             <div class="modBt">
                                 <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
                                    data-target="#providersignin" data-dismiss="modal">Back</a>
-                                <a href="{% url 'userapp:provider-requests' %}" class="Button bg-violet">Next</a>
+                                <!-- <a href="{% url 'userapp:provider-requests' %}" class="Button bg-violet">Next</a> -->
+                                <button href="#" onclick="VerifyOtp()" class="Button bg-violet" type="button">Next</a>
+
                             </div>
                             <p class="regulary">Don't have an account? <a href="javascript:void(0)"
                                                                           class="darkSky d-inline-block"
@@ -1543,56 +1548,14 @@
         csrfmiddlewaretoken: "{{ csrf_token }}"
         },
         success: function(data){
-<!--           console.log('inside success',data)-->
-<!--           $('#signup2').modal('hide');-->
-<!--           $(document).ready(function() {-->
-<!--           $('#signup3').modal('toggle');-->
-<!--           });-->
+          console.log('inside success',data)
         },
         error: function(data) {
-<!--           data = data.responseJSON.message;-->
-<!--           error = document.getElementById('error')-->
            console.log('error',error)
-<!--           error.innerHTML = `<div class="alert alert-warning alert-dismissible" role="alert">-->
-<!--                            ${data}-->
-<!--                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
-<!--                                <span aria-hidden="true">&times;</span>-->
-<!--                            </button>-->
-<!--                        </div>`;-->
-<!--           $(document).ready(function() {-->
-<!--           $('#signup2').modal('toggle');-->
-<!--           });-->
         }
     });
     event.preventDefault();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 <script>
     function loginByEmail(){
@@ -1642,7 +1605,7 @@
     function loginByMobile(){
     var loginmobile = $('#loginmobile').val();
     var loginpssword2 = $('#loginpssword2').val();
-    var url = {% url "userapp:survivor-login-by-mobile" %}
+    var url = '{% url "userapp:survivor-login-by-mobile" %}'
     $.ajax({
     url : url,
     method: 'POST',
@@ -1765,9 +1728,22 @@ function forgotPassword(){
             }
             else if (mobile_number === '' && g_mobile_number !== ''){
                 providerValues.push({'mobile_number':g_mobile_number})
+                sessionStorage.setItem('provider_mobile_number',mobile_number)
+                sessionStorage.setItem('providerOtpNumber',mobile_number)
+
             }
             else{
                 providerValues.push({'mobile_number':mobile_number})
+                sessionStorage.setItem('provider_mobile_number',mobile_number)
+                // sessionStorage.setItem('providerOtpNumber',mobile_number)
+
+                // var x = $('#provider_signup_mobile_number')
+                // if (sessionStorage.getItem('provider_mobile_number')){
+                //     x.innerHTML = sessionStorage.getItem('provider_mobile_number')
+                //     // alert(x.val())
+                //     console.log(sessionStorage.getItem('provider_mobile_number'))
+                // }
+
             }
             var email = $('#provider_email').val();
             var g_email = $('#g_email').val();
@@ -1798,8 +1774,15 @@ function forgotPassword(){
             console.log('data---',providerValues)
             sessionStorage.setItem("providersignup1values",JSON.stringify(providerValues))
             if (vaild){
+                // if (sessionStorage.getItem('provider_mobile_number')){
+                // var x = $('#provider_signup_mobile_number')
+                // x.innerHTML = sessionStorage.getItem('provider_mobile_number')
+                    // alert(x)
+                // console.log(sessionStorage.getItem('provider_mobile_number'))
+                // }
                 $('#providersignup').modal('hide');
-                $('#providersignup2').modal('show');
+                // $('#providersignup2').modal('show');
+                sendOtp()
             }
             
 
@@ -2037,6 +2020,7 @@ function forgotPassword(){
         $('.body').html('')
         console.log('inside success case',data,data['number'])
         var number = data['number']
+        sessionStorage.setItem('otpNumber',number)
         $(document).ready(function(data) {
         $('#providersignin4').modal('show');
         var logged_in_number = document.getElementById('provider_logged_in_number')
@@ -2134,6 +2118,228 @@ function forgotPassword(){
 
 
 
+</script>
+<script>
+    function sendOtp() {
+        var url = "{% url 'userapp:send-otp' %}"
+        var number = sessionStorage.getItem('provider_mobile_number')
+        $.ajax({
+            url:url + "?number="+number,
+            method:'GET',
+            beforeSend: function () {
+                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                
+            },
+            success: function() {
+                $('.body').html('')
+                $(document).ready(function() {
+                    $('#providersignup2').modal('show');
+                    // var x = $('#provider_signup_mobile_number')
+                    var x = document.getElementById('provider_signup_mobile_number')
+                    x.innerHTML = number
+                });
+                // $('#providersignup2').modal('show');
+
+            },
+            error: function () {
+                $('.body').html('')
+                alert('Something went wrong')
+                $('#providersignup').modal('show');
+
+            }
+        })
+
+    }
+</script>
+<script>
+    function providerSignUpVerifyOtp() {
+        // var provider_sign_in_otp = provider_sign_in_first_otp_digit.toString() + provider_sign_in_second_otp_digit.toString()+provider_sign_in_third_otp_digit.toString()+provider_sign_in_fourth_otp_digit.toString()+provider_sign_in_fifth_otp_digit.toString()+provider_sign_in_sixth_otp_digit.toString()
+        var provider_sign_in_first_otp_digit = $('#codeBox7').val();
+        var provider_sign_in_second_otp_digit = $('#codeBox8').val();
+        var provider_sign_in_third_otp_digit = $('#codeBox9').val();
+        var provider_sign_in_fourth_otp_digit = $('#codeBox10').val();
+        var provider_sign_in_fifth_otp_digit = $('#codeBox11').val();
+        var provider_sign_in_sixth_otp_digit = $('#codeBox12').val();
+        console.log('clicked verify otp',provider_sign_in_first_otp_digit,provider_sign_in_second_otp_digit,provider_sign_in_third_otp_digit,provider_sign_in_fourth_otp_digit,provider_sign_in_fifth_otp_digit,provider_sign_in_sixth_otp_digit)
+        var provider_sign_up_otp = provider_sign_in_first_otp_digit.toString() + provider_sign_in_second_otp_digit.toString()+provider_sign_in_third_otp_digit.toString()+provider_sign_in_fourth_otp_digit.toString()+provider_sign_in_fifth_otp_digit.toString()+provider_sign_in_sixth_otp_digit.toString()
+        var url = "{% url 'userapp:verify-otp' %}"
+        $.ajax({
+            url : url + '?otp=' + provider_sign_up_otp,
+            method : 'GET',
+            // csrfmiddlewaretoken: "{{ csrf_token }}",
+            data:{
+                otp:provider_sign_up_otp
+            },
+            success:function(){
+                $('#providersignup2').modal('hide');
+                $(document).ready(function() {
+                $('#providersignup4').modal('show');
+            });
+            },
+            error: function(data){
+                // console.log('inside login error case',data['message'])
+                data = data.responseJSON.message;
+                console.log('message-->',data)
+                error = document.getElementById('errorotp')
+                error.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                                    ${data}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>`;
+                //    $('#providersignin6').modal('hide');
+           $(document).ready(function() {
+                $('#providersignup2').modal('show');
+            });
+            }
+        })
+    }
+</script>
+<script>
+    function VerifyOtp() {
+        var provider_sign_in_first_otp_digit = $('#codeBox1').val();
+        var provider_sign_in_second_otp_digit = $('#codeBox2').val();
+        var provider_sign_in_third_otp_digit = $('#codeBox3').val();
+        var provider_sign_in_fourth_otp_digit = $('#codeBox4').val();
+        var provider_sign_in_fifth_otp_digit = $('#codeBox5').val();
+        var provider_sign_in_sixth_otp_digit = $('#codeBox6').val();
+        console.log('clicked verify otp',provider_sign_in_first_otp_digit,provider_sign_in_second_otp_digit,provider_sign_in_third_otp_digit,provider_sign_in_fourth_otp_digit,provider_sign_in_fifth_otp_digit,provider_sign_in_sixth_otp_digit)
+        var provider_sign_in_otp = provider_sign_in_first_otp_digit.toString()+provider_sign_in_second_otp_digit.toString()+provider_sign_in_third_otp_digit.toString()+provider_sign_in_fourth_otp_digit.toString()+provider_sign_in_fifth_otp_digit.toString()+provider_sign_in_sixth_otp_digit.toString()
+        var url = "{% url 'userapp:verify-otp' %}"
+        $.ajax({
+            url : url + '?otp=' + provider_sign_in_otp,
+            method : 'GET',
+            // csrfmiddlewaretoken: "{{ csrf_token }}",
+            data:{
+                otp:provider_sign_in_otp
+            },
+            success:function(){
+                window.location.href = "{% url 'userapp:provider-requests' %}"
+            },
+            error: function(data){
+                // console.log('inside login error case',data['message'])
+                data = data.responseJSON.message;
+                console.log('message-->',data)
+                error = document.getElementById('errorotp')
+                error.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                                    ${data}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>`;
+                //    $('#providersignin6').modal('hide');
+           $(document).ready(function() {
+                $('#providersignin4').modal('show');
+            });
+            }
+        })
+    }
+</script>
+<script>
+    function reSendOtp(){
+        var url = "{% url 'userapp:resend-otp' %}"
+        // alert('inside reSendOtp')
+        $.ajax({
+            url:url +"?number="+sessionStorage.getItem('otpNumber'),
+            method:'GET',
+            beforeSend: function(){
+                $('#providersignin4').modal('hide');
+                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+            },
+            success: function(){
+                // alert('inside success')
+                $('.body').html('')
+                var provider_sign_in_first_otp_digit = $('#codeBox1')
+                provider_sign_in_first_otp_digit.innerHTML = ''
+                var provider_sign_in_second_otp_digit = $('#codeBox2')
+                provider_sign_in_second_otp_digit.innerHTML = ''
+                var provider_sign_in_third_otp_digit = $('#codeBox3')
+                provider_sign_in_third_otp_digit.innerHTML = ''
+                var provider_sign_in_fourth_otp_digit = $('#codeBox4')
+                provider_sign_in_fourth_otp_digit.innerHTML = ''
+                var provider_sign_in_fifth_otp_digit = $('#codeBox5')
+                provider_sign_in_fifth_otp_digit.innerHTML = ''
+                var provider_sign_in_sixth_otp_digit = $('#codeBox6')
+                provider_sign_in_sixth_otp_digit.innerHTML = ''
+                $(document).ready(function() {
+                        $('#providersignin4').modal('show');
+                    });
+                var logged_in_number = document.getElementById('provider_logged_in_number')
+                logged_in_number.innerHTML = sessionStorage.getItem('otpNumber')
+            },
+            error:function(){
+                console.log('inside error')
+            }
+        })
+    }
+</script>
+<script>
+    function providerSignUpreSendOtp(){
+        var url = "{% url 'userapp:provider-resend-otp' %}"
+        // alert('inside reSendOtp')
+        $.ajax({
+            url:url +"?number="+sessionStorage.getItem('provider_mobile_number'),
+            method:'GET',
+            beforeSend: function(){
+                $('#providersignin4').modal('hide');
+                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+            },
+            success: function(){
+                // alert('inside success')
+                $('.body').html('')
+                var provider_sign_in_first_otp_digit = $('#codeBox7')
+                provider_sign_in_first_otp_digit.innerHTML = ''
+                var provider_sign_in_second_otp_digit = $('#codeBox8')
+                provider_sign_in_second_otp_digit.innerHTML = ''
+                var provider_sign_in_third_otp_digit = $('#codeBox9')
+                provider_sign_in_third_otp_digit.innerHTML = ''
+                var provider_sign_in_fourth_otp_digit = $('#codeBox10')
+                provider_sign_in_fourth_otp_digit.innerHTML = ''
+                var provider_sign_in_fifth_otp_digit = $('#codeBox11')
+                provider_sign_in_fifth_otp_digit.innerHTML = ''
+                var provider_sign_in_sixth_otp_digit = $('#codeBox12')
+                provider_sign_in_sixth_otp_digit.innerHTML = ''
+                $('#providersignup4').modal('hide');
+                $(document).ready(function() {
+                        $('#providersignup2').modal('show');
+                    });
+                var logged_in_number = document.getElementById('provider_signup_mobile_number')
+                logged_in_number.innerHTML = sessionStorage.getItem('provider_mobile_number')
+            },
+            error:function(){
+                console.log('inside error')
+            }
+        })
+    }
+</script>
+<script>
+    function getCodeBoxElement(index) {
+        return document.getElementById('codeBox' + index);
+}
+function onKeyUpEvent(index, event) {
+  const eventCode = event.which || event.keyCode;
+  if (getCodeBoxElement(index).value.length === 1) {
+	 if (index !== 6) {
+		getCodeBoxElement(index+ 1).focus();
+	 } else {
+		getCodeBoxElement(index).blur();
+		// Submit code
+		console.log('submit code ');
+	 }
+  }
+  if (eventCode === 8 && index !== 1) {
+	 getCodeBoxElement(index - 1).focus();
+  }
+}
+function onFocusEvent(index) {
+  for (item = 1; item < index; item++) {
+	 const currentElement = getCodeBoxElement(item);
+	 if (!currentElement.value) {
+		  currentElement.focus();
+		  break;
+	 }
+  }
+}
 </script>
 </body>
 </html>

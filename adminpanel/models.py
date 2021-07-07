@@ -83,6 +83,12 @@ class SubscriptionStatus(models.Model):
     active = models.BooleanField(default=False)
 
 
+class Otp(models.Model):
+    number = models.BigIntegerField()
+    otp = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 @receiver(post_save, sender=Organization)
 def user_coins(sender, instance, created, **kwargs):
     if created:
