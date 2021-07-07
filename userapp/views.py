@@ -979,7 +979,7 @@ class VerifyOtp(View):
                 return JsonResponse({'message': 'Incorrect otp'}, status=400)
         except Exception as e:
             print(e)
-            return JsonResponse({'message': 'Otp not found'}, status=400)
+            return JsonResponse({'message': 'Invalid otp'}, status=400)
 
 
 class ResendOtp(View):
