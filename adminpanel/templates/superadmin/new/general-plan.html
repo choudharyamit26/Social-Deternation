@@ -239,7 +239,7 @@
                                                 </label>
                                                 {% endif %}
 
-                                                <a class="Green" href="JavaScript:Void(0);" >
+                                                <a class="Green" href="JavaScript:Void(0);">
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -258,6 +258,50 @@
                                         </td>
                                     </tr>
                                     {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {% elif subs_obj|length == 0 %}
+                        <div class="TableList">
+                            <div class="CountExportArea">
+                                <a href="{% url 'adminpanel:export-subscription-data' %}" class="Export"><i
+                                        class="fa fa-file-excel-o"></i> Export
+                                </a>
+                                <label>
+                                    Show per page
+                                    <select>
+                                        <option>5</option>
+                                        <option>10</option>
+                                        <option>20</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="CustomerTable">
+                                <table style="width: 125%;">
+                                    <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Category</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>No of users allowed</th>
+                                        <th>Created On</th>
+                                        <th>Price (£)</th>
+                                        <th>Subscription Status</th>
+                                        <th>action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+
+                                        <td colspan="9">
+                                            <span style="text-align:center;color:#000;"><h1>Sorry, no data found</h1> </span>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -604,7 +648,7 @@
                                                 </label>
                                                 {% endif %}
 
-                                                <a class="Green" href="JavaScript:Void(0);" >
+                                                <a class="Green" href="JavaScript:Void(0);">
                                                     <i class="fa fa-pencil-square-o"
                                                        onclick="editValue({{object.id}})"></i>
                                                 </a>
@@ -824,7 +868,8 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>Plan Types</label>
-                                <select class="form-control" required name="plan_type" id="edit_plan_type" value="{{plan_obj.plan_type}}">
+                                <select class="form-control" required name="plan_type" id="edit_plan_type"
+                                        value="{{plan_obj.plan_type}}">
                                     <option> Select Subscription Plan Type</option>
                                     <option value="Brasi_Platform">Brasi Platform</option>
                                     <option value="General_Subscription_Plans">General Subscription Plans</option>
@@ -1051,6 +1096,7 @@
 
 
 
+
 </script>
 <script>
     function editValue(id){
@@ -1152,6 +1198,7 @@
 
 
 
+
 </script>
 <script>
     function inActiveSubscription(id){
@@ -1201,6 +1248,7 @@
 
 
 
+
 </script>
 <script>
     function getValue(id){
@@ -1240,6 +1288,7 @@
         },
         });
     }
+
 
 
 

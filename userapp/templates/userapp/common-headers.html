@@ -2104,6 +2104,7 @@ function forgotPassword(){
         success: function(data){
             $('.body').html('')
             console.log('inside success case')
+            $('#providersignin5').modal('hide');
             $('#providersignin6').modal('show');
 
         },
