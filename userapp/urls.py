@@ -9,7 +9,7 @@ from .views import HomeView, SurvivorSignUp, Dashboard, RecordAnAssault, RecordA
     SurvivorFaq, SurvivorContact, SurvivorNotificationDetail, SurvivorAvailability, SurvivorSubscriptionView, \
     ProviderForgotPassword, ProviderPasswordResetConfirmView, CreateSlotView, GuestAssaultUser, \
     GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView, SurvivorCalendarEvent, ServiceProviderProfile, \
-    GetServiceProviderAvailability, VerifyOtp, ResendOtp, SendOtp, ProviderResendOtp
+    GetServiceProviderAvailability, VerifyOtp, ResendOtp, SendOtp, ProviderResendOtp, SurvivorResendOtp
 
 app_name = 'userapp'
 
@@ -65,6 +65,7 @@ urlpatterns = [
                   path('send-otp/', SendOtp.as_view(), name='send-otp'),
                   path('verify-otp/', VerifyOtp.as_view(), name='verify-otp'),
                   path('resend-otp/', ResendOtp.as_view(), name='resend-otp'),
+                  path('survivor-resend-otp/', SurvivorResendOtp.as_view(), name='survivor-resend-otp'),
                   path('provider-resend-otp/', ProviderResendOtp.as_view(), name='provider-resend-otp'),
                   path('get-service-provider-availability/', GetServiceProviderAvailability.as_view(),
                        name='get-service-provider-availability'),

@@ -84,7 +84,8 @@ class SubscriptionStatus(models.Model):
 
 
 class Otp(models.Model):
-    number = models.BigIntegerField()
+    number = models.BigIntegerField(null=True, blank=True)
+    email = models.CharField(default='', max_length=100, null=True, blank=True)
     otp = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 

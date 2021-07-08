@@ -1,0 +1,13 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans %}You're receiving this email because you requested sign in at {{ site_name }}.{% endblocktrans %}
+
+{% block reset_link %}
+Your one time otp is {{otp}}. This otp is valid for 60 seconds.
+{% endblock %}
+
+
+{% trans "Thank you for using our site!" %}
+
+{% blocktrans %}Team Brasi {% endblocktrans %}
+
+{% endautoescape %}

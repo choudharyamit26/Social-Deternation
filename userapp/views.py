@@ -1,6 +1,8 @@
 import json
 from datetime import datetime
 from decimal import Decimal
+from random import randint
+
 from adminpanel.views import User
 from adminpanel.models import Otp
 from django.conf.global_settings import DEFAULT_FROM_EMAIL
@@ -118,7 +120,9 @@ class CompleteSurvivorSignUp(View):
         survivor = Survivor.objects.create(
             user=user,
             client_code=self.request.POST['client_code'],
-            consent=self.request.POST['check'].title()
+            mobile_number=self.request.POST['mobile_number'],
+            consent=self.request.POST['check'].title(),
+
         )
         return HttpResponse('Survivor created')
 
@@ -133,6 +137,7 @@ class SurvivorLoginByEmailView(View):
 
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
+        email_template = "userapp/otp_email.html"
         # return redirect("userapp:survivor-dashboard")
         if self.request.POST.get('loginemail') == '':
             return JsonResponse({'message': 'Please enter a valid email'}, status=400)
@@ -141,16 +146,35 @@ class SurvivorLoginByEmailView(View):
 
         try:
             user = User.objects.get(email=self.request.POST['loginemail'])
+            print(user.check_password(self.request.POST['loginpssword']))
             if user.check_password(self.request.POST['loginpssword']):
                 if user.is_survivor:
                     login(self.request, user)
                     # return HttpResponse('Log in successfull')
-                    return redirect("userapp:survivor-dashboard")
+                    email = user.email
+                    otp = randint(100000, 999999)
+                    print(otp)
+                    Otp.objects.create(email=email, otp=otp)
+                    user = user
+                    site_name = "Brasi"
+                    context = {
+                        "email": email,
+                        "user": user,
+                        "otp": otp,
+                        "site_name": site_name
+                    }
+                    subject = "One Time Password"
+                    email_body = render_to_string(email_template, context)
+                    send_mail(subject, email_body, DEFAULT_FROM_EMAIL,
+                              [email], fail_silently=False)
+                    # return redirect("userapp:survivor-dashboard")
+                    return JsonResponse({'email': email}, status=200)
                 else:
                     return JsonResponse({'message': 'Unauthorised access'}, status=400)
             else:
                 return JsonResponse({'message': 'Incorrect Password'}, status=400)
-        except:
+        except Exception as e:
+            print(e)
             return JsonResponse({'message': 'User with this email does not exists'}, status=400)
 
         # return HttpResponse("User Exists")
@@ -990,6 +1014,36 @@ class ResendOtp(View):
         try:
             user_obj = User.objects.get(phone_number=number)
             send_otp(user_obj.country_code, number)
+            return JsonResponse({'message': 'Otp sent successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'message': str(e)}, status=400)
+
+
+class SurvivorResendOtp(View):
+    model = Otp
+
+    def get(self, request, *args, **kwargs):
+        email = self.request.GET.get('email')
+        email_template = "userapp/otp_email.html"
+        try:
+            user_obj = User.objects.get(email=email)
+            # send_otp(user_obj.country_code, number)
+            otp = randint(100000, 999999)
+            print(otp)
+            Otp.objects.create(email=email, otp=otp)
+            user = user_obj
+            site_name = "Brasi"
+            context = {
+                "email": email,
+                "user": user,
+                "otp": otp,
+                "site_name": site_name
+            }
+            subject = "One Time Password"
+            email_body = render_to_string(email_template, context)
+            send_mail(subject, email_body, DEFAULT_FROM_EMAIL,
+                      [email], fail_silently=False)
+
             return JsonResponse({'message': 'Otp sent successfully'}, status=200)
         except Exception as e:
             return JsonResponse({'message': str(e)}, status=400)
