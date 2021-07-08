@@ -61,6 +61,7 @@ class SurvivorSignUp(CreateView):
     template_name = 'userapp/index.html'
 
     def post(self, request, *args, **kwargs):
+        print(self.request.POST)
         user_email = User.objects.filter(email=self.request.POST['email']).count()
         user_phone = User.objects.filter(phone_number=self.request.POST['mobile_number']).count()
         if user_email > 0 and user_phone > 0:
@@ -74,35 +75,14 @@ class SurvivorSignUp(CreateView):
                 status=400)
         elif user_phone > 0:
             return JsonResponse(
-                {'message': 'This phone number is already in use. Please supply a different phone number address.'},
+                {'message': 'This phone number is already in use. Please supply a different phone number.'},
                 status=400)
         else:
-            # print(self.request.POST)
-            # user = User.objects.create(
-            #     email=self.request.POST['email'],
-            #     phone_number=self.request.POST['mobile_number'],
-            #     is_survivor=True
-            # )
-            # user.set_password(self.request.POST['password'])
-            # user.save()
-            # survivor = Survivor.objects.create(
-            #     user=user,
-            #     client_code=self.request.POST['client_code'],
-            #     consent=self.request.POST['check']
-            # )
-            return HttpResponse('Survivor created')
-
-    # def form_valid(self, form):
-    #     try:
-    #         user = User.objects.get(email=form.cleaned_data['email'])
-    #         print(user)
-    #         return HttpResponseRedirect(self.request.path_info, status=403)
-    #     except Exception as e:
-    #         print('Exception', e)
-    #         return HttpResponseRedirect(self.request.path_info, status=200)
-    #
-    # def form_invalid(self, form):
-    #     return self.render_to_response(self.get_context_data(form=form))
+            try:
+                send_otp(+91, self.request.POST['mobile_number'])
+                return HttpResponse('Survivor created')
+            except Exception as e:
+                return JsonResponse({'message': 'Something went wrong'}, status=400)
 
 
 class CompleteSurvivorSignUp(View):
@@ -111,24 +91,35 @@ class CompleteSurvivorSignUp(View):
 
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
-        user = User.objects.create(
-            email=self.request.POST['email'],
-            phone_number=self.request.POST['mobile_number'],
-            first_name=self.request.POST['first_name'],
-            last_name=self.request.POST['last_name'],
-            nick_name=self.request.POST['nick_name'],
-            is_survivor=True
-        )
-        user.set_password(self.request.POST['password'])
-        user.save()
-        survivor = Survivor.objects.create(
-            user=user,
-            client_code=self.request.POST['client_code'],
-            mobile_number=self.request.POST['mobile_number'],
-            consent=self.request.POST['check'].title(),
+        try:
+            user = User.objects.get(avi=self.request.POST['avi'])
+            print(user)
+            return JsonResponse(
+                {'message': 'User with this screen name already exists. Please supply different screen name'},
+                status=400)
+        except Exception as e:
+            print(e)
+            user = User.objects.create(
+                email=self.request.POST['email'],
+                phone_number=self.request.POST['mobile_number'],
+                first_name=self.request.POST['first_name'],
+                last_name=self.request.POST['last_name'],
+                nick_name=self.request.POST['nick_name'],
+                avi=self.request.POST['avi'],
+                is_survivor=True
+            )
+            user.set_password(self.request.POST['password'])
+            user.save()
+            survivor = Survivor.objects.create(
+                user=user,
+                client_code=self.request.POST['client_code'],
+                mobile_number=self.request.POST['mobile_number'],
+                consent=self.request.POST['check'].title(),
 
-        )
-        return HttpResponse('Survivor created')
+            )
+            return JsonResponse(
+                {'message': 'Survivor created'},
+                status=200)
 
 
 class SurvivorLoginByEmailView(View):

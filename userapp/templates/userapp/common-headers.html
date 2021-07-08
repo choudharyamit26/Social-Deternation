@@ -246,8 +246,7 @@
                                         data-target="#signup" data-dismiss="modal">Back
                                 </button>
                                 <button type="button" href="javascript:void(0)" class="btns modalbtns disabl"
-                                        onclick="signup()" data-toggle="modal"
-                                        data-target="#" data-dismiss="modal" aria-disabled="true" disabled="disabled">
+                                        onclick="signup()" disabled="disabled">
                                     Next
                                 </button>
                             </div>
@@ -279,29 +278,32 @@
                         <li><img src="{% static 'userapp/imgs/user1.svg' %}" alt="user"></li>
                     </ul>
                     <div class="modCo">
-                        <p>One-Time Password has been sent to 9899559955 <span data-toggle="modal" data-target="#signup2" data-dismiss="modal"><img
+                        <p>One-Time Password has been sent to <b><h6 id="survivorsignupotpmodal"></h6></b> <span data-toggle="modal" data-target="#signup2" data-dismiss="modal"><img
                                 src="{% static 'userapp/imgs/edit.svg' %}"
                                 alt="edit"></span></p>
                     </div>
+                <div id="survivorsignuperrorotp">
+
+                </div>
                     <div class="form-group otp" style="padding-top: 25px;">
-                        <input type="text" class="form-control" maxlength="1" id="first_digit_otp">
-                        <input type="text" class="form-control" id="second_digit_otp">
-                        <input type="text" class="form-control" id="third_digit_otp">
-                        <input type="text" class="form-control" id="fourth_digit_otp">
-                        <input type="text" class="form-control" id="fifth_digit_otp">
-                        <input type="text" class="form-control" id="sixth_digit_otp">
+                        <input type="text" class="form-control" id = "codeBox25" maxlength="1" onkeyup="onKeyUpEvent(25, event)" onfocus="onFocusEvent(25)">
+                        <input type="text" class="form-control" id = "codeBox26" maxlength="1" onkeyup="onKeyUpEvent(26, event)" onfocus="onFocusEvent(26)">
+                        <input type="text" class="form-control" id = "codeBox27" maxlength="1" onkeyup="onKeyUpEvent(27, event)" onfocus="onFocusEvent(27)">
+                        <input type="text" class="form-control" id = "codeBox28" maxlength="1" onkeyup="onKeyUpEvent(28, event)" onfocus="onFocusEvent(28)">
+                        <input type="text" class="form-control" id = "codeBox29" maxlength="1" onkeyup="onKeyUpEvent(29, event)" onfocus="onFocusEvent(29)">
+                        <input type="text" class="form-control" id = "codeBox30" maxlength="1" onkeyup="onKeyUpEvent(30, event)" onfocus="onFocusEvent(30)">
                     </div>
+               
                     <div class="resend">
                         <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
-                        <a href="javascript:void(0)">Resend OTP</a>
+                        <button class="resendotp" onclick="survivoSignupUpReSendOtpMobile()">Resend OTP</button>
                     </div>
 
                     <div class="btnsBottom">
                         <div class="modBt">
                             <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-toggle="modal"
                                data-target="#signup2" data-dismiss="modal">Back</a>
-                            <a href="javascript:void(0)" data-toggle="modal" data-target="#signup4"
-                               data-dismiss="modal" class="btns modalbtns">Next</a>
+                            <button onclick="survivorSignupVerfiyOtp()"  class="btns modalbtns">Next</button>
                         </div>
                         <p class="head">Already have an account? <a href="javascript:void(0)" class="colorBlue"
                                                                     data-toggle="modal" data-target="#signin"
@@ -329,9 +331,13 @@
                         <li class="active"><img src="{% static 'userapp/imgs/user.svg' %}" alt="user"></li>
                         <li class="active"><img src="{% static 'userapp/imgs/user.svg' %}" alt="user"></li>
                     </ul>
+
                     <div class="step3">
                         <p style="font-family: var(--bold);">If you wish to use your record here as evidence, <br>
                             please provide the following optional details</p>
+                    </div>
+                    <div id="survivorfinalsignuperror">
+
                     </div>
                     <div class="form-group" style="padding-top: 25px;">
                         <input type="text" class="form-control formControl" placeholder="First Name*" name="first_name"
@@ -346,15 +352,15 @@
                                id="nick_name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control formControl" placeholder="AVI/Screen Name">
+                        <input type="text" class="form-control formControl" placeholder="AVI/Screen Name" name="avi" id="avi">
                     </div>
 
                     <div class="btnsBottom">
                         <div class="modBt">
                             <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-toggle="modal"
                                data-target="#signup3" data-dismiss="modal">Back</a>
-                            <button class="btns modalbtns" data-toggle="modal" onclick="completeSignup()"
-                                    data-target="#signin" data-dismiss="modal">Sign Up
+                            <button class="btns modalbtns"  onclick="completeSignup()"
+                                    >Sign Up
                             </button>
                         </div>
                         <p class="head">Already have an account? <a href="javascript:void(0)" class="colorBlue"
@@ -1458,6 +1464,7 @@
     function signup() {
     var client_code = $('#client_code').val();
     var mobile_number = $('#mobile_number').val();
+    sessionStorage.setItem('survivorSignupOtp',mobile_number)
     var email = $('#email').val();
     var password = $('#password').val();
     var check = document.getElementById("check").checked;
@@ -1475,14 +1482,23 @@
         password : password,
         csrfmiddlewaretoken: "{{ csrf_token }}"
         },
+        beforeSend : function(){
+            $('#signup2').modal('hide');
+            $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+            
+        },
         success: function(data){
+            $('.body').html('')
            console.log('inside success',data)
            $('#signup2').modal('hide');
            $(document).ready(function() {
-           $('#signup3').modal('toggle');
+            $('#signup3').modal('show');
+            var number = document.getElementById('survivorsignupotpmodal')
+            number.innerHTML = mobile_number
            });
         },
         error: function(data) {
+            $('.body').html('')
            data = data.responseJSON.message;
            error = document.getElementById('error')
            console.log('error',error)
@@ -1493,7 +1509,7 @@
                             </button>
                         </div>`;
            $(document).ready(function() {
-           $('#signup2').modal('toggle');
+           $('#signup2').modal('show');
            });
         }
     });
@@ -1533,6 +1549,7 @@
     var first_name = $('#first_name').val();
     var last_name = $('#last_name').val();
     var nick_name = $('#nick_name').val();
+    var avi = $('#avi').val();
     var client_code = $('#client_code').val();
     var mobile_number = $('#mobile_number').val();
     var email = $('#email').val();
@@ -1553,13 +1570,30 @@
         first_name:first_name,
         last_name:last_name,
         nick_name:nick_name,
+        avi:avi,
         csrfmiddlewaretoken: "{{ csrf_token }}"
         },
         success: function(data){
           console.log('inside success',data)
+          $('#signup4').modal('hide');
+          $(document).ready(function() {
+            $('#signin').modal('show');
+           });
+
         },
         error: function(data) {
-           console.log('error',error)
+           console.log('error',data['message'],data.responseJSON.message)
+           var data = data.responseJSON.message
+           $(document).ready(function() {
+            $('#signup4').modal('show');
+            var error = document.getElementById('survivorfinalsignuperror')
+            error.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                            ${data}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                       </div>`;
+           });
         }
     });
     event.preventDefault();
@@ -2327,7 +2361,6 @@ function forgotPassword(){
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                             </div>`;
-                //    $('#providersignin6').modal('hide');
            $(document).ready(function() {
                 $('#signin3').modal('show');
             });
@@ -2337,6 +2370,65 @@ function forgotPassword(){
 </script>
 
 
+
+
+<script>
+    function survivorSignupVerfiyOtp() {
+        var provider_sign_in_first_otp_digit = $('#codeBox25').val();
+        var provider_sign_in_second_otp_digit = $('#codeBox26').val();
+        var provider_sign_in_third_otp_digit = $('#codeBox27').val();
+        var provider_sign_in_fourth_otp_digit = $('#codeBox28').val();
+        var provider_sign_in_fifth_otp_digit = $('#codeBox29').val();
+        var provider_sign_in_sixth_otp_digit = $('#codeBox30').val();
+        console.log('clicked verify otp',provider_sign_in_first_otp_digit,provider_sign_in_second_otp_digit,provider_sign_in_third_otp_digit,provider_sign_in_fourth_otp_digit,provider_sign_in_fifth_otp_digit,provider_sign_in_sixth_otp_digit)
+        var survivor_sign_in_otp = provider_sign_in_first_otp_digit.toString()+provider_sign_in_second_otp_digit.toString()+provider_sign_in_third_otp_digit.toString()+provider_sign_in_fourth_otp_digit.toString()+provider_sign_in_fifth_otp_digit.toString()+provider_sign_in_sixth_otp_digit.toString()
+        var url = "{% url 'userapp:verify-otp' %}"
+        $.ajax({
+            url : url + '?otp=' + survivor_sign_in_otp,
+            method : 'GET',
+            // csrfmiddlewaretoken: "{{ csrf_token }}",
+            data:{
+                otp:survivor_sign_in_otp
+            },
+            beforeSend : function(){
+                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+            },
+            success:function(){
+                $('.body').html('')
+                $('#signup3').modal('hide');
+                $(document).ready(function() {
+                    $('#signup4').modal('show');
+                });
+            },
+            error: function(data){
+                // console.log('inside login error case',data['message'])
+                $('.body').html('')
+                data = data.responseJSON.message;
+                console.log('message-->',data)
+                signuperror = document.getElementById('signuperrorotp')
+                signinerrorotp = document.getElementById('survivorsignuperrorotp')
+                signuperror.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                                    ${data}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>`;
+
+                signinerrorotp.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                                    ${data}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>`;
+                            // signup3
+            
+           $(document).ready(function() {
+                $('#signup3').modal('show');
+            });
+            }
+        })
+    }
+</script>
 <script>
     function survivorVerifyOtpmobile() {
         var provider_sign_in_first_otp_digit = $('#codeBox19').val();
@@ -2510,6 +2602,48 @@ function forgotPassword(){
         })
     }
 </script>
+
+
+
+<script>
+    function survivoSignupUpReSendOtpMobile(){
+        var url = "{% url 'userapp:provider-resend-otp' %}"
+        // alert('inside reSendOtp')
+        $.ajax({
+            url:url +"?number="+sessionStorage.getItem('survivorSignupOtp'),
+            method:'GET',
+            beforeSend: function(){
+                $('#signup3').modal('hide');
+                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+            },
+            success: function(){
+                // alert('inside success')
+                $('.body').html('')
+                var provider_sign_in_first_otp_digit = $('#codeBox25')
+                provider_sign_in_first_otp_digit.innerHTML = ''
+                var provider_sign_in_second_otp_digit = $('#codeBox26')
+                provider_sign_in_second_otp_digit.innerHTML = ''
+                var provider_sign_in_third_otp_digit = $('#codeBox27')
+                provider_sign_in_third_otp_digit.innerHTML = ''
+                var provider_sign_in_fourth_otp_digit = $('#codeBox28')
+                provider_sign_in_fourth_otp_digit.innerHTML = ''
+                var provider_sign_in_fifth_otp_digit = $('#codeBox29')
+                provider_sign_in_fifth_otp_digit.innerHTML = ''
+                var provider_sign_in_sixth_otp_digit = $('#codeBox30')
+                provider_sign_in_sixth_otp_digit.innerHTML = ''
+                $(document).ready(function() {
+                        $('#signup3').modal('show');
+                    });
+                var logged_in_number = document.getElementById('survivorsigninmobile')
+                logged_in_number.innerHTML = sessionStorage.getItem('survivorotpmobile')
+            },
+            error:function(){
+                console.log('inside error')
+            }
+        })
+    }
+</script>
+
 
 <script>
     function providerSignUpreSendOtp(){

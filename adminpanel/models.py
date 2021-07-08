@@ -34,6 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(default='', max_length=100)
     last_name = models.CharField(default='', max_length=100)
     nick_name = models.CharField(default='', max_length=100)
+    avi = models.CharField(default='', max_length=100)
     email = models.CharField(default='', max_length=255, unique=True)
     country_code = models.CharField(default='+91', max_length=10)
     phone_number = models.CharField(default='', max_length=18)
