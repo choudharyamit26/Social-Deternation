@@ -886,12 +886,12 @@
                                     alt="edit"></span></p>
                         </div>
                         <div class="form-group otp" style="padding-top: 25px;">
-                            <input type="number" id = "codeBox7" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(7, event)" onfocus="onFocusEvent(7)">
-                            <input type="number" id = "codeBox8" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(8, event)" onfocus="onFocusEvent(8)">
-                            <input type="number" id = "codeBox9" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(9, event)" onfocus="onFocusEvent(9)">
-                            <input type="number" id = "codeBox10" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(10, event)" onfocus="onFocusEvent(10)">
-                            <input type="number" id = "codeBox11" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(11, event)" onfocus="onFocusEvent(11)">
-                            <input type="number" id = "codeBox12" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(12, event)" onfocus="onFocusEvent(12)">
+                            <input type="text" id = "codeBox7" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(7, event)" onfocus="onFocusEvent(7)">
+                            <input type="text" id = "codeBox8" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(8, event)" onfocus="onFocusEvent(8)">
+                            <input type="text" id = "codeBox9" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(9, event)" onfocus="onFocusEvent(9)">
+                            <input type="text" id = "codeBox10" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(10, event)" onfocus="onFocusEvent(10)">
+                            <input type="text" id = "codeBox11" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(11, event)" onfocus="onFocusEvent(11)">
+                            <input type="text" id = "codeBox12" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(12, event)" onfocus="onFocusEvent(12)">
                         </div>
                         <div class="resend">
                             <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
@@ -1177,14 +1177,12 @@
 
                         </div>
                         <div class="form-group otp" style="padding-top: 25px;">
-                            <input id="codeBox1" class="form-control" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
-                            <input id="codeBox2" class="form-control" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
-                            <input id="codeBox3" class="form-control" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
-                            <input id="codeBox4" class="form-control"type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
-                            <input id="codeBox5" class="form-control"type="number" maxlength="1" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
-                            <input id="codeBox6" class="form-control"type="number" maxlength="1" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
-
-                            
+                            <input id="codeBox1" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                            <input id="codeBox2" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                            <input id="codeBox3" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                            <input id="codeBox4" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                            <input id="codeBox5" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                            <input id="codeBox6" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
                         </div>
                         <div class="resend">
                             <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
@@ -2312,6 +2310,34 @@ function forgotPassword(){
         })
     }
 </script>
+
+
+<!-- <script>
+    $('.digit-group').find('input').each(function() {
+	$(this).attr('maxlength', 1);
+	$(this).on('keyup', function(e) {
+		var parent = $($(this).parent());
+		
+		if(e.keyCode === 8 || e.keyCode === 37) {
+			var prev = parent.find('input#' + $(this).data('previous'));
+			
+			if(prev.length) {
+				$(prev).select();
+			}
+		} else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 39) {
+			var next = parent.find('input#' + $(this).data('next'));
+			
+			if(next.length) {
+				$(next).select();
+			} else {
+				if(parent.data('autosubmit')) {
+					parent.submit();
+				}
+			}
+		}
+	});
+});
+</script> -->
 <script>
     function getCodeBoxElement(index) {
         return document.getElementById('codeBox' + index);
