@@ -21,11 +21,15 @@ from django.views.generic import View, ListView, CreateView
 import datetime
 import pytz
 
+import telnyx
+
 utc = pytz.UTC
 from .forms import SurvivorSignUpForm, AssaultForm, AssaultQuestionAnswerForm, SurvivorLoginByEmailForm
 from .models import Survivor, Assault, AssaultQuestionAnswer, Faq, Contact, Notification, ServiceProvider, \
     ServiceProviderSlots
 from adminpanel.utils import send_otp
+
+telnyx.api_key = "KEY0179F531AF3BB551376A921623235245_E9m3eGUsHbns1W0Juxoi24"
 
 user = get_user_model()
 
@@ -196,12 +200,22 @@ class SurvivorLoginByMobileNumberView(View):
                 if user.is_survivor:
                     login(self.request, user)
                     # return HttpResponse('Log in successfull')
-                    return redirect("userapp:survivor-dashboard")
+                    # send_otp(user.country_code, user.phone_number)
+                    otp = randint(100000, 999999)
+                    Otp.objects.create(number=user.phone_number, otp=otp)
+                    telnyx.Message.create(
+                        from_="+15736058855",  # Your Telnyx number
+                        to='+' + str(int(user.country_code)) + str(user.phone_number),
+                        text=f'Your one time password from BRASI is {otp}. This otp is valid for next 60 seconds.'
+                    )
+                    return JsonResponse({'number': user.phone_number}, status=200)
+                    # return redirect("userapp:survivor-dashboard")
                 else:
                     return JsonResponse({'message': 'Unauthorised access'}, status=400)
             else:
                 return JsonResponse({'message': 'Incorrect Password'}, status=400)
-        except:
+        except Exception as e:
+            print(e)
             return JsonResponse({'message': 'User with this mobile number does not exists'}, status=400)
 
 
