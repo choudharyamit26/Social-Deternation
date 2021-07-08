@@ -878,7 +878,9 @@
                             <li class="active"><img src="{% static 'userapp/imgs/user.svg' %}" alt="user"></li>
                             <li><img src="{% static 'userapp/imgs/user1.svg' %}" alt="user"></li>
                         </ul>
+                        <div id="signuperrorotp">
 
+                        </div>
                         <div class="modCo">
                             <p>One-Time Password has been sent to <b id="provider_signup_mobile_number"></b><span data-target="#providersignup" data-toggle="modal" data-dismiss="modal">
                                 <img
@@ -1173,7 +1175,7 @@
                         <div class="modCo">
                             <p>One-Time Password has been sent to <span id=provider_logged_in_number></span></p>
                         </div>
-                        <div id="errorotp">
+                        <div id="signinerrorotp">
 
                         </div>
                         <div class="form-group otp" style="padding-top: 25px;">
@@ -2178,13 +2180,22 @@ function forgotPassword(){
                 // console.log('inside login error case',data['message'])
                 data = data.responseJSON.message;
                 console.log('message-->',data)
-                error = document.getElementById('errorotp')
-                error.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                signuperror = document.getElementById('signuperrorotp')
+                signinerrorotp = document.getElementById('signinerrorotp')
+                signuperror.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
                                     ${data}
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                             </div>`;
+
+                signinerrorotp.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                                    ${data}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>`;
+                
                 //    $('#providersignin6').modal('hide');
            $(document).ready(function() {
                 $('#providersignup2').modal('show');
@@ -2218,8 +2229,16 @@ function forgotPassword(){
                 // console.log('inside login error case',data['message'])
                 data = data.responseJSON.message;
                 console.log('message-->',data)
-                error = document.getElementById('errorotp')
-                error.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                signuperror = document.getElementById('signuperrorotp')
+                signinerrorotp = document.getElementById('signinerrorotp')
+                signuperror.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
+                                    ${data}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>`;
+
+                signinerrorotp.innerHTML = `<div class="alert alert-danger alert-dismissible" role="alert">
                                     ${data}
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -2279,7 +2298,14 @@ function forgotPassword(){
             url:url +"?number="+sessionStorage.getItem('provider_mobile_number'),
             method:'GET',
             beforeSend: function(){
-                $('#providersignin4').modal('hide');
+                $(document).ready(function() {
+                        $('#providersignup2').modal('hide');
+                        $('#providersignin4').modal('hide');
+
+                    });
+                // $('#providersignin4').modal('hide');
+                // $('#providersignin2').modal('hide');
+
                 $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
             },
             success: function(){
@@ -2312,32 +2338,6 @@ function forgotPassword(){
 </script>
 
 
-<!-- <script>
-    $('.digit-group').find('input').each(function() {
-	$(this).attr('maxlength', 1);
-	$(this).on('keyup', function(e) {
-		var parent = $($(this).parent());
-		
-		if(e.keyCode === 8 || e.keyCode === 37) {
-			var prev = parent.find('input#' + $(this).data('previous'));
-			
-			if(prev.length) {
-				$(prev).select();
-			}
-		} else if((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 65 && e.keyCode <= 90) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode === 39) {
-			var next = parent.find('input#' + $(this).data('next'));
-			
-			if(next.length) {
-				$(next).select();
-			} else {
-				if(parent.data('autosubmit')) {
-					parent.submit();
-				}
-			}
-		}
-	});
-});
-</script> -->
 <script>
     function getCodeBoxElement(index) {
         return document.getElementById('codeBox' + index);
