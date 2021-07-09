@@ -94,12 +94,16 @@ class CompleteSurvivorSignUp(View):
 
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
+        if self.request.POST['nick_name'] == '' or self.request.POST['first_name'] == '' or self.request.POST[
+            'last_name'] == '':
+            return JsonResponse({'message': 'One or more fields are empty'}, status=400)
         try:
-            user = User.objects.get(avi=self.request.POST['avi'])
-            print(user)
-            return JsonResponse(
-                {'message': 'User with this screen name already exists. Please supply different screen name'},
-                status=400)
+            if self.request.POST['avi'] != '' or self.request.POST['avi'] != None:
+                user = User.objects.get(avi=self.request.POST['avi'])
+                print(user)
+                return JsonResponse(
+                    {'message': 'User with this screen name already exists. Please supply different screen name'},
+                    status=400)
         except Exception as e:
             print(e)
             user = User.objects.create(
