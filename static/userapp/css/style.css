@@ -479,7 +479,7 @@ button.btns{
     padding: 15px 30px;
     border: none;
     white-space: nowrap;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 10px;
     cursor: pointer;
 }
 button.btns:focus{

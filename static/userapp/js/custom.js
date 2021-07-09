@@ -113,14 +113,14 @@ document.addEventListener("mousedown", function (event) {
   $('.notificationDet').slideUp();
 });
 
-$(document).on('click','.submitt',function(){
+// $(document).on('click','.submitt',function(){
   
 
-    setTimeout(function(){
-     $('#submitRecord').modal('hide');
- $('#submitRecord2').modal('show');  
-      }, 3000);
+//     setTimeout(function(){
+//      $('#submitRecord').modal('hide');
+//  $('#submitRecord2').modal('show');  
+//       }, 3000);
 
-});
+// });
 
 

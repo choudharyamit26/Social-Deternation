@@ -46,6 +46,8 @@ class Assault(models.Model):
     other_info_about_person_with_offender = models.CharField(default='', max_length=4000)
     evidence = models.CharField(default='', max_length=4000)
     allow_info_match = models.BooleanField(default=False)
+    sought_further_assistance = models.BooleanField(default=False)
+    type_of_assistance = models.CharField(default='', max_length=100, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 

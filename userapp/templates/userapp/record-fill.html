@@ -320,7 +320,7 @@
                 },
                 success: function (data) {
                     console.log('inside success', data)
-                    sessionStorage.removeItem('storedFormFieldValues')
+                    // sessionStorage.removeItem('storedFormFieldValues')
                     window.location.href = '{% url "userapp:record-assault-qa" %}'
 
                 },

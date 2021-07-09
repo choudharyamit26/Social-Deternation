@@ -371,8 +371,7 @@
                                         src="{% static 'userapp/imgs/info.svg' %}"
                                         alt="info"></a>
                                 <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Save</a>
-                                <button type="button" class="btns modalbtns submitt" data-toggle="modal"
-                                        data-target="#submitRecord" onclick="getFormValues()">Submit
+                                <button type="button" class="btns modalbtns submitt" onclick="getFormValues()">Submit
                                 </button>
                             </div>
                         </div>
@@ -405,79 +404,7 @@
             </div>
         </div>
     </div>
-    <!--    <div class="modal" id="submitRecord2">-->
-    <!--        <div class="modal-dialog">-->
-    <!--            <div class="modal-content">-->
-
-    <!--                <div class="modal-body" style="padding: 50px 25px;">-->
-
-    <!--                    <div class="recordSub">-->
-    <!--                        <div class="serhImg">-->
-    <!--                            <img src="{% static 'userapp/imgs/seach.svg' %}" alt="search">-->
-    <!--                        </div>-->
-    <!--                        <h2 class="head">3 records from our database match-->
-    <!--                            the offender information you provided</h2>-->
-    <!--                        <div class="table-responsive">-->
-    <!--                            <table class="table">-->
-
-    <!--                                <tbody>-->
-    <!--                                <tr>-->
-    <!--                                    <td><span class="bold">Name:</span></td>-->
-    <!--                                    <td>Varida</td>-->
-    <!--                                    <td><span class="bold">Incident description:</span></td>-->
-    <!--                                    <td>Blackmail his sister</td>-->
-    <!--                                </tr>-->
-
-    <!--                                <tr>-->
-    <!--                                    <td><span class="bold">Incident happened on:</span></td>-->
-    <!--                                    <td>2018</td>-->
-    <!--                                    <td><span class="bold">Skin Color</span></td>-->
-    <!--                                    <td>Dark</td>-->
-    <!--                                </tr>-->
-
-    <!--                                </tbody>-->
-    <!--                            </table>-->
-    <!--                        </div>-->
-    <!--                        <div class="recordQuestion">-->
-    <!--                            <h2 class="head">Do you require further support?</h2>-->
-    <!--                        </div>-->
-    <!--                        <div class="signUpby signUpbylegal">-->
-
-    <!--                            <ul class="nav nav-tabs">-->
-    <!--                                <li class=" first">-->
-
-    <!--                                    <div class="radio">-->
-    <!--                                        <input id="legal1" name="legal" type="radio">-->
-    <!--                                        <label for="legal1" class="radio-label">Legal Assistance</label>-->
-    <!--                                    </div>-->
-
-    <!--                                </li>-->
-    <!--                                <li class="second">-->
-    <!--                                    <div class="radio">-->
-    <!--                                        <input id="legal2" name="legal" type="radio">-->
-    <!--                                        <label for="legal2" class="radio-label">Therapeutical Help</label>-->
-    <!--                                    </div>-->
-    <!--                                </li>-->
-    <!--                                <li class="second">-->
-    <!--                                    <div class="radio">-->
-    <!--                                        <input id="legal3" name="legal" type="radio">-->
-    <!--                                        <label for="legal3" class="radio-label">Counselling</label>-->
-    <!--                                    </div>-->
-    <!--                                </li>-->
-
-    <!--                            </ul>-->
-    <!--                        </div>-->
-    <!--                        <div class="modBt">-->
-
-    <!--                            <a href="{% url 'userapp:service-provider'%}" class="btns modalbtns">OK</a>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-
+    
     <div class="modal" id="submitRecord2">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -490,29 +417,32 @@
                         <div class="serhImg">
                             <img src="{% static 'userapp/imgs/seach.svg' %}" alt="search">
                         </div>
-                        <h2 class="head">3 records from our database match
+                        <h2 class="head"><span id="count2"></span> records from our database match
                             the offender information you provided</h2>
 
-                        <p class="head name">Your record was match with this 3 person. <br>
-                            <a href="{% url 'userapp:survivor-dashboard' %}">Arushi</a>,<a
-                                    href="{% url 'userapp:survivor-dashboard' %}">Parul</a>,<a
-                                    href="{% url 'userapp:survivor-dashboard' %}">Twinkle</a></p>
+                        <p class="head name">Your record was match with these <b><span id="count"></span></b> person. <br>
+                            <div id="matchedpersons">
+                                <!-- <a href="{% url 'userapp:survivor-dashboard' %}">Arushi</a>,
+                                <a href="{% url 'userapp:survivor-dashboard' %}">Parul</a>,
+                                <a href="{% url 'userapp:survivor-dashboard' %}">Twinkle</a> -->
+                            </div>
+                        </p>
                         <div class="table-responsive">
                             <table class="table">
 
                                 <tbody>
                                 <tr>
                                     <td><span class="bold">Name:</span></td>
-                                    <td>Varida</td>
-                                    <td><span class="bold">Incident description:</span></td>
-                                    <td>Blackmail his sister</td>
+                                    <td><span  id="name"></span></td>
+                                    <td><span class="bold" >Incident description:</span></td>
+                                    <td><span id="incident_description"></span></td>
                                 </tr>
 
                                 <tr>
                                     <td><span class="bold">Incident happened on:</span></td>
-                                    <td>2018</td>
+                                    <td><span id="happened_on"></span></td>
                                     <td><span class="bold">Skin Color</span></td>
-                                    <td>Dark</td>
+                                    <td><span  id="skin_color"></span></td>
                                 </tr>
 
                                 </tbody>
@@ -527,20 +457,20 @@
                                 <li class=" first">
 
                                     <div class="radio">
-                                        <input id="legal1" name="legal" type="radio">
+                                        <input id="legal1" name="legal" type="radio" value="Legal Assistance">
                                         <label for="legal1" class="radio-label">Legal Assistance</label>
                                     </div>
 
                                 </li>
                                 <li class="second">
                                     <div class="radio">
-                                        <input id="legal2" name="legal" type="radio">
+                                        <input id="legal2" name="legal" type="radio" value="Therapeutical Help">
                                         <label for="legal2" class="radio-label">Therapeutical Help</label>
                                     </div>
                                 </li>
                                 <li class="second">
                                     <div class="radio">
-                                        <input id="legal3" name="legal" type="radio">
+                                        <input id="legal3" name="legal" type="radio" value="Counselling">
                                         <label for="legal3" class="radio-label">Counselling</label>
                                     </div>
                                 </li>
@@ -560,90 +490,275 @@
 </div>
 <script>
 function getFormValues(){
-var filledValues = []
-var year = $('#year').val();
-filledValues.push({'year':year})
+    var filledValues = []
+    var year = $('#year').val();
+    if(year=='' || year == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{
+        filledValues.push({'year':year})
+    }
 
-var time = $('#time').val();
-filledValues.push({'time':time})
+    var time = $('#time').val();
+    if(time=='' || time == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{
+        filledValues.push({'time':time})
+    }
 
-var date = $('#date').val();
-filledValues.push({'date':date})
+    var date = $('#date').val();
+    if(date=='' || date == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{
+        filledValues.push({'date':date})
+    }
 
-var anything_else_about_date = $('#anything_else_about_date').val();
-filledValues.push({'anything_else_about_date':anything_else_about_date})
+    var anything_else_about_date = $('#anything_else_about_date').val();
+    if(anything_else_about_date=='' || anything_else_about_date == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{
+        filledValues.push({'anything_else_about_date':anything_else_about_date})
+    }
 
-var where_it_happened = $('#where_it_happened').val();
-filledValues.push({'where_it_happened':where_it_happened})
+    var where_it_happened = $('#where_it_happened').val();
+    if(where_it_happened=='' || where_it_happened == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{
+        filledValues.push({'where_it_happened':where_it_happened})
+    }
 
-var other_info_about_location = $('#other_info_about_location').val();
-filledValues.push({'other_info_about_location':other_info_about_location})
+    var other_info_about_location = $('#other_info_about_location').val();
+    if(other_info_about_location=='' || other_info_about_location == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{
+        filledValues.push({'other_info_about_location':other_info_about_location})
 
-var anyone_see_hear = $('#anyone_see_hear').val();
-filledValues.push({'anyone_see_hear':anyone_see_hear})
+    }
 
-var tell_anyone = $('#tell_anyone').val();
-filledValues.push({'tell_anyone':tell_anyone})
+    var anyone_see_hear = $('#anyone_see_hear').val();
+    if(anyone_see_hear=='' || anyone_see_hear == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{
+        filledValues.push({'anyone_see_hear':anyone_see_hear})
+    }
 
-var after_before_incident = $('#after_before_incident').val();
-filledValues.push({'after_before_incident':after_before_incident})
+    var tell_anyone = $('#tell_anyone').val();
+    if(tell_anyone=='' || tell_anyone == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{    
+        filledValues.push({'tell_anyone':tell_anyone})
 
-var information_about_people_told = $('#information_about_people_told').val();
-filledValues.push({'information_about_people_told':information_about_people_told})
+    }
 
-var info_about_people_described_above = $('#info_about_people_described_above').val();
-filledValues.push({'info_about_people_described_above':info_about_people_described_above})
+    var after_before_incident = $('#after_before_incident').val();
+    if(after_before_incident=='' || after_before_incident == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{    
+        filledValues.push({'after_before_incident':after_before_incident})
+    }
 
-var offender_told_anyone = $('#offender_told_anyone').val();
-filledValues.push({'offender_told_anyone':offender_told_anyone})
+    var information_about_people_told = $('#information_about_people_told').val();
+    if(information_about_people_told=='' || information_about_people_told == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{        
+        filledValues.push({'information_about_people_told':information_about_people_told})
 
-var consent_details = $('#consent_details').val();
-filledValues.push({'consent_details':consent_details})
+    }
 
-var what_happened = $('#what_happened').val();
-filledValues.push({'what_happened':what_happened})
+    var info_about_people_described_above = $('#info_about_people_described_above').val();
+    if(info_about_people_described_above=='' || info_about_people_described_above == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{        
+        filledValues.push({'info_about_people_described_above':info_about_people_described_above})
+    }
 
-var number_of_offenders = $('#number_of_offenders').val();
-filledValues.push({'number_of_offenders':number_of_offenders})
+    var offender_told_anyone = $('#offender_told_anyone').val();
+    if(offender_told_anyone=='' || offender_told_anyone == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{      
+        filledValues.push({'offender_told_anyone':offender_told_anyone})
+    }
 
-var anyone_else_with_offender = $('#anyone_else_with_offender').val();
-filledValues.push({'anyone_else_with_offender':anyone_else_with_offender})
+    var consent_details = $('#consent_details').val();
+    if(consent_details=='' || consent_details == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{          
+        filledValues.push({'consent_details':consent_details})
 
-var name_of_person_with_offender = $('#name_of_person_with_offender').val();
-filledValues.push({'name_of_person_with_offender':name_of_person_with_offender})
+    }
 
-var info_about_person_with_offender = $('#info_about_person_with_offender').val();
-filledValues.push({'info_about_person_with_offender':info_about_person_with_offender})
-
-var other_info_about_person_with_offender = $('#other_info_about_person_with_offender').val();
-filledValues.push({'other_info_about_person_with_offender':other_info_about_person_with_offender})
-
-var evidence = $('#evidence').val();
-filledValues.push({'evidence':evidence})
-
-<!--var allow_info_match = $('#check').val();-->
-var allow_info_match = document.getElementById("check").checked;
-filledValues.push({'allow_info_match':allow_info_match})
-
-    var url = "{% url 'userapp:record-assault-qa' %}"
-    $.ajax({
-        url :url,
-        method : 'POST',
-        data:{
-        data: JSON.stringify(sessionStorage.getItem('storedFormFieldValues')),
-        data2: JSON.stringify(filledValues),
-        csrfmiddlewaretoken: "{{ csrf_token }}"
-        },
-        success: function(data){
-           console.log('inside success',data)
-
-        },
-        error: function(data) {
-            console.log('inside error case')
-        }
-    });
+    var what_happened = $('#what_happened').val();
+    if(what_happened=='' || what_happened == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{          
+        filledValues.push({'what_happened':what_happened})
 
 
+    }
+
+    var number_of_offenders = $('#number_of_offenders').val();
+    if(number_of_offenders=='' || number_of_offenders == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{          
+    filledValues.push({'number_of_offenders':number_of_offenders})
+
+
+    }
+
+    var anyone_else_with_offender = $('#anyone_else_with_offender').val();
+    if(anyone_else_with_offender=='' || anyone_else_with_offender == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{          
+        filledValues.push({'anyone_else_with_offender':anyone_else_with_offender})
+    }
+
+
+    var name_of_person_with_offender = $('#name_of_person_with_offender').val();
+    if(name_of_person_with_offender=='' || name_of_person_with_offender == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{          
+        filledValues.push({'name_of_person_with_offender':name_of_person_with_offender})
+    }
+
+    var info_about_person_with_offender = $('#info_about_person_with_offender').val();
+    if(info_about_person_with_offender=='' || info_about_person_with_offender == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{          
+        filledValues.push({'info_about_person_with_offender':info_about_person_with_offender})
+    }
+
+    var other_info_about_person_with_offender = $('#other_info_about_person_with_offender').val();
+    if(other_info_about_person_with_offender=='' || other_info_about_person_with_offender == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{ 
+        filledValues.push({'other_info_about_person_with_offender':other_info_about_person_with_offender})
+        
+
+    }
+
+    var evidence = $('#evidence').val();
+    if(evidence=='' || evidence == null){
+        // console.log(filledValues.length)
+        // alert('One or more fields are empty. Please fill all the fields')
+        // return false;
+    }else{ 
+    filledValues.push({'evidence':evidence})
+
+    }
+
+    var allow_info_match = document.getElementById("check").checked;
+    filledValues.push({'allow_info_match':allow_info_match})
+    console.log(filledValues.length,filledValues)
+
+    if(year =='' || year == null || time =='' || time == null || date =='' || date == null || anything_else_about_date =='' || anything_else_about_date == null || where_it_happened =='' || where_it_happened == null || other_info_about_location =='' || other_info_about_location == null || anyone_see_hear == '' || anyone_see_hear == null || tell_anyone == '' || tell_anyone == null || after_before_incident == '' || after_before_incident == null || information_about_people_told == '' || information_about_people_told == null || info_about_people_described_above=='' || info_about_people_described_above == null || offender_told_anyone=='' || offender_told_anyone == null || consent_details=='' || consent_details == null || what_happened=='' || what_happened == null || number_of_offenders=='' || number_of_offenders == null || anyone_else_with_offender=='' || anyone_else_with_offender == null || name_of_person_with_offender=='' || name_of_person_with_offender == null || info_about_person_with_offender=='' || info_about_person_with_offender == null || other_info_about_person_with_offender == '' || other_info_about_person_with_offender == null || evidence == '' || evidence == null){
+        console.log(filledValues.length)
+        alert('One or more fields are empty. Please fill all the fields')
+        return false;
+    }else{
+        var url = "{% url 'userapp:record-assault-qa' %}"
+        $.ajax({
+            url :url,
+            method : 'POST',
+            data:{
+            data: JSON.stringify(sessionStorage.getItem('storedFormFieldValues')),
+            data2: JSON.stringify(filledValues),
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            beforeSend: function(){
+                    $(document).ready(function() {
+                            $('#submitRecord').modal('show');
+                        });
+                    },
+            success: function(data){
+                sessionStorage.removeItem('storedFormFieldValues')
+                console.log('inside success',data)
+                if (data['allow_info_match']){
+                var matchCount = data['count_of_matched_users']
+                var matched_users = data['matched_users']
+                console.log('>>>>',matched_users.length)
+                var u = "";
+                $(document).ready(function() {
+                    $('#submitRecord').modal('hide');
+                    $('#submitRecord2').modal('show');
+                    var count = document.getElementById('count')
+                    count.innerHTML = matchCount
+                    var count2 = document.getElementById('count2')
+                    count2.innerHTML = matchCount
+                    if (matched_users.length > 0 && matched_users.length < 2){
+                        u += `<a href="{% url 'userapp:survivor-dashboard' %}">${matched_users[0]}</a>`
+                        var name = document.getElementById('name')
+                        name.innerHTML = data['name']
+                        var incident_description = document.getElementById('incident_description')
+                        incident_description.innerHTML = data['incident_description']
+                        var skin_color = document.getElementById('skin_color')
+                        skin_color.innerHTML = data['skin_color']
+                        var happened_on = document.getElementById('happened_on')
+                        happened_on.innerHTML = data['happened_on']
+                    }else{
+                        for (var i = 0; i < matched_users.length; i++){
+                        u += `<a href="{% url 'userapp:survivor-dashboard' %}">${matched_users[i]}</a>, `
+                        var name = document.getElementById('name')
+                        name.innerHTML = data['name']
+                        var incident_description = document.getElementById('incident_description')
+                        incident_description.innerHTML = data['incident_description']
+                        var skin_color = document.getElementById('skin_color')
+                        skin_color.innerHTML = data['skin_color']
+                        var happened_on = document.getElementById('happened_on')
+                        happened_on.innerHTML = data['happened_on']
+                    }
+                    }
+
+                    var matchedpersons = document.getElementById('matchedpersons')
+                    matchedpersons.innerHTML =  u
+                });
+                }else{
+                    window.location.href = '{% url "userapp:survivor-dashboard" %}'
+                }
+
+            },
+            error: function(data) {
+                console.log('inside error case')
+            }
+        });
+    }
+    
 }
 
 

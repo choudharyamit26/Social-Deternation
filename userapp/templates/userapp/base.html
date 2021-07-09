@@ -20,9 +20,16 @@
 <section class="socialicons">
     <div class="container">
         <div class="socialInner profileUser">
+            {% if user.avi %}
+            <a href="javascript:void(0)">Welcome,{{user.avi}} <span class="profile"><img
+                    src="{% static 'userapp/imgs/profile.svg' %}"
+                    alt="profile"></span></a>
+            {% else %}
             <a href="javascript:void(0)">Welcome,{{user.first_name}} <span class="profile"><img
                     src="{% static 'userapp/imgs/profile.svg' %}"
                     alt="profile"></span></a>
+
+            {% endif %}
             <div class="profileDettt">
                 <ul>
                     <li><a href="{% url 'userapp:survivor-profile'  %}"><span><img

@@ -11,6 +11,7 @@ from django.contrib.auth import login, logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, HttpResponse, redirect
 from django.template.loader import render_to_string
@@ -38,6 +39,8 @@ class HomeView(View):
     template_name = 'userapp/index.html'
 
     def get(self, request, *args, **kwargs):
+        print(request.META.get("REMOTE_ADDR"))
+        print(self.request.META.get("REMOTE_ADDR"))
         return render(self.request, 'userapp/index.html')
 
 
@@ -260,10 +263,12 @@ class RecordAssault2(View):
         return render(self.request, 'userapp/assault-form-2.html')
 
 
-class AssaultRecordQuestionAnswer(View):
+class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
     model = AssaultQuestionAnswer
     template_name = 'userapp/assault-form-2.html'
     form_class = AssaultQuestionAnswerForm
+
+    # login_url = ''
 
     def get(self, request, *args, **kwargs):
         return render(self.request, 'userapp/assault-form-2.html')
@@ -316,7 +321,118 @@ class AssaultRecordQuestionAnswer(View):
             evidence=final_data['evidence'],
             allow_info_match=final_data['allow_info_match']
         )
-        return redirect("userapp:survivor-dashboard")
+        if final_data['allow_info_match']:
+            assault_obj = Assault.objects.filter(
+                Q(type_of_violence=final_data['type_of_violence'].lower()) |
+                Q(first_name=final_data['first_name'].lower()) |
+                Q(last_name=final_data['last_name'].lower()) |
+                Q(gender=final_data['gender'].lower()) |
+                Q(build=final_data['build'].lower()) |
+                Q(height=final_data['height'].lower()) |
+                Q(eye_color=final_data['eye_color'].lower()) |
+                Q(special_body_mark=final_data['special_body_mark'].lower()) |
+                Q(mobile_number=final_data['mobile_number']) |
+                Q(hair_color=final_data['hair_color'].lower()) |
+                Q(skin_color=final_data['skin_color'].lower()) |
+                Q(race=final_data['race'].lower()) |
+                Q(year=final_data['year']) |
+                Q(time=final_data['time']) |
+                Q(date=final_data['date']) |
+                Q(anything_else_about_date=final_data['anything_else_about_date'].lower()) |
+                Q(where_it_happened=final_data['where_it_happened'].lower()) |
+                Q(other_info_about_location=final_data['other_info_about_location'].lower()) |
+                Q(anyone_see_hear=final_data['anyone_see_hear'].lower()) |
+                Q(tell_anyone=final_data['tell_anyone'].lower()) |
+                Q(after_before_incident=final_data['after_before_incident'].lower()) |
+                Q(information_about_people_told=final_data['information_about_people_told'].lower()) |
+                Q(info_about_people_described_above=final_data['info_about_people_described_above'].lower()) |
+                Q(offender_told_anyone=final_data['offender_told_anyone'].lower()) |
+                Q(consent_details=final_data['consent_details'].lower()) |
+                Q(what_happened=final_data['what_happened'].lower()) |
+                Q(number_of_offenders=final_data['number_of_offenders']) |
+                Q(anyone_else_with_offender=final_data['anyone_else_with_offender'].lower()) |
+                Q(name_of_person_with_offender=final_data['name_of_person_with_offender'].lower()) |
+                Q(info_about_person_with_offender=final_data['info_about_person_with_offender'].lower()) |
+                Q(other_info_about_person_with_offender=final_data['other_info_about_person_with_offender'].lower()) |
+                Q(evidence=final_data['evidence'].lower()))
+            print('Assault OBJ-->>', assault_obj)
+            matched_users = []
+            for obj in assault_obj:
+                matched_fields_count = 0
+                if obj.type_of_violence.lower() == final_data['type_of_violence'].lower():
+                    matched_fields_count += 1
+                if obj.first_name.lower() == final_data['first_name'].lower():
+                    matched_fields_count += 1
+                if obj.last_name.lower() == final_data['last_name'].lower():
+                    matched_fields_count += 1
+                if obj.gender.lower() == final_data['gender'].lower():
+                    matched_fields_count += 1
+                if obj.build.lower() == final_data['build'].lower():
+                    matched_fields_count += 1
+                if obj.height.lower() == final_data['height'].lower():
+                    matched_fields_count += 1
+                if obj.eye_color.lower() == final_data['eye_color'].lower():
+                    matched_fields_count += 1
+                if obj.special_body_mark.lower() == final_data['special_body_mark'].lower():
+                    matched_fields_count += 1
+                if obj.mobile_number == final_data['mobile_number']:
+                    matched_fields_count += 1
+                if obj.hair_color.lower() == final_data['hair_color'].lower():
+                    matched_fields_count += 1
+                if obj.skin_color.lower() == final_data['skin_color'].lower():
+                    matched_fields_count += 1
+                if obj.race.lower() == final_data['race'].lower():
+                    matched_fields_count += 1
+                if obj.year == final_data['year']:
+                    matched_fields_count += 1
+                if obj.time == final_data['time']:
+                    matched_fields_count += 1
+                if obj.date == final_data['date']:
+                    matched_fields_count += 1
+                if obj.anything_else_about_date.lower() == final_data['anything_else_about_date'].lower():
+                    matched_fields_count += 1
+                if obj.where_it_happened.lower() == final_data['where_it_happened'].lower():
+                    matched_fields_count += 1
+                if obj.other_info_about_location.lower() == final_data['other_info_about_location'].lower():
+                    matched_fields_count += 1
+                if obj.anyone_see_hear.lower() == final_data['anyone_see_hear'].lower():
+                    matched_fields_count += 1
+                if obj.tell_anyone.lower() == final_data['tell_anyone'].lower():
+                    matched_fields_count += 1
+                if obj.after_before_incident.lower() == final_data['after_before_incident'].lower():
+                    matched_fields_count += 1
+                if obj.information_about_people_told.lower() == final_data['information_about_people_told'].lower():
+                    matched_fields_count += 1
+                if obj.info_about_people_described_above.lower() == final_data[
+                    'info_about_people_described_above'].lower():
+                    matched_fields_count += 1
+                if obj.offender_told_anyone.lower() == final_data['offender_told_anyone'].lower():
+                    matched_fields_count += 1
+                if obj.what_happened.lower() == final_data['what_happened'].lower():
+                    matched_fields_count += 1
+                if obj.number_of_offenders == final_data['number_of_offenders']:
+                    matched_fields_count += 1
+                if obj.info_about_person_with_offender.lower() == final_data[
+                    'info_about_person_with_offender'].lower():
+                    matched_fields_count += 1
+                if obj.other_info_about_person_with_offender.lower() == final_data[
+                    'other_info_about_person_with_offender'].lower():
+                    matched_fields_count += 1
+                if obj.evidence.lower() == final_data['evidence'].lower():
+                    matched_fields_count += 1
+                if matched_fields_count >= 14:
+                    matched_users.append(obj.first_name)
+                print('>>>', matched_fields_count)
+            return JsonResponse(
+                {'matched_users': matched_users, 'count_of_matched_users': len(matched_users),
+                 'name': self.request.user.first_name, 'incident_description': final_data['what_happened'],
+                 'skin_color': final_data['skin_color'], 'happened_on': final_data['date'],
+                 'allow_info_match': final_data['allow_info_match']},
+                status=200)
+        else:
+            # return render(self.request, 'userapp/record-an-assault.html',
+            #               {'my_assaults_forms': Assault.objects.filter(user=self.request.user)})
+            return redirect("userapp:survivor-dashboard")
 
 
 class ServiceProviderView(View):
