@@ -478,8 +478,10 @@
                             </ul>
                         </div>
                         <div class="modBt">
+                            <!-- updateAssaultForm -->
+                            <!-- <a href="{% url 'userapp:service-provider' %}" class="btns modalbtns">OK</a> -->
+                            <button onclick="updateAssaultForm()" class="btns modalbtns">OK</button>
 
-                            <a href="{% url 'userapp:service-provider' %}" class="btns modalbtns">OK</a>
                         </div>
                     </div>
                 </div>
@@ -715,6 +717,7 @@ function getFormValues(){
                 console.log('>>>>',matched_users.length)
                 var u = "";
                 $(document).ready(function() {
+                    sessionStorage.setItem('AssaultFormId',data['id'])
                     $('#submitRecord').modal('hide');
                     $('#submitRecord2').modal('show');
                     var count = document.getElementById('count')
@@ -764,5 +767,33 @@ function getFormValues(){
 
 
 
+</script>
+<script>
+    function updateAssaultForm(){
+        var id = sessionStorage.getItem('AssaultFormId')
+        var help_type = $("input[type='radio'][name='legal']:checked").val();
+        console.log(id,help_type)
+        // {% url 'userapp:service-provider' %}
+        var url = "{% url 'userapp:update-assault-form' %}"
+        if(help_type){
+            $.ajax({
+                url :url + "?id="+id + "&help_type="+help_type,
+                method : 'GET',
+                // beforeSend : function(){
+
+                // },
+                success : function(data){
+                    console.log('inside success')
+                    window.location.href = "{% url 'userapp:service-provider' %}"
+
+                },
+                error : function(){
+                    console.log('inside error')
+                }
+            })
+        }else{
+            window.location.href = "{% url 'userapp:service-provider' %}"
+        }
+    }
 </script>
 {% endblock body %}

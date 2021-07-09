@@ -222,7 +222,8 @@ class Dashboard(ListView):
     def get(self, request, *args, **kwargs):
         if not self.request.user.is_anonymous:
             objects = Assault.objects.filter(user=self.request.user)
-            return render(self.request, 'userapp/record-an-assault.html', {'objects': objects})
+            return render(self.request, 'userapp/record-an-assault.html',
+                          {'objects': objects, 'count': objects.count()})
         else:
             return render(self.request, 'userapp/record-an-assault.html')
 
@@ -285,7 +286,7 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
             if y:
                 final_data.update(y)
         print(final_data)
-        Assault.objects.create(
+        assault_form_obj = Assault.objects.create(
             user=self.request.user,
             type_of_violence=final_data['type_of_violence'],
             first_name=final_data['first_name'],
@@ -427,12 +428,28 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
                 {'matched_users': matched_users, 'count_of_matched_users': len(matched_users),
                  'name': self.request.user.first_name, 'incident_description': final_data['what_happened'],
                  'skin_color': final_data['skin_color'], 'happened_on': final_data['date'],
-                 'allow_info_match': final_data['allow_info_match']},
+                 'allow_info_match': final_data['allow_info_match'], 'id': assault_form_obj.id},
                 status=200)
         else:
             # return render(self.request, 'userapp/record-an-assault.html',
             #               {'my_assaults_forms': Assault.objects.filter(user=self.request.user)})
             return redirect("userapp:survivor-dashboard")
+
+
+class UpdateAssaultForm(LoginRequiredMixin, View):
+    model = Assault
+
+    def get(self, request, *args, **kwargs):
+        id = self.request.GET.get('id')
+        type_of_assistance = self.request.GET.get('help_type')
+        try:
+            assault_form_obj = Assault.objects.get(id=id)
+            assault_form_obj.sought_further_assistance = True
+            assault_form_obj.type_of_assistance = type_of_assistance
+            assault_form_obj.save()
+            return JsonResponse({'message': 'Form updated successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'message': 'Something went wrong'}, status=400)
 
 
 class ServiceProviderView(View):

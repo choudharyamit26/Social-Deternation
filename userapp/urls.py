@@ -9,7 +9,8 @@ from .views import HomeView, SurvivorSignUp, Dashboard, RecordAnAssault, RecordA
     SurvivorFaq, SurvivorContact, SurvivorNotificationDetail, SurvivorAvailability, SurvivorSubscriptionView, \
     ProviderForgotPassword, ProviderPasswordResetConfirmView, CreateSlotView, GuestAssaultUser, \
     GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView, SurvivorCalendarEvent, ServiceProviderProfile, \
-    GetServiceProviderAvailability, VerifyOtp, ResendOtp, SendOtp, ProviderResendOtp, SurvivorResendOtp
+    GetServiceProviderAvailability, VerifyOtp, ResendOtp, SendOtp, ProviderResendOtp, SurvivorResendOtp, \
+    UpdateAssaultForm
 
 app_name = 'userapp'
 
@@ -69,5 +70,5 @@ urlpatterns = [
                   path('provider-resend-otp/', ProviderResendOtp.as_view(), name='provider-resend-otp'),
                   path('get-service-provider-availability/', GetServiceProviderAvailability.as_view(),
                        name='get-service-provider-availability'),
-
+                  path('update-assault-form/', UpdateAssaultForm.as_view(), name='update-assault-form')
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

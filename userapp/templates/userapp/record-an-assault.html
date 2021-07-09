@@ -51,7 +51,11 @@
                         <td>{{forloop.counter}}</td>
                         <td>{{obj.created_at}}</td>
                         <td>N/A</td>
+                        {% if obj.sought_further_assistance %}
                         <td>Yes</td>
+                        {% else %}
+                        <td>No</td>
+                        {% endif %}
                         <td>Arushi tyagi <a href="{% url 'userapp:contact-us'  %}" class="contactt">contact</a></td>
                         <td><span class="action">
                                         <a href="javascript:void(0)" class="act">
@@ -138,7 +142,7 @@
             </div>
             <div class="pagination">
                 <div class="record">
-                    <h2>Total Records: <span class="colorGreen">4</span></h2>
+                    <h2>Total Records: <span class="colorGreen">{{count}}</span></h2>
                 </div>
                 <div class="pagin">
                     <ul>
