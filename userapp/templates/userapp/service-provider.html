@@ -439,7 +439,7 @@
                 console.log($($.parseHTML(data)).filter("#serviceproviderfilterSet").html() )
                 var body = document.getElementById('serviceproviderfilterSet')
                 body.innerHTML = $($.parseHTML(data)).filter("#serviceproviderfilterSet").html()
-                window.location.href = "{% url 'userapp:service-provider' %}"
+                // window.location.href = "{% url 'userapp:service-provider' %}"
             },
             error: function(){
                 console.log('inside error')
