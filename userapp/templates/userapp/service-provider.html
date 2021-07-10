@@ -435,10 +435,10 @@
         $.ajax({
             url:url + "?name=" + name + "&" + "category=" + category,
             method :'GET',
-            success: function(data){
-                console.log($($.parseHTML(data)).filter("#serviceproviderfilterSet").html() )
-                var body = document.getElementById('serviceproviderfilterSet')
-                body.innerHTML = $($.parseHTML(data)).filter("#serviceproviderfilterSet").html()
+            // success: function(data){
+            //     console.log($($.parseHTML(data)).filter("#serviceproviderfilterSet").html() )
+            //     var body = document.getElementById('serviceproviderfilterSet')
+            //     body.innerHTML = $($.parseHTML(data)).filter("#serviceproviderfilterSet").html()
                 // window.location.href = "{% url 'userapp:service-provider' %}"
             },
             error: function(){
