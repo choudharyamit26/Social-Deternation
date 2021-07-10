@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 from decimal import Decimal
 from random import randint
+import ipinfo
 
 from adminpanel.views import User
 from adminpanel.models import Otp
@@ -41,7 +42,13 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         print(request.META.get("REMOTE_ADDR"))
         print(self.request.META.get("REMOTE_ADDR"))
-        return render(self.request, 'userapp/index.html')
+        access_token = 'f242f0cb9d8fe1'
+        handler = ipinfo.getHandler(access_token)
+        ip_address = self.request.META.get("REMOTE_ADDR")
+        # ip_address = '111.223.27.158'
+        details = handler.getDetails(ip_address)
+        print(details.country_name)
+        return render(self.request, 'userapp/index.html', {'country': details.country_name})
 
 
 class GuestAssaultUser(View):
@@ -461,7 +468,33 @@ class ServiceProviderView(View):
     template_name = 'userapp/service-provider.html'
 
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'userapp/service-provider.html', {'object_list': ServiceProvider.objects.all()})
+        access_token = 'f242f0cb9d8fe1'
+        handler = ipinfo.getHandler(access_token)
+        ip_address = self.request.META.get("REMOTE_ADDR")
+        details = handler.getDetails(ip_address)
+        print(details.country_name)
+        if self.request.GET.get('name'):
+            service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
+                Q(contact_persons_first_name=self.request.GET.get('name')) |
+                Q(contact_persons_last_name=self.request.GET.get('name')))
+            return render(self.request, 'userapp/service-provider.html',
+                          {'object_list': service_provider_obj})
+        elif self.request.GET.get('category'):
+            service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
+                organization=self.request.GET.get('category'))
+            return render(self.request, 'userapp/service-provider.html',
+                          {'object_list': service_provider_obj})
+        elif self.request.GET.get('name') and self.request.GET.get('category'):
+            service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
+                Q(contact_persons_first_name=self.request.GET.get('name')) |
+                Q(contact_persons_last_name=self.request.GET.get('name')) |
+                Q(organization=self.request.GET.get('category')))
+            return render(self.request, 'userapp/service-provider.html',
+                          {'object_list': service_provider_obj})
+        else:
+            service_provider_obj = ServiceProvider.objects.filter(country=details.country_name)
+            return render(self.request, 'userapp/service-provider.html',
+                          {'object_list': service_provider_obj})
 
 
 class MyBookingsView(View):

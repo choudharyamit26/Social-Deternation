@@ -704,10 +704,10 @@ function getFormValues(){
             csrfmiddlewaretoken: "{{ csrf_token }}"
             },
             beforeSend: function(){
-                    $(document).ready(function() {
-                            $('#submitRecord').modal('show');
-                        });
-                    },
+                $(document).ready(function() {
+                    $('#submitRecord').modal('show');
+                });
+            },
             success: function(data){
                 sessionStorage.removeItem('storedFormFieldValues')
                 console.log('inside success',data)

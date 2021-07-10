@@ -6,45 +6,44 @@
 <section class="filterSe">
     <div class="container">
         <div class="row" style="padding-top: 40px;">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <input type="text" class="form-control formControl" placeholder="Name">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <div class="before">
-                        <select name="year" id="year" class="form-control transparent formControl">
-                            <option value="o">Category</option>
-                            <option value="1">Category1</option>
-                            <option value="2">Category2</option>
-                            <option value="3">Category3</option>
-                        </select>
+            <form method="GET">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" class="form-control formControl" placeholder="Name" id="name">
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <div class="before">
-                        <select name="year" id="year" class="form-control transparent formControl">
-                            <option value="o">Ratings</option>
-                            <option value="1">5</option>
-                            <option value="2">4</option>
-                            <option value="3">3</option>
-                            <option value="4">2</option>
-                            <option value="5">1</option>
-                        </select>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="before">
+                            <select name="category" id="category" class="form-control transparent formControl">
+                                <option value="Corporate Organisation">Corporate Organisation</option>
+                                <option value="Individual Sole Trader">Individual Sole Trader</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="before">
+                            <select name="year" id="year" class="form-control transparent formControl">
+                                <option value="o">Ratings</option>
+                                <option value="1">5</option>
+                                <option value="2">4</option>
+                                <option value="3">3</option>
+                                <option value="4">2</option>
+                                <option value="5">1</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
         </div>
         <div class="btnsBottom btnsBoking">
             <div class="modBt">
-                <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Reset</a>
-                <a href="javascript:void(0)" class="btns modalbtns">Search</a>
+                <button class="btns modalbtns modalbtns2" type="reset">Reset</button>
+                <button class="btns modalbtns" type="button" onclick="filterServiceProvider()">Search</button>
             </div>
-
         </div>
+        </form>
     </div>
 </section>
 <section class="serviceProide">
@@ -309,7 +308,7 @@
             url: url + '?id=' + id,
             method: 'GET',
             success: function (data) {
-                console.log('inside success',data)
+                console.log('inside success', data)
                 // alert('clicked successfully')
                 $(document).ready(function () {
                     $('#selectslot').modal('show');
@@ -339,6 +338,24 @@
                         </div>`;
             },
         });
+    }
+</script>
+<script>
+    function filterServiceProvider() {
+        var url = "{% url 'userapp:service-provider' %}"
+        var name =  document.getElementById('name')
+        var category = document.getElementById('category')
+        
+        $.ajax({
+            url:url + "?name=" + name + "&" + "category=" + category,
+            method :'GET',
+            success: function(){
+                window.location.href = "{% url 'userapp:service-provider' %}"
+            },
+            error: function(){
+                console.log('inside error')
+            }
+        })
     }
 </script>
 {% endblock body %}

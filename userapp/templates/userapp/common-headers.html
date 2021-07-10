@@ -1432,6 +1432,14 @@
     </div>
 </div>
 </div>
+
+<div class="modal" id="loaderModal">
+    <div class="modal-dialog">
+<div class="" style="margin: 0 auto;">
+    <img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />
+</div>
+    </div>
+</div>
 <script src="{% static 'userapp/js/jquery.js' %}"></script>
 <script src="{% static 'userapp/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'userapp/js/niceCountryInput.js' %}"></script>
@@ -1483,14 +1491,19 @@
         csrfmiddlewaretoken: "{{ csrf_token }}"
         },
         beforeSend : function(){
+            // loaderModal
             $('#signup2').modal('hide');
-            $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+            $('#loaderModal').modal('show');
+
+            // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" margin="0 auto" width="100" height="100" />`)
             
         },
         success: function(data){
             $('.body').html('')
            console.log('inside success',data)
            $('#signup2').modal('hide');
+           $('#loaderModal').modal('hide');
+
            $(document).ready(function() {
             $('#signup3').modal('show');
             var number = document.getElementById('survivorsignupotpmodal')
@@ -1617,7 +1630,7 @@
         $(document).ready(function() {
            $('#signin').modal('hide');
            });
-        $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+        $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
     },
     success: function(data){
         $('.body').html('')
@@ -1682,7 +1695,7 @@
         $(document).ready(function() {
            $('#signin').modal('hide');
            });
-        $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+        $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
     },
     success: function(data){
         console.log(data['number'])
@@ -2082,7 +2095,7 @@ function forgotPassword(){
         csrfmiddlewaretoken: "{{ csrf_token }}"
     },
     beforeSend: function(){
-        $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+        $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
     },
     success: function(data){
         $('.body').html('')
@@ -2151,7 +2164,7 @@ function forgotPassword(){
             csrfmiddlewaretoken: "{{ csrf_token }}"
             },
         beforeSend: function(){
-            $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+            $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
         },
         success: function(data){
             $('.body').html('')
@@ -2195,7 +2208,7 @@ function forgotPassword(){
             url:url + "?number="+number,
             method:'GET',
             beforeSend: function () {
-                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
                 
             },
             success: function() {
@@ -2391,7 +2404,7 @@ function forgotPassword(){
                 otp:survivor_sign_in_otp
             },
             beforeSend : function(){
-                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success:function(){
                 $('.body').html('')
@@ -2494,7 +2507,7 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#providersignin4').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
@@ -2534,7 +2547,7 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#signin3').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
@@ -2573,7 +2586,7 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#signin3').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
@@ -2614,7 +2627,7 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#signup3').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
@@ -2661,7 +2674,7 @@ function forgotPassword(){
                 // $('#providersignin4').modal('hide');
                 // $('#providersignin2').modal('hide');
 
-                $('.body').html(`<img src="{% static 'userapp/imgs/loader.webp' %}" width="100" height="100" />`)
+                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
