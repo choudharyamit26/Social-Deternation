@@ -48,6 +48,7 @@ class HomeView(View):
         # ip_address = '111.223.27.158'
         details = handler.getDetails(ip_address)
         print(details.country_name)
+        print(ip_address)
         return render(self.request, 'userapp/index.html', {'country': details.country_name})
 
 
@@ -473,6 +474,7 @@ class ServiceProviderView(View):
         ip_address = self.request.META.get("REMOTE_ADDR")
         details = handler.getDetails(ip_address)
         print(details.country_name)
+        print(ip_address)
         if self.request.GET.get('name'):
             service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
                 Q(contact_persons_first_name__icontains=self.request.GET.get('name')) |
@@ -501,6 +503,7 @@ class ServiceProviderView(View):
             # service_provider_obj = ServiceProvider.objects.all()
             # service_provider_obj = ServiceProvider.objects.filter(country='India')
             print('form else', service_provider_obj)
+            print(ip_address)
             return render(self.request, 'userapp/service-provider.html',
                       {'object_list': service_provider_obj})
 
