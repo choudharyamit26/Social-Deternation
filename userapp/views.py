@@ -475,26 +475,34 @@ class ServiceProviderView(View):
         print(details.country_name)
         if self.request.GET.get('name'):
             service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
-                Q(contact_persons_first_name=self.request.GET.get('name')) |
-                Q(contact_persons_last_name=self.request.GET.get('name')))
+                Q(contact_persons_first_name__icontains=self.request.GET.get('name')) |
+                Q(contact_persons_last_name__icontains=self.request.GET.get('name')))
+            print('form name', service_provider_obj)
             return render(self.request, 'userapp/service-provider.html',
                           {'object_list': service_provider_obj})
         elif self.request.GET.get('category'):
             service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
-                organization=self.request.GET.get('category'))
+                organization__icontains=self.request.GET.get('category'))
+            print('form category', service_provider_obj)
+
             return render(self.request, 'userapp/service-provider.html',
                           {'object_list': service_provider_obj})
         elif self.request.GET.get('name') and self.request.GET.get('category'):
             service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
-                Q(contact_persons_first_name=self.request.GET.get('name')) |
-                Q(contact_persons_last_name=self.request.GET.get('name')) |
-                Q(organization=self.request.GET.get('category')))
+                Q(contact_persons_first_name__icontains=self.request.GET.get('name')) |
+                Q(contact_persons_last_name__icontains=self.request.GET.get('name')) |
+                Q(organization__icontains=self.request.GET.get('category')))
+            print('form name and category', service_provider_obj)
+
             return render(self.request, 'userapp/service-provider.html',
                           {'object_list': service_provider_obj})
         else:
             service_provider_obj = ServiceProvider.objects.filter(country=details.country_name)
+            # service_provider_obj = ServiceProvider.objects.all()
+            # service_provider_obj = ServiceProvider.objects.filter(country='India')
+            print('form else', service_provider_obj)
             return render(self.request, 'userapp/service-provider.html',
-                          {'object_list': service_provider_obj})
+                      {'object_list': service_provider_obj})
 
 
 class MyBookingsView(View):

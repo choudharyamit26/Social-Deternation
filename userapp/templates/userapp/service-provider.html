@@ -6,23 +6,24 @@
 <section class="filterSe">
     <div class="container">
         <div class="row" style="padding-top: 40px;">
-            <form method="GET">
-                <div class="col-sm-4">
+            <!-- <form method="GET" action="{% url 'userapp:service-provider' %}"> -->
+            <form method="GET" action="{% url 'userapp:service-provider' %}">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <input type="text" class="form-control formControl" placeholder="Name" id="name">
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <div class="before">
-                            <select name="category" id="category" class="form-control transparent formControl">
+                            <select name="year" id="category" class="form-control transparent formControl">
                                 <option value="Corporate Organisation">Corporate Organisation</option>
                                 <option value="Individual Sole Trader">Individual Sole Trader</option>
                             </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <div class="before">
                             <select name="year" id="year" class="form-control transparent formControl">
@@ -40,15 +41,17 @@
         <div class="btnsBottom btnsBoking">
             <div class="modBt">
                 <button class="btns modalbtns modalbtns2" type="reset">Reset</button>
+                <!-- <button class="btns modalbtns" type="button" type="submit">Search</button> -->
                 <button class="btns modalbtns" type="button" onclick="filterServiceProvider()">Search</button>
             </div>
         </div>
         </form>
     </div>
 </section>
-<section class="serviceProide">
+<section class="serviceProide" id="serviceproviderfilterSet">
     <div class="container">
         <div class="row">
+            {% if object_list|length > 0 %}
             {% for obj in object_list %}
             <div class="col-sm-4">
                 <div class="clietservice">
@@ -151,7 +154,90 @@
             </div>
             {% endfor %}
 
+            {% else %}
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="clietservice">
+                        <div class="serviceDet">
+                            <h2>No matches found for service provider</h2>
+                        </div>
+                        <!-- <div class="bachesdet">
+                            <ul class="baches">
+    
+                                <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
+                                    <div class="bachesDetails">
+                                        <div class="bachesLeft">
+                                            <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
+                                        </div>
+                                        <div class="bachesRight">
+                                            <h2>Corporate Provider</h2>
+                                            <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
+                                    <div class="bachesDetails bachesDetails2">
+                                        <div class="bachesLeft">
+                                            <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
+                                        </div>
+                                        <div class="bachesRight">
+                                            <h2>Government Funded Provider</h2>
+                                            <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
+                                    <div class="bachesDetails bachesDetails3">
+                                        <div class="bachesLeft">
+                                            <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
+                                        </div>
+                                        <div class="bachesRight">
+                                            <h2>Private Provider</h2>
+                                            <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                        </div>
+                                    </div>
+                                </li>
+    
+                            </ul>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table tablefont">
+    
+                                <tbody>
+                                    <tr>
+                                        <td><span class="bold">Qualifications:</span></td>
+                                        <td>Bachelor of Psychology M.Sc
+                                            in Counselling
+                                        </td>
+    
+                                    </tr>
+                                    <tr>
+                                        <td><span class="bold">Experience:</span></td>
+                                        <td>12 Years</td>
+    
+                                    </tr>
+    
+    
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tableBtn">
+                            <div class="btnLeft">
+                                <h2>£40 /Hour</h2>
+                            </div>
+                            <a href="javascript:void(0)" class="btns" onclick="getServiceProviderSlots({{obj.id}})">Select
+                                Slot</a>
+                        </div> -->
+                        
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+
         </div>
+        
     </div>
 </section>
 <div class="modalBox">
@@ -343,14 +429,17 @@
 <script>
     function filterServiceProvider() {
         var url = "{% url 'userapp:service-provider' %}"
-        var name =  document.getElementById('name')
-        var category = document.getElementById('category')
+        var name =  document.getElementById('name').value;
+        var category = document.getElementById('category').value;
         
         $.ajax({
             url:url + "?name=" + name + "&" + "category=" + category,
             method :'GET',
-            success: function(){
-                window.location.href = "{% url 'userapp:service-provider' %}"
+            success: function(data){
+                console.log($($.parseHTML(data)).filter("#serviceproviderfilterSet").html() )
+                var body = document.getElementById('serviceproviderfilterSet')
+                body.innerHTML = $($.parseHTML(data)).filter("#serviceproviderfilterSet").html()
+                // window.location.href = "{% url 'userapp:service-provider' %}"
             },
             error: function(){
                 console.log('inside error')
