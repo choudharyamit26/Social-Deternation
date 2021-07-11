@@ -744,7 +744,7 @@ class ServiceProviderSignup(View):
                 contact_persons_last_name=final_data['contact_persons_last_name'],
                 company_address_1=final_data['company_address_1'],
                 company_address_2=final_data['company_address_2'],
-                country=final_data['country'],
+                country=final_data['country'].title(),
                 city=final_data['city'],
                 zip_code=final_data['zip_code']
             )
