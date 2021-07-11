@@ -11,6 +11,7 @@ django-filter==2.4.0
 djangorestframework==3.12.4
 idna==2.10
 ipinfo==4.2.1
+maxminddb==2.0.3
 multidict==5.1.0
 Pillow==8.2.0
 pkg-resources==0.0.0

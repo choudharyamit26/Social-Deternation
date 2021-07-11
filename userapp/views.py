@@ -42,10 +42,13 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         print(request.META.get("REMOTE_ADDR"))
         print(self.request.META.get("REMOTE_ADDR"))
+        print(self.request.META.get("HTTP_X_REAL_IP"))
+        print(self.request.META.get("HTTP_X_FORWARDED_FOR"))
         access_token = 'f242f0cb9d8fe1'
         handler = ipinfo.getHandler(access_token)
-        ip_address = self.request.META.get("REMOTE_ADDR")
+        # ip_address = self.request.META.get("REMOTE_ADDR")
         # ip_address = '111.223.27.158'
+        ip_address = '2405:204:3ad:2cc4:1894:428e:2d85:6be9'
         details = handler.getDetails(ip_address)
         print(details.country_name)
         print(ip_address)
@@ -503,7 +506,8 @@ class ServiceProviderView(View):
             # service_provider_obj = ServiceProvider.objects.all()
             # service_provider_obj = ServiceProvider.objects.filter(country='India')
             print('form else', service_provider_obj)
-            print(ip_address)
+            print('-------',ip_address)
+            print('-------',request.META.get("HTTP_X_REAL_IP"))
             return render(self.request, 'userapp/service-provider.html',
                       {'object_list': service_provider_obj})
 
