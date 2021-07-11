@@ -50,6 +50,7 @@ class HomeView(View):
         # ip_address = '111.223.27.158'
         # ip_address = '2405:204:3ad:2cc4:1894:428e:2d85:6be9'
         # ip_address = '192.241.219.38'
+        # ip_address = '138.255.12.79'
         ip_address = self.request.META.get("HTTP_X_REAL_IP").split(',')[0]
         details = handler.getDetails(ip_address)
         print(details.country_name)
