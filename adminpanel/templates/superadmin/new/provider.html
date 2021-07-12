@@ -77,18 +77,19 @@
                             <th>Available Slots</th>
                             <th>Hourly Rate</th>
                             <th>Verification Status</th>
-                            <th>action</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
+                        {% for object in object_list %}
                         <tr>
-                            <td>1</td>
-                            <td>ABC limited</td>
-                            <td>Asif Khan</td>
+                            <td>{{object.id}}</td>
+                            <td>{{object.company_name}}</td>
+                            <td>{{object.contact_persons_first_name}} {{object.contact_persons_last_name}}</td>
                             <td>QA121EW</td>
-                            <td>4/15/2021</td>
-                            <td>asif12@gmail.com</td>
-                            <td>012100331</td>
+                            <td>{{object.created_at|date:"M d, Y"}}</td>
+                            <td>{{object.email}}</td>
+                            <td>{{object.mobile_number}}</td>
                             <td>B Tech</td>
                             <td>12 Years</td>
                             <td>May 04,2021 at 06 PM PST</td>
@@ -122,42 +123,7 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>2</td>
-                            <td>General Assistance Ltd</td>
-                            <td>Jeff Brown</td>
-                            <td>OOl1b1</td>
-                            <td>3/21/2021</td>
-                            <td>jeff.brown@gmail.com</td>
-                            <td>98789911</td>
-                            <td>B Tech</td>
-                            <td>12 Years</td>
-                            <td>May 04,2021 at 06 PM PST</td>
-                            <td>$40</td>
-                            <td><span class="red">Rejected</span></td>
-                            <td>
-                                <div class="Actions">
-                                    <label class="Switch">
-                                        <input type="checkbox"/>
-                                        <span class="slider"></span>
-                                    </label>
-
-                                    <a class="Green" title="Edit" href="provider-edit.html">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                    </a>
-
-                                    <a class="Red" title="Delete" href="javascript:void(0);" data-toggle="modal"
-                                       data-target="#DeleteModal">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                    <a class="Blue" title="Details" href="javascript:void(0);" data-toggle="modal"
-                                       data-target="#DetailsModal">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                    {% endfor %}
                         </tbody>
                     </table>
                 </div>

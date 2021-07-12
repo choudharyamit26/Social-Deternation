@@ -26,7 +26,7 @@ from django.views.generic import ListView, View, TemplateView, FormView
 # from .filters import OrganizationFilter
 from .forms import AdminLoginForm
 from .models import User, Organization, SubscriptionPlan, SubscriptionStatus
-from userapp.models import Survivor, ServiceProvider, Assault
+from userapp.models import Survivor, ServiceProvider, Assault, ServiceProviderCategory
 
 user = get_user_model()
 
@@ -1223,3 +1223,11 @@ class HeroView(View):
 
     def get(self, request, *args, **kwargs):
         return render(self.request, 'superadmin/new/hero.html')
+
+
+class AddServiceProviderCategory(View):
+    model = ServiceProviderCategory
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        return JsonResponse({'message': 'Service provider category created'}, status=200)

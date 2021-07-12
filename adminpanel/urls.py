@@ -14,7 +14,8 @@ from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardIn
     CreateGeneralSubscriptionPlan, CMSBenefits, CMSFeature, CMSHowItWorks, CMSSocialPages, CMSPrivacyPolicy, \
     CMSTermsOfUse, FaqSurvivors, FaqService, FaqLicense, ReportSurvivor, ReportServiceProvider, VoucherView, \
     SpecialUserView, MailBoxView, SuperAdminNotifications, CustomerManagementDetailView, SubscriptionBrasiPlanDetail, \
-    SubscriptionGeneralPlanDetail, SuperadminPasswordResetView, SuperadminPasswordResetConfirmView
+    SubscriptionGeneralPlanDetail, SuperadminPasswordResetView, SuperadminPasswordResetConfirmView, \
+    AddServiceProviderCategory
 
 app_name = 'adminpanel'
 
@@ -49,14 +50,17 @@ urlpatterns = [
                   path("superadmin-service-providers-category/", SuperAdminProvidersCategory.as_view(),
                        name="superadmin-service-providers-category"),
                   path("password-reset/", PasswordResetView.as_view(), name="password-reset"),
-                  path("superadmin-password-reset/", SuperadminPasswordResetView.as_view(), name="superadmin-password-reset"),
+                  path("superadmin-password-reset/", SuperadminPasswordResetView.as_view(),
+                       name="superadmin-password-reset"),
                   path("password-reset-confirm/<uidb64>/<token>/", PasswordResetConfirmView.as_view(),
                        name="password-reset-confirm"),
-                  path("superadmin-password-reset-confirm/<uidb64>/<token>/", SuperadminPasswordResetConfirmView.as_view(),
+                  path("superadmin-password-reset-confirm/<uidb64>/<token>/",
+                       SuperadminPasswordResetConfirmView.as_view(),
                        name="superadmin-password-reset-confirm"),
                   path("password-reset-done/", PasswordResetDoneView.as_view(template_name='password_reset_done.html'),
                        name="password-reset-done"),
-                  path("superadmin-password-reset-done/", PasswordResetDoneView.as_view(template_name='superadmin/new/superadmin_password_reset_done.html'),
+                  path("superadmin-password-reset-done/", PasswordResetDoneView.as_view(
+                      template_name='superadmin/new/superadmin_password_reset_done.html'),
                        name="superadmin-password-reset-done"),
                   path("superadmin-password-reset-complete/",
                        PasswordResetCompleteView.as_view(template_name='superadmin/new/password_reset_complete.html'),
@@ -108,4 +112,6 @@ urlpatterns = [
                   path('user-view/', SpecialUserView.as_view(), name='user-view'),
                   path('mail-box/', MailBoxView.as_view(), name='mail-box'),
                   path('superadmin-notification/', SuperAdminNotifications.as_view(), name='superadmin-notification'),
+                  path('add-service-provider-category/', AddServiceProviderCategory.as_view(),
+                       name='add-service-provider-category'),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

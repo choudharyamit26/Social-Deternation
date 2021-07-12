@@ -296,6 +296,7 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
+        user = self.request.user
         x = json.loads(self.request.POST['data'])
         y = json.loads(x)
         final_data = {}
@@ -375,7 +376,7 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
                 Q(name_of_person_with_offender=final_data['name_of_person_with_offender'].lower()) |
                 Q(info_about_person_with_offender=final_data['info_about_person_with_offender'].lower()) |
                 Q(other_info_about_person_with_offender=final_data['other_info_about_person_with_offender'].lower()) |
-                Q(evidence=final_data['evidence'].lower()))
+                Q(evidence=final_data['evidence'].lower())).exclude(user=user)
             print('Assault OBJ-->>', assault_obj)
             matched_users = []
             for obj in assault_obj:

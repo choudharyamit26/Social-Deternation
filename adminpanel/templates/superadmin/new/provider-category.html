@@ -196,18 +196,23 @@
                     <div class="Category">
                         <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
                         <h3>Add New Category </h3>
-                        <div class="form-group">
-                            <label>Category Name<sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Category">
-                        </div>
-                        <div class="form-group">
-                            <label class="CheckBox">Make Inactive
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <button class="Button Cancel">Cancel</button>
-                        <button class="Button">Save</button>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Category Name<sup>*</sup> </label>
+                                <input type="text" class="form-control" placeholder="Enter Category"
+                                       name="category_name" id="category_name">
+                            </div>
+                            <div class="form-group">
+                                <label class="CheckBox">Make Inactive
+                                    <input type="checkbox" name="status" id="status">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <button class="Button Cancel">Cancel</button>
+                            <button class="Button" type="button" onclick="createCategory()">Save</button>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -240,5 +245,30 @@
     </div>
 
 </div>
+
+<script>
+    function createCategory(){
+        alert('inside create category function')
+        var url = "{% url 'adminpanel:add-service-provider-category' %}"
+        var category_name = document.getElementById('category_name')
+        var status = document.getElementById("status").checked;
+
+        $.ajax({
+            url:url,
+            method : 'POST',
+            data :{
+                category_name:category_name,
+                status:status,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            success : function(){
+                window.location.href = "{% url 'adminpanel:superadmin-service-providers-category' %}"
+            },
+            error : function(){
+                console.log('inside error')
+            }
+        })
+    }
+</script>
 {% endblock body %}
 

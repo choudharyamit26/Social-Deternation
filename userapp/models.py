@@ -83,6 +83,7 @@ class ServiceProvider(models.Model):
     country = models.CharField(default='', max_length=1000)
     city = models.CharField(default='', max_length=100)
     zip_code = models.CharField(default='', max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class ServiceProviderSlots(models.Model):
@@ -93,3 +94,9 @@ class ServiceProviderSlots(models.Model):
     category = models.CharField(default='', max_length=300)
     title = models.CharField(default='', max_length=100)
     hourly_fees = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+
+
+class ServiceProviderCategory(models.Model):
+    category_name = models.CharField(default='', max_length=300)
+    created_at = models.DateField(auto_created=True)
+    status = models.BooleanField(default=False)
