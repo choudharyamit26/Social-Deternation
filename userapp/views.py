@@ -241,9 +241,16 @@ class Dashboard(ListView):
 
     def get(self, request, *args, **kwargs):
         if not self.request.user.is_anonymous:
-            objects = Assault.objects.filter(user=self.request.user)
-            return render(self.request, 'userapp/record-an-assault.html',
-                          {'objects': objects, 'count': objects.count()})
+            if self.request.GET.get('from') and self.request.GET.get('to'):
+                objects = Assault.objects.filter(user=self.request.user)
+                filtered_obj = objects.filter(
+                    Q(created_at__range=(self.request.GET.get('from'), self.request.GET.get('to'))))
+                return render(self.request, 'userapp/record-an-assault.html',
+                              {'objects': filtered_obj, 'count': filtered_obj.count()})
+            else:
+                objects = Assault.objects.filter(user=self.request.user)
+                return render(self.request, 'userapp/record-an-assault.html',
+                              {'objects': objects, 'count': objects.count()})
         else:
             return render(self.request, 'userapp/record-an-assault.html')
 
@@ -443,8 +450,9 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
                 if obj.evidence.lower() == final_data['evidence'].lower():
                     matched_fields_count += 1
                 if matched_fields_count >= 14:
+                    print(obj, obj.first_name)
                     matched_users.append(obj.first_name)
-                print('>>>', matched_fields_count)
+                print('>>>', matched_fields_count, matched_users)
             return JsonResponse(
                 {'matched_users': matched_users, 'count_of_matched_users': len(matched_users),
                  'name': self.request.user.first_name, 'incident_description': final_data['what_happened'],

@@ -724,7 +724,17 @@ function getFormValues(){
                     count.innerHTML = matchCount
                     var count2 = document.getElementById('count2')
                     count2.innerHTML = matchCount
-                    if (matched_users.length > 0 && matched_users.length < 2){
+                    if (matched_users.length < 1){
+                        var name = document.getElementById('name')
+                        name.innerHTML = data['name']
+                        var incident_description = document.getElementById('incident_description')
+                        incident_description.innerHTML = data['incident_description']
+                        var skin_color = document.getElementById('skin_color')
+                        skin_color.innerHTML = data['skin_color']
+                        var happened_on = document.getElementById('happened_on')
+                        happened_on.innerHTML = data['happened_on']
+                    }
+                    else if (matched_users.length > 0 && matched_users.length < 2){
                         u += `<a href="{% url 'userapp:survivor-dashboard' %}">${matched_users[0]}</a>`
                         var name = document.getElementById('name')
                         name.innerHTML = data['name']

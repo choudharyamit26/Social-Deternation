@@ -9,16 +9,21 @@
     <div class="container">
         <h2 class="head">Submission <span class="colorGreen">Date</span></h2>
         <div class="filterFlex">
-            <div class="filterLeft">
-                <div class="form-group" style="margin-right: 25px;">
-                    <label for="" class="lab" style="padding-bottom: 8px;">From</label>
-                    <input type="date" class="form-control formControl" placeholder="From" value="From">
+            <form>
+                <div class="filterLeft">
+                    <div class="form-group" style="margin-right: 25px;">
+                        <label for="" class="lab" style="padding-bottom: 8px;">From</label>
+                        <input type="date" class="form-control formControl" placeholder="From" required name="from">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="lab" style="padding-bottom: 8px;">To</label>
+                        <input type="date" class="form-control formControl" placeholder="To" required name="to">
+                    </div>
+                    <div style="margin-top:50px;margin-left:10px;">
+                        <button type="submit" class="btns modalbtns "> Search</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="" class="lab" style="padding-bottom: 8px;">To</label>
-                    <input type="date" class="form-control formControl" placeholder="To">
-                </div>
-            </div>
+            </form>
             <div class="filterRight">
                 <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-toggle="modal"
                    data-target="#record">+ Record An Assault</a>
@@ -49,7 +54,7 @@
                     {% for obj in objects %}
                     <tr>
                         <td>{{forloop.counter}}</td>
-                        <td>{{obj.created_at}}</td>
+                        <td>{{obj.created_at|date:"M d, Y"}}</td>
                         <td>N/A</td>
                         {% if obj.sought_further_assistance %}
                         <td>Yes</td>
@@ -243,6 +248,8 @@
            },
             });
         }
+
+
 
 </script>
 {% endblock body %}
