@@ -859,6 +859,20 @@ class EditSubscriptionPlan(View):
         return redirect("adminpanel:superadmin-subscription-plan")
 
 
+class EditServiceCategory(View):
+    model = SubscriptionPlan
+
+    def post(self, request, *args, **kwargs):
+        print('From edit subscription plan', self.request.POST)
+        subs_obj = ServiceProviderCategory.objects.get(id=self.request.POST['obj_id'])
+        subs_obj.category_name = self.request.POST['category']
+        subs_obj.active = self.request.POST['check'].title()
+        subs_obj.save()
+        print(subs_obj)
+        messages.success(self.request, 'Service provider category updated successfully')
+        return redirect("adminpanel:superadmin-service-providers-category")
+
+
 class EditGeneralSubscriptionPlan(View):
     model = SubscriptionPlan
 
@@ -893,8 +907,50 @@ class SuperAdminServiceProviders(LoginRequiredMixin, ListView):
 
 
 class SuperAdminProvidersCategory(LoginRequiredMixin, ListView):
-    model = User
+    model = ServiceProviderCategory
     template_name = 'superadmin/new/provider-category.html'
+    paginate_by = 10
+
+    def get(self, request, *args, **kwargs):
+        print(self.request.GET.get('category_name'))
+        print(self.request.GET.get('from_date'))
+        print(self.request.GET.get('to_date'))
+        # if self.request.GET.get('')
+        if self.request.GET.get('category_name') and self.request.GET.get('to_date') and self.request.GET.get(
+                'from_date'):
+            category_obj = ServiceProviderCategory.objects.filter(
+                Q(category_name=self.request.GET.get('category_name')) &
+                Q(created_at__date__range=(self.request.GET.get('from_date'),
+                                           self.request.GET.get('to_date'))))
+            print('BOTH--', category_obj)
+            return render(self.request, 'superadmin/new/provider-category.html',
+                          {'object_list': category_obj})
+        elif self.request.GET.get('to_date') and self.request.GET.get('from_date'):
+            category_obj = ServiceProviderCategory.objects.filter(
+                Q(created_at__date__range=(self.request.GET.get('from_date'), self.request.GET.get('to_date'))))
+            print('both date--', category_obj)
+            return render(self.request, 'superadmin/new/provider-category.html',
+                          {'object_list': category_obj})
+        elif self.request.GET.get('category_name'):
+            category_obj = ServiceProviderCategory.objects.filter(category_name=self.request.GET.get('category_name'))
+            return render(self.request, 'superadmin/new/provider-category.html',
+                          {'object_list': category_obj})
+        elif self.request.GET.get('from_date'):
+            category_obj = ServiceProviderCategory.objects.filter(Q(created_at__date=self.request.GET.get('from_date')))
+            return render(self.request, 'superadmin/new/provider-category.html',
+                          {'object_list': category_obj})
+        elif self.request.GET.get('to_date'):
+            category_obj = ServiceProviderCategory.objects.filter(Q(created_at__date=self.request.GET.get('to_date')))
+            return render(self.request, 'superadmin/new/provider-category.html',
+                          {'object_list': category_obj})
+        else:
+            print('inside else')
+            category_obj = ServiceProviderCategory.objects.all()
+            paginator = Paginator(category_obj, self.paginate_by)
+            page_number = self.request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
+            return render(self.request, 'superadmin/new/provider-category.html',
+                          {'object_list': category_obj, 'pages': page_obj, })
 
 
 class SuperAdminAssaultFormView(LoginRequiredMixin, ListView):
@@ -1096,6 +1152,16 @@ class DeleteSubscriptionPlan(View):
         return redirect("adminpanel:superadmin-subscription-plan")
 
 
+class DeleteServiceProviderCategory(View):
+    model = ServiceProviderCategory
+
+    def get(self, request, *args, **kwargs):
+        organization_obj = ServiceProviderCategory.objects.get(id=kwargs['pk'])
+        organization_obj.delete()
+        messages.success(self.request, "Service provider category deleted successfully")
+        return redirect("adminpanel:superadmin-service-providers-category")
+
+
 class DeleteGeneralSubscriptionPlan(View):
     model = SubscriptionPlan
 
@@ -1146,6 +1212,22 @@ class ExportSubscriptionPlanDataView(LoginRequiredMixin, View):
         return response
 
 
+class ExportServiceProviderCategoryView(LoginRequiredMixin, View):
+    model = ServiceProviderCategory
+    login_url = 'adminpanel:superadmin'
+
+    def get(self, request, *args, **kwargs):
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="category.csv"'
+        writer = csv.writer(response)
+        writer.writerow(
+            ['Category Id', 'Category Name', 'created_at'])
+        categories = ServiceProviderCategory.objects.all().values_list('id', 'category_name', 'created_at__date')
+        for category in categories:
+            writer.writerow(category)
+        return response
+
+
 class InactiveOrganization(LoginRequiredMixin, View):
     model = Organization
 
@@ -1173,6 +1255,21 @@ class InactiveSubscriptionPlan(LoginRequiredMixin, View):
             obj.active = True
             obj.save()
         return redirect("adminpanel:superadmin-subscription-plan")
+
+
+class InactiveServiceProviderCategory(LoginRequiredMixin, View):
+    model = ServiceProviderCategory
+
+    def get(self, request, *args, **kwargs):
+        print(kwargs)
+        obj = ServiceProviderCategory.objects.get(id=kwargs['pk'])
+        if obj.active:
+            obj.active = False
+            obj.save()
+        else:
+            obj.active = True
+            obj.save()
+        return redirect("adminpanel:superadmin-service-providers-category")
 
 
 class InactiveSubscriptionPlan2(LoginRequiredMixin, View):
@@ -1218,6 +1315,21 @@ class SubscriptionDetailView(View):
                             status=200)
 
 
+class ServiceProviderCategoryDetailView(View):
+    model = ServiceProviderCategory
+
+    def post(self, request, *args, **kwargs):
+        print(kwargs)
+        print(self.request.POST)
+        subs_obj = ServiceProviderCategory.objects.get(id=self.request.POST['id'])
+        d = []
+        d.append({'category': subs_obj.category_name})
+        d.append({'active': subs_obj.active})
+
+        return JsonResponse({'category': subs_obj.category_name, 'active': subs_obj.active},
+                            status=200)
+
+
 class HeroView(View):
     template_name = 'superadmin/new/hero.html'
 
@@ -1230,4 +1342,14 @@ class AddServiceProviderCategory(View):
 
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
+        checked = None
+        if self.request.POST.get('status').title():
+            checked = False
+        if self.request.POST.get('status') == 'false':
+            checked = True
+        print(checked)
+        ServiceProviderCategory.objects.create(
+            category_name=self.request.POST.get('category_name'),
+            active=checked
+        )
         return JsonResponse({'message': 'Service provider category created'}, status=200)

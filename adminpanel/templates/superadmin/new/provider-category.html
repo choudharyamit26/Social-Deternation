@@ -1,43 +1,59 @@
 {% extends 'superadmin/new/new-base.html' %}
 {% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="WrapperArea">
     <div class="WrapperBox">
-
+        <div class="content-wrapper">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
         <div class="Small-Wrapper">
             <h4 class="Title">
                 <span>Service Provider Category </span>
                 <a href="javascript:void(0);" data-toggle="modal" data-target="#AddModal"> Add Service Provider
                     Category </a>
             </h4>
+            <form>
+                <div class="Filter">
 
-            <div class="Filter">
+                    <div class="form-group">
+                        <label>Category Name</label>
+                        <input type="text" class="form-control" placeholder="Category Name" name="category_name">
+                    </div>
 
-                <div class="form-group">
-                    <label>Category Name</label>
-                    <input type="text" class="form-control" placeholder="Category Name">
+                    <div class="form-group">
+                        <label>Added From</label>
+                        <input type="date" class="form-control" name="from_date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Added To</label>
+                        <input type="date" class="form-control" name="to_date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button class="Button Reset" type="reset"><i class="fa fa-refresh"></i></button>
+                        <button class="Button" type="submit">Apply</button>
+                    </div>
                 </div>
+            </form>
 
-                <div class="form-group">
-                    <label>Added From</label>
-                    <input type="date" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label>Added To</label>
-                    <input type="date" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label>&nbsp;</label>
-                    <button class="Button Reset"><i class="fa fa-refresh"></i></button>
-                    <button class="Button">Apply</button>
-                </div>
-            </div>
 
             <div class="TableList">
 
                 <div class="CountExportArea">
-                    <a href="javascript:void(0);" class="Export"><i class="fa fa-file-excel-o"></i> Export </a>
+                    <a href="{% url 'adminpanel:export-category-data' %}" class="Export"><i
+                            class="fa fa-file-excel-o"></i> Export </a>
                     <label>
                         Show per page
                         <select>
@@ -49,7 +65,120 @@
                         </select>
                     </label>
                 </div>
+                {% if pages %}
+                <div class="CustomerTable">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Category Name</th>
+                            <th>Added On</th>
+                            <th>Satus</th>
+                            <th>action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in pages %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{obj.category_name}}</td>
+                            <td>{{obj.created_at|date:"M d, Y"}}</td>
+                            {% if obj.active %}
+                            <td><span class="green">Active</span></td>
+                            {% else %}
+                            <td><span class="red">Inactive</span></td>
 
+                            {% endif %}
+                            <td>
+                                <div class="Actions">
+                                    {% if obj.active %}
+                                    <label class="Switch">
+                                        <input type="checkbox" onclick="inActiveSubscription({{obj.id}})"
+                                               checked/>
+                                        <span class="slider"></span>
+                                    </label>
+                                    {% else %}
+                                    <label class="Switch">
+                                        <input type="checkbox"
+                                               onclick="inActiveSubscription({{obj.id}})"/>
+                                        <span class="slider"></span>
+                                    </label>
+                                    {% endif %}
+
+                                    <a class="Green" title="Edit" onclick="serviceProviderDetail({{obj.id}})">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash" onclick="deleteValue({{obj.id}})"></i>
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% elif object_list|length > 0 %}
+                <div class="CustomerTable">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Category Name</th>
+                            <th>Added On</th>
+                            <th>Satus</th>
+                            <th>action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in object_list %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{obj.category_name}}</td>
+                            <td>{{obj.created_at|date:"M d, Y"}}</td>
+                            {% if obj.active %}
+                            <td><span class="green">Active</span></td>
+                            {% else %}
+                            <td><span class="red">Inactive</span></td>
+
+                            {% endif %}
+                            <td>
+                                <div class="Actions">
+                                    {% if obj.active %}
+                                    <label class="Switch">
+                                        <input type="checkbox" onclick="inActiveSubscription({{obj.id}})"
+                                               checked/>
+                                        <span class="slider"></span>
+                                    </label>
+                                    {% else %}
+                                    <label class="Switch">
+                                        <input type="checkbox"
+                                               onclick="inActiveSubscription({{obj.id}})"/>
+                                        <span class="slider"></span>
+                                    </label>
+                                    {% endif %}
+
+                                    <a class="Green" title="Edit" onclick="serviceProviderDetail({{obj.id}})">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+
+                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
+                                       data-target="#DeleteModal">
+                                        <i class="fa fa-trash" onclick="deleteValue({{obj.id}})"
+                                        ></i>
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
                 <div class="CustomerTable">
                     <table>
                         <thead>
@@ -63,69 +192,44 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Counsellor</td>
-                            <td>4/15/2021</td>
-                            <td><span class="green">Active</span></td>
-                            <td>
-                                <div class="Actions">
-                                    <label class="Switch">
-                                        <input type="checkbox" checked/>
-                                        <span class="slider"></span>
-                                    </label>
-
-                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#EditModal">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                    </a>
-
-                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#DeleteModal">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                </div>
-                            </td>
+                            <td colspan="5">No data found</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Legal Assistance</td>
-                            <td>3/21/2021</td>
-                            <td><span class="red">Inctive</span></td>
-                            <td>
-                                <div class="Actions">
-                                    <label class="Switch">
-                                        <input type="checkbox"/>
-                                        <span class="slider"></span>
-                                    </label>
-
-                                    <a class="Green" title="Edit" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#EditModal">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                    </a>
-
-                                    <a class="Red" title="Delete" href="JavaScript:Void(0);" data-toggle="modal"
-                                       data-target="#DeleteModal">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                </div>
-                            </td>
-                        </tr>
-
                         </tbody>
                     </table>
                 </div>
+                {% endif %}
             </div>
 
             <div class="Pagination">
-                <ul>
-                    <li><a href="#">Previous</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
+                {% if pages.has_other_pages %}
+                <div class="Pagination">
+                    <ul>
+                        {% if pages.has_previous %}
+                        <li class="page-item"><a aria-label="Previous" class="page-link"
+                                                 href="?page={{ pages.previous_page_number }}">Previous</a></li>
+                        {% else %}
+                        <li class="page-item disabled"><a href="javaScript:void(0);"><span>&laquo;</span></a>
+                        </li>
+                        {% endif %}
+                        {% for i in pages.paginator.page_range %}
+                        {% if pages.number == i %}
+                        <li class="page-item active"><a href="javaScript:void(0);"><span>{{ i }} <span
+                                class="sr-only">(current)</span></span></a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if pages.has_next %}
+                        <li class="page-item"><a aria-label="Next" class="page-link"
+                                                 href="?page={{ pages.next_page_number }}">Next</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled"><a href="javaScript:void(0)"><span>&raquo;</span></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endif %}
             </div>
 
         </div>
@@ -145,7 +249,7 @@
                         <p>Are you sure you want to delete this Service Provider Category ?</p>
                         <h4>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
-                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                            <a id="delete_button" data-dismiss="modal">Yes</a>
                         </h4>
                     </div>
                 </div>
@@ -163,7 +267,7 @@
                         <p>Are you sure you want to active this Category ?</p>
                         <h4>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
-                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                            <a id="active_button" data-dismiss="modal">Yes</a>
                         </h4>
                     </div>
                 </div>
@@ -181,7 +285,7 @@
                         <p>Are you sure you want to in-active this Category ?</p>
                         <h4>
                             <a href="JavaScript:Void(0);" data-dismiss="modal">No</a>
-                            <a href="JavaScript:Void(0);" data-dismiss="modal">Yes</a>
+                            <a id="inactive_button" data-dismiss="modal">Yes</a>
                         </h4>
                     </div>
                 </div>
@@ -229,15 +333,15 @@
 
                         <div class="form-group">
                             <label>Category Name<sup>*</sup> </label>
-                            <input type="text" class="form-control" placeholder="Enter Category" value="Counsellor">
+                            <input type="text" class="form-control" placeholder="Enter Category" id="show_category">
                         </div>
                         <div class="form-group">
                             <label class="CheckBox">Make Inactive
-                                <input type="checkbox">
+                                <input type="checkbox" id="active">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <button class="Button">Submit</button>
+                        <button class="Button" onclick="editServiceProviderCategory()" type="button">Submit</button>
                     </div>
                 </div>
             </div>
@@ -248,27 +352,171 @@
 
 <script>
     function createCategory(){
-        alert('inside create category function')
+        // alert('inside create category function')
         var url = "{% url 'adminpanel:add-service-provider-category' %}"
         var category_name = document.getElementById('category_name')
         var status = document.getElementById("status").checked;
+        console.log(category_name.value,status)
 
-        $.ajax({
+        if (category_name.value == '' || category_name.value == null){
+            alert('Category name cannot be empty')
+        }else{
+            $.ajax({
             url:url,
             method : 'POST',
             data :{
-                category_name:category_name,
+                category_name:category_name.value,
                 status:status,
                 csrfmiddlewaretoken: "{{ csrf_token }}"
             },
             success : function(){
+                // alert('inside success')
                 window.location.href = "{% url 'adminpanel:superadmin-service-providers-category' %}"
             },
             error : function(){
                 console.log('inside error')
             }
         })
+        }
+
     }
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function inActiveSubscription(id){
+        sessionStorage.setItem('subscriptionObj',id)
+    };
+     $("#inactive_button").click(function () {
+        var object_id = sessionStorage.getItem('subscriptionObj')
+        console.log('Id ',object_id)
+        var protocol = window.location.protocol
+        var hostname = window.location.hostname
+        var port = window.location.port
+        var url = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/inactive-service-provider-category" + "/" + object_id + "/"
+        sessionStorage.removeItem('subscriptionObj')
+        window.location.href = url
+    });
+     $("#active_button").click(function () {
+        var object_id = sessionStorage.getItem('subscriptionObj')
+        console.log('Id ',object_id)
+        var protocol = window.location.protocol
+        var hostname = window.location.hostname
+        var port = window.location.port
+        var url = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/inactive-service-provider-category" + "/" + object_id + "/"
+        sessionStorage.removeItem('subscriptionObj')
+        window.location.href = url
+    });
+
+    function deleteValue(id){
+        sessionStorage.setItem('delObj',id)
+    };
+    $("#delete_button").click(function () {
+        var object_id = sessionStorage.getItem('delObj')
+        console.log('Id ',object_id)
+        var protocol = window.location.protocol
+        var hostname = window.location.hostname
+        var port = window.location.port
+        var url = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/delete-service-provider-category" + "/" + object_id + "/"
+        sessionStorage.removeItem('delObj')
+        window.location.href = url
+    });
+
+</script>
+
+<script>
+    function getValue(id){
+        sessionStorage.setItem('objdetail',id)
+    };
+    function serviceProviderDetail(id){
+            sessionStorage.setItem('objdetail',id)
+        console.log('inside subscription detail function')
+        var url = "{% url 'adminpanel:service-provider-detail'  %}"
+<!--            alert(id)-->
+        $.ajax({
+        url:url,
+        method:'POST',
+        data:{
+            id:id,
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+            console.log(data)
+            var category = data['category']
+            var active_value = data['active']
+            $(document).ready(function() {
+                $('#EditModal').modal('show');
+                show_category = document.getElementById('show_category')
+                show_category.value =  category
+                active = document.getElementById('active')
+                console.log()
+                if (active_value == false){
+                console.log('inside if case')
+                    active.checked = true;
+                }else{
+                     console.log('inside if else')
+                    active.checked = false;
+                }
+
+            });
+        },
+        error:function(data){
+            alert('inside error',data)
+        },
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+function editServiceProviderCategory(){
+        var category = $('#show_category').val();
+        var check = document.getElementById("active").checked;
+        if (category == '' || category == null){
+            alert('Category  name cannot be blank. Please fill all the fields')
+        }else{
+            var url = "{% url 'adminpanel:edit-service-provider-category' %}"
+        $.ajax({
+        url : url,
+        method : 'POST',
+        data:{
+            obj_id:sessionStorage.getItem('objdetail'),
+            category:category,
+            check : check,
+            csrfmiddlewaretoken: "{{ csrf_token }}"
+        },
+        success: function(data){
+           console.log('inside success',data)
+            var protocol = window.location.protocol
+            var hostname = window.location.hostname
+            var port = window.location.port
+            var url2 = protocol + "//" + hostname + ":" + port + "/adminpanel" + "/superadmin-service-providers-category" + "/"
+            //alert("remember_me", remember_me)
+            sessionStorage.removeItem('editId')
+            window.location.href = url2
+        },
+        error: function(data) {
+           console.log('error',data)
+        }
+    });
+        }
+
+    }
+
+
 </script>
 {% endblock body %}
 

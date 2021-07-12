@@ -98,5 +98,5 @@ class ServiceProviderSlots(models.Model):
 
 class ServiceProviderCategory(models.Model):
     category_name = models.CharField(default='', max_length=300)
-    created_at = models.DateField(auto_created=True)
-    status = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)

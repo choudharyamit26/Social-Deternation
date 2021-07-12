@@ -15,7 +15,8 @@ from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardIn
     CMSTermsOfUse, FaqSurvivors, FaqService, FaqLicense, ReportSurvivor, ReportServiceProvider, VoucherView, \
     SpecialUserView, MailBoxView, SuperAdminNotifications, CustomerManagementDetailView, SubscriptionBrasiPlanDetail, \
     SubscriptionGeneralPlanDetail, SuperadminPasswordResetView, SuperadminPasswordResetConfirmView, \
-    AddServiceProviderCategory
+    AddServiceProviderCategory, InactiveServiceProviderCategory, DeleteServiceProviderCategory, \
+    ServiceProviderCategoryDetailView, EditServiceCategory, ExportServiceProviderCategoryView
 
 app_name = 'adminpanel'
 
@@ -78,24 +79,33 @@ urlpatterns = [
                   path('create-general-subscription-plan/', CreateGeneralSubscriptionPlan.as_view(),
                        name='create-general-subscription-plan'),
                   path('edit-subscription-plan/', EditSubscriptionPlan.as_view(), name='edit-subscription-plan'),
+                  path('edit-service-provider-category/', EditServiceCategory.as_view(), name='edit-service-provider-category'),
                   path('edit-general-subscription-plan/', EditGeneralSubscriptionPlan.as_view(),
                        name='edit-general-subscription-plan'),
                   path('edit-organization/', EditOrganization.as_view(), name='edit-organization'),
                   path('delete-organization/<int:pk>/', DeleteOrganization.as_view(), name='delete-organization'),
                   path('delete-subscription-plan/<int:pk>/', DeleteSubscriptionPlan.as_view(),
                        name='delete-subscription-plan'),
+                  path('delete-service-provider-category/<int:pk>/', DeleteServiceProviderCategory.as_view(),
+                       name='delete-service-provider-category'),
                   path('delete-general-subscription-plan/<int:pk>/', DeleteGeneralSubscriptionPlan.as_view(),
                        name='delete-general-subscription-plan'),
                   path('inactive-organization/<int:pk>/', InactiveOrganization.as_view(), name='inactive-organization'),
                   path('inactive-subscription-plan/<int:pk>/', InactiveSubscriptionPlan.as_view(),
                        name='inactive-subscription-plan'),
+                  path('inactive-service-provider-category/<int:pk>/', InactiveServiceProviderCategory.as_view(),
+                       name='inactive-service-provider-category'),
                   path('inactive-general-subscription-plan/<int:pk>/', InactiveSubscriptionPlan2.as_view(),
                        name='inactive-general-subscription-plan'),
                   path('subscription-detail/', SubscriptionDetailView.as_view(), name='subscription-detail'),
+                  path('service-provider-detail/', ServiceProviderCategoryDetailView.as_view(),
+                       name='service-provider-detail'),
                   path('export-organization-data/', ExportOrganizationDataView.as_view(),
                        name='export-organization-data'),
                   path('export-subscription-data/', ExportSubscriptionPlanDataView.as_view(),
                        name='export-subscription-data'),
+                  path('export-category-data/', ExportServiceProviderCategoryView.as_view(),
+                       name='export-category-data'),
                   path('hero/', HeroView.as_view(), name='hero'),
                   path('cms-benefits/', CMSBenefits.as_view(), name='cms-benefits'),
                   path('cms-features/', CMSFeature.as_view(), name='cms-features'),
