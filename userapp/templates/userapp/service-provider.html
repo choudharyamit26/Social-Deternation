@@ -68,15 +68,15 @@
                         <div class="serviceStar">
                             <ul>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                            alt="star"></a></li>
+                                                                      alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                            alt="star"></a></li>
+                                                                      alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                            alt="star"></a></li>
+                                                                      alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                            alt="star"></a></li>
+                                                                      alt="star"></a></li>
                                 <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                            alt="star"></a></li>
+                                                                      alt="star"></a></li>
                             </ul>
 
                         </div>
@@ -84,29 +84,33 @@
                     </div>
                     <div class="bachesdet">
                         <ul class="baches">
-
-                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                <div class="bachesDetails">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
+                            {% if obj.organization == 'Corporate Organisation' %}
+                            {% if obj.organization_type == 'Private' %}
+                                <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
+                                    <div class="bachesDetails">
+                                        <div class="bachesLeft">
+                                            <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
+                                        </div>
+                                        <div class="bachesRight">
+                                            <h2>Corporate Provider</h2>
+                                            <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                        </div>
                                     </div>
-                                    <div class="bachesRight">
-                                        <h2>Corporate Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                </li>
+                                {% else %}
+                                <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
+                                    <div class="bachesDetails bachesDetails2">
+                                        <div class="bachesLeft">
+                                            <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
+                                        </div>
+                                        <div class="bachesRight">
+                                            <h2>Government Funded Provider</h2>
+                                            <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                <div class="bachesDetails bachesDetails2">
-                                    <div class="bachesLeft">
-                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    </div>
-                                    <div class="bachesRight">
-                                        <h2>Government Funded Provider</h2>
-                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                                {% endif %}
+                            {% else %}
                             <li>
                                 <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
                                 <div class="bachesDetails bachesDetails3">
@@ -119,25 +123,25 @@
                                     </div>
                                 </div>
                             </li>
-
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="table-responsive">
                         <table class="table tablefont">
 
                             <tbody>
-                                <tr>
-                                    <td><span class="bold">Qualifications:</span></td>
-                                    <td>Bachelor of Psychology M.Sc
-                                        in Counselling
-                                    </td>
+                            <tr>
+                                <td><span class="bold">Qualifications:</span></td>
+                                <td>Bachelor of Psychology M.Sc
+                                    in Counselling
+                                </td>
 
-                                </tr>
-                                <tr>
-                                    <td><span class="bold">Experience:</span></td>
-                                    <td>12 Years</td>
+                            </tr>
+                            <tr>
+                                <td><span class="bold">Experience:</span></td>
+                                <td>12 Years</td>
 
-                                </tr>
+                            </tr>
 
 
                             </tbody>
@@ -159,7 +163,7 @@
                 <div class="col-sm-4">
                     <div class="clietservice">
                         <!-- <div class="serviceDet"> -->
-                            <h2>No matches found for service provider</h2>
+                        <h2>No matches found for service provider</h2>
                         <!-- </div> -->
                         <!-- <div class="bachesdet">
                             <ul class="baches">
@@ -229,7 +233,7 @@
                             <a href="javascript:void(0)" class="btns" onclick="getServiceProviderSlots({{obj.id}})">Select
                                 Slot</a>
                         </div> -->
-                        
+
                     </div>
                 </div>
             </div>
@@ -237,7 +241,7 @@
             {% endif %}
 
         </div>
-        
+
     </div>
 </section>
 <div class="modalBox">
@@ -259,24 +263,24 @@
                         <h2 class="head"> <span class="newStar">
                                 <ul>
                                     <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                alt="star"></a>
+                                                                          alt="star"></a>
                                     </li>
                                     <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                alt="star"></a>
+                                                                          alt="star"></a>
                                     </li>
                                     <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                alt="star"></a>
+                                                                          alt="star"></a>
                                     </li>
                                     <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/star.svg' %}"
-                                                alt="star"></a>
+                                                                          alt="star"></a>
                                     </li>
                                     <li><a href="javascript:void(0)"><img src="{% static 'userapp/imgs/halfstar.svg' %}"
-                                                alt="star"></a>
+                                                                          alt="star"></a>
                                     </li>
                                 </ul>
                             </span> <span class="" style="float: right;
                                 padding-right: 8%;"><a href="javascript:void(0)" data-dismiss="modal" class="btns"
-                                    style="padding: 4px 20px;">Change</a></span></h2>
+                                                       style="padding: 4px 20px;">Change</a></span></h2>
                         <div class="decription">
                             <h2>Description:</h2>
                             <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out
@@ -385,6 +389,8 @@
         console.log(x, y)
     });
 
+
+
 </script>
 <script>
     function getServiceProviderSlots(id) {
@@ -425,6 +431,8 @@
             },
         });
     }
+
+
 </script>
 <script>
     function filterServiceProvider() {
@@ -446,5 +454,7 @@
             }
         })
     }
+
+
 </script>
 {% endblock body %}

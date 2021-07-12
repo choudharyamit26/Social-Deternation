@@ -1499,11 +1499,10 @@
             
         },
         success: function(data){
+            $('#loaderModal').modal('hide');
             $('.body').html('')
            console.log('inside success',data)
            $('#signup2').modal('hide');
-           $('#loaderModal').modal('hide');
-
            $(document).ready(function() {
             $('#signup3').modal('show');
             var number = document.getElementById('survivorsignupotpmodal')
@@ -1511,6 +1510,7 @@
            });
         },
         error: function(data) {
+            $('#loaderModal').modal('hide');
             $('.body').html('')
            data = data.responseJSON.message;
            error = document.getElementById('error')
@@ -1824,6 +1824,7 @@ function forgotPassword(){
             else if (mobile_number === '' && g_mobile_number !== ''){
                 providerValues.push({'mobile_number':g_mobile_number})
                 sessionStorage.setItem('provider_mobile_number',mobile_number)
+                sessionStorage.setItem('g_mobile_number',g_mobile_number)
                 sessionStorage.setItem('providerOtpNumber',mobile_number)
 
             }
@@ -2208,8 +2209,17 @@ function forgotPassword(){
     function sendOtp() {
         var url = "{% url 'userapp:send-otp' %}"
         var number = sessionStorage.getItem('provider_mobile_number')
+        var g_mobile_number = sessionStorage.getItem('g_mobile_number')
+        var mobile_number = ''
+        if (number){
+                mobile_number = number
+            }else{
+                mobile_number = g_mobile_number
+            }
+
+
         $.ajax({
-            url:url + "?number="+number,
+            url:url + "?number="+mobile_number,
             method:'GET',
             beforeSend: function () {
                 $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
@@ -2220,8 +2230,9 @@ function forgotPassword(){
                 $(document).ready(function() {
                     $('#providersignup2').modal('show');
                     // var x = $('#provider_signup_mobile_number')
+
                     var x = document.getElementById('provider_signup_mobile_number')
-                    x.innerHTML = number
+                    x.innerHTML = mobile_number
                 });
                 // $('#providersignup2').modal('show');
 
@@ -2282,7 +2293,7 @@ function forgotPassword(){
                             </div>`;
                 
                 //    $('#providersignin6').modal('hide');
-           $(document).ready(function() {
+                $(document).ready(function() {
                 $('#providersignup2').modal('show');
             });
             }
@@ -2330,7 +2341,7 @@ function forgotPassword(){
                                     </button>
                             </div>`;
                 //    $('#providersignin6').modal('hide');
-           $(document).ready(function() {
+                    $(document).ready(function() {
                 $('#providersignin4').modal('show');
             });
             }
@@ -2666,8 +2677,14 @@ function forgotPassword(){
     function providerSignUpreSendOtp(){
         var url = "{% url 'userapp:provider-resend-otp' %}"
         // alert('inside reSendOtp')
+        var mobile_number = ''
+        if(sessionStorage.getItem('provider_mobile_number')){
+            mobile_number = sessionStorage.getItem('provider_mobile_number')
+        }else{
+            mobile_number = sessionStorage.getItem('g_mobile_number')
+        }
         $.ajax({
-            url:url +"?number="+sessionStorage.getItem('provider_mobile_number'),
+            url:url +"?number="+mobile_number,
             method:'GET',
             beforeSend: function(){
                 $(document).ready(function() {
@@ -2699,8 +2716,14 @@ function forgotPassword(){
                 $(document).ready(function() {
                         $('#providersignup2').modal('show');
                     });
-                var logged_in_number = document.getElementById('provider_signup_mobile_number')
-                logged_in_number.innerHTML = sessionStorage.getItem('provider_mobile_number')
+                 if (sessionStorage.getItem('provider_mobile_number')){
+                    var logged_in_number = document.getElementById('provider_signup_mobile_number')
+                    logged_in_number.innerHTML = sessionStorage.getItem('provider_mobile_number')
+
+                 }else{
+                    var logged_in_number = document.getElementById('provider_signup_mobile_number')
+                    logged_in_number.innerHTML = sessionStorage.getItem('g_mobile_number')
+                 }
             },
             error:function(){
                 console.log('inside error')
