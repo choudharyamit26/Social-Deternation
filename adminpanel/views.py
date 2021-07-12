@@ -887,7 +887,7 @@ class SuperAdminClientsView(LoginRequiredMixin, ListView):
 
 
 class SuperAdminServiceProviders(LoginRequiredMixin, ListView):
-    model = User
+    model = ServiceProvider
     template_name = 'superadmin/new/provider.html'
     login_url = "adminpanel:superadmin"
 
