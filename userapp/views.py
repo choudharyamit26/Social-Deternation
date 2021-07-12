@@ -492,13 +492,24 @@ class ServiceProviderView(View):
                 Q(contact_persons_first_name__icontains=self.request.GET.get('name')) |
                 Q(contact_persons_last_name__icontains=self.request.GET.get('name')))
             print('form name', service_provider_obj)
+            service_provider_volunteer_list = []
+            for obj in service_provider_obj:
+                slots = ServiceProviderSlots.objects.get(user=obj)
+                for slot in slots:
+                    if slot.select_slot_type == 'Volunteer':
+                        service_provider_volunteer_list.append(obj.id)
             return render(self.request, 'userapp/service-provider.html',
-                          {'object_list': service_provider_obj})
+                          {'object_list': service_provider_obj, 'volunteer_providers': service_provider_volunteer_list})
         elif self.request.GET.get('category'):
             service_provider_obj = ServiceProvider.objects.filter(country=details.country_name).filter(
                 organization__icontains=self.request.GET.get('category'))
             print('form category', service_provider_obj)
-
+            service_provider_volunteer_list = []
+            for obj in service_provider_obj:
+                slots = ServiceProviderSlots.objects.filter(user=obj)
+                for slot in slots:
+                    if slot.select_slot_type == 'Volunteer':
+                        service_provider_volunteer_list.append(obj.id)
             return render(self.request, 'userapp/service-provider.html',
                           {'object_list': service_provider_obj})
         elif self.request.GET.get('name') and self.request.GET.get('category'):
@@ -507,18 +518,29 @@ class ServiceProviderView(View):
                 Q(contact_persons_last_name__icontains=self.request.GET.get('name')) |
                 Q(organization__icontains=self.request.GET.get('category')))
             print('form name and category', service_provider_obj)
-
+            service_provider_volunteer_list = []
+            for obj in service_provider_obj:
+                slots = ServiceProviderSlots.objects.filter(user=obj)
+                for slot in slots:
+                    if slot.select_slot_type == 'Volunteer':
+                        service_provider_volunteer_list.append(obj.id)
             return render(self.request, 'userapp/service-provider.html',
-                          {'object_list': service_provider_obj})
+                          {'object_list': service_provider_obj, 'volunteer_providers': service_provider_volunteer_list})
         else:
             service_provider_obj = ServiceProvider.objects.filter(country=details.country_name)
             # service_provider_obj = ServiceProvider.objects.all()
             # service_provider_obj = ServiceProvider.objects.filter(country='India')
             print('form else', service_provider_obj)
-            print('-------',ip_address)
-            print('-------',request.META.get("HTTP_X_REAL_IP"))
+            print('-------', ip_address)
+            print('-------', request.META.get("HTTP_X_REAL_IP"))
+            service_provider_volunteer_list = []
+            for obj in service_provider_obj:
+                slots = ServiceProviderSlots.objects.filter(user=obj)
+                for slot in slots:
+                    if slot.select_slot_type == 'Volunteer':
+                        service_provider_volunteer_list.append(obj.id)
             return render(self.request, 'userapp/service-provider.html',
-                      {'object_list': service_provider_obj})
+                          {'object_list': service_provider_obj, 'volunteer_providers': service_provider_volunteer_list})
 
 
 class MyBookingsView(View):

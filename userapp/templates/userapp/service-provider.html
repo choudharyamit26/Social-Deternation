@@ -86,30 +86,30 @@
                         <ul class="baches">
                             {% if obj.organization == 'Corporate Organisation' %}
                             {% if obj.organization_type == 'Private' %}
-                                <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                    <div class="bachesDetails">
-                                        <div class="bachesLeft">
-                                            <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
-                                        </div>
-                                        <div class="bachesRight">
-                                            <h2>Corporate Provider</h2>
-                                            <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                        </div>
+                            <li><img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
+                                <div class="bachesDetails">
+                                    <div class="bachesLeft">
+                                        <img src="{% static 'userapp/imgs/b1.svg' %}" alt="b">
                                     </div>
-                                </li>
-                                {% else %}
-                                <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                    <div class="bachesDetails bachesDetails2">
-                                        <div class="bachesLeft">
-                                            <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
-                                        </div>
-                                        <div class="bachesRight">
-                                            <h2>Government Funded Provider</h2>
-                                            <p>, Lorem ipsum is a placeholder text commonly.</p>
-                                        </div>
+                                    <div class="bachesRight">
+                                        <h2>Corporate Provider</h2>
+                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
                                     </div>
-                                </li>
-                                {% endif %}
+                                </div>
+                            </li>
+                            {% else %}
+                            <li><img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
+                                <div class="bachesDetails bachesDetails2">
+                                    <div class="bachesLeft">
+                                        <img src="{% static 'userapp/imgs/b2.svg' %}" alt="b">
+                                    </div>
+                                    <div class="bachesRight">
+                                        <h2>Government Funded Provider</h2>
+                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endif %}
                             {% else %}
                             <li>
                                 <img src="{% static 'userapp/imgs/b3.svg' %}" alt="b">
@@ -119,6 +119,19 @@
                                     </div>
                                     <div class="bachesRight">
                                         <h2>Private Provider</h2>
+                                        <p>, Lorem ipsum is a placeholder text commonly.</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endif %}
+                            {% if obj.id in volunteer_providers %}
+                            <li><img src="{% static 'userapp/imgs/b4.svg' %}" alt="b">
+                                <div class="bachesDetails bachesDetails2">
+                                    <div class="bachesLeft">
+                                        <img src="{% static 'userapp/imgs/b4.svg' %}" alt="b">
+                                    </div>
+                                    <div class="bachesRight">
+                                        <h2>Volunteer Provider</h2>
                                         <p>, Lorem ipsum is a placeholder text commonly.</p>
                                     </div>
                                 </div>
@@ -391,6 +404,7 @@
 
 
 
+
 </script>
 <script>
     function getServiceProviderSlots(id) {
@@ -433,6 +447,7 @@
     }
 
 
+
 </script>
 <script>
     function filterServiceProvider() {
@@ -454,6 +469,7 @@
             }
         })
     }
+
 
 
 </script>
