@@ -1519,14 +1519,14 @@ class EditQuestionsSuperAdmin(View):
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
         assault_form_obj = AssaultFormQuestions.objects.get(id=kwargs['pk'])
-        if self.request.POST.get('field_type') == 'field_type':
+        if self.request.POST.get('field_type') == 'textinput':
             assault_form_obj.category = self.request.POST.get('category')
-            assault_form_obj.category = self.request.POST.get('category')
+            assault_form_obj.question = self.request.POST.get('question')
             assault_form_obj.field_type = self.request.POST.get('field_type')
             assault_form_obj.save()
         else:
             assault_form_obj.category = self.request.POST.get('category')
-            assault_form_obj.category = self.request.POST.get('category')
+            assault_form_obj.question = self.request.POST.get('question')
             assault_form_obj.field_type = self.request.POST.get('field_type')
             assault_form_obj.answer_option_1 = self.request.POST.get('answer_option_1')
             assault_form_obj.answer_option_2 = self.request.POST.get('answer_option_2')
