@@ -1,5 +1,7 @@
 {% extends 'superadmin/new/new-base.html' %}
 {% block body %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="WrapperArea">
     <div class="WrapperBox">
 
@@ -7,317 +9,261 @@
             <h4 class="Title">
                 <span>Assault Form Management </span>
                 <a href="JavaScript:Void(0);" data-toggle="modal" data-target="#AddFormModal"> Add Assault Form </a>
-                <a href="record_filed_edit.html" class="mr-3"> Edit </a>
+                <!-- <a href="assault-form-edit.html" class="mr-3"> Edit </a> -->
             </h4>
-
             <div class="RecordForm">
-
                 <div class="RecordBox">
+                    {% for obj in object_list %}
+                    <h5>Category : <span style="font-weight: 400;">{{obj.category}}</span></h5>
                     <div class="row">
-                        <div class="form-group col-sm-4">
-                            <label for="">First Name </label>
-                            <input type="text" class="form-control" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <label for="">Last Name </label>
-                            <input type="text" class="form-control" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="lab">Gender:</label>
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input id="radio-6" name="radio3" type="radio">
-                                        <label for="radio-6" class="radio-label">Male</label>
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input id="radio-7" name="radio3" type="radio" checked>
-                                        <label for="radio-7" class="radio-label">Female</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-8" name="radio3" type="radio">
-                                        <label for="radio-8" class="radio-label">Other</label>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="lab">Build:</label>
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input id="radio-9" name="radio4" type="radio">
-                                        <label for="radio-9" class="radio-label">Small</label>
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input id="radio-10" name="radio4" type="radio" checked>
-                                        <label for="radio-10" class="radio-label">Medium</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-11" name="radio4" type="radio">
-                                        <label for="radio-11" class="radio-label">Large</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-12" name="radio4" type="radio">
-                                        <label for="radio-12" class="radio-label">Not Sure</label>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="lab">Height:</label>
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input id="radio-13" name="radio5" type="radio">
-                                        <label for="radio-13" class="radio-label">Small</label>
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input id="radio-14" name="radio5" type="radio" checked>
-                                        <label for="radio-14" class="radio-label">Medium</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-15" name="radio5" type="radio">
-                                        <label for="radio-15" class="radio-label">Large</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-16" name="radio5" type="radio">
-                                        <label for="radio-16" class="radio-label">Not Sure</label>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="lab">Eye Colour:</label>
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input id="radio-17" name="radio6" type="radio">
-                                        <label for="radio-17" class="radio-label">Brown</label>
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input id="radio-18" name="radio6" type="radio" checked>
-                                        <label for="radio-18" class="radio-label">Green</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-19" name="radio6" type="radio">
-                                        <label for="radio-19" class="radio-label">Blue</label>
-                                    </div>
-                                </li>
-
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-20" name="radio6" type="radio">
-                                        <label for="radio-20" class="radio-label">Not Sure</label>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row " style="margin-bottom:10px">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl" placeholder="Special Body Mark">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl" placeholder="Telephone Number">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl" placeholder="Hair Colour">
+                        <div class="form-group col-sm-12">
+                            <label for="">Q.{{forloop.counter}} {{obj.question}}? </label>
+                            <div class="DisFlex" style="align-items: flex-start;">
+                                {% if obj.field_type == 'textinput' %}
+                                <textarea rows="4" class="form-control"></textarea>
+                                {% else %}
+                                <div class="form-group col-sm-6">
+                                    <select class="form-control">
+                                        {% if obj.answer_option_1 != None and obj.answer_option_1 != '' %}
+                                        <option>{{obj.answer_option_1}}</option>
+                                        {% endif %}
+                                        {% if obj.answer_option_2 != None and obj.answer_option_2 != '' %}
+                                        <option>{{obj.answer_option_2}}</option>
+                                        {% endif %}
+                                        {% if obj.answer_option_3 != None and obj.answer_option_3 != '' %}
+                                        <option>{{obj.answer_option_3}}</option>
+                                        {% endif %}
+                                        {% if obj.answer_option_4 != None and obj.answer_option_4 != '' %}
+                                        <option>{{obj.answer_option_4}}</option>
+                                        {% endif %}
+                                        {% if obj.answer_option_5 != None and obj.answer_option_5 != '' %}
+                                        <option>{{obj.answer_option_5}}</option>
+                                        {% endif %}
+                                        {% if obj.answer_option_6 != None and obj.answer_option_6 != '' %}
+                                        <option>{{obj.answer_option_6}}</option>
+                                        {% endif %}
+                                        {% if obj.answer_option_7 != None and obj.answer_option_7 != '' %}
+                                        <option>{{obj.answer_option_7}}</option>
+                                        {% endif %}
+                                        {% if obj.answer_option_8 != None and obj.answer_option_8 != '' %}
+                                        <option>{{obj.answer_option_8}}</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                                {% endif %}
+                                <div class="col-sm-6 AssaultEditor">
+                                    <a href="{% url 'adminpanel:edit-questions' obj.id %}"><i class="fa fa-pencil-square"
+                                            aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="" class="lab">Skin Colour:</label>
-                        <div class="signUpby signUpby2">
+                    {% endfor %}
 
-                            <ul class="nav nav-tabs">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input id="radio-21" name="radio7" type="radio">
-                                        <label for="radio-21" class="radio-label">Light</label>
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input id="radio-22" name="radio7" type="radio" checked>
-                                        <label for="radio-22" class="radio-label">Dark</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-23" name="radio7" type="radio">
-                                        <label for="radio-23" class="radio-label">Not Sure</label>
-                                    </div>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="lab">Race:</label>
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input id="radio-24" name="radio8" type="radio">
-                                        <label for="radio-24" class="radio-label">Caucasian</label>
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input id="radio-25" name="radio8" type="radio" checked>
-                                        <label for="radio-25" class="radio-label">Asian</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-26" name="radio8" type="radio">
-                                        <label for="radio-26" class="radio-label">Africa</label>
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-27" name="radio8" type="radio">
-                                        <label for="radio-27" class="radio-label">not sure</label>
-                                    </div>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </div>
                 </div>
-
-                <h4 class="Title pb-5 text-center pt-3 ">
-                    <a href="assault-form.html"> Next</a>
-                </h4>
             </div>
         </div>
     </div>
 </div>
+
+
 <div class="ModalBox">
 
     <div class="modal show" id="AddFormModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="Category">
+                            <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
+                            <h3>Add New Question </h3>
+                            <div class="form-group">
+                                <label>Category<sup>*</sup> </label>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="category">
+                                            {% for object in questions_category %}
+                                            <option>{{object.category_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="Addcategory" data-target="#AddFormModal2" data-toggle="modal"
+                                            data-dismiss="modal">Add New Category</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Type your question</label>
+                                <textarea rows="4" class="form-control" id="question"></textarea>
+                            </div>
+
+                            <div class="CategoryBox">
+                                <h4>Answer option</h4>
+
+                                <div class="form-group">
+                                    <label class="CheckBox" id="Dropdown">Dropdown
+                                        <input type="checkbox" id="dropdownvalue" value="dropdown">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+
+                                    <label class="CheckBox" id="Input">Input textbox
+                                        <input type="checkbox" id="inputvalue" value="textinput">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+
+                                <div class="form-group" id="Options">
+                                    <label>Dropdown Option </label>
+                                    <div class="multi-field-wrapper">
+                                        <div class="multi-fields ">
+                                            <div class="multi-field DisFlex mb-2">
+                                                <input type="text" class="form-control" name="stuff">
+                                                <button type="button" class="remove-field vishuCross"><i
+                                                        class="fa fa-times" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="add-field mb-2 Button"><i class="fa fa-plus mr-1"
+                                                aria-hidden="true"></i> ADD</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="Button Cancel">Cancel</button>
+                            <button class="Button" type="button" onclick="createQuestion()">Save</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal show" id="AddFormModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
                     <div class="Category">
                         <a href="javascript:void(0);" class="CloseModal" data-dismiss="modal">×</a>
-                        <h3>Add New Question </h3>
+                        <h3>Add New Category </h3>
                         <div class="form-group">
                             <label>Category<sup>*</sup> </label>
                             <div class="row">
-                                <div class="col-sm-8">
-                                    <select class="form-control" id="SelectCategory">
-                                        <option>Select Category</option>
-                                        <option>When</option>
-                                        <option>Where</option>
-                                        <option>People Who Know or Might Know</option>
-                                        <option>Consent</option>
-                                        <option>Incident (s)</option>
-                                        <option>Offender(s)</option>
-                                        <option>Evidence</option>
-                                    </select>
-                                    <input type="text" class="form-control" id="CustomCategory">
-                                </div>
-                                <div class="col-sm-4">
-                                    <button class="Addcategory">Add New Category</button>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="newquestioncategory">
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label>Type your question</label>
-                            <textarea rows="4" class="form-control"></textarea>
-                        </div>
-
-                        <div class="CategoryBox">
-                            <h4>Answer option</h4>
-
-                            <div class="form-group">
-                                <label class="CheckBox" id="Dropdown">Dropdown
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-
-
-                                <label class="CheckBox" id="Input">Input textbox
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-
-                            <div class="form-group" id="Options">
-                                <label>Dropdown Option </label>
-                                <input type="text" class="form-control">
-                            </div>
-
-
-                        </div>
-
-
                         <button class="Button Cancel">Cancel</button>
-                        <button class="Button">Save</button>
+                        <button class="Button" type="button" onclick="createQuestionCategory()">Save</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+<script>
+    $('.multi-field-wrapper').each(function () {
+        var $wrapper = $('.multi-fields', this);
+        $(".add-field", $(this)).click(function (e) {
+            $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('input').val('').focus();
+        });
+        $('.multi-field .remove-field', $wrapper).click(function () {
+            if ($('.multi-field', $wrapper).length > 1)
+                $(this).parent('.multi-field').remove();
+        });
+    });
+</script>
+<script>
+    function createQuestion() {
+        var url = "{% url 'adminpanel:add-assault-form-questions' %}"
+        var category = document.getElementById('category')
+        console.log('Category Value',category.value)
+        var question = document.getElementById('question')
+        console.log('Question Value',question.value)
+        var answer_type_dropdown = document.getElementById('dropdownvalue')
+        console.log('answer type dropdown Value',answer_type_dropdown.checked,answer_type_dropdown.value)
+        var answer_type_textinput = document.getElementById('inputvalue')   
+        var dropdown_options = []
+        var dropdown_options_value = document.getElementsByName('stuff')
+
+        console.log('dropdown options values',dropdown_options_value.length)
+        for (i=0;i<dropdown_options_value.length;i++){
+            if (dropdown_options_value[i].value != '' && dropdown_options_value[i].value != null){
+                dropdown_options.push (dropdown_options_value[i].value)
+
+            }
+        }
+        var input_type = ''
+        if (answer_type_dropdown.checked == true){
+            input_type = answer_type_dropdown.value
+        }else{
+            input_type = answer_type_textinput.value
+        }
+        // alert(dropdown_options.length,dropdown_options.length)
+        if (input_type.value == 'dropdown' && dropdown_options.length < 1){
+            alert('Dropdown options cannot be empty')
+            return false;
+        }
+        console.log('answer type textinput Value',answer_type_textinput.checked,answer_type_textinput.value)
+        if (category.value == '' || category.value == null || category.value == 'Select Category' || question.value == '' || question.value == null || (answer_type_dropdown.checked == false && answer_type_textinput.checked == false)){
+            alert('One or more fields are blank. Please fill all the fields')
+        }else{
+            $.ajax({
+                url:url,
+                method:'POST',
+                data:{
+                    category:category.value,
+                    question:question.value,
+                    input_type:input_type,
+                    dropdown_options:dropdown_options,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success:function(){
+                    console.log('inside success case')
+                    window.location.href = "{% url 'adminpanel:superadmin-assault-form' %}"
+                },
+                error:function(){
+                    console.log('inside error case')
+                }
+            })
+
+        }
+
+
+    }
+</script>
+<script>
+    function createQuestionCategory(){
+        var url = "{% url 'adminpanel:add-question-category' %}"
+        var category_name = document.getElementById('newquestioncategory')
+        if (category_name == '' || category_name == null){
+            alert('Category name cannot be empty')
+        }else{
+            $.ajax({
+                url:url,
+                method:'POST',
+                data:{
+                    category_name:category_name.value,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success:function(data){
+                    window.location.href = "{% url 'adminpanel:superadmin-assault-form' %}"
+                    console.log('inside success')
+                },
+                error:function(){
+                    console.log('inside error')
+                }
+
+            })
+        }
+    }
+</script>
+
+<!-- <script>
+    $(window).on('load', function() {
+        $('#AddFormModal').modal('show');
+    });
+</script> -->
 {% endblock body %}

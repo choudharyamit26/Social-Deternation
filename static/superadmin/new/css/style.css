@@ -894,3 +894,18 @@ h4.Title a:hover{background-color:purple}
         -webkit-appearance: none;
         margin: 0;
     }
+
+    .AssaultEditor a{
+        font-size: 35px;
+        display: block;
+        text-align: right;
+      }
+      .vishuCross{
+        color: red;
+        border: none;
+        margin-left: 10px;
+        font-size: 20px;
+      }
+      .vishuCross:focus {
+        outline: 0;
+    }

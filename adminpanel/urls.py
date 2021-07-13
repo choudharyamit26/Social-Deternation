@@ -16,7 +16,11 @@ from .views import LoginView, Dashboard, SubscriptionView, SurvivorsView, CardIn
     SpecialUserView, MailBoxView, SuperAdminNotifications, CustomerManagementDetailView, SubscriptionBrasiPlanDetail, \
     SubscriptionGeneralPlanDetail, SuperadminPasswordResetView, SuperadminPasswordResetConfirmView, \
     AddServiceProviderCategory, InactiveServiceProviderCategory, DeleteServiceProviderCategory, \
-    ServiceProviderCategoryDetailView, EditServiceCategory, ExportServiceProviderCategoryView
+    ServiceProviderCategoryDetailView, EditServiceCategory, ExportServiceProviderCategoryView, EditQuestionsSuperAdmin, \
+    SuperAdminAssaultForm2View, CreateAssaultFormQuestions, AddServiceProviderQuestionCategory, \
+    GetServiceProviderQuestionCategory
+
+# AssaultFormQuestionsListView
 
 app_name = 'adminpanel'
 
@@ -69,7 +73,6 @@ urlpatterns = [
                   path("password-reset-complete/",
                        PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
                        name="password-reset-complete"),
-
                   path('change-password/', PasswordChangeView.as_view(template_name='superadmin/change_password.html'),
                        name='change_password'),
                   path('password-change-done/',
@@ -79,7 +82,8 @@ urlpatterns = [
                   path('create-general-subscription-plan/', CreateGeneralSubscriptionPlan.as_view(),
                        name='create-general-subscription-plan'),
                   path('edit-subscription-plan/', EditSubscriptionPlan.as_view(), name='edit-subscription-plan'),
-                  path('edit-service-provider-category/', EditServiceCategory.as_view(), name='edit-service-provider-category'),
+                  path('edit-service-provider-category/', EditServiceCategory.as_view(),
+                       name='edit-service-provider-category'),
                   path('edit-general-subscription-plan/', EditGeneralSubscriptionPlan.as_view(),
                        name='edit-general-subscription-plan'),
                   path('edit-organization/', EditOrganization.as_view(), name='edit-organization'),
@@ -124,4 +128,14 @@ urlpatterns = [
                   path('superadmin-notification/', SuperAdminNotifications.as_view(), name='superadmin-notification'),
                   path('add-service-provider-category/', AddServiceProviderCategory.as_view(),
                        name='add-service-provider-category'),
+                  path('edit-questions/<int:pk>/', EditQuestionsSuperAdmin.as_view(), name='edit-questions'),
+                  path('assault-form-2/', SuperAdminAssaultForm2View.as_view(), name='assault-form-2'),
+                  path('add-assault-form-questions/', CreateAssaultFormQuestions.as_view(),
+                       name='add-assault-form-questions'),
+                  path('add-question-category/', AddServiceProviderQuestionCategory.as_view(),
+                       name='add-question-category'),
+                  path('get-question-category/', GetServiceProviderQuestionCategory.as_view(),
+                       name='get-question-category')
+                  # path('get-assault-form-questions/', AssaultFormQuestionsListView.as_view(),
+                  #      name='get-assault-form-questions')
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

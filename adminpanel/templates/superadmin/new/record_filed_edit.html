@@ -11,223 +11,114 @@
             <div class="RecordForm">
 
                 <div class="RecordBox">
-                    <div class="row">
-                        <div class="form-group col-sm-4">
-                            <input type="text" class="form-control" value="First Name">
-                        </div>
-                        <div class="form-group col-sm-4">
-                            <input type="text" class="form-control" value="Last Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Gender">
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs mt-3">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Male">
-
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Female">
-
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Other">
-
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Build">
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs mt-3">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Small">
-
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Medium">
-
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Large">
-
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Not Sure">
-
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Height">
-
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs mt-3">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Small">
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Medium">
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Large">
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Not Sure">
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Eye Colour">
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs mt-3">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Brown">
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Green">
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Blue">
-                                    </div>
-                                </li>
-
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Not Sure">
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row " style="margin-bottom:10px">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl" value="Special Body Mark">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col-sm-4">
+                                <label>Category</label>
+                                <input type="text" class="form-control" value="{{object.category}}" name="category">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label>Question</label>
+                                <input type="text" class="form-control" value="{{object.question}}" name="question">
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl" value="Telephone Number">
+                        <div class="form-group">
+                            <label>Field Type</label>
+                            <input type="text" class="form-control" value="{{object.field_type}}" name="field_type">
+                        </div>
+                        {% if object.field_type == 'dropdown' %}
+                        <div class="form-group">
+                            <div class="signUpby signUpby2">
+
+                                <ul class="nav nav-tabs mt-3">
+                                    <li class=" first">
+
+                                        <div class="radio">
+
+                                            <label>Answer Option 1</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_1}}"
+                                                   name="answer_option_1">
+
+                                        </div>
+
+                                    </li>
+                                    <li class="second active">
+                                        <div class="radio">
+
+                                            <label>Answer Option 2</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_2}}"
+                                                   name="answer_option_2">
+
+                                        </div>
+                                    </li>
+                                    <li class="second">
+                                        <div class="radio">
+                                            <label>Answer Option 3</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_3}}"
+                                                   name="answer_option_3">
+
+                                        </div>
+                                    </li>
+                                    <li class="second">
+                                        <div class="radio">
+                                            <label>Answer Option 4</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_4}}"
+                                                   name="answer_option_4">
+
+                                        </div>
+                                    </li>
+                                    <li class=" first">
+
+                                        <div class="radio">
+
+                                            <label>Answer Option 5</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_5}}"
+                                                   name="answer_option_5">
+
+                                        </div>
+
+                                    </li>
+                                    <li class="second active">
+                                        <div class="radio">
+
+                                            <label>Answer Option 6</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_6}}"
+                                                   name="answer_option_6">
+
+                                        </div>
+                                    </li>
+                                    <li class="second">
+                                        <div class="radio">
+                                            <label>Answer Option 7</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_7}}"
+                                                   name="answer_option_7">
+
+                                        </div>
+                                    </li>
+                                    <li class="second">
+                                        <div class="radio">
+                                            <label>Answer Option 8</label>
+                                            <input type="text" class="form-control" value="{{object.answer_option_8}}"
+                                                   name="answer_option_8">
+
+                                        </div>
+                                    </li>
+
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl" value="Hair Colour">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Skin Colour">
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs mt-3">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Light">
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Dark">
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Not Sure">
-                                    </div>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" value="Race">
-                        <div class="signUpby signUpby2">
-
-                            <ul class="nav nav-tabs mt-3">
-                                <li class=" first">
-
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Caucasian">
-                                    </div>
-
-                                </li>
-                                <li class="second active">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Asian">
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Africa">
-                                    </div>
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input type="text" class="form-control" value="Not Sure">
-                                    </div>
-                                </li>
-
-
-                            </ul>
-                        </div>
-                    </div>
+                        {% else %}
+                        {% endif %}
+                        <h4 class="Title pb-5 text-center pt-3 ">
+                            <button type="submit"
+                                    style="background-color:#438b8b;border-radius:5px;color: #fff;font-weight: 500;padding: 10px 17px;float: right;margin: -5px 0 0 0">
+                                Save
+                            </button>
+                        </h4>
+                    </form>
                 </div>
 
-                <h4 class="Title pb-5 text-center pt-3 ">
-                    <a href="record_filed.html"> Save</a>
-                </h4>
             </div>
         </div>
     </div>

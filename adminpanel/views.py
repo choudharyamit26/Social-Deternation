@@ -25,7 +25,7 @@ from django.views.generic import ListView, View, TemplateView, FormView
 
 # from .filters import OrganizationFilter
 from .forms import AdminLoginForm
-from .models import User, Organization, SubscriptionPlan, SubscriptionStatus
+from .models import User, Organization, SubscriptionPlan, SubscriptionStatus, AssaultFormQuestions, QuestionCategory
 from userapp.models import Survivor, ServiceProvider, Assault, ServiceProviderCategory
 
 user = get_user_model()
@@ -958,6 +958,159 @@ class SuperAdminAssaultFormView(LoginRequiredMixin, ListView):
     template_name = 'superadmin/new/record_filed.html'
     login_url = "adminpanel:superadmin"
 
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'superadmin/new/record_filed.html',
+                      {'object_list': AssaultFormQuestions.objects.all(),
+                       'questions_category': QuestionCategory.objects.all()})
+
+
+class SuperAdminAssaultForm2View(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'superadmin/new/assault-form.html'
+    login_url = "adminpanel:superadmin"
+
+
+class AddServiceProviderQuestionCategory(LoginRequiredMixin, View):
+    model = QuestionCategory
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        QuestionCategory.objects.create(category_name=self.request.POST.get('category_name'))
+        questions_category = []
+        for question in QuestionCategory.objects.all():
+            questions_category.append(question.category_name)
+        return JsonResponse(
+            {'message': 'Question Category created successfully', 'data': questions_category},
+            status=200)
+
+
+class GetServiceProviderQuestionCategory(LoginRequiredMixin, View):
+    model = QuestionCategory
+
+    def get(self, request, *args, **kwargs):
+        return JsonResponse({'data': QuestionCategory.objects.all().value()}, status=200)
+
+
+class CreateAssaultFormQuestions(LoginRequiredMixin, View):
+    model = AssaultFormQuestions
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        if self.request.POST.get('input_type') == 'textinput':
+            print('inside if case')
+            AssaultFormQuestions.objects.create(
+                category=self.request.POST.get('category'),
+                question=self.request.POST.get('question'),
+                field_type=self.request.POST.get('input_type')
+            )
+        else:
+            print(len(self.request.POST.getlist('dropdown_options[]')), self.request.POST.getlist('dropdown_options[]'))
+            # print(len(self.request.POST.get('dropdown_options[]')), self.request.POST.get('dropdown_options[]')[0],
+            #       self.request.POST.get('dropdown_options[]')[1],
+            #       self.request.POST.get('dropdown_options[]')[2], self.request.POST.get('dropdown_options[]')[3],
+            #       self.request.POST.get('dropdown_options[]')[4], self.request.POST.get('dropdown_options[]')[5],
+            #       self.request.POST.get('dropdown_options[]')[6], self.request.POST.get('dropdown_options[]')[7])
+            if len(self.request.POST.getlist('dropdown_options[]')) == 1:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.getlist('dropdown_options[]')[0]
+
+                )
+            if len(self.request.POST.getlist('dropdown_options[]')) == 2:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.getlist('dropdown_options[]')[0],
+                    answer_option_2=self.request.POST.getlist('dropdown_options[]')[1]
+
+                )
+            if len(self.request.POST.getlist('dropdown_options[]')) == 3:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.getlist('dropdown_options[]')[0],
+                    answer_option_2=self.request.POST.getlist('dropdown_options[]')[1],
+                    answer_option_3=self.request.POST.getlist('dropdown_options[]')[2]
+
+                )
+            if len(self.request.POST.getlist('dropdown_options[]')) == 4:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.get('dropdown_options[]')[0],
+                    answer_option_2=self.request.POST.get('dropdown_options[]')[1],
+                    answer_option_3=self.request.POST.get('dropdown_options[]')[2],
+                    answer_option_4=self.request.POST.get('dropdown_options[]')[3]
+
+                )
+            if len(self.request.POST.getlist('dropdown_options[]')) == 5:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.getlist('dropdown_options[]')[0],
+                    answer_option_2=self.request.POST.getlist('dropdown_options[]')[1],
+                    answer_option_3=self.request.POST.getlist('dropdown_options[]')[2],
+                    answer_option_4=self.request.POST.getlist('dropdown_options[]')[3],
+                    answer_option_5=self.request.POST.getlist('dropdown_options[]')[4]
+
+                )
+            if len(self.request.POST.getlist('dropdown_options[]')) == 6:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.getlist('dropdown_options[]')[0],
+                    answer_option_2=self.request.POST.getlist('dropdown_options[]')[1],
+                    answer_option_3=self.request.POST.getlist('dropdown_options[]')[2],
+                    answer_option_4=self.request.POST.getlist('dropdown_options[]')[3],
+                    answer_option_5=self.request.POST.getlist('dropdown_options[]')[4],
+                    answer_option_6=self.request.POST.getlist('dropdown_options[]')[5]
+
+                )
+            if len(self.request.POST.getlist('dropdown_options[]')) == 7:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.getlist('dropdown_options[]')[0],
+                    answer_option_2=self.request.POST.getlist('dropdown_options[]')[1],
+                    answer_option_3=self.request.POST.getlist('dropdown_options[]')[2],
+                    answer_option_4=self.request.POST.getlist('dropdown_options[]')[3],
+                    answer_option_5=self.request.POST.getlist('dropdown_options[]')[4],
+                    answer_option_6=self.request.POST.getlist('dropdown_options[]')[5],
+                    answer_option_7=self.request.POST.getlist('dropdown_options[]')[6]
+                )
+            if len(self.request.POST.getlist('dropdown_options[]')) == 8:
+                AssaultFormQuestions.objects.create(
+                    category=self.request.POST.get('category'),
+                    question=self.request.POST.get('question'),
+                    field_type=self.request.POST.get('input_type'),
+                    answer_option_1=self.request.POST.getlist('dropdown_options[]')[0],
+                    answer_option_2=self.request.POST.getlist('dropdown_options[]')[1],
+                    answer_option_3=self.request.POST.getlist('dropdown_options[]')[2],
+                    answer_option_4=self.request.POST.getlist('dropdown_options[]')[3],
+                    answer_option_5=self.request.POST.getlist('dropdown_options[]')[4],
+                    answer_option_6=self.request.POST.getlist('dropdown_options[]')[5],
+                    answer_option_7=self.request.POST.getlist('dropdown_options[]')[6],
+                    answer_option_8=self.request.POST.getlist('dropdown_options[]')[7]
+                )
+        return render(self.request, 'superadmin/new/assault-form.html')
+
+
+# class AssaultFormQuestionsListView(LoginRequiredMixin, View):
+#     model = AssaultFormQuestions
+#     template_name = 'superadmin/new/assault-form.html'
+#
+#     def get(self, request, *args, **kwargs):
+#         return render(self.request, 'superadmin/new/assault-form.html',
+#                       {'object_list': AssaultFormQuestions.objects.all()})
+
 
 class SuperAdminAssaultRecords(LoginRequiredMixin, ListView):
     model = User
@@ -1353,3 +1506,35 @@ class AddServiceProviderCategory(View):
             active=checked
         )
         return JsonResponse({'message': 'Service provider category created'}, status=200)
+
+
+class EditQuestionsSuperAdmin(View):
+    model = AssaultFormQuestions
+    template_name = 'superadmin/new/record_filed_edit.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(self.request, 'superadmin/new/record_filed_edit.html',
+                      {'object': AssaultFormQuestions.objects.get(id=kwargs['pk'])})
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        assault_form_obj = AssaultFormQuestions.objects.get(id=kwargs['pk'])
+        if self.request.POST.get('field_type') == 'field_type':
+            assault_form_obj.category = self.request.POST.get('category')
+            assault_form_obj.category = self.request.POST.get('category')
+            assault_form_obj.field_type = self.request.POST.get('field_type')
+            assault_form_obj.save()
+        else:
+            assault_form_obj.category = self.request.POST.get('category')
+            assault_form_obj.category = self.request.POST.get('category')
+            assault_form_obj.field_type = self.request.POST.get('field_type')
+            assault_form_obj.answer_option_1 = self.request.POST.get('answer_option_1')
+            assault_form_obj.answer_option_2 = self.request.POST.get('answer_option_2')
+            assault_form_obj.answer_option_3 = self.request.POST.get('answer_option_3')
+            assault_form_obj.answer_option_4 = self.request.POST.get('answer_option_4')
+            assault_form_obj.answer_option_5 = self.request.POST.get('answer_option_5')
+            assault_form_obj.answer_option_6 = self.request.POST.get('answer_option_6')
+            assault_form_obj.answer_option_7 = self.request.POST.get('answer_option_7')
+            assault_form_obj.answer_option_8 = self.request.POST.get('answer_option_8')
+            assault_form_obj.save()
+        return redirect("adminpanel:superadmin-assault-form")

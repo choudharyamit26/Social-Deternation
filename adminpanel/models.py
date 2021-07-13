@@ -91,6 +91,24 @@ class Otp(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+class AssaultFormQuestions(models.Model):
+    category = models.CharField(default='', max_length=300)
+    question = models.CharField(default='', max_length=300)
+    field_type = models.CharField(default='', max_length=200)
+    answer_option_1 = models.CharField(default='', max_length=300, null=True, blank=True)
+    answer_option_2 = models.CharField(default='', max_length=300, null=True, blank=True)
+    answer_option_3 = models.CharField(default='', max_length=300, null=True, blank=True)
+    answer_option_4 = models.CharField(default='', max_length=300, null=True, blank=True)
+    answer_option_5 = models.CharField(default='', max_length=300, null=True, blank=True)
+    answer_option_6 = models.CharField(default='', max_length=300, null=True, blank=True)
+    answer_option_7 = models.CharField(default='', max_length=300, null=True, blank=True)
+    answer_option_8 = models.CharField(default='', max_length=300, null=True, blank=True)
+
+
+class QuestionCategory(models.Model):
+    category_name = models.CharField(default='', max_length=100)
+
+
 @receiver(post_save, sender=Organization)
 def user_coins(sender, instance, created, **kwargs):
     if created:

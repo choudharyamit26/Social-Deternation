@@ -385,6 +385,7 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
                 Q(other_info_about_person_with_offender=final_data['other_info_about_person_with_offender'].lower()) |
                 Q(evidence=final_data['evidence'].lower())).exclude(user=user)
             print('Assault OBJ-->>', assault_obj)
+            # matched_users = {}
             matched_users = []
             for obj in assault_obj:
                 matched_fields_count = 0
@@ -452,6 +453,10 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
                 if matched_fields_count >= 14:
                     print(obj, obj.first_name)
                     matched_users.append(obj.first_name)
+                    # if matched_users[obj.id] in matched_users:
+                    #     pass
+                    # else:
+                    #     matched_users[obj.id] = obj.first_name
                 print('>>>', matched_fields_count, matched_users)
             return JsonResponse(
                 {'matched_users': matched_users, 'count_of_matched_users': len(matched_users),
