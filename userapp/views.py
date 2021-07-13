@@ -1125,7 +1125,12 @@ class CreateMultiSlotView(View):
                     slots_dict[key].append(slot[key])
                 else:
                     slots_dict[key] = [slot[key]]
-            # print(key,value)
+        print('DICT ', slots_dict)
+        d_list = []
+        for key, value in slots_dict.items():
+            print('TTTTTTTTTTTTTT',key,value)
+            d_list.append(key)
+        print('DDDD LIST ', d_list)
         f = self.request.POST['select_slot_type'].split(",")
         g = self.request.POST['category_type'].split(",")
         h = self.request.POST['multi_title'].split(",")
@@ -1141,14 +1146,16 @@ class CreateMultiSlotView(View):
             if new_fee_list[i] == 'p':
                 new_fee_list[i] = fee_list[counter]
                 counter += 1
-        if len(d) == len(h) and len(d) == len(f) and len(d) == len(g):
-            data = zip(d, f, g, h, new_fee_list)
+        print('>>>>>>>>>>>>>>>>>>>>>>>>>', len(d), len(g), g, len(d) == len(g))
+        if len(h) == len(f) and len(h) == len(g):
+            data = zip(d_list, f, g, h, new_fee_list)
             user = self.request.user
             service_provider = ServiceProvider.objects.get(user=user)
             for x in list(data):
                 date_time_str = x[0].split(' ')
+                print(date_time_str, date_time_str[1])
                 month_name = date_time_str[1]
-                datetime_object = datetime.strptime(month_name, "%B").month
+                datetime_object = datetime.datetime.strptime(month_name, "%B").month
                 if datetime_object < 10:
                     datetime_object = '0' + str(datetime_object)
                 else:
@@ -1159,13 +1166,14 @@ class CreateMultiSlotView(View):
                 else:
                     d = d
                 selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
-                date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
+                date_time_obj = datetime.datetime.strptime(selected_date_obj, '%d/%m/%Y')
                 try:
                     i = x[4]
                     fee = Decimal(i)
                 except:
                     fee = 0
                 for i in slots_dict[x[0]]:
+                    print(i)
                     slot_obj = ServiceProviderSlots.objects.create(
                         user=service_provider,
                         slot_date=date_time_obj,

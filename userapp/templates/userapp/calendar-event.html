@@ -411,8 +411,8 @@
     <div class="modal-dialog" style="max-width:67%;">
         <div class="modal-content">
             <div class="modal-body">
-                <button type="button" class="close closee" data-dismiss="modal"><img
-                        src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
+                <a href="{% url 'userapp:provider-availability' %}"  class="close" ><img
+                        src="{% static '/userapp/imgs/close.svg' %}" alt="close"></a>
                 <div class="availabilitySlot" style="overflow-y: auto;">
                     <form method="POST">
                         {% csrf_token %}

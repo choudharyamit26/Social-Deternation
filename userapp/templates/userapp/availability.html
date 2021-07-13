@@ -584,6 +584,44 @@
     });
 </script>
 <script>
+    var category_arr = []
+    $(document).on('click','.multicategory', function(){
+        var x = $(this).val().trim();
+        if (x == 'Select Category') {
+
+            } else {
+                alert(x)
+                category_arr.push(x)
+                sessionStorage.setItem('multiCategoryType', category_arr)
+            }
+        
+    })
+</script>
+<script>
+
+    // var category_arr = []
+    // var multiSlots = sessionStorage.getItem('multiSelectDate').split(",")
+    // console.log('multislots length',multiSlots.length)
+    // $(document).ready(function() {
+    //     for (var i = 0; i < multiSlots.length; i++) {
+    //     console.log('multislots length',multiSlots.length)
+    //     // alert(i,multiSlots.length)
+    //     $(document).on('click', '#multicategory' + i + '', function () {
+    //         var x = $(this).val().trim();
+    //         alert('MULTICATEGORY',i,x)
+    //         if (x == 'Select Category') {
+
+    //         } else {
+    //             category_arr.push(x)
+    //             sessionStorage.setItem('multiCategoryType', category_arr)
+    //         }
+
+    //     });
+    // }
+    // });
+
+</script>
+<script>
     var radio_button_value_arr = []
     var multi_radio_button_value_arr = []
     var multi_title = []
@@ -660,26 +698,14 @@
             multi_radio_button_value_arr.push(JSON.stringify({slot:x,date:z.replace(/(\r\n|\n|\r)/gm, "").trim()}))
             console.log(multi_radio_button_value_arr)
             sessionStorage.setItem('multiSlots', multi_radio_button_value_arr)
+            sessionStorage.setItem('multiSelectDate', multi_radio_button_value_arr)
+
             console.log(multi_radio_button_value_arr)
         }
   
     });
 
-    var category_arr = []
-    var multiSlots = sessionStorage.getItem('multiSelectDate').split(",")
 
-    for (var i = 0; i < multiSlots.length; i++) {
-        $(document).on('click', '#multicategory' + i + '', function () {
-            var x = $(this).val().trim();
-            if (x == 'Select Category') {
-
-            } else {
-                category_arr.push(x)
-                sessionStorage.setItem('multiCategoryType', category_arr)
-            }
-
-        });
-    }
 
     function multiSlotTypeFun() {
         var multiSlots = sessionStorage.getItem('multiSelectDate').split(",");
@@ -698,7 +724,7 @@
                                 <div class="availablityMain availablityMain2 ">
                                     <div class="categoryAll">
                                         <h2 class="cate">Category</h2>
-                                        <select name="cars" id="multicategory${i}" class="form-control formControl"
+                                        <select name="cars"  id="multicategory${i}" class="form-control formControl multicategory"
                                             style="padding: 15px;">
                                             <option>Select Category</option>
                                             <option value="Legal Assistance">Legal Assistance</option>
