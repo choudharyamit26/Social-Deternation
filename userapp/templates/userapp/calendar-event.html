@@ -382,7 +382,13 @@
     
                         <div class="selectdate" style="padding: 25px;padding-bottom: 0;">
                             {% for obj in slots_per_day %}
-                            <header ><h2 style="color:blue">{{obj.slot_date}}</h2></header>
+                            <div class="DisFlex">
+                                <h2 style="color:blue">{{obj.slot_date}}</h2> 
+                                <div class="DisFlex ">
+                                    <button onclick="editSlot({{obj.id}})" class="ml-2" style="border: none;"><i class="fa fa-edit" style="color:red"></i></button>
+                                    <a href="{% url 'userapp:delete-provider-slot' obj.id %}" class="ml-2"><i class="fa fa-trash" style="color:blue"></i></a>
+                                </div>
+                            </div>
                             <h6>Title: {{obj.title}}</h6>
                             <h6>Time: {{obj.slot_time}}</h6>
                             <h6>Type: {{obj.select_slot_type}}</h6>
@@ -391,9 +397,104 @@
                             {% else %}
                             <h6>Fees: {{obj.hourly_fees}}</h6>
                             {% endif %}
+
                             <hr>
                             {% endfor %}
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="editslotmodal">
+    <div class="modal-dialog" style="max-width:67%;">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close closee" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
+                <div class="availabilitySlot" style="overflow-y: auto;">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="checkAvailability">
+                            <div class="avaliblitytitles">
+                                <ul>
+                                    <li>
+                                        <span><a href="javaScript:void(0)" id="slot_timing">
+                                            </a></span>
+                                    </li>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="" class="label" style="padding: 0;">Add Tittle</label>
+                                                <input type="text" class="form-control formControl"
+                                                    placeholder="Add Title" name="single_title" id="edit_title_field">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="" class="label" style="padding: 0;">Add Hourly Fees</label>
+                                                <input type="text" class="form-control formControl"
+                                                    placeholder="Add Hourly Fees" name="single_fee" id="edit_fee_field">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <select name="cars" id="edit_category" class="form-control formControl"
+                                                style="padding: 15px;" name="category">
+                                                <option>Select Category</option>
+                                                <option value="Legal Assistance">Legal Assistance</option>
+                                                <option value="Therapeutical Help">Therapeutical Help</option>
+                                                <option value="Counselling">Counselling</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 availablityMain availablityMain2">
+                                            <h2 class="cate">Type</h2>
+                                            <ul class="nav nav-tabs singleAmit" style="margin: 0;display: flex;padding: 0px 0px 10px;">
+                                                <li class="active first">
+                                                    <div class="radio">
+                                                        <input id="radio-777" name="radio33" type="radio" value="Volunteer" required>
+                                                        <label for="radio-777" class="radio-label single">Volunteer</label>
+                                                    </div>
+                                                    <span class="error">
+                                                        <p id="radio_error" style="color: red;"></p>
+                                                    </span>
+                                                </li>
+                
+                                                <li class="second">
+                
+                                                    <div class="radio">
+                                                        <input id="radio-778" name="radio33" type="radio" value="Paid Service" required>
+                                                        <label for="radio-778" class="radio-label multiple">Paid Service</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="availModal " style="border-bottom: 0;">
+                                <ul class="slot-timing">
+                                    <li><a href="javaScript:void(0)" id="07:00-AM-to-08:00-AM">07:00 AM to 08:00 AM</a></li>
+                                    <li><a href="javaScript:void(0)" id="08:00-AM-to-09:00 AM">08:00 AM to 09:00 AM</a></li>
+                                    <li><a href="javaScript:void(0)" id="09:00-AM-to-10:00-AM">09:00 AM to 10:00 AM</a></li>
+                                    <li style="margin-right: 10px;" id="10:00-AM-to-11:00-AM"><a href="javaScript:void(0)">10:00 AM to 11:00 AM</a></li>
+                                    <li><a href="javaScript:void(0)" id="11:00-AM-to-12:00-PM">11:00 AM to 12:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" id="12:00-PM-to-01:00-PM">12:00 PM to 01:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" id="01:00-PM-to-02:00-PM">01:00 PM to 02:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" id="02:00-PM-to-03:00-PM">02:00 PM to 03:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" id="03:00-PM-to-04:00-PM">03:00 PM to 04:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" id="04:00-PM-to-05:00-PM">04:00 PM to 05:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" id="05:00-PM-to-06:00-PM">05:00 PM to 06:00 PM</a></li>
+                                    <li><a href="javaScript:void(0)" id="06:00-PM-to-07:00-PM">06:00 PM to 07:00 PM</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                   
+                </div>
+                <div class="btnsBottom">
+                    <div class="modBt">
+                        <button  class="Button bg-violet" onclick="updateSlot()" type="button">Update</button>
                     </div>
                 </div>
             </div>
@@ -767,6 +868,92 @@ Hourly Fees</a>
     $(document).on('click', '.closed', function () {
         $('.tiitlebox').hide();
     });
+</script>
+
+<script>
+    function editSlot(id){
+        sessionStorage.setItem('slot_id',id)
+        console.log(id)
+        var url = "{% url 'userapp:edit-provider-slot' %}"
+        $.ajax({
+            url:url + "?id=" + id,
+            method:'GET',
+            success : function(data){
+                console.log(data['fees'],data['category'],data['time'])
+                var title_value = data['title']
+                var fee_value = data['fees']
+                var category_value = data['category']
+                var type_value = data['type']
+                var time = data['time']
+                var time_d = time.split(' ').join('-');
+                console.log('>>>>>>',time_d)
+                $('#slotsModal').modal('hide');
+                $(document).ready(function () {
+                    $('#editslotmodal').modal('show');
+                    var title = document.getElementById('edit_title_field')
+                    title.value = title_value
+
+                    var fee = document.getElementById('edit_fee_field')
+                    fee.value = fee_value
+
+                    var category = document.getElementById('edit_category')
+                    category.value = category_value
+
+                   if (type_value == 'Volunteer'){
+                    document.getElementById("radio-777").checked = true;
+                   }else{
+                    document.getElementById("radio-778").checked = true;
+                   }
+                   var time_id = document.getElementById(time_d)
+                   time_id.classList.add("active");
+                });
+            },
+            error : function(){
+
+            }
+        })
+    }
+</script>
+<script>
+    $(document).on('click','.slot-timing li a',function(){
+        $('.slot-timing li a').removeClass('active');
+        $(this).addClass('active');
+        var timeValue = $(this).text();
+        sessionStorage.setItem('slot_time',timeValue)
+    // alert(timeValue);
+    });
+</script>
+<script>
+    function updateSlot(){
+        console.log('clicked update slot')
+        var url = "{% url 'userapp:edit-provider-slot' %}"
+        var f = $('input[name="radio33"]:checked').val();
+        var g = document.getElementById('edit_category')
+        var h = document.getElementById('edit_title_field')
+        var i = document.getElementById('edit_fee_field')
+
+
+        $.ajax({
+            url:url,
+            method:'POST',
+            data : {
+                id:sessionStorage.getItem('slot_id'),
+                selected_slot: sessionStorage.getItem('slot_time'),
+                select_slot_type: f,
+                category_type: g.value,
+                title: h.value,
+                fee: i.value,
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+
+            },
+            success :function(){
+                window.location.href = "{% url 'userapp:provider-availability' %}"
+            },
+            error : function(){
+                console.log('inside error')
+            }
+        })
+    }
 </script>
 
 

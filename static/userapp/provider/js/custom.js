@@ -1,4 +1,6 @@
 
+
+
 // for full calender
 //  document.addEventListener('DOMContentLoaded', function() {
 //    var calendarEl = document.getElementById('calendar1');
@@ -363,3 +365,4 @@ $(document).on('click', '.singledate td.fc-future fc-other-month', function () {
   // alert('Current selected date',current_selected_date)
   console.log(sessionStorage.getItem('singleSelectDate'))
 });
+

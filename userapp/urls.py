@@ -10,7 +10,7 @@ from .views import HomeView, SurvivorSignUp, Dashboard, RecordAnAssault, RecordA
     ProviderForgotPassword, ProviderPasswordResetConfirmView, CreateSlotView, GuestAssaultUser, \
     GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView, SurvivorCalendarEvent, ServiceProviderProfile, \
     GetServiceProviderAvailability, VerifyOtp, ResendOtp, SendOtp, ProviderResendOtp, SurvivorResendOtp, \
-    UpdateAssaultForm
+    UpdateAssaultForm, DeleteProviderSlot, EditProviderSlot
 
 app_name = 'userapp'
 
@@ -70,5 +70,7 @@ urlpatterns = [
                   path('provider-resend-otp/', ProviderResendOtp.as_view(), name='provider-resend-otp'),
                   path('get-service-provider-availability/', GetServiceProviderAvailability.as_view(),
                        name='get-service-provider-availability'),
-                  path('update-assault-form/', UpdateAssaultForm.as_view(), name='update-assault-form')
+                  path('update-assault-form/', UpdateAssaultForm.as_view(), name='update-assault-form'),
+                  path('delete-provider-slot/<int:pk>/', DeleteProviderSlot.as_view(), name='delete-provider-slot'),
+                  path('edit-provider-slot/', EditProviderSlot.as_view(), name='edit-provider-slot'),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

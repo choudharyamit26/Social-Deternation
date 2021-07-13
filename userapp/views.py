@@ -167,8 +167,6 @@ class SurvivorLoginByEmailView(View):
             print(user.check_password(self.request.POST['loginpssword']))
             if user.check_password(self.request.POST['loginpssword']):
                 if user.is_survivor:
-                    login(self.request, user)
-                    # return HttpResponse('Log in successfull')
                     email = user.email
                     otp = randint(100000, 999999)
                     print(otp)
@@ -185,6 +183,8 @@ class SurvivorLoginByEmailView(View):
                     email_body = render_to_string(email_template, context)
                     send_mail(subject, email_body, DEFAULT_FROM_EMAIL,
                               [email], fail_silently=False)
+                    login(self.request, user)
+                    # return HttpResponse('Log in successfull')
                     # return redirect("userapp:survivor-dashboard")
                     return JsonResponse({'email': email}, status=200)
                 else:
@@ -212,9 +212,6 @@ class SurvivorLoginByMobileNumberView(View):
             user = User.objects.get(phone_number=self.request.POST['loginmobile'])
             if user.check_password(self.request.POST['loginpssword2']):
                 if user.is_survivor:
-                    login(self.request, user)
-                    # return HttpResponse('Log in successfull')
-                    # send_otp(user.country_code, user.phone_number)
                     otp = randint(100000, 999999)
                     Otp.objects.create(number=user.phone_number, otp=otp)
                     telnyx.Message.create(
@@ -222,6 +219,9 @@ class SurvivorLoginByMobileNumberView(View):
                         to='+' + str(int(user.country_code)) + str(user.phone_number),
                         text=f'Your one time password from BRASI is {otp}. This otp is valid for next 60 seconds.'
                     )
+                    login(self.request, user)
+                    # return HttpResponse('Log in successfull')
+                    # send_otp(user.country_code, user.phone_number)
                     return JsonResponse({'number': user.phone_number}, status=200)
                     # return redirect("userapp:survivor-dashboard")
                 else:
@@ -833,7 +833,9 @@ class ProviderSignIn(View):
             print(user.check_password(final_data['password']))
             if user.check_password(final_data['password']):
                 if user.is_service_provider:
+                    send_otp(user.country_code, user.phone_number)
                     login(self.request, user)
+                    print('------>>>logged in successfully')
                     # return HttpResponse('Log in successfull')
                     # if remember_me:
                     #     cookie_age = 60 * 60 * 24
@@ -847,7 +849,6 @@ class ProviderSignIn(View):
                     #     self.request.session.set_expiry(0)
                     # return redirect('adminpanel:superadmin-dashboard"')
                     # return redirect("userapp:provider-requests")
-                    send_otp(user.country_code, user.phone_number)
                     return JsonResponse({'number': user.phone_number}, status=200)
                 else:
                     return JsonResponse({'message': 'Unauthorised access'}, status=400)
@@ -1067,7 +1068,7 @@ class CreateSlotView(View):
         service_provider = ServiceProvider.objects.get(user=user)
         date_time_str = self.request.POST['selected_date'].split(' ')
         month_name = date_time_str[1]
-        datetime_object = datetime.strptime(month_name, "%B").month
+        datetime_object = datetime.datetime.strptime(month_name, "%B").month
         if datetime_object < 10:
             datetime_object = '0' + str(datetime_object)
         else:
@@ -1078,7 +1079,7 @@ class CreateSlotView(View):
         else:
             d = d
         selected_date_obj = d + '/' + str(datetime_object) + '/' + date_time_str[2]
-        date_time_obj = datetime.strptime(selected_date_obj, '%d/%m/%Y')
+        date_time_obj = datetime.datetime.strptime(selected_date_obj, '%d/%m/%Y')
         i = self.request.POST.get('fee')
         # fee = float(i)
         try:
@@ -1294,3 +1295,40 @@ class ProviderResendOtp(View):
             return JsonResponse({'message': 'Otp Sent successfully'}, status=200)
         except Exception as e:
             return JsonResponse({'message': 'Something went wrong'}, status=400)
+
+
+class DeleteProviderSlot(View):
+    model = ServiceProviderSlots
+
+    def get(self, request, *args, **kwargs):
+        print(kwargs)
+        print(self.request.GET)
+        slot_obj = ServiceProviderSlots.objects.get(id=kwargs['pk'])
+        slot_obj.delete()
+        return redirect('userapp:provider-availability')
+
+    def post(self, request, *args, **kwargs):
+        print(kwargs)
+        return redirect('userapp:provider-availability')
+
+
+class EditProviderSlot(View):
+    model = ServiceProviderSlots
+
+    def get(self, request, *args, **kwargs):
+        print(kwargs)
+        print(self.request.GET.get('id'))
+        print(self.request.GET)
+        slot_obj = ServiceProviderSlots.objects.get(id=self.request.GET.get('id'))
+        return JsonResponse({'title': slot_obj.title, 'fees': slot_obj.hourly_fees, 'type': slot_obj.select_slot_type,
+                             'category': slot_obj.category, 'time': slot_obj.slot_time}, status=200)
+
+    def post(self, request, *args, **kwargs):
+        slot_obj = ServiceProviderSlots.objects.get(id=self.request.POST.get('id'))
+        slot_obj.slot_time = self.request.POST.get('selected_slot')
+        slot_obj.select_slot_type = self.request.POST.get('select_slot_type')
+        slot_obj.category_type = self.request.POST.get('category_type')
+        slot_obj.title = self.request.POST.get('title')
+        slot_obj.hourly_fees = self.request.POST.get('fee')
+        slot_obj.save()
+        return redirect('userapp:provider-availability')
