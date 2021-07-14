@@ -97,10 +97,17 @@ class SurvivorSignUp(CreateView):
         print(self.request.POST)
         user_email = User.objects.filter(email=self.request.POST['email']).count()
         user_phone = User.objects.filter(phone_number=self.request.POST['mobile_number']).count()
-        if self.request.POST.get('mobile_number').strip() == '' or not self.request.POST.get('mobile_number').isdigit():
+        print('Phone NUmber length', len(self.request.POST.get('mobile_number').strip()))
+        if self.request.POST.get('mobile_number').strip() == '':
             return JsonResponse(
                 {
-                    'message': 'This phone number cannot be blank. Please supply a valid phone number and email address.'},
+                    'message': 'Phone number cannot be blank. Please supply a valid phone number.'},
+                status=400)
+        if len(self.request.POST.get('mobile_number').strip()) < 6 or len(
+                self.request.POST.get('mobile_number').strip()) > 15:
+            return JsonResponse(
+                {
+                    'message': 'Phone number length should be between 6 to 15 .'},
                 status=400)
         if self.request.POST.get('email').strip() == '':
             return JsonResponse(

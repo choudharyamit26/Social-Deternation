@@ -347,7 +347,7 @@ i.material-icons {
                     <form method="post" action="{% url 'userapp:survivor-signup' %}">
                         {% csrf_token %}
                         <div class="form-group field" style="padding-top: 35px;">
-                            <input type="text" class="form-control formControl" id="mobile_number" placeholder="Mobile Number*"
+                            <input type="number" class="form-control formControl" id="mobile_number" placeholder="Mobile Number*"
                                    name="mobile_number" required>
                         </div>
                         <div class="form-group field">
@@ -948,7 +948,7 @@ i.material-icons {
                             </ul>
                             <div class="formByMail active">
                                 <div class="form-group">
-                                    <input type="text" class="form-control formControl" name="mobile_number"
+                                    <input type="number" class="form-control formControl" name="mobile_number"
                                            placeholder="Contact Person’s Mobile Number*" id="provider_mobile_number" required>
                                 </div>
                                 <div class="form-group">
