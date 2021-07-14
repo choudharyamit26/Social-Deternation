@@ -769,6 +769,25 @@ class PasswordResetConfirmView(View):
             return redirect('userapp:password-reset-complete')
 
 
+class ServiceProviderSignupFirstStep(View):
+    model = ServiceProvider
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        data1 = json.loads(self.request.POST['data1'])
+        final_data = {}
+        for data in data1:
+            final_data.update(data)
+        print(final_data)
+        try:
+            user = User.objects.get(email=final_data['email'])
+            if user:
+                return JsonResponse({'message': 'User with this email already exists'}, status=400)
+        except Exception as e:
+            print(e)
+            return JsonResponse({'message': 'survivor created'}, status=200)
+
+
 class ServiceProviderSignup(View):
     model = ServiceProvider
 
@@ -793,6 +812,9 @@ class ServiceProviderSignup(View):
             if user:
                 return JsonResponse({'message': 'User with this email already exists'}, status=400)
         except:
+            # image = final_data.get('company_logo').split(r'\\')
+            # print(image, image[2])
+
             user = User.objects.create(
                 email=final_data['email'],
                 phone_number=final_data['mobile_number'],

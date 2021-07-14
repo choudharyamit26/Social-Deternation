@@ -10,7 +10,7 @@ from .views import HomeView, SurvivorSignUp, Dashboard, RecordAnAssault, RecordA
     ProviderForgotPassword, ProviderPasswordResetConfirmView, CreateSlotView, GuestAssaultUser, \
     GuestAssaultUserForm2View, CreateMultiSlotView, PaymentView, SurvivorCalendarEvent, ServiceProviderProfile, \
     GetServiceProviderAvailability, VerifyOtp, ResendOtp, SendOtp, ProviderResendOtp, SurvivorResendOtp, \
-    UpdateAssaultForm, DeleteProviderSlot, EditProviderSlot
+    UpdateAssaultForm, DeleteProviderSlot, EditProviderSlot, ServiceProviderSignupFirstStep
 
 app_name = 'userapp'
 
@@ -50,6 +50,8 @@ urlpatterns = [
                   path('survivor-profile/', SurvivorProfileView.as_view(), name='survivor-profile'),
                   path('service-provider-profile/', ServiceProviderProfile.as_view(), name='service-provider-profile'),
                   path('survivor-logout/', SurvivorLogout.as_view(), name='survivor-logout'),
+                  path('service-provider-signup-first-step/', ServiceProviderSignupFirstStep.as_view(),
+                       name='service-provider-signup-first-step'),
                   path('service-provider-signup/', ServiceProviderSignup.as_view(), name='service-provider-signup'),
                   path('provider-signin/', ProviderSignIn.as_view(), name='provider-signin'),
                   path('provider-requests/', ServiceProviderRequests.as_view(), name='provider-requests'),
