@@ -949,7 +949,8 @@ class SurvivorAvailability(View):
         try:
             service_provider = ServiceProvider.objects.get(user=user)
             return render(self.request, 'userapp/availability.html',
-                          {'object_list': ServiceProviderSlots.objects.filter(user=service_provider)})
+                          {'object_list': ServiceProviderSlots.objects.filter(user=service_provider),
+                           'service_provider': service_provider})
         except Exception as e:
             return render(self.request, 'userapp/availability.html',
                           {'object_list': ''})
@@ -1140,15 +1141,25 @@ class CreateSlotView(View):
         except:
             fee = 0
         for i in range(len(self.request.POST['selected_slot'].split(','))):
-            ServiceProviderSlots.objects.create(
-                user=service_provider,
-                slot_date=date_time_obj,
-                slot_time=selected_slot[i],
-                select_slot_type=self.request.POST['select_slot_type'],
-                category=self.request.POST['category_type'],
-                title=self.request.POST['title'],
-                hourly_fees=fee
-            )
+            if self.request.POST.get('select_slot_type'):
+                ServiceProviderSlots.objects.create(
+                    user=service_provider,
+                    slot_date=date_time_obj,
+                    slot_time=selected_slot[i],
+                    select_slot_type=self.request.POST['select_slot_type'],
+                    category=self.request.POST['category_type'],
+                    title=self.request.POST['title'],
+                    hourly_fees=fee
+                )
+            else:
+                ServiceProviderSlots.objects.create(
+                    user=service_provider,
+                    slot_date=date_time_obj,
+                    slot_time=selected_slot[i],
+                    category=self.request.POST['category_type'],
+                    title=self.request.POST['title'],
+                    hourly_fees=fee
+                )
         return redirect("userapp:provider-availability")
 
 
@@ -1385,10 +1396,11 @@ class EditProviderSlot(View):
                              'category': slot_obj.category, 'time': slot_obj.slot_time}, status=200)
 
     def post(self, request, *args, **kwargs):
+        print(self.request.POST)
         slot_obj = ServiceProviderSlots.objects.get(id=self.request.POST.get('id'))
         slot_obj.slot_time = self.request.POST.get('selected_slot')
         slot_obj.select_slot_type = self.request.POST.get('select_slot_type')
-        slot_obj.category_type = self.request.POST.get('category_type')
+        slot_obj.category = self.request.POST.get('category_type')
         slot_obj.title = self.request.POST.get('title')
         slot_obj.hourly_fees = self.request.POST.get('fee')
         slot_obj.save()
