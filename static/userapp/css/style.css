@@ -654,10 +654,11 @@ a.modalbtns:hover{
     color: var(--colorGreen);
 }
 .modal-dialog {
-    height: 100vh;
-    margin: 0 auto;
+    height: 100%;
+    margin: 30px auto;
     align-items: center;
     display: flex;
+    overflow: visible;
 }
 .modal{
     background: hsl(0deg 0% 0% / 60%);
@@ -745,7 +746,7 @@ margin-right: 0;
 .modCo p span{
     margin-left: 10px;
     position: relative;
-    bottom: 3px;
+    /* bottom: 3px; */
 }
 .otp{
     display: flex;

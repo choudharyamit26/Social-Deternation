@@ -95,9 +95,9 @@
 
                 <div class="modal-body"
                      style="min-height: 475px;display: flex;padding-top: 100px;justify-content: center;">
-                    <button type="button" class="close" data-dismiss="modal"><img
+                    <!-- <button type="button" class="close" data-dismiss="modal"><img
                             src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
+                            alt="close"></button> -->
                     <div class="selectCountry">
                         <h2 class="head">Select your Country</h2>
                         <div class="countryFlex">
@@ -246,7 +246,7 @@
                                         data-target="#signup" data-dismiss="modal">Back
                                 </button>
                                 <button type="button" href="javascript:void(0)" class="btns modalbtns disabl"
-                                        onclick="signup()" disabled="disabled">
+                                        onclick="signup()">
                                     Next
                                 </button>
                             </div>
@@ -277,8 +277,8 @@
                         <li class="active"><img src="{% static 'userapp/imgs/user.svg' %}" alt="user"></li>
                         <li><img src="{% static 'userapp/imgs/user1.svg' %}" alt="user"></li>
                     </ul>
-                    <div class="modCo">
-                        <p>One-Time Password has been sent to <b><h6 id="survivorsignupotpmodal"></h6></b> <span data-toggle="modal" data-target="#signup2" data-dismiss="modal"><img
+                    <div class="modCo" style="display: flex;align-items: center;justify-content: center;padding: 10px 0px 0px;">
+                        <p style="padding: 0;">One-Time Password has been sent to <b><h6 style="padding:0px 10px" id="survivorsignupotpmodal"></h6></b> <span data-toggle="modal" data-target="#signup2" data-dismiss="modal"><img
                                 src="{% static 'userapp/imgs/edit.svg' %}"
                                 alt="edit"></span></p>
                     </div>
@@ -1186,7 +1186,7 @@
                             <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
                         </div>
                         <div class="modCo">
-                            <p>One-Time Password has been sent to <span id=provider_logged_in_number></span></p>
+                            <p>One-Time Password has been sent to <b><span id=provider_logged_in_number></span></b> </p>
                         </div>
                         <div id="signinerrorotp">
 
@@ -1443,7 +1443,7 @@
 <script src="{% static 'userapp/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'userapp/js/niceCountryInput.js' %}"></script>
 <script src="{% static 'userapp/js/custom.js' %}"></script>
-<script>
+<!-- <script>
  $(document).ready(function() {
   $('.field input').on('keyup', function() {
     let empty = false;
@@ -1466,6 +1466,12 @@
 });
 
 
+</script> -->
+
+<script>
+    $(document).on('click','.close',function(){
+        $(this).parents('.modal-body').find('.formControl').val('');
+    });
 </script>
 <script>
     function signup() {
@@ -2658,7 +2664,11 @@ function forgotPassword(){
     }
 </script>
 
-
+<script>
+    $(document).on('click','.close',function(){
+        $(".modal-backdrop").css("display", "none");
+    });
+</script>
 
 <script>
     function survivoSignupUpReSendOtpMobile(){

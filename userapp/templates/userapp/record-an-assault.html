@@ -216,8 +216,8 @@
                         <div class="btnsBottom">
                             <div class="modBt">
                                 <a href="javascript:void(0)" class="btns modalbtns modalbtns2">Cancel</a>
-                                <a href="{% url 'userapp:record-assault' %}" class="btns modalbtns"
-                                   id="type_of_violence" onclick="displayRadioValue()">Proceed</a>
+                                <button class="btns modalbtns"
+                                   id="type_of_violence" onclick="displayRadioValue()">Proceed</button>
                             </div>
                         </div>
                     </div>
@@ -235,12 +235,17 @@
                 values.push(ele[i].value)
                 console.log(ele[i].value)
             }
+            if (values.length < 1){
+                alert('Please select an assault type')
+                return false;
+            }
             sessionStorage.setItem("type_of_violence", values[0]);
             var url = "{% url 'userapp:record-assault' %}"
             $.ajax({
             url :url +"?type_of_violence=" + values,
             method : 'GET',
             success: function(data){
+                window.location.href="{% url 'userapp:record-assault' %}"
                 console.log('inside success',data)
             },
             error: function(data) {

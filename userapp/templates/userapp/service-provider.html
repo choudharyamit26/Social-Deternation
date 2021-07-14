@@ -8,35 +8,37 @@
         <div class="row" style="padding-top: 40px;">
             <!-- <form method="GET" action="{% url 'userapp:service-provider' %}"> -->
             <form method="GET" action="{% url 'userapp:service-provider' %}">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control formControl" placeholder="Name" id="name">
+           <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" class="form-control formControl" placeholder="Name" id="name">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="before">
+                        <select name="year" id="category" class="form-control transparent formControl">
+                            <option value="Corporate Organisation">Corporate Organisation</option>
+                            <option value="Individual Sole Trader">Individual Sole Trader</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <div class="before">
-                            <select name="year" id="category" class="form-control transparent formControl">
-                                <option value="Corporate Organisation">Corporate Organisation</option>
-                                <option value="Individual Sole Trader">Individual Sole Trader</option>
-                            </select>
-                        </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="before">
+                        <select name="year" id="year" class="form-control transparent formControl">
+                            <option value="o">Ratings</option>
+                            <option value="1">5</option>
+                            <option value="2">4</option>
+                            <option value="3">3</option>
+                            <option value="4">2</option>
+                            <option value="5">1</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <div class="before">
-                            <select name="year" id="year" class="form-control transparent formControl">
-                                <option value="o">Ratings</option>
-                                <option value="1">5</option>
-                                <option value="2">4</option>
-                                <option value="3">3</option>
-                                <option value="4">2</option>
-                                <option value="5">1</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+            </div>
+           </div>
         </div>
         <div class="btnsBottom btnsBoking">
             <div class="modBt">

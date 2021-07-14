@@ -31,9 +31,23 @@ from .models import Survivor, Assault, AssaultQuestionAnswer, Faq, Contact, Noti
     ServiceProviderSlots
 from adminpanel.utils import send_otp
 
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+
 telnyx.api_key = "KEY0179F531AF3BB551376A921623235245_E9m3eGUsHbns1W0Juxoi24"
 
 user = get_user_model()
+
+
+def validate_email_value(value):
+    try:
+        validate_email(value)
+        print('True')
+    except ValidationError as e:
+        print(e)
+        return 'False'
+    else:
+        return 'True'
 
 
 class HomeView(View):
@@ -83,6 +97,23 @@ class SurvivorSignUp(CreateView):
         print(self.request.POST)
         user_email = User.objects.filter(email=self.request.POST['email']).count()
         user_phone = User.objects.filter(phone_number=self.request.POST['mobile_number']).count()
+        if self.request.POST.get('mobile_number').strip() == '' or not self.request.POST.get('mobile_number').isdigit():
+            return JsonResponse(
+                {
+                    'message': 'This phone number cannot be blank. Please supply a valid phone number and email address.'},
+                status=400)
+        if self.request.POST.get('email').strip() == '':
+            return JsonResponse(
+                {
+                    'message': 'This email cannot be blank. Please supply a valid email.'},
+                status=400)
+        if validate_email_value(self.request.POST.get('email').strip()) == 'False':
+            return JsonResponse(
+                {
+                    'message': 'This email is not valid. Please supply a valid email.'},
+                status=400)
+        if self.request.POST.get('password').strip() == '':
+            return JsonResponse({'message': 'Password cannot be blank'}, status=400)
         if user_email > 0 and user_phone > 0:
             return JsonResponse(
                 {
@@ -1128,7 +1159,7 @@ class CreateMultiSlotView(View):
         print('DICT ', slots_dict)
         d_list = []
         for key, value in slots_dict.items():
-            print('TTTTTTTTTTTTTT',key,value)
+            print('TTTTTTTTTTTTTT', key, value)
             d_list.append(key)
         print('DDDD LIST ', d_list)
         f = self.request.POST['select_slot_type'].split(",")
