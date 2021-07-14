@@ -490,7 +490,7 @@ class AssaultRecordQuestionAnswer(LoginRequiredMixin, View):
                     matched_fields_count += 1
                 if matched_fields_count >= 14:
                     print(obj, obj.first_name)
-                    matched_users.append(obj.first_name)
+                    matched_users.append(obj.user.first_name)
                     # if matched_users[obj.id] in matched_users:
                     #     pass
                     # else:
