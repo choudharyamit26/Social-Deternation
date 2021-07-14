@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="functionbtn">
                                                 <span class="cancle">Cancel</span>
-                                                <span class="savednew" id="single_price">Save</span>
+                                                <span class="savednew2" id="single_price">Save</span>
                                             </div>
                                         </div>
                                     </li>
@@ -357,6 +357,13 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="loaderModal">
+        <div class="modal-dialog">
+    <div class="" style="margin: 0 auto;">
+        <img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />
+    </div>
+        </div>
+    </div>
     <!-- <div class="modal" id="slotsModal">
         <div class="modal-dialog" style=" max-width: 575px;">
             <div class="modal-content">
@@ -414,6 +421,12 @@
 
     $(document).on('click', '.cancle', function () {
         $(this).parents('.titleBoxs').hide();
+    });
+
+    $(document).on('click', '.savednew2', function () {
+        var x = $(this).parents('.functionbtn').siblings('.form-group').find('input').val();
+        $(this).parents('.titleav').find('span.mainHeading').text('$' + x);
+        $('.titleBoxs').hide();
     });
 
     $(document).on('click', '.savednew', function () {
@@ -780,7 +793,7 @@
             </div>
             <div class="functionbtn">
             <span class="cancle">Cancel</span>
-            <span class="savednew closed multi_fee saved" id="fee${i}">Save</span>
+            <span class="savednew2 closed multi_fee saved" id="fee${i}">Save</span>
             </div>
             </div>
             </li>
@@ -884,7 +897,11 @@
                 fee: i,
                 csrfmiddlewaretoken: "{{ csrf_token }}"
             },
+            beforeSend : function(){
+                $('#loaderModal').modal('show');
+            },
             success: function (data) {
+                $('#loaderModal').modal('hide');
                 var protocol = window.location.protocol
                 var hostname = window.location.hostname
                 var port = window.location.port
@@ -899,6 +916,7 @@
                 window.location.href = url
             },
             error: function (data) {
+                $('#loaderModal').modal('hide');
                 alert('One or more field is empty. Please fill all the required fields')
             },
         });
@@ -934,7 +952,11 @@
                 multi_fee: i,
                 csrfmiddlewaretoken: "{{ csrf_token }}"
             },
+            beforeSend : function(){
+                $('#loaderModal').modal('show');
+            },
             success: function (data) {
+                $('#loaderModal').modal('hide');
                 var protocol = window.location.protocol
                 var hostname = window.location.hostname
                 var port = window.location.port
@@ -948,6 +970,7 @@
                 window.location.href = url
             },
             error: function (data) {
+                $('#loaderModal').modal('hide');
                 alert('One or more field is empty. Please fill all the required fields')
             },
         });

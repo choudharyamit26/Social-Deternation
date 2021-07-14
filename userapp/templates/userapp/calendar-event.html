@@ -395,7 +395,7 @@
                             <h6>Category: {{obj.category}}</h6>
                             {% if obj.select_slot_type == 'Volunteer' %}
                             {% else %}
-                            <h6>Fees: {{obj.hourly_fees}}</h6>
+                            <h6>Fees: ${{obj.hourly_fees}}</h6>
                             {% endif %}
 
                             <hr>
@@ -885,6 +885,7 @@ Hourly Fees</a>
                 var category_value = data['category']
                 var type_value = data['type']
                 var time = data['time']
+                sessionStorage.setItem('slot_time',time)
                 var time_d = time.split(' ').join('-');
                 console.log('>>>>>>',time_d)
                 $('#slotsModal').modal('hide');
