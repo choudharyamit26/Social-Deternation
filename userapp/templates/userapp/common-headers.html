@@ -672,8 +672,7 @@
                         <div class="modBt">
                             <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-toggle="modal"
                                data-target="#signin" data-dismiss="modal">Back</a>
-                            <button onclick="forgotPassword()" data-toggle="modal" data-target="#signin6"
-                                    data-dismiss="modal" class="btns modalbtns" type="button">Send
+                            <button onclick="forgotPassword()" class="btns modalbtns" type="button">Send
                             </button>
                         </div>
 
@@ -1630,10 +1629,12 @@
         $(document).ready(function() {
            $('#signin').modal('hide');
            });
-        $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+           $('#loaderModal').modal('show');
+        // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
     },
     success: function(data){
-        $('.body').html('')
+        // $('.body').html('')
+        $('#loaderModal').modal('hide');
         data = data['email']
         $(document).ready(function() {
            $('#signin3').modal('show');
@@ -1643,7 +1644,8 @@
         sessionStorage.setItem('survivorotpemail',loginemail)
     },
     error: function(data) {
-        $('.body').html('')
+        // $('.body').html('')
+        $('#loaderModal').modal('hide');
     console.log('inside login error case')
     data = data.responseJSON.message;
     console.log('message-->',data)
@@ -1695,12 +1697,14 @@
         $(document).ready(function() {
            $('#signin').modal('hide');
            });
-        $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+           $('#loaderModal').modal('show');
+        // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
     },
     success: function(data){
         console.log(data['number'])
         // alert('inside loginByMobile')
-        $('.body').html('')
+        // $('.body').html('')
+        $('#loaderModal').modal('hide');
         data = data['number']
         $(document).ready(function() {
            $('#signin4').modal('show');
@@ -1710,7 +1714,8 @@
         sessionStorage.setItem('survivorotpmobile',loginmobile)
     },
     error: function(data) {
-        $('.body').html('')
+        // $('.body').html('')
+        $('#loaderModal').modal('hide');
     console.log('inside login error case')
     data = data.responseJSON.message;
     console.log('message-->',data)
@@ -1751,10 +1756,22 @@ function forgotPassword(){
         email:forgotemail,
         csrfmiddlewaretoken: "{{ csrf_token }}"
     },
+    beforeSend : function(){
+        $('#signin5').modal('hide');
+        $('#loaderModal').modal('show');
+    },
     success: function(data){
+        // signin6
+        // signin5
+        $('#signin5').modal('hide');
+        $('#loaderModal').modal('hide');
+        $(document).ready(function() {
+           $('#signin6').modal('show');
+           });
         console.log('inside success case')
     },
     error: function(data) {
+        $('#loaderModal').modal('hide');
     console.log('inside login error case')
     data = data.responseJSON.message;
     console.log('message-->',data)
@@ -2092,10 +2109,12 @@ function forgotPassword(){
         csrfmiddlewaretoken: "{{ csrf_token }}"
     },
     beforeSend: function(){
-        $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+        $('#loaderModal').modal('show');
+        // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
     },
     success: function(data){
-        $('.body').html('')
+        // $('.body').html('')
+        $('#loaderModal').modal('hide');
         console.log('inside success case',data,data['number'])
         var number = data['number']
         sessionStorage.setItem('otpNumber',number)
@@ -2106,7 +2125,8 @@ function forgotPassword(){
         });
     },
     error: function(data) {
-    $('.body').html('')
+    // $('.body').html('')
+    $('#loaderModal').modal('hide');
     console.log('inside login error case')
     data = data.responseJSON.message;
     console.log('message-->',data)
@@ -2161,17 +2181,20 @@ function forgotPassword(){
             csrfmiddlewaretoken: "{{ csrf_token }}"
             },
         beforeSend: function(){
-            $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+            $('#loaderModal').modal('show');
+            // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
         },
         success: function(data){
-            $('.body').html('')
+            // $('.body').html('')
+            $('#loaderModal').modal('hide');
             console.log('inside success case')
             $('#providersignin5').modal('hide');
             $('#providersignin6').modal('show');
 
         },
         error: function(data) {
-        $('.body').html('')
+        // $('.body').html('')
+        $('#loaderModal').modal('hide');
         console.log('inside login error case')
         data = data.responseJSON.message;
         console.log('message-->',data)
@@ -2214,11 +2237,13 @@ function forgotPassword(){
             url:url + "?number="+mobile_number,
             method:'GET',
             beforeSend: function () {
-                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                $('#loaderModal').modal('show');
+                // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
                 
             },
             success: function() {
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 $(document).ready(function() {
                     $('#providersignup2').modal('show');
                     // var x = $('#provider_signup_mobile_number')
@@ -2230,7 +2255,8 @@ function forgotPassword(){
 
             },
             error: function () {
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 alert('Something went wrong')
                 $('#providersignup').modal('show');
 
@@ -2411,10 +2437,12 @@ function forgotPassword(){
                 otp:survivor_sign_in_otp
             },
             beforeSend : function(){
-                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                $('#loaderModal').modal('show');
+                // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success:function(){
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 $('#signup3').modal('hide');
                 $(document).ready(function() {
                     $('#signup4').modal('show');
@@ -2422,7 +2450,8 @@ function forgotPassword(){
             },
             error: function(data){
                 // console.log('inside login error case',data['message'])
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 data = data.responseJSON.message;
                 console.log('message-->',data)
                 signuperror = document.getElementById('signuperrorotp')
@@ -2514,11 +2543,13 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#providersignin4').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                $('#loaderModal').modal('show');
+                // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 var provider_sign_in_first_otp_digit = $('#codeBox1')
                 provider_sign_in_first_otp_digit.innerHTML = ''
                 var provider_sign_in_second_otp_digit = $('#codeBox2')
@@ -2554,11 +2585,13 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#signin3').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                $('#loaderModal').modal('show');
+                // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 var provider_sign_in_first_otp_digit = $('#codeBox13')
                 provider_sign_in_first_otp_digit.innerHTML = ''
                 var provider_sign_in_second_otp_digit = $('#codeBox14')
@@ -2593,11 +2626,13 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#signin3').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                $('#loaderModal').modal('show');
+                // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 var provider_sign_in_first_otp_digit = $('#codeBox19')
                 provider_sign_in_first_otp_digit.innerHTML = ''
                 var provider_sign_in_second_otp_digit = $('#codeBox20')
@@ -2634,11 +2669,13 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#signup3').modal('hide');
-                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                $('#loaderModal').modal('show');
+                // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
             success: function(){
                 // alert('inside success')
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 var provider_sign_in_first_otp_digit = $('#codeBox25')
                 provider_sign_in_first_otp_digit.innerHTML = ''
                 var provider_sign_in_second_otp_digit = $('#codeBox26')
@@ -2686,12 +2723,13 @@ function forgotPassword(){
                     });
                 // $('#providersignin4').modal('hide');
                 // $('#providersignin2').modal('hide');
-
-                $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
+                $('#loaderModal').modal('show');
             },
             success: function(){
                 // alert('inside success')
-                $('.body').html('')
+                // $('.body').html('')
+                $('#loaderModal').modal('hide');
                 var provider_sign_in_first_otp_digit = $('#codeBox7')
                 provider_sign_in_first_otp_digit.innerHTML = ''
                 var provider_sign_in_second_otp_digit = $('#codeBox8')
