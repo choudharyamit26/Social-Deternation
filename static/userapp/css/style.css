@@ -334,13 +334,13 @@ span.niceCountryInputMenuDefaultText {
 .dropdowm-country{
     position: relative;
 }
-.dropdowm-country::before{
+/* .dropdowm-country::before{
     position: absolute;
     content:url(../imgs/greenarrow.svg);
     right: 12px;
     top: 12px;
     z-index: 99;
-}
+} */
 .countryFlex{
     display: flex;
 
@@ -2729,4 +2729,14 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.dropdowm-country{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+  background-image: url(../imgs/greenarrow.svg);
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 22px;
 }
