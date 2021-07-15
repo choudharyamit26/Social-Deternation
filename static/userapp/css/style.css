@@ -2735,8 +2735,21 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
-  background-image: url(../imgs/greenarrow.svg);
+    background-image: url(../imgs/greenarrow.svg);
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: 22px;
+}
+
+.niceCountryInputMenu{ position:relative }
+.niceCountryInputMenu:before {
+    content: '\f107';
+    font-family: FontAwesome;
+    color: #000;
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 10px;
 }
