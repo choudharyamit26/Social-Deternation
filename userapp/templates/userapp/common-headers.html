@@ -1270,7 +1270,7 @@ i.material-icons {
                                 <div class="formByNumber">
                                     <div class="form-group">
                                         <input type="text" class="form-control formControl"
-                                               placeholder="Client Code*" name="p_membership_code"
+                                               placeholder="Client Code*" name="q_membership_code"
                                                id="q_membership_code">
                                     </div>
                                     <div class="form-group">
@@ -2339,7 +2339,7 @@ function forgotPassword(){
     console.log('clicked on provider sign in function')
     providerSigninarray = []
     var p_membership_code = $('#p_membership_code').val();
-    var q_membership_code = $('#p_membership_code').val();
+    var q_membership_code = $('#q_membership_code').val();
     if (p_membership_code === '' && q_membership_code === ''){
         // alert('Membership field cannot be empty')
         // $('#providersignin4').modal('hide');
