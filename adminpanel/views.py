@@ -796,16 +796,28 @@ class CreateSubscriptionPlan(View):
         else:
             check = True
         print(check)
-        SubscriptionPlan.objects.create(
-            plan_type=plan_type,
-            category=self.request.POST['category'],
-            name=self.request.POST['name'],
-            description=self.request.POST['description'],
-            duration=self.request.POST['duration'],
-            price=self.request.POST['price'],
-            number_of_persons=self.request.POST['number_of_persons'],
-            active=check,
-        )
+        if self.request.POST['number_of_persons']:
+            SubscriptionPlan.objects.create(
+                plan_type=plan_type,
+                category=self.request.POST['category'],
+                name=self.request.POST['name'],
+                description=self.request.POST['description'],
+                duration=self.request.POST['duration'],
+                price=self.request.POST['price'],
+                number_of_persons=self.request.POST['number_of_persons'],
+                active=check,
+            )
+        else:
+            SubscriptionPlan.objects.create(
+                plan_type=plan_type,
+                category=self.request.POST['category'],
+                name=self.request.POST['name'],
+                description=self.request.POST['description'],
+                duration=self.request.POST['duration'],
+                price=self.request.POST['price'],
+                number_of_persons=0,
+                active=check,
+            )
         messages.success(self.request, 'Subscription plan added successfully')
         return redirect("adminpanel:superadmin-subscription-plan")
 
@@ -824,16 +836,28 @@ class CreateGeneralSubscriptionPlan(View):
         else:
             check = True
         print(check)
-        SubscriptionPlan.objects.create(
-            plan_type=plan_type,
-            category=self.request.POST['category'],
-            name=self.request.POST['name'],
-            description=self.request.POST['description'],
-            duration=self.request.POST['duration'],
-            price=self.request.POST['price'],
-            number_of_persons=self.request.POST['number_of_persons'],
-            active=check,
-        )
+        if self.request.POST['number_of_persons']:
+            SubscriptionPlan.objects.create(
+                plan_type=plan_type,
+                category=self.request.POST['category'],
+                name=self.request.POST['name'],
+                description=self.request.POST['description'],
+                duration=self.request.POST['duration'],
+                price=self.request.POST['price'],
+                number_of_persons=self.request.POST['number_of_persons'],
+                active=check,
+            )
+        else:
+            SubscriptionPlan.objects.create(
+                plan_type=plan_type,
+                category=self.request.POST['category'],
+                name=self.request.POST['name'],
+                description=self.request.POST['description'],
+                duration=self.request.POST['duration'],
+                price=self.request.POST['price'],
+                number_of_persons=0,
+                active=check,
+            )
         messages.success(self.request, 'Subscription plan added successfully')
         return redirect("adminpanel:superadmin-general-subscription-plan")
 

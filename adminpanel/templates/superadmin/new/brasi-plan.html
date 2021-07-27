@@ -690,7 +690,7 @@
         if (plan_type.trim() == 'Select Subscription Plan Type'){
             alert('Please select a valid subscription plan type')
         }
-        else if(plan_type == '' || plan_type == null || category =='' || category == null || name =='' || name == null || description == ''|| description == null || price == '' || price == null || duration== '' || duration == null || number_of_persons == '' || number_of_persons == null){
+        else if(plan_type == '' || plan_type == null || category =='' || category == null || name =='' || name == null || description == ''|| description == null || price == '' || price == null || duration== '' || duration == null){
             alert('One or more fields are blank. Please fill all the fields')
         }else{
             var url = "{% url 'adminpanel:create-subscription-plan' %}"
