@@ -1,4 +1,3 @@
-
 $(document).on('click','.eye',function(){
     if($('.eye.eye1').hasClass('showCommon')){
         $('.eye.eye1').removeClass('showCommon');

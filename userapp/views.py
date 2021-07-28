@@ -136,7 +136,7 @@ class SurvivorSignUp(CreateView):
                 status=400)
         else:
             try:
-                send_otp(+91, self.request.POST['mobile_number'])
+                send_otp(self.request.POST['country_code'], self.request.POST['mobile_number'])
                 return HttpResponse('Survivor created')
             except Exception as e:
                 return JsonResponse({'message': 'Something went wrong'}, status=400)
@@ -171,6 +171,7 @@ class CompleteSurvivorSignUp(View):
             )
             user.set_password(self.request.POST['password'])
             user.save()
+            login(self.request, user)
             survivor = Survivor.objects.create(
                 user=user,
                 client_code=self.request.POST['client_code'],
@@ -825,6 +826,7 @@ class ServiceProviderSignup(View):
             user = User.objects.create(
                 email=final_data['email'],
                 phone_number=final_data['mobile_number'],
+                country_code=final_data['country_code'],
                 first_name=final_data['contact_persons_first_name'],
                 last_name=final_data['contact_persons_last_name'],
                 is_service_provider=True
@@ -1291,8 +1293,10 @@ class SendOtp(View):
 
     def get(self, request, *args, **kwargs):
         number = self.request.GET.get('number')
+        country_code = self.request.GET.get('country_code')
+        print('-----------------------------------', country_code, number)
         try:
-            send_otp(+91, number)
+            send_otp(country_code, number)
             return JsonResponse({'message': 'Otp Sent successfully'}, status=200)
         except Exception as e:
             return JsonResponse({'message': 'Something went wrong'}, status=400)
@@ -1369,8 +1373,9 @@ class ProviderResendOtp(View):
 
     def get(self, request, *args, **kwargs):
         number = self.request.GET.get('number')
+        country_code = self.request.GET.get('country_code')
         try:
-            send_otp(+91, number)
+            send_otp(country_code, number)
             return JsonResponse({'message': 'Otp Sent successfully'}, status=200)
         except Exception as e:
             return JsonResponse({'message': 'Something went wrong'}, status=400)

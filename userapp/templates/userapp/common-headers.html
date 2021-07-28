@@ -8,13 +8,21 @@
     <!-- Bootstrap -->
     <link href="{% static 'userapp/imgs/logo.svg' %}" rel="icon" type="icon/image">
     <link href="{% static 'userapp/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet"
+          media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{% static 'userapp/css/niceCountryInput.css' %}" rel="stylesheet">
     <link href="{% static 'userapp/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'userapp/css/style2.css' %}" rel="stylesheet">
     <link href="{% static 'userapp/css/media.css' %}" rel="stylesheet">
-   <style>
-       
+    <link href="{% static 'userapp/js/script.js' %}" rel="stylesheet">
+
+    <style>
+
 
 .wrapper {
   display: flex;
@@ -146,7 +154,9 @@ i.material-icons {
     transform: scale(2.5);
   }
 }
-   </style>
+
+
+    </style>
 </head>
 <body>
 {% block header %}
@@ -243,10 +253,10 @@ i.material-icons {
                             </div>
 
                         </div>
-<!--                        <div class="location">-->
-<!--                            <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/location2.svg' %}"-->
-<!--                                                              alt="location"></a>-->
-<!--                        </div>-->
+                        <!--                        <div class="location">-->
+                        <!--                            <a href="javascript:void(0)"><img src="{% static 'userapp/imgs/location2.svg' %}"-->
+                        <!--                                                              alt="location"></a>-->
+                        <!--                        </div>-->
                     </div>
 
 
@@ -344,11 +354,18 @@ i.material-icons {
                         {% endfor %}
                         {% endif %}
                     </div>
-                    <form method="post" action="{% url 'userapp:survivor-signup' %}">
+
+                </div>
+                <div class="padamit">
+                        <form method="post" action="{% url 'userapp:survivor-signup' %}">
                         {% csrf_token %}
                         <div class="form-group field" style="padding-top: 35px;">
-                            <input type="number" class="form-control formControl" id="mobile_number" placeholder="Mobile Number*"
-                                   name="mobile_number" required>
+                            <input id="phone" type="tel" class="form-control formControl" name="mobile_number" required
+                                   placeholder="Mobile Number*">
+                            <!--                            <span id="valid-msg" class="hide">Valid</span>-->
+                            <!--                            <span id="error-msg" class="hide">Invalid number</span>-->
+                            <!--                            <input type="number" class="form-control formControl" id="mobile_number" placeholder="Mobile Number*"-->
+                            <!--                                   name="mobile_number" required>-->
                         </div>
                         <div class="form-group field">
                             <input type="text" class="form-control formControl" id="email" placeholder="Email ID*"
@@ -389,7 +406,7 @@ i.material-icons {
                                                                         data-dismiss="modal">Sign In</a></p>
                         </div>
                     </form>
-                </div>
+                    </div>
             </div>
 
         </div>
@@ -411,23 +428,32 @@ i.material-icons {
                         <li class="active"><img src="{% static 'userapp/imgs/user.svg' %}" alt="user"></li>
                         <li><img src="{% static 'userapp/imgs/user1.svg' %}" alt="user"></li>
                     </ul>
-                    <div class="modCo" style="display: flex;align-items: center;justify-content: center;padding: 10px 0px 0px;">
-                        <p style="padding: 0;">One-Time Password has been sent to <b><h6 style="padding:0px 10px" id="survivorsignupotpmodal"></h6></b> <span data-toggle="modal" data-target="#signup2" data-dismiss="modal"><img
+                    <div class="modCo"
+                         style="display: flex;align-items: center;justify-content: center;padding: 10px 0px 0px;">
+                        <p style="padding: 0;">One-Time Password has been sent to <b><h6 style="padding:0px 10px"
+                                                                                         id="survivorsignupotpmodal"></h6></b>
+                        <span data-toggle="modal" data-target="#signup2" data-dismiss="modal"><img
                                 src="{% static 'userapp/imgs/edit.svg' %}"
                                 alt="edit"></span></p>
                     </div>
-                <div id="survivorsignuperrorotp">
+                    <div id="survivorsignuperrorotp">
 
-                </div>
-                    <div class="form-group otp" style="padding-top: 25px;">
-                        <input type="text" class="form-control" id = "codeBox25" maxlength="1" onkeyup="onKeyUpEvent(25, event)" onfocus="onFocusEvent(25)">
-                        <input type="text" class="form-control" id = "codeBox26" maxlength="1" onkeyup="onKeyUpEvent(26, event)" onfocus="onFocusEvent(26)">
-                        <input type="text" class="form-control" id = "codeBox27" maxlength="1" onkeyup="onKeyUpEvent(27, event)" onfocus="onFocusEvent(27)">
-                        <input type="text" class="form-control" id = "codeBox28" maxlength="1" onkeyup="onKeyUpEvent(28, event)" onfocus="onFocusEvent(28)">
-                        <input type="text" class="form-control" id = "codeBox29" maxlength="1" onkeyup="onKeyUpEvent(29, event)" onfocus="onFocusEvent(29)">
-                        <input type="text" class="form-control" id = "codeBox30" maxlength="1" onkeyup="onKeyUpEvent(30, event)" onfocus="onFocusEvent(30)">
                     </div>
-               
+                    <div class="form-group otp" style="padding-top: 25px;">
+                        <input type="text" class="form-control" id="codeBox25" maxlength="1"
+                               onkeyup="onKeyUpEvent(25, event)" onfocus="onFocusEvent(25)">
+                        <input type="text" class="form-control" id="codeBox26" maxlength="1"
+                               onkeyup="onKeyUpEvent(26, event)" onfocus="onFocusEvent(26)">
+                        <input type="text" class="form-control" id="codeBox27" maxlength="1"
+                               onkeyup="onKeyUpEvent(27, event)" onfocus="onFocusEvent(27)">
+                        <input type="text" class="form-control" id="codeBox28" maxlength="1"
+                               onkeyup="onKeyUpEvent(28, event)" onfocus="onFocusEvent(28)">
+                        <input type="text" class="form-control" id="codeBox29" maxlength="1"
+                               onkeyup="onKeyUpEvent(29, event)" onfocus="onFocusEvent(29)">
+                        <input type="text" class="form-control" id="codeBox30" maxlength="1"
+                               onkeyup="onKeyUpEvent(30, event)" onfocus="onFocusEvent(30)">
+                    </div>
+
                     <div class="resend">
                         <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
                         <button class="resendotp" onclick="survivoSignupUpReSendOtpMobile()">Resend OTP</button>
@@ -437,7 +463,7 @@ i.material-icons {
                         <div class="modBt">
                             <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-toggle="modal"
                                data-target="#signup2" data-dismiss="modal">Back</a>
-                            <button onclick="survivorSignupVerfiyOtp()"  class="btns modalbtns">Next</button>
+                            <button onclick="survivorSignupVerfiyOtp()" class="btns modalbtns">Next</button>
                         </div>
                         <p class="head">Already have an account? <a href="javascript:void(0)" class="colorBlue"
                                                                     data-toggle="modal" data-target="#signin"
@@ -486,15 +512,16 @@ i.material-icons {
                                id="nick_name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control formControl" placeholder="AVI/Screen Name" name="avi" id="avi">
+                        <input type="text" class="form-control formControl" placeholder="AVI/Screen Name" name="avi"
+                               id="avi">
                     </div>
 
                     <div class="btnsBottom">
                         <div class="modBt">
                             <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-toggle="modal"
                                data-target="#signup3" data-dismiss="modal">Back</a>
-                            <button class="btns modalbtns"  onclick="completeSignup()"
-                                    >Sign Up
+                            <button class="btns modalbtns" onclick="completeSignup()"
+                            >Sign Up
                             </button>
                         </div>
                         <p class="head">Already have an account? <a href="javascript:void(0)" class="colorBlue"
@@ -614,7 +641,7 @@ i.material-icons {
                                 <div class="btnsBottom">
                                     <div class="modBt">
 
-                                        <button type="button" class="btns modalbtns"  onclick="loginByEmail()">
+                                        <button type="button" class="btns modalbtns" onclick="loginByEmail()">
                                             Sign In
                                         </button>
                                     </div>
@@ -627,8 +654,10 @@ i.material-icons {
                             <form method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <input type="text" class="form-control formControl" placeholder="Mobile Number*"
-                                           name="mobile_number" id="loginmobile">
+                                     <input id="phone2" type="tel" class="form-control formControl" name="mobile_number"
+                                           required placeholder="Mobile Number*">
+<!--                                    <input type="text" class="form-control formControl" placeholder="Mobile Number*"-->
+<!--                                           name="mobile_number" id="loginmobile">-->
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control formControl" placeholder="Password*"
@@ -642,7 +671,7 @@ i.material-icons {
                                 <div class="btnsBottom">
                                     <div class="modBt">
 
-                                        <button onclick="loginByMobile()" class="btns modalbtns" type="button" >Sign In
+                                        <button onclick="loginByMobile()" class="btns modalbtns" type="button">Sign In
                                         </button>
                                     </div>
                                 </div>
@@ -683,7 +712,8 @@ i.material-icons {
                         <li class="active"><img src="{% static 'userapp/imgs/user.svg' %}" alt="user"></li>
                     </ul>
                     <div class="modCo">
-                        <p>One-Time Password has been sent to <b><span id="survivorsignin"></span></b><span data-toggle="modal" data-dismiss="modal" data-target="#signin"><img
+                        <p>One-Time Password has been sent to <b><span id="survivorsignin"></span></b><span
+                                data-toggle="modal" data-dismiss="modal" data-target="#signin"><img
                                 src="{% static 'userapp/imgs/edit.svg' %}"
                                 alt="edit"></span></p>
                     </div>
@@ -691,23 +721,30 @@ i.material-icons {
 
                     </div>
                     <div class="form-group otp" style="padding-top: 25px;">
-                        <input type="text" class="form-control" id = "codeBox13" maxlength="1" onkeyup="onKeyUpEvent(13, event)" onfocus="onFocusEvent(13)">
-                        <input type="text" class="form-control" id = "codeBox14" maxlength="1" onkeyup="onKeyUpEvent(14, event)" onfocus="onFocusEvent(14)">
-                        <input type="text" class="form-control" id = "codeBox15" maxlength="1" onkeyup="onKeyUpEvent(15, event)" onfocus="onFocusEvent(15)">
-                        <input type="text" class="form-control" id = "codeBox16" maxlength="1" onkeyup="onKeyUpEvent(16, event)" onfocus="onFocusEvent(16)">
-                        <input type="text" class="form-control" id = "codeBox17" maxlength="1" onkeyup="onKeyUpEvent(17, event)" onfocus="onFocusEvent(17)">
-                        <input type="text" class="form-control" id = "codeBox18" maxlength="1" onkeyup="onKeyUpEvent(18, event)" onfocus="onFocusEvent(18)">
+                        <input type="text" class="form-control" id="codeBox13" maxlength="1"
+                               onkeyup="onKeyUpEvent(13, event)" onfocus="onFocusEvent(13)">
+                        <input type="text" class="form-control" id="codeBox14" maxlength="1"
+                               onkeyup="onKeyUpEvent(14, event)" onfocus="onFocusEvent(14)">
+                        <input type="text" class="form-control" id="codeBox15" maxlength="1"
+                               onkeyup="onKeyUpEvent(15, event)" onfocus="onFocusEvent(15)">
+                        <input type="text" class="form-control" id="codeBox16" maxlength="1"
+                               onkeyup="onKeyUpEvent(16, event)" onfocus="onFocusEvent(16)">
+                        <input type="text" class="form-control" id="codeBox17" maxlength="1"
+                               onkeyup="onKeyUpEvent(17, event)" onfocus="onFocusEvent(17)">
+                        <input type="text" class="form-control" id="codeBox18" maxlength="1"
+                               onkeyup="onKeyUpEvent(18, event)" onfocus="onFocusEvent(18)">
                     </div>
                     <div class="resend">
                         <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
-                        <button  class="resendotp" onclick="survivoReSendOtp()">Resend OTP</button>
+                        <button class="resendotp" onclick="survivoReSendOtp()">Resend OTP</button>
                     </div>
 
                     <div class="btnsBottom">
                         <div class="modBt">
                             <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-toggle="modal"
                                data-target="#signin" data-dismiss="modal">Back</a>
-                            <button type="button" class="btns modalbtns modalbtns" onclick="survivorVerifyOtp()">Next</a>
+                            <button type="button" class="btns modalbtns modalbtns" onclick="survivorVerifyOtp()">
+                                Next</a>
                         </div>
                         <p class="head">Don't have an account? <a href="javascript:void(0)" class="colorBlue"
                                                                   data-toggle="modal" data-target="#signup"
@@ -741,18 +778,25 @@ i.material-icons {
 
                     </div>
                     <div class="modCo">
-                        <p>One-Time Password has been sent to <b><span id="survivorsigninmobile"></span></b><span data-toggle="modal" data-dismiss="modal" data-target="#signin"><img
-                            src="{% static 'userapp/imgs/edit.svg' %}"
-                            alt="edit"></span></p>    
+                        <p>One-Time Password has been sent to <b><span id="survivorsigninmobile"></span></b><span
+                                data-toggle="modal" data-dismiss="modal" data-target="#signin"><img
+                                src="{% static 'userapp/imgs/edit.svg' %}"
+                                alt="edit"></span></p>
                     </div>
 
                     <div class="form-group otp" style="padding-top: 25px;">
-                        <input type="text" class="form-control" id = "codeBox19" maxlength="1" onkeyup="onKeyUpEvent(19, event)" onfocus="onFocusEvent(19)">
-                        <input type="text" class="form-control" id = "codeBox20" maxlength="1" onkeyup="onKeyUpEvent(20, event)" onfocus="onFocusEvent(20)">
-                        <input type="text" class="form-control" id = "codeBox21" maxlength="1" onkeyup="onKeyUpEvent(21, event)" onfocus="onFocusEvent(21)">
-                        <input type="text" class="form-control" id = "codeBox22" maxlength="1" onkeyup="onKeyUpEvent(22, event)" onfocus="onFocusEvent(22)">
-                        <input type="text" class="form-control" id = "codeBox23" maxlength="1" onkeyup="onKeyUpEvent(23, event)" onfocus="onFocusEvent(23)">
-                        <input type="text" class="form-control" id = "codeBox24" maxlength="1" onkeyup="onKeyUpEvent(24, event)" onfocus="onFocusEvent(24)">
+                        <input type="text" class="form-control" id="codeBox19" maxlength="1"
+                               onkeyup="onKeyUpEvent(19, event)" onfocus="onFocusEvent(19)">
+                        <input type="text" class="form-control" id="codeBox20" maxlength="1"
+                               onkeyup="onKeyUpEvent(20, event)" onfocus="onFocusEvent(20)">
+                        <input type="text" class="form-control" id="codeBox21" maxlength="1"
+                               onkeyup="onKeyUpEvent(21, event)" onfocus="onFocusEvent(21)">
+                        <input type="text" class="form-control" id="codeBox22" maxlength="1"
+                               onkeyup="onKeyUpEvent(22, event)" onfocus="onFocusEvent(22)">
+                        <input type="text" class="form-control" id="codeBox23" maxlength="1"
+                               onkeyup="onKeyUpEvent(23, event)" onfocus="onFocusEvent(23)">
+                        <input type="text" class="form-control" id="codeBox24" maxlength="1"
+                               onkeyup="onKeyUpEvent(24, event)" onfocus="onFocusEvent(24)">
                     </div>
                     <div class="resend">
                         <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
@@ -884,7 +928,8 @@ i.material-icons {
         <div class="modal-content">
 
             <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal"><img src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}" alt="close"></button>
                 <div class="CommonContent CommonContent2">
                     <div class="logoImg">
                         <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
@@ -947,9 +992,12 @@ i.material-icons {
                                 </li>
                             </ul>
                             <div class="formByMail active">
-                                <div class="form-group">
-                                    <input type="number" class="form-control formControl" name="mobile_number"
-                                           placeholder="Contact Person’s Mobile Number*" id="provider_mobile_number" required>
+                                <div class="form-group abc">
+                                    <input id="phone3" type="tel" class="form-control formControl" name="mobile_number"
+                                           required placeholder="Mobile Number*">
+<!--                                    <input type="number" class="form-control formControl" name="mobile_number"-->
+<!--                                           placeholder="Contact Person’s Mobile Number*" id="provider_mobile_number"-->
+<!--                                           required>-->
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control formControl" name="email"
@@ -969,8 +1017,10 @@ i.material-icons {
                             </div>
                             <div class="formByNumber">
                                 <div class="form-group">
-                                    <input type="text" class="form-control formControl" name="mobile_number"
-                                           placeholder="Contact Person’s Mobile*" id="g_mobile_number">
+                                    <input id="phone4" type="tel" class="form-control formControl" name="mobile_number"
+                                           required placeholder="Mobile Number*">
+<!--                                    <input type="text" class="form-control formControl" name="mobile_number"-->
+<!--                                           placeholder="Contact Person’s Mobile*" id="g_mobile_number">-->
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control formControl" name="email"
@@ -998,7 +1048,9 @@ i.material-icons {
                                                                             class="darkSky d-inline-block"
                                                                             data-toggle="modal"
                                                                             data-target="#providersignin"
-                                                                            data-dismiss="modal" style="display: block !important;">Sign In</a></p>
+                                                                            data-dismiss="modal"
+                                                                            style="display: block !important;">Sign
+                                In</a></p>
                         </div>
                     </div>
                 </div>
@@ -1029,18 +1081,25 @@ i.material-icons {
 
                         </div>
                         <div class="modCo">
-                            <p>One-Time Password has been sent to <b id="provider_signup_mobile_number"></b><span data-target="#providersignup" data-toggle="modal" data-dismiss="modal">
+                            <p>One-Time Password has been sent to <b id="provider_signup_mobile_number"></b><span
+                                    data-target="#providersignup" data-toggle="modal" data-dismiss="modal">
                                 <img
-                                    src="{% static 'userapp/imgs/edit.svg' %}"
-                                    alt="edit"></span></p>
+                                        src="{% static 'userapp/imgs/edit.svg' %}"
+                                        alt="edit"></span></p>
                         </div>
                         <div class="form-group otp" style="padding-top: 25px;">
-                            <input type="text" id = "codeBox7" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(7, event)" onfocus="onFocusEvent(7)">
-                            <input type="text" id = "codeBox8" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(8, event)" onfocus="onFocusEvent(8)">
-                            <input type="text" id = "codeBox9" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(9, event)" onfocus="onFocusEvent(9)">
-                            <input type="text" id = "codeBox10" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(10, event)" onfocus="onFocusEvent(10)">
-                            <input type="text" id = "codeBox11" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(11, event)" onfocus="onFocusEvent(11)">
-                            <input type="text" id = "codeBox12" class="form-control" maxlength="1" onkeyup="onKeyUpEvent(12, event)" onfocus="onFocusEvent(12)">
+                            <input type="text" id="codeBox7" class="form-control" maxlength="1"
+                                   onkeyup="onKeyUpEvent(7, event)" onfocus="onFocusEvent(7)">
+                            <input type="text" id="codeBox8" class="form-control" maxlength="1"
+                                   onkeyup="onKeyUpEvent(8, event)" onfocus="onFocusEvent(8)">
+                            <input type="text" id="codeBox9" class="form-control" maxlength="1"
+                                   onkeyup="onKeyUpEvent(9, event)" onfocus="onFocusEvent(9)">
+                            <input type="text" id="codeBox10" class="form-control" maxlength="1"
+                                   onkeyup="onKeyUpEvent(10, event)" onfocus="onFocusEvent(10)">
+                            <input type="text" id="codeBox11" class="form-control" maxlength="1"
+                                   onkeyup="onKeyUpEvent(11, event)" onfocus="onFocusEvent(11)">
+                            <input type="text" id="codeBox12" class="form-control" maxlength="1"
+                                   onkeyup="onKeyUpEvent(12, event)" onfocus="onFocusEvent(12)">
                         </div>
                         <div class="resend">
                             <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
@@ -1050,7 +1109,8 @@ i.material-icons {
                             <div class="modBt">
                                 <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
                                    data-target="#providersignup" data-dismiss="modal">Back</a>
-                                <a href="javascript:void(0)" class="Button bg-violet" onclick="providerSignUpVerifyOtp()">Next</a>
+                                <a href="javascript:void(0)" class="Button bg-violet"
+                                   onclick="providerSignUpVerifyOtp()">Next</a>
                             </div>
                             <p class="regulary">Already have an account? <a href="javascript:void(0)"
                                                                             class="darkSky d-inline-block"
@@ -1101,489 +1161,501 @@ i.material-icons {
                             </div> -->
                             <div class="wrapper">
                                 <div class="box">
-                                  <div class="js--image-preview"></div>
-                                  <div class="upload-options">
-                                    <label>
-                                      <input type="file" name="company_logo" id="company_logo" class="image-upload" accept="image/*" />
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group" style="padding-top: 25px;">
-                                <input type="text" class="form-control formControl" placeholder="Company/Business Name*"
-                                       name="company_name" id="company_name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl"
-                                       placeholder="Contact Person’s First Name*" name="contact_persons_first_name"
-                                       id="contact_persons_first_name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl"
-                                       placeholder="Contact Person’s Last Name*" name="contact_persons_last_name"
-                                       id="contact_persons_last_name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl"
-                                       placeholder="Company Street Address 1" name="company_address_1"
-                                       id="company_address_1">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control formControl"
-                                       placeholder="Company Street Address 2" name="company_address_2"
-                                       id="company_address_2">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <!--                                    <div class="before">-->
-                                        <!--                                        <select class="form-control formControl">-->
-                                        <!--                                            <option>Select Country*</option>-->
-                                        <!--                                        </select>-->
-                                        <div class="form-group">
-                                            <input type="text" class="form-control formControl"
-                                                   placeholder="Country*" name="country" id="country">
-                                        </div>
-                                        <!--                                    </div>-->
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <!--                                    <div class="before">-->
-                                        <!--                                        <select class="form-control formControl">-->
-                                        <!--                                            <option>Select City*</option>-->
-                                        <!--                                        </select>-->
-                                        <div class="form-group">
-                                            <input type="text" class="form-control formControl"
-                                                   placeholder="City*" name="city" id="city">
-                                        </div>
-
-                                        <!--                                    </div>-->
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <!--                                    <div class="before">-->
-                                        <!--                                        <select class="form-control formControl">-->
-                                        <!--                                            <option>Zip/Postal Code*</option>-->
-                                        <!--                                        </select>-->
-                                        <div class="form-group">
-                                            <input type="text" class="form-control formControl"
-                                                   placeholder="Code*" name="zip_code" id="zip_code">
-                                        </div>
-                                        <!--                                    </div>-->
+                                    <div class="js--image-preview"></div>
+                                    <div class="upload-options">
+                                        <label>
+                                            <input type="file" name="company_logo" id="company_logo"
+                                                   class="image-upload" accept="image/*"/>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" value="" name="data1" id="data1">
-                            <div class="btnsBottom">
-                                <div class="modBt">
-                                    <a href="javascript:void(0)" class="Button-violet-alt"  data-dismiss="modal">Back</a>
-                                    <button onclick="finalProviderSignup()" class="Button bg-violet" type="button">Sign
-                                        Up
-                                    </button>
-                                </div>
-                                <p class="regulary">Already have an account? <a href="javascript:void(0)"
-                                                                                class="darkSky d-inline-block"
-                                                                                data-toggle="modal"
-                                                                                data-target="#providersignin"
-                                                                                data-dismiss="modal">Sign In</a></p>
-                            </div>
-                        </form>
                     </div>
-                </div>
+                    <div class="form-group" style="padding-top: 25px;">
+                        <input type="text" class="form-control formControl" placeholder="Company/Business Name*"
+                               name="company_name" id="company_name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control formControl"
+                               placeholder="Contact Person’s First Name*" name="contact_persons_first_name"
+                               id="contact_persons_first_name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control formControl"
+                               placeholder="Contact Person’s Last Name*" name="contact_persons_last_name"
+                               id="contact_persons_last_name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control formControl"
+                               placeholder="Company Street Address 1" name="company_address_1"
+                               id="company_address_1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control formControl"
+                               placeholder="Company Street Address 2" name="company_address_2"
+                               id="company_address_2">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!--                                    <div class="before">-->
+                                <!--                                        <select class="form-control formControl">-->
+                                <!--                                            <option>Select Country*</option>-->
+                                <!--                                        </select>-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl"
+                                           placeholder="Country*" name="country" id="country">
+                                </div>
+                                <!--                                    </div>-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!--                                    <div class="before">-->
+                                <!--                                        <select class="form-control formControl">-->
+                                <!--                                            <option>Select City*</option>-->
+                                <!--                                        </select>-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl"
+                                           placeholder="City*" name="city" id="city">
+                                </div>
 
+                                <!--                                    </div>-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <!--                                    <div class="before">-->
+                                <!--                                        <select class="form-control formControl">-->
+                                <!--                                            <option>Zip/Postal Code*</option>-->
+                                <!--                                        </select>-->
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl"
+                                           placeholder="Code*" name="zip_code" id="zip_code">
+                                </div>
+                                <!--                                    </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" value="" name="data1" id="data1">
+                    <div class="btnsBottom">
+                        <div class="modBt">
+                            <a href="javascript:void(0)" class="Button-violet-alt" data-dismiss="modal">Back</a>
+                            <button onclick="finalProviderSignup()" class="Button bg-violet" type="button">Sign
+                                Up
+                            </button>
+                        </div>
+                        <p class="regulary">Already have an account? <a href="javascript:void(0)"
+                                                                        class="darkSky d-inline-block"
+                                                                        data-toggle="modal"
+                                                                        data-target="#providersignin"
+                                                                        data-dismiss="modal">Sign In</a></p>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Sign Up 3rd step End -->
+
+<!-- Sign In start -->
+<div class="modal" id="providersignin">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
+                <div class="CommonContent CommonContent2">
+                    <div class="logoImg">
+                        <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
+                    </div>
+                    <h2 class="largeFont">Sign <span class="darkSky">In</span></h2>
+                    <div class="content-wrapper" id="errorprovidersignin">
+
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="signUpby">
+                            <ul class="nav nav-tabs demooo">
+                                <li class="active first">
+                                    <div class="radio">
+                                        <input id="radio-3k" name="radio" type="radio" checked>
+                                        <label for="radio-3k" class="radio-label">Corporate Organisation</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-4k" name="radio" type="radio">
+                                        <label for="radio-4k" class="radio-label">Individual Sole Trader</label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="formByMail active">
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl"
+                                           placeholder="Company Membership Code*" name="p_membership_code"
+                                           id="p_membership_code">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl" placeholder="Email ID*"
+                                           name="p_email" id="p_email" value="{{p_email}}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control formControl" placeholder="Password*"
+                                           name="p_password" id="p_password" value="{{p_password}}">
+                                </div>
+                                <!--                                    <div class="remember form-group">-->
+                                <!--                                        <div class="CheckBox homo2">-->
+                                <!--                                            <input type="checkbox" id="provider_sigin_check" value="{{p_remember_me}}">-->
+                                <!--                                            <span class="Check"><span class="rem">Remember Me.</span></span>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <div class="form-group forgott">
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#providersignin5"
+                                       data-dismiss="modal" id="provider-forgot-password">Forgot
+                                        Password?</a>
+                                </div>
+                                <div class="btnsBottom">
+                                    <div class="modBt">
+
+                                        <button onclick="providerSignIn()" class="Button bg-violet"
+                                                data-dismiss="modal">Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="formByNumber">
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl"
+                                           placeholder="Client Code*" name="q_membership_code"
+                                           id="q_membership_code">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl" placeholder="Email ID*"
+                                           name="p_email" value="{{p_email}}" id="q_email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control formControl" placeholder="Password*"
+                                           name="p_password" value="{{p_password}}" id="q_password">
+                                </div>
+                                <!--                                    <div class="remember form-group">-->
+                                <!--                                        <div class="CheckBox homo2">-->
+                                <!--                                            <input type="checkbox" id="provider_sign_in_check" value="{{p_remember_me}}">-->
+                                <!--                                            <span class="Check"><span class="rem">Remember Me.</span></span>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <div class="form-group forgott">
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#providersignin5"
+                                       data-dismiss="modal">Forgot
+                                        Password?</a>
+                                </div>
+                                <div class="btnsBottom">
+                                    <div class="modBt">
+
+                                        <button onclick="providerSignIn()" class="Button bg-violet"
+                                                data-dismiss="modal">Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnsBottom">
+                            <p class="regulary">Don't have an account? <a href="javascript:void(0)"
+                                                                          class="darkSky d-inline-block"
+                                                                          data-toggle="modal"
+                                                                          data-target="#providersignup"
+                                                                          data-dismiss="modal"
+                                                                          style="display:block !important">Sign Up</a>
+                            </p>
+
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Sign Up 3rd step End -->
+</div>
+<!-- Sign In end -->
 
-    <!-- Sign In start -->
-    <div class="modal" id="providersignin">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<!-- Sign In OTP start -->
+<div class="modal" id="providersignin4">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
-                    <div class="CommonContent CommonContent2">
-                        <div class="logoImg">
-                            <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
+                <div class="CommonContent CommonContent2">
+                    <div class="logoImg">
+                        <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
+                    </div>
+                    <div class="modCo">
+                        <p>One-Time Password has been sent to <b><span id=provider_logged_in_number></span></b></p>
+                    </div>
+                    <div id="signinerrorotp">
+
+                    </div>
+                    <div class="form-group otp" style="padding-top: 25px;">
+                        <input id="codeBox1" class="form-control" type="text" maxlength="1"
+                               onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                        <input id="codeBox2" class="form-control" type="text" maxlength="1"
+                               onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                        <input id="codeBox3" class="form-control" type="text" maxlength="1"
+                               onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                        <input id="codeBox4" class="form-control" type="text" maxlength="1"
+                               onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                        <input id="codeBox5" class="form-control" type="text" maxlength="1"
+                               onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                        <input id="codeBox6" class="form-control" type="text" maxlength="1"
+                               onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+                    </div>
+                    <div class="resend">
+                        <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
+                        <button type="button" class="resendotp" onclick="reSendOtp()">Resend OTP</button>
+                    </div>
+
+                    <div class="btnsBottom">
+                        <div class="modBt">
+                            <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
+                               data-target="#providersignin" data-dismiss="modal">Back</a>
+                            <!-- <a href="{% url 'userapp:provider-requests' %}" class="Button bg-violet">Next</a> -->
+                            <button href="#" onclick="VerifyOtp()" class="Button bg-violet" type="button">Next</a>
+
                         </div>
-                        <h2 class="largeFont">Sign <span class="darkSky">In</span></h2>
-                        <div class="content-wrapper" id="errorprovidersignin">
-
-                        </div>
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="signUpby">
-                                <ul class="nav nav-tabs demooo">
-                                    <li class="active first">
-                                        <div class="radio">
-                                            <input id="radio-3k" name="radio" type="radio" checked>
-                                            <label for="radio-3k" class="radio-label">Corporate Organisation</label>
-                                        </div>
-                                    </li>
-                                    <li class="second">
-                                        <div class="radio">
-                                            <input id="radio-4k" name="radio" type="radio">
-                                            <label for="radio-4k" class="radio-label">Individual Sole Trader</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="formByMail active">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl"
-                                               placeholder="Company Membership Code*" name="p_membership_code"
-                                               id="p_membership_code">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl" placeholder="Email ID*"
-                                               name="p_email" id="p_email" value="{{p_email}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control formControl" placeholder="Password*"
-                                               name="p_password" id="p_password" value="{{p_password}}">
-                                    </div>
-                                    <!--                                    <div class="remember form-group">-->
-                                    <!--                                        <div class="CheckBox homo2">-->
-                                    <!--                                            <input type="checkbox" id="provider_sigin_check" value="{{p_remember_me}}">-->
-                                    <!--                                            <span class="Check"><span class="rem">Remember Me.</span></span>-->
-                                    <!--                                        </div>-->
-                                    <!--                                    </div>-->
-                                    <div class="form-group forgott">
-                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#providersignin5"
-                                           data-dismiss="modal" id="provider-forgot-password">Forgot
-                                            Password?</a >
-                                    </div>
-                                    <div class="btnsBottom">
-                                        <div class="modBt">
-
-                                            <button onclick="providerSignIn()" class="Button bg-violet"
-                                                    data-dismiss="modal">Next
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="formByNumber">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl"
-                                               placeholder="Client Code*" name="q_membership_code"
-                                               id="q_membership_code">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl" placeholder="Email ID*"
-                                               name="p_email" value="{{p_email}}" id="q_email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control formControl" placeholder="Password*"
-                                               name="p_password" value="{{p_password}}" id="q_password">
-                                    </div>
-                                    <!--                                    <div class="remember form-group">-->
-                                    <!--                                        <div class="CheckBox homo2">-->
-                                    <!--                                            <input type="checkbox" id="provider_sign_in_check" value="{{p_remember_me}}">-->
-                                    <!--                                            <span class="Check"><span class="rem">Remember Me.</span></span>-->
-                                    <!--                                        </div>-->
-                                    <!--                                    </div>-->
-                                    <div class="form-group forgott">
-                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#providersignin5"
-                                           data-dismiss="modal">Forgot
-                                            Password?</a>
-                                    </div>
-                                    <div class="btnsBottom">
-                                        <div class="modBt">
-
-                                            <button onclick="providerSignIn()" class="Button bg-violet" data-dismiss="modal">Next
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="btnsBottom">
-                                <p class="regulary">Don't have an account? <a href="javascript:void(0)"
-                                                                              class="darkSky d-inline-block"
-                                                                              data-toggle="modal"
-                                                                              data-target="#providersignup"
-                                                                              data-dismiss="modal" style="display:block !important">Sign Up</a></p>
-
-                            </div>
-                        </form>
+                        <p class="regulary">Don't have an account? <a href="javascript:void(0)"
+                                                                      class="darkSky d-inline-block"
+                                                                      data-toggle="modal" data-target="#signup"
+                                                                      data-dismiss="modal">Sign Up</a></p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <!-- Sign In end -->
+</div>
+<!-- Sign In OTP end -->
 
-    <!-- Sign In OTP start -->
-    <div class="modal" id="providersignin4">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<!-- forgot passowrd start -->
+<div class="modal" id="providersignin5">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
-                    <div class="CommonContent CommonContent2">
-                        <div class="logoImg">
-                            <img src="{% static 'userapp/imgs/logo.png' %}" alt="logo">
-                        </div>
-                        <div class="modCo">
-                            <p>One-Time Password has been sent to <b><span id=provider_logged_in_number></span></b> </p>
-                        </div>
-                        <div id="signinerrorotp">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
+                <div class="CommonContent CommonContent2">
 
-                        </div>
-                        <div class="form-group otp" style="padding-top: 25px;">
-                            <input id="codeBox1" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
-                            <input id="codeBox2" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
-                            <input id="codeBox3" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
-                            <input id="codeBox4" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
-                            <input id="codeBox5" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
-                            <input id="codeBox6" class="form-control" type="text" maxlength="1" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
-                        </div>
-                        <div class="resend">
-                            <p class="head"><i>Note: OTP will expire in 60 seconds.</i></p>
-                            <button type="button" class="resendotp" onclick="reSendOtp()">Resend OTP</button>
-                        </div>
+                    <h2 class="largeFont">Forgot <span class="darkSky">Password</span></h2>
+                    <div class="content-wrapper" id="errorproviderforgot">
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="signUpby">
 
+                            <ul class="nav nav-tabs ">
+                                <li class="active first">
+                                    <div class="radio">
+                                        <input id="radio-5" name="radio3" type="radio" checked>
+                                        <label for="radio-5" class="radio-label">Corporate Organisation</label>
+                                    </div>
+                                </li>
+                                <li class="second">
+                                    <div class="radio">
+                                        <input id="radio-6" name="radio3" type="radio">
+                                        <label for="radio-6" class="radio-label">Individual or Sole Trader</label>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="formByMail active">
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl"
+                                           placeholder="Client Code*" id="provider-membership-code"
+                                           name="memebership_code">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl" placeholder="Email Id*"
+                                           id="provider-forgot-email" name="email">
+                                </div>
+                            </div>
+                            <div class="formByNumber">
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl"
+                                           placeholder="Client Code*" id="membership_code2"
+                                           name="membership_code">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control formControl" placeholder="Email ID*"
+                                           id="provider-forgot-email2" name="email">
+                                </div>
+                            </div>
+                        </div>
                         <div class="btnsBottom">
                             <div class="modBt">
                                 <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
                                    data-target="#providersignin" data-dismiss="modal">Back</a>
-                                <!-- <a href="{% url 'userapp:provider-requests' %}" class="Button bg-violet">Next</a> -->
-                                <button href="#" onclick="VerifyOtp()" class="Button bg-violet" type="button">Next</a>
-
+                                <button class="Button bg-violet" type="button"
+                                        onclick="provideForgotPassword()">Send
+                                </button>
                             </div>
-                            <p class="regulary">Don't have an account? <a href="javascript:void(0)"
-                                                                          class="darkSky d-inline-block"
-                                                                          data-toggle="modal" data-target="#signup"
-                                                                          data-dismiss="modal">Sign Up</a></p>
                         </div>
-                    </div>
+                    </form>
                 </div>
-
             </div>
+
         </div>
     </div>
-    <!-- Sign In OTP end -->
+</div>
+<!-- forgot passowrd end -->
 
-    <!-- forgot passowrd start -->
-    <div class="modal" id="providersignin5">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<!-- set new passowrd start -->
+<div class="modal" id="providersignin6">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
-                    <div class="CommonContent CommonContent2">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
+                <div class="CommonContent CommonContent2">
 
-                        <h2 class="largeFont">Forgot <span class="darkSky">Password</span></h2>
-                        <div class="content-wrapper" id="errorproviderforgot">
-                        </div>
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="signUpby">
+                    <h2 class="largeFont">Set New <span class="darkSky">Password</span></h2>
 
-                                <ul class="nav nav-tabs ">
-                                    <li class="active first">
-                                        <div class="radio">
-                                            <input id="radio-5" name="radio3" type="radio" checked>
-                                            <label for="radio-5" class="radio-label">Corporate Organisation</label>
-                                        </div>
-                                    </li>
-                                    <li class="second">
-                                        <div class="radio">
-                                            <input id="radio-6" name="radio3" type="radio">
-                                            <label for="radio-6" class="radio-label">Individual or Sole Trader</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="formByMail active">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl"
-                                               placeholder="Client Code*" id="provider-membership-code"
-                                               name="memebership_code">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl" placeholder="Email Id*"
-                                               id="provider-forgot-email" name="email">
-                                    </div>
-                                </div>
-                                <div class="formByNumber">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl"
-                                               placeholder="Client Code*" id="membership_code2"
-                                               name="membership_code">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control formControl" placeholder="Email ID*"
-                                               id="provider-forgot-email2" name="email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="btnsBottom">
-                                <div class="modBt">
-                                    <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"
-                                       data-target="#providersignin" data-dismiss="modal">Back</a>
-                                    <button class="Button bg-violet" type="button"
-                                            onclick="provideForgotPassword()">Send
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- forgot passowrd end -->
-
-    <!-- set new passowrd start -->
-    <div class="modal" id="providersignin6">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
-                    <div class="CommonContent CommonContent2">
-
-                        <h2 class="largeFont">Set New <span class="darkSky">Password</span></h2>
-
-                        <div class="">
-                            <!--                            <div class="form-group">-->
-                            <!--                                <input type="text" class="form-control formControl" placeholder="New Password*">-->
-                            <!--                            </div>-->
-                            <!--                            <div class="form-group">-->
-                            <!--                                <input type="text" class="form-control formControl" placeholder="Confirm Password*">-->
-                            <!--                            </div>-->
-                            <h1>An email has been sent to your registered email-id with link to reset your password</h1>
-                        </div>
-                        <!--                        <div class="btnsBottom">-->
-                        <!--                            <div class="modBt">-->
-                        <!--                                <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"-->
-                        <!--                                   data-target="#providersignin" data-dismiss="modal">Back</a>-->
-                        <!--                                <a href="javascript:void(0)" data-toggle="modal" data-target="#providersignin7"-->
-                        <!--                                   data-dismiss="modal" class="Button bg-violet">Save</a>-->
+                    <div class="">
+                        <!--                            <div class="form-group">-->
+                        <!--                                <input type="text" class="form-control formControl" placeholder="New Password*">-->
                         <!--                            </div>-->
-
-                        <!--                        </div>-->
+                        <!--                            <div class="form-group">-->
+                        <!--                                <input type="text" class="form-control formControl" placeholder="Confirm Password*">-->
+                        <!--                            </div>-->
+                        <h1>An email has been sent to your registered email-id with link to reset your password</h1>
                     </div>
-                </div>
+                    <!--                        <div class="btnsBottom">-->
+                    <!--                            <div class="modBt">-->
+                    <!--                                <a href="javascript:void(0)" class="Button-violet-alt" data-toggle="modal"-->
+                    <!--                                   data-target="#providersignin" data-dismiss="modal">Back</a>-->
+                    <!--                                <a href="javascript:void(0)" data-toggle="modal" data-target="#providersignin7"-->
+                    <!--                                   data-dismiss="modal" class="Button bg-violet">Save</a>-->
+                    <!--                            </div>-->
 
-            </div>
-        </div>
-    </div>
-    <!-- set new passowrd end -->
-
-
-    <div class="modal" id="providersignin7">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
-                    <div class="CommonContent paddingSucces">
-
-                        <img src="{% static 'userapp/imgs/verified.webp' %}" alt="verificaion" class="img-fluid">
-                        <h2 class="normalFont darkSky">Your Password is Successfully change.</h2>
-                        <div class="btnsBottom">
-                            <div class="modBt">
-                                <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Done</a>
-                            </div>
-                        </div>
-                    </div>
+                    <!--                        </div>-->
                 </div>
             </div>
+
         </div>
     </div>
-    <div class="modal" id="emailId">
-        <div class="modal-dialog">
-            <div class="modal-content">
+</div>
+<!-- set new passowrd end -->
 
-                <div class="modal-body"
-                >
-                    <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
 
-                    <div class="emailId" style="padding: 25px;">
-                        <div class="form-group">
-                            <label class="label" style="text-align: left;font-size: 16px;color: #000;">Email Id <sup
-                                    style="color:red">*</sup></label>
-                            <input type="text" name="" class="form-control formControl"
-                                   placeholder="Enter Your Email Id">
-                        </div>
-                        <div class="allbtnsssss" style="text-align: center;padding: 20px 0px 0px 0px">
-                            <a href="javascript:void(0)" class="btns" data-toggle="modal" data-dismiss="modal"
-                               data-target="#record5" style="min-width: 150px;text-align:center;">Next</a>
-                        </div>
-                    </div>
+<div class="modal" id="providersignin7">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="record5">
-        <div class="modal-dialog" style="max-width: 560px;">
-            <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
+                <div class="CommonContent paddingSucces">
 
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal"><img
-                            src="{% static 'userapp/imgs/close.svg' %}"
-                            alt="close"></button>
-                    <div class="CommonContent" style="padding: 0px 30px;">
-
-                        <h2 class="heading" style="text-align: left;font-size: 18px;">I am recording assault for</h2>
-                        <div class="signUpby">
-
-                            <ul class="nav nav-tabs">
-                                <li class=" first" style="margin-right: 60px;">
-
-                                    <div class="radio">
-                                        <input id="radio-30" name="radio20" type="radio">
-                                        <label for="radio-30" class="radio-label">Myself</label>
-                                    </div>
-
-                                </li>
-                                <li class="second">
-                                    <div class="radio">
-                                        <input id="radio-40" name="radio20" type="radio">
-                                        <label for="radio-40" class="radio-label">Someone else</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="btnsBottom">
-                            <div class="modBt">
-                                <a href="javascript:void(0)" class="btns modalbtns modalbtns2" data-dismiss="modal">Cancel</a>
-                                <a href="javascript:void(0)" class="btns modalbtns" data-toggle="modal"
-                                   data-dismiss="modal" data-target="#record">Proceed</a>
-                            </div>
+                    <img src="{% static 'userapp/imgs/verified.webp' %}" alt="verificaion" class="img-fluid">
+                    <h2 class="normalFont darkSky">Your Password is Successfully change.</h2>
+                    <div class="btnsBottom">
+                        <div class="modBt">
+                            <a href="javascript:void(0)" data-dismiss="modal" class="Button bg-violet">Done</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="modal" id="emailId">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body"
+            >
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
+
+                <div class="emailId" style="padding: 25px;">
+                    <div class="form-group">
+                        <label class="label" style="text-align: left;font-size: 16px;color: #000;">Email Id <sup
+                                style="color:red">*</sup></label>
+                        <input type="text" name="" class="form-control formControl"
+                               placeholder="Enter Your Email Id">
+                    </div>
+                    <div class="allbtnsssss" style="text-align: center;padding: 20px 0px 0px 0px">
+                        <a href="javascript:void(0)" class="btns" data-toggle="modal" data-dismiss="modal"
+                           data-target="#record5" style="min-width: 150px;text-align:center;">Next</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="record5">
+    <div class="modal-dialog" style="max-width: 560px;">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><img
+                        src="{% static 'userapp/imgs/close.svg' %}"
+                        alt="close"></button>
+                <div class="CommonContent" style="padding: 0px 30px;">
+
+                    <h2 class="heading" style="text-align: left;font-size: 18px;">I am recording assault for</h2>
+                    <div class="signUpby">
+
+                        <ul class="nav nav-tabs">
+                            <li class=" first" style="margin-right: 60px;">
+
+                                <div class="radio">
+                                    <input id="radio-30" name="radio20" type="radio">
+                                    <label for="radio-30" class="radio-label">Myself</label>
+                                </div>
+
+                            </li>
+                            <li class="second">
+                                <div class="radio">
+                                    <input id="radio-40" name="radio20" type="radio">
+                                    <label for="radio-40" class="radio-label">Someone else</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btnsBottom">
+                        <div class="modBt">
+                            <a href="javascript:void(0)" class="btns modalbtns modalbtns2"
+                               data-dismiss="modal">Cancel</a>
+                            <a href="javascript:void(0)" class="btns modalbtns" data-toggle="modal"
+                               data-dismiss="modal" data-target="#record">Proceed</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 
 <div class="modal" id="loaderModal">
     <div class="modal-dialog">
-<div class="" style="margin: 0 auto;">
-    <img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />
-</div>
+        <div class="" style="margin: 0 auto;">
+            <img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100"/>
+        </div>
     </div>
 </div>
+<script src="{% static 'userapp/js/script.js' %}"></script>
 <script src="{% static 'userapp/js/jquery.js' %}"></script>
 <script src="{% static 'userapp/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'userapp/js/niceCountryInput.js' %}"></script>
@@ -1622,7 +1694,7 @@ i.material-icons {
     let file = e.currentTarget.files[0];
     checkType(file);
   }
-  
+
   function previewImage(file){
     let thumb = box.querySelector('.js--image-preview'),
         reader = new FileReader();
@@ -1644,7 +1716,7 @@ i.material-icons {
       previewImage(file);
     }
   }
-  
+
 }
 
 // initialize box-scope
@@ -1661,11 +1733,11 @@ for (let i = 0; i < boxes.length; i++) {
 /// drop-effect
 function initDropEffect(box){
   let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
-  
+
   // get clickable area for drop effect
   area = box.querySelector('.js--image-preview');
   area.addEventListener('click', fireRipple);
-  
+
   function fireRipple(e){
     area = e.currentTarget
     // create drop
@@ -1676,7 +1748,7 @@ function initDropEffect(box){
     }
     // reset animate class
     drop.className = 'drop';
-    
+
     // calculate dimensions of area (longest side)
     areaWidth = getComputedStyle(this, null).getPropertyValue("width");
     areaHeight = getComputedStyle(this, null).getPropertyValue("height");
@@ -1685,36 +1757,42 @@ function initDropEffect(box){
     // set drop dimensions to fill area
     drop.style.width = maxDistance + 'px';
     drop.style.height = maxDistance + 'px';
-    
+
     // calculate dimensions of drop
     dropWidth = getComputedStyle(this, null).getPropertyValue("width");
     dropHeight = getComputedStyle(this, null).getPropertyValue("height");
-    
+
     // calculate relative coordinates of click
     // logic: click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center
     x = e.pageX - this.offsetLeft - (parseInt(dropWidth, 10)/2);
     y = e.pageY - this.offsetTop - (parseInt(dropHeight, 10)/2) - 30;
-    
+
     // position drop and animate
     drop.style.top = y + 'px';
     drop.style.left = x + 'px';
     drop.className += ' animate';
     e.stopPropagation();
-    
+
   }
 }
+
+
 
 </script>
 <script>
     $(document).on('click','.close',function(){
         $(this).parents('.modal-body').find('.formControl').val('');
     });
+
+
 </script>
 <script>
     function signup() {
     var client_code = $('#client_code').val();
-    var mobile_number = $('#mobile_number').val();
+    var mobile_number = $('#phone').val();
+    var country_code = $('.selected-dial-code:first').text();
     sessionStorage.setItem('survivorSignupOtp',mobile_number)
+    sessionStorage.setItem('survivorSignupCountryCode',country_code)
     var email = $('#email').val();
     var password = $('#password').val();
     var check = document.getElementById("check").checked;
@@ -1730,6 +1808,7 @@ function initDropEffect(box){
         email : email,
         check : check,
         password : password,
+        country_code : country_code,
         csrfmiddlewaretoken: "{{ csrf_token }}"
         },
         beforeSend : function(){
@@ -1738,7 +1817,7 @@ function initDropEffect(box){
             $('#loaderModal').modal('show');
 
             // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" margin="0 auto" width="100" height="100" />`)
-            
+
         },
         success: function(data){
             $('#loaderModal').modal('hide');
@@ -1797,6 +1876,8 @@ function initDropEffect(box){
 
 
 
+
+
 </script>
 <script>
     function completeSignup() {
@@ -1806,7 +1887,7 @@ function initDropEffect(box){
     var nick_name = $('#nick_name').val();
     var avi = $('#avi').val();
     var client_code = $('#client_code').val();
-    var mobile_number = $('#mobile_number').val();
+    var mobile_number = $('#phone').val();
     var email = $('#email').val();
     var password = $('#password').val();
     var check = document.getElementById("check").checked;
@@ -1830,10 +1911,11 @@ function initDropEffect(box){
         },
         success: function(data){
           console.log('inside success',data)
-          $('#signup4').modal('hide');
-          $(document).ready(function() {
-            $('#signin').modal('show');
-           });
+            window.location.href = "{% url 'userapp:survivor-dashboard' %}"
+<!--          $('#signup4').modal('hide');-->
+<!--          $(document).ready(function() {-->
+<!--            $('#signin').modal('show');-->
+<!--           });-->
 
         },
         error: function(data) {
@@ -1853,6 +1935,8 @@ function initDropEffect(box){
     });
     event.preventDefault();
     }
+
+
 </script>
 <script>
     function loginByEmail(){
@@ -1917,15 +2001,16 @@ function initDropEffect(box){
 
 
 
+
+
 </script>
-
-
 
 
 <script>
     function loginByMobile(){
-    var loginmobile = $('#loginmobile').val();
+    var loginmobile = $('#phone2').val();
     var loginpssword2 = $('#loginpssword2').val();
+    var countrycode = $('.selected-dial-code:first').text();
     var url = '{% url "userapp:survivor-login-by-mobile" %}'
     $.ajax({
     url : url,
@@ -1933,6 +2018,7 @@ function initDropEffect(box){
     data:{
         loginmobile:loginmobile,
         loginpssword2:loginpssword2,
+        countrycode:countrycode,
         csrfmiddlewaretoken: "{{ csrf_token }}"
     },
     beforeSend:function(){
@@ -1976,6 +2062,8 @@ function initDropEffect(box){
     },
     });
     }
+
+
 
 
 
@@ -2040,6 +2128,8 @@ function forgotPassword(){
 
 
 
+
+
 </script>
 <script>
     $(document).on('click','#organization',function(){
@@ -2050,8 +2140,10 @@ function forgotPassword(){
         }else{
             $('.nav.nav-tabs').removeClass('active');
         }
-        
+
     })
+
+
 </script>
 
 <script>
@@ -2072,9 +2164,11 @@ function forgotPassword(){
                     vaild = false
                     return false;
                 }
-            var mobile_number = $('#provider_mobile_number').val();
+            var mobile_number = $('#phone3').val();
+            var country_code = $('.abc .selected-dial-code').text();
+            providerValues.push({'country_code':country_code})
             console.log('Mobile number', mobile_number)
-            var g_mobile_number = $('#g_mobile_number').val();
+            var g_mobile_number = $('#phone4').val();
             console.log('g_mobile_number--->>', g_mobile_number)
             if (mobile_number === '' && g_mobile_number === ''){
                 alert('Mobile number cannot be blank')
@@ -2086,11 +2180,13 @@ function forgotPassword(){
                 sessionStorage.setItem('provider_mobile_number',mobile_number)
                 sessionStorage.setItem('g_mobile_number',g_mobile_number)
                 sessionStorage.setItem('providerOtpNumber',mobile_number)
+                sessionStorage.setItem('country_code',country_code)
 
             }
             else{
                 providerValues.push({'mobile_number':mobile_number})
                 sessionStorage.setItem('provider_mobile_number',mobile_number)
+                sessionStorage.setItem('country_code',country_code)
 
             }
             var email = $('#provider_email').val();
@@ -2151,11 +2247,13 @@ function forgotPassword(){
                                     }
 
                 })
-                
+
             }
-            
+
 
     }
+
+
 </script>
 <script>
         function onChangeCallback(ctr) {
@@ -2172,6 +2270,8 @@ function forgotPassword(){
             });
         });
 
+
+
 </script>
 <script>
     function finalProviderSignup2(){
@@ -2187,6 +2287,8 @@ function forgotPassword(){
            });
         }
     }
+
+
 
 </script>
 
@@ -2333,6 +2435,8 @@ function forgotPassword(){
 
 
 
+
+
 </script>
 <script>
     function providerSignIn(){
@@ -2421,6 +2525,8 @@ function forgotPassword(){
 
 
 
+
+
 </script>
 <script>
     function provideForgotPassword(){
@@ -2489,27 +2595,28 @@ function forgotPassword(){
 
 
 
+
+
 </script>
 <script>
     function sendOtp() {
         var url = "{% url 'userapp:send-otp' %}"
         var number = sessionStorage.getItem('provider_mobile_number')
         var g_mobile_number = sessionStorage.getItem('g_mobile_number')
+        var country_code = sessionStorage.getItem('country_code')
         var mobile_number = ''
         if (number){
                 mobile_number = number
             }else{
                 mobile_number = g_mobile_number
             }
-
-
         $.ajax({
-            url:url + "?number="+mobile_number,
+            url:url + "?country_code="+country_code+"&number="+mobile_number,
             method:'GET',
             beforeSend: function () {
                 $('#loaderModal').modal('show');
                 // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
-                
+
             },
             success: function() {
                 // $('.body').html('')
@@ -2534,6 +2641,8 @@ function forgotPassword(){
         })
 
     }
+
+
 </script>
 <script>
     function providerSignUpVerifyOtp() {
@@ -2579,7 +2688,7 @@ function forgotPassword(){
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                             </div>`;
-                
+
                 //    $('#providersignin6').modal('hide');
                 $(document).ready(function() {
                 $('#providersignup2').modal('show');
@@ -2587,6 +2696,8 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 <script>
     function VerifyOtp() {
@@ -2635,6 +2746,8 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 
 <script>
@@ -2683,9 +2796,9 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
-
-
 
 
 <script>
@@ -2740,13 +2853,15 @@ function forgotPassword(){
                                     </button>
                             </div>`;
                             // signup3
-            
+
            $(document).ready(function() {
                 $('#signup3').modal('show');
             });
             }
         })
     }
+
+
 </script>
 <script>
     function survivorVerifyOtpmobile() {
@@ -2802,6 +2917,8 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 
 <script>
@@ -2843,6 +2960,8 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 
 
@@ -2885,6 +3004,8 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 
 <script>
@@ -2896,6 +3017,7 @@ function forgotPassword(){
             method:'GET',
             beforeSend: function(){
                 $('#signin3').modal('hide');
+                $('#signin4').modal('hide');
                 $('#loaderModal').modal('show');
                 // $('.body').html(`<img src="{% static 'userapp/imgs/loading.gif' %}" width="100" height="100" />`)
             },
@@ -2926,12 +3048,16 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 
 <script>
     $(document).on('click','.close',function(){
         $(".modal-backdrop").css("display", "none");
     });
+
+
 </script>
 
 <script>
@@ -2939,7 +3065,7 @@ function forgotPassword(){
         var url = "{% url 'userapp:provider-resend-otp' %}"
         // alert('inside reSendOtp')
         $.ajax({
-            url:url +"?number="+sessionStorage.getItem('survivorSignupOtp'),
+            url:url +"?country_code="+sessionStorage.getItem('survivorSignupCountryCode')+"&number="+sessionStorage.getItem('survivorSignupOtp'),
             method:'GET',
             beforeSend: function(){
                 $('#signup3').modal('hide');
@@ -2973,6 +3099,8 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 
 
@@ -2986,8 +3114,9 @@ function forgotPassword(){
         }else{
             mobile_number = sessionStorage.getItem('g_mobile_number')
         }
+        var country_code = sessionStorage.getItem('country_code')
         $.ajax({
-            url:url +"?number="+mobile_number,
+            url:url +"?country_code="+country_code+"&number="+mobile_number,
             method:'GET',
             beforeSend: function(){
                 $(document).ready(function() {
@@ -3034,6 +3163,8 @@ function forgotPassword(){
             }
         })
     }
+
+
 </script>
 
 
@@ -3065,6 +3196,8 @@ function onFocusEvent(index) {
 	 }
   }
 }
+
+
 </script>
 <script>
     $(".Quickexit").click(function(){
@@ -3073,6 +3206,8 @@ function onFocusEvent(index) {
             var objWindow = window.open(url, "_self");
             window.location.replace('https://www.google.com/');
      })
+
+
 </script>
 </body>
 </html>

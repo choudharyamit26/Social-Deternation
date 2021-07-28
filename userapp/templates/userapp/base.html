@@ -21,11 +21,11 @@
     <div class="container">
         <div class="socialInner profileUser">
             {% if user.avi %}
-            <a href="javascript:void(0)">Welcome,{{user.avi}} <span class="profile"><img
+            <a href="javascript:void(0)">Welcome, {{user.avi}} <span class="profile"><img
                     src="{% static 'userapp/imgs/profile.svg' %}"
                     alt="profile"></span></a>
             {% else %}
-            <a href="javascript:void(0)">Welcome,{{user.first_name}} <span class="profile"><img
+            <a href="javascript:void(0)">Welcome, {{user.first_name}} <span class="profile"><img
                     src="{% static 'userapp/imgs/profile.svg' %}"
                     alt="profile"></span></a>
 
@@ -178,7 +178,14 @@
 <script src="{% static 'userapp/js/bootstrap.min.js' %}"></script>
 <!-- <script src="js/owl.carousel.min.js"></script> -->
 <script src="{% static 'userapp/js/custom.js' %}"></script>
-
+<script>
+    $(".Quickexit").click(function(){
+            window.close();
+            var url = "https://www.google.com/";//back page url
+            var objWindow = window.open(url, "_self");
+            window.location.replace('https://www.google.com/');
+     })
+</script>
 </body>
 
 </html>
