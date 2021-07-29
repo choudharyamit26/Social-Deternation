@@ -68,10 +68,13 @@ class HomeView(View):
         ip_address = None
         if self.request.META.get("HTTP_X_REAL_IP"):
             ip_address = self.request.META.get("HTTP_X_REAL_IP").split(',')[0]
+        print('iii ', ip_address)
         details = handler.getDetails(ip_address)
-        print(details.country_name)
-        print(ip_address)
-        return render(self.request, 'userapp/index.html', {'country': details.country_name})
+        print('DDDDD111 ', details.country.lower())
+        print('DDDDD ', details.country_name)
+        print('IIIIIPP ', ip_address)
+        return render(self.request, 'userapp/index.html',
+                      {'country_name': details.country_name, 'country': details.country.lower()})
 
 
 class GuestAssaultUser(View):
@@ -850,6 +853,7 @@ class ServiceProviderSignup(View):
                 city=final_data['city'],
                 zip_code=final_data['zip_code']
             )
+            login(self.request, user)
             return HttpResponse('survivor created')
 
 
@@ -885,7 +889,6 @@ class ProviderSignIn(View):
             return JsonResponse({'message': 'Password cannot be blank'}, status=400)
         if final_data['membership_code'] == '':
             return JsonResponse({'message': 'Membership code cannot be blank'}, status=400)
-
         try:
             user = User.objects.get(email=final_data['email'])
             # remember_me = final_data['check'].title()

@@ -75,25 +75,25 @@ WSGI_APPLICATION = 'brasi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 #### PRODUCTION DATABASE
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'brasidatabase',
-#         'USER': 'brasi',
-#         'PASSWORD': 'Brasi2021',
-#         'HOST': 'database-1.ccpmpmdlsxmk.us-east-2.rds.amazonaws.com',
-#         'PORT': '5432'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'brasidatabase',
+        'USER': 'brasi',
+        'PASSWORD': 'Brasi2021',
+        'HOST': 'database-1.ccpmpmdlsxmk.us-east-2.rds.amazonaws.com',
+        'PORT': '5432'
+    }
+}
 
 
 # Password validation

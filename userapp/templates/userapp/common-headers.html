@@ -246,7 +246,7 @@ i.material-icons {
                         <h2 class="head">Select your Country</h2>
                         <div class="countryFlex">
                             <div class="dropdowm-country">
-                                <div class="niceCountryInputSelector" data-selectedcountry="us"
+                                <div class="niceCountryInputSelector" data-selectedcountry="{{country}}"
                                      data-showspecial="false" data-showflags="true" data-i18nall="All selected"
                                      data-i18nnofilter="No selection" data-i18nfilter="Filter"
                                      data-onchangecallback="onChangeCallback"/>
@@ -1016,7 +1016,7 @@ i.material-icons {
                                 </div>
                             </div>
                             <div class="formByNumber">
-                                <div class="form-group">
+                                <div class="form-group def">
                                     <input id="phone4" type="tel" class="form-control formControl" name="mobile_number"
                                            required placeholder="Mobile Number*">
 <!--                                    <input type="text" class="form-control formControl" name="mobile_number"-->
@@ -2166,7 +2166,7 @@ function forgotPassword(){
                 }
             var mobile_number = $('#phone3').val();
             var country_code = $('.abc .selected-dial-code').text();
-            providerValues.push({'country_code':country_code})
+            var country_code_2 = $('.def .selected-dial-code').text();
             console.log('Mobile number', mobile_number)
             var g_mobile_number = $('#phone4').val();
             console.log('g_mobile_number--->>', g_mobile_number)
@@ -2177,14 +2177,16 @@ function forgotPassword(){
             }
             else if (mobile_number === '' && g_mobile_number !== ''){
                 providerValues.push({'mobile_number':g_mobile_number})
+                providerValues.push({'country_code':country_code_2})
                 sessionStorage.setItem('provider_mobile_number',mobile_number)
                 sessionStorage.setItem('g_mobile_number',g_mobile_number)
                 sessionStorage.setItem('providerOtpNumber',mobile_number)
-                sessionStorage.setItem('country_code',country_code)
+                sessionStorage.setItem('country_code',country_code_2)
 
             }
             else{
                 providerValues.push({'mobile_number':mobile_number})
+                providerValues.push({'country_code':country_code})
                 sessionStorage.setItem('provider_mobile_number',mobile_number)
                 sessionStorage.setItem('country_code',country_code)
 
@@ -2270,9 +2272,8 @@ function forgotPassword(){
             });
         });
 
-
-
 </script>
+
 <script>
     function finalProviderSignup2(){
         finalarray = []
@@ -2405,8 +2406,9 @@ function forgotPassword(){
             $('#providersignup4').modal('hide');
             // $('#providersignup').modal('hide');
             // });
-            $('#providersignin').modal('show');
+<!--            $('#providersignin').modal('show');-->
             console.log('inside success case')
+            window.location.href = "{% url 'userapp:provider-requests' %}"
         },
         error: function(data) {
         console.log('inside login error case')
