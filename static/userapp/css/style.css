@@ -1285,11 +1285,11 @@ padding-top: 2px;
 }
 .serviceStar ul{
     padding-bottom: 5px;
+    min-width:115px;
 }
 .serviceDet{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 15px;
     padding-bottom: 0;
 }
