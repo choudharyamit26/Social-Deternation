@@ -1,12 +1,12 @@
 
 @font-face {
 	font-family: 'Montserrat-Regular';
-	src: url(../fonts/Montserrat-Regular.ttf);
+    src: url(../fonts/times-new-roman.ttf);
 }
 
 @font-face {
 	font-family: 'Montserrat-Black';
-	src: url(../fonts/Montserrat-Black.ttf);
+	src: url(../fonts/times-new-roman.ttf);
 }
 
 @font-face {
@@ -16,17 +16,18 @@
 
 @font-face {
 	font-family: 'Montserrat-Medium';
-	src: url(../fonts/Montserrat-Medium.ttf);
+	src: url(../fonts/times-new-roman-bold.ttf);
+
 }
 
 @font-face {
 	font-family: 'Montserrat-SemiBold';
-	src: url(../fonts/Montserrat-SemiBold.ttf);
+   src: url(../fonts/times-new-roman-bold.ttf);
 }
 
 @font-face {
 	font-family: 'Montserrat-Bold';
-	src: url(../fonts/Montserrat-Bold.ttf);
+   src: url(../fonts/times-new-roman-bold.ttf);
 }
 
 :root {
@@ -3085,3 +3086,10 @@ tr:first-child>td>.fc-day-grid-event {
     color: #fff !important;
 }
 
+
+.selectdate h2{
+  font-family: var(--Montserrat-Bold) !important;
+}
+.selectdate h6{
+  font-family: var(--Montserrat-Bold) !important;
+}

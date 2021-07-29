@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'MontserratRegular';
-    src: url(../fonts/MontserratRegular.ttf);
+    src: url(../fonts/times-new-roman.ttf);
 }
 
 @font-face {
     font-family: 'MontserratSemiBold';
-    src: url(../fonts/MontserratSemiBold.ttf);
+    src: url(../fonts/times-new-roman-bold.ttf);
 }
 
 @font-face {
@@ -14,11 +14,11 @@
 }
 @font-face {
     font-family: 'MontserratBold';
-    src: url(../fonts/MontserratBold.ttf);
+    src: url(../fonts/times-new-roman-bold.ttf);
 }
 @font-face {
     font-family: 'MontserratMedium';
-    src: url(../fonts/MontserratMedium.ttf);
+    src: url(../fonts/times-new-roman-bold.ttf);
 }
 
 
@@ -4405,4 +4405,13 @@ only screen and (min-resolution: 2dppx) {
 
 .iti-flag.np {
   background-color: transparent;
+}
+
+
+.selectdate h2{
+  font-family: var(--bold) !important;
+  font-size: 60px;
+}
+.selectdate h6{
+  font-family: var(--regular) !important;
 }
